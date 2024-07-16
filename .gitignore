@@ -1,0 +1,12 @@
+CMakeFiles/
+Makefile
+_build/conf.py
+_build/sources.cmake
+_doctrees/
+_sources/
+html/.buildinfo
+html/_sources/
+html/objects.inv
+html/searchindex.js
+cmake_install.cmake
+man/
