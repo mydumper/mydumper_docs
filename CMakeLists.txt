@@ -1,6 +1,6 @@
 # Generate documentation in HTML and PDF format using Sphinx.
 cmake_minimum_required(VERSION 2.8.12)
-project(mydumper_docs)
+project(MyDumper)
 set(GENERATE_DOC TRUE)
 
 
