@@ -3,8 +3,7 @@ version: 2.1
 
 orbs:
   capture-tag: rvla/capture-tag@0.0.2
-
-commands:
+jobs:
   publish-docs:
     docker:
       - image: mydumper/mydumper-builder-noble
