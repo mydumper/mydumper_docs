@@ -21,6 +21,7 @@ Contents:
    :maxdepth: 2
 
    authors
+   installing
    compiling
    mydumper_usage
    myloader_usage
