@@ -7,7 +7,7 @@ Welcome to MyDumper's documentation!
 
 MyDumper is a MySQL Logical Backup Tool. It has 2 tools:
 
-* `mydumper_usage`_ which is responsible to export a consistent backup of MySQL databases
+* mydumper which is responsible to export a consistent backup of MySQL databases
 
 * myloader reads the backup from mydumper, connects to the destination database and imports the backup.
 
