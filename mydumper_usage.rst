@@ -1,3 +1,5 @@
+.. _mydumper_usage:
+
 mydumper Usage
 ==============
 
