@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="mydumper Usage" href="mydumper_usage.html" />
-    <link rel="prev" title="Authors" href="authors.html" /> 
+    <link rel="prev" title="Installing" href="installing.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -31,7 +31,7 @@
           <a href="mydumper_usage.html" title="mydumper Usage"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="authors.html" title="Authors"
+          <a href="installing.html" title="Installing"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MyDumper  documentation</a> &#187;</li> 
       </ul>
@@ -46,51 +46,103 @@
 <h1>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>mydumper requires the following before it can be compiled:</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.cmake.org/">CMake</a></li>
-<li><a class="reference external" href="http://www.gtk.org/index.php">Glib2</a> (with development packages)</li>
-<li><a class="reference external" href="http://www.pcre.org/">PCRE</a> (with development packages)</li>
-<li><a class="reference external" href="http://www.mysql.com/">MySQL</a> client libraries (with development packages)</li>
-</ul>
-</div></blockquote>
+<div class="section" id="development-tools">
+<h3>Development Tools<a class="headerlink" href="#development-tools" title="Permalink to this headline">¶</a></h3>
+<p>MyDumper requires the following development tools before it can be compiled:</p>
+<div class="section" id="ubuntu-debian">
+<h4>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install cmake g++ git
+</pre></div>
+</div>
+</div>
+<div class="section" id="fedora-redhat-centos">
+<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y cmake gcc gcc-c++ git make
+</pre></div>
+</div>
+</div>
+<div class="section" id="mac-osx">
+<h4>Mac OSX<a class="headerlink" href="#mac-osx" title="Permalink to this headline">¶</a></h4>
+<p>for MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port install cmake pkgconfig
+</pre></div>
+</div>
 <p>Additionally the following packages are optional:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://www.sphinx-doc.org/">python-sphinx</a> (for documentation)</li>
 </ul>
 </div></blockquote>
-<div class="section" id="ubuntu-debian">
-<h3>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install libglib2.0-dev libmysqlclient15-dev zlib1g-dev libpcre3-dev
+</div>
+</div>
+<div class="section" id="development-libraries">
+<h3>Development Libraries<a class="headerlink" href="#development-libraries" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Ubuntu/Debian<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install libglib2.0-dev libpcre3-dev libssl-dev
 </pre></div>
 </div>
 </div>
-<div class="section" id="fedora-redhat-centos">
-<h3>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install glib2-devel mysql-devel zlib-devel pcre-devel
+<div class="section" id="id2">
+<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install glib2-devel pcre-devel openssl-devel
 </pre></div>
 </div>
 </div>
 <div class="section" id="opensuse">
-<h3>OpenSUSE<a class="headerlink" href="#opensuse" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install glib2-devel libmysqlclient-devel pcre-devel zlib-devel
+<h4>OpenSUSE<a class="headerlink" href="#opensuse" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install glib2-devel pcre-devel
 </pre></div>
 </div>
 </div>
-<div class="section" id="mac-osx">
-<h3>Mac OSX<a class="headerlink" href="#mac-osx" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>port install glib2 mysql5 pcre
+<div class="section" id="id3">
+<h4>Mac OSX<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>port install glib2 pcre
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>CMake<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>CMake is used for mydumper’s build system and is executed as follows:</p>
+<div class="section" id="mysql-percona-mariadb-development-libraries">
+<h3>MySQL/Percona/MariaDB development libraries<a class="headerlink" href="#mysql-percona-mariadb-development-libraries" title="Permalink to this headline">¶</a></h3>
+<p>You need to select one vendor development library.</p>
+<div class="section" id="id4">
+<h4>Ubuntu/Debian<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install libmysqlclient-dev
+apt-get install libperconaserverclient20-dev
+apt-get install libmariadbclient-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y mysql-devel
+yum install -y Percona-Server-devel-57
+yum install -y mariadb-devel
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h4>OpenSUSE<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install libmysqlclient-devel
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h4>Mac OSX<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port install mariadb-10.11
+sudo port <span class="k">select</span> mysql
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cmake">
+<h2>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h2>
+<p>CMake is used for MyDumper’s build system and is executed as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
 <span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>You can optionally provide parameters for CMake, the possible options are:</p>
@@ -100,6 +152,9 @@
 <li><code class="docutils literal notranslate"><span class="pre">-DCMAKE_INSTALL_PREFIX=/install/path</span></code> - The path where mydumper should be installed</li>
 </ul>
 </div></blockquote>
+<p>One has to make sure, that pkg-config, mysql_config, pcre-config are all in $PATH</p>
+<p>Binlog dump is disabled by default to compile with it you need to add -DWITH_BINLOG=ON to cmake options</p>
+<p>To build against mysql libs &lt; 5.7 you need to disable SSL adding -DWITH_SSL=OFF</p>
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
@@ -126,21 +181,37 @@
   <ul>
 <li><a class="reference internal" href="#">Compiling</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#development-tools">Development Tools</a><ul>
 <li><a class="reference internal" href="#ubuntu-debian">Ubuntu/Debian</a></li>
 <li><a class="reference internal" href="#fedora-redhat-centos">Fedora/Redhat/CentOS</a></li>
-<li><a class="reference internal" href="#opensuse">OpenSUSE</a></li>
 <li><a class="reference internal" href="#mac-osx">Mac OSX</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id1">CMake</a></li>
+<li><a class="reference internal" href="#development-libraries">Development Libraries</a><ul>
+<li><a class="reference internal" href="#id1">Ubuntu/Debian</a></li>
+<li><a class="reference internal" href="#id2">Fedora/Redhat/CentOS</a></li>
+<li><a class="reference internal" href="#opensuse">OpenSUSE</a></li>
+<li><a class="reference internal" href="#id3">Mac OSX</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mysql-percona-mariadb-development-libraries">MySQL/Percona/MariaDB development libraries</a><ul>
+<li><a class="reference internal" href="#id4">Ubuntu/Debian</a></li>
+<li><a class="reference internal" href="#id5">Fedora/Redhat/CentOS</a></li>
+<li><a class="reference internal" href="#id6">OpenSUSE</a></li>
+<li><a class="reference internal" href="#id7">Mac OSX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cmake">CMake</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="authors.html"
-                        title="previous chapter">Authors</a></p>
+  <p class="topless"><a href="installing.html"
+                        title="previous chapter">Installing</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="mydumper_usage.html"
                         title="next chapter">mydumper Usage</a></p>
@@ -177,7 +248,7 @@
           <a href="mydumper_usage.html" title="mydumper Usage"
              >next</a> |</li>
         <li class="right" >
-          <a href="authors.html" title="Authors"
+          <a href="installing.html" title="Installing"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MyDumper  documentation</a> &#187;</li> 
       </ul>
