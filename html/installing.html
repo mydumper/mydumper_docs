@@ -44,8 +44,8 @@
             
   <div class="section" id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="built-pacakges">
-<h2>Built pacakges<a class="headerlink" href="#built-pacakges" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="built-packages">
+<h2>Built packages<a class="headerlink" href="#built-packages" title="Permalink to this headline">¶</a></h2>
 <p>We build pacakges for multiple distributions that can be found in the <a class="reference external" href="https://github.com/mydumper/mydumper/releases">release section</a> of MyDumper</p>
 </div>
 <div class="section" id="apt">
@@ -101,6 +101,29 @@ rpm --import GPG-KEY-MyDumper
 </div>
 </div>
 </div>
+<div class="section" id="freebsd">
+<h2>FreeBSD<a class="headerlink" href="#freebsd" title="Permalink to this headline">¶</a></h2>
+<p>By using pkg</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pkg install mydumper
+</pre></div>
+</div>
+<p>or from ports</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/ports/databases/mydumper <span class="o">&amp;&amp;</span> make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="macos">
+<h2>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h2>
+<p>By using Homebrew</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install mydumper
+</pre></div>
+</div>
+<p>Take into account that the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc. So, you might need to run mydumper/myloader with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mydumper --defaults-file<span class="o">=</span>/opt/homebrew/etc/mydumper.cnf
+myloader --defaults-file<span class="o">=</span>/opt/homebrew/etc/mydumper.cnf
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -112,7 +135,7 @@ rpm --import GPG-KEY-MyDumper
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Installing</a><ul>
-<li><a class="reference internal" href="#built-pacakges">Built pacakges</a></li>
+<li><a class="reference internal" href="#built-packages">Built packages</a></li>
 <li><a class="reference internal" href="#apt">APT</a><ul>
 <li><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
 <li><a class="reference internal" href="#debian">Debian</a></li>
@@ -122,6 +145,8 @@ rpm --import GPG-KEY-MyDumper
 <li><a class="reference internal" href="#fedora-redhat-centos">Fedora/Redhat/CentOS</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#freebsd">FreeBSD</a></li>
+<li><a class="reference internal" href="#macos">MacOS</a></li>
 </ul>
 </li>
 </ul>

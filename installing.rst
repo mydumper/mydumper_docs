@@ -1,7 +1,7 @@
 Installing
 ==========
 
-Built pacakges
+Built packages
 ^^^^^^^^^^^^^^
 
 We build pacakges for multiple distributions that can be found in the `release section <https://github.com/mydumper/mydumper/releases>`_ of MyDumper
@@ -70,6 +70,38 @@ On /etc/yum.repos.d/mydumper.repo
   baseurl=https://mydumper.github.io/mydumper/repo/yum/testing/
   enabled=0
   gpgcheck=1
+
+FreeBSD
+^^^^^^^
+
+By using pkg
+
+.. code-block::  bash
+
+  pkg install mydumper
+
+or from ports
+
+.. code-block::  bash
+
+  cd /usr/ports/databases/mydumper && make install
+
+  
+MacOS
+^^^^^
+
+By using Homebrew
+
+.. code-block::  bash
+
+  brew install mydumper
+
+Take into account that the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc. So, you might need to run mydumper/myloader with:
+
+.. code-block::  bash
+
+  mydumper --defaults-file=/opt/homebrew/etc/mydumper.cnf
+  myloader --defaults-file=/opt/homebrew/etc/mydumper.cnf
 
 
 
