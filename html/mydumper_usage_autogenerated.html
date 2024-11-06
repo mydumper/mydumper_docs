@@ -1,0 +1,890 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>Connection Options - MyDumper documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">MyDumper  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mydumper_usage.html">mydumper Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="myloader_usage.html">myloader Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/mydumper_usage_autogenerated.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="connection-options">
+<h1>Connection Options<a class="headerlink" href="#connection-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-h">
+<span id="cmdoption-host"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--host</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>The host to connect to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-u">
+<span id="cmdoption-user"></span><span class="sig-name descname"><span class="pre">-u</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--user</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-u" title="Permalink to this definition">¶</a></dt>
+<dd><p>Username with the necessary privileges</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-p">
+<span id="cmdoption-password"></span><span class="sig-name descname"><span class="pre">-p</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--password</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>User password</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-a">
+<span id="cmdoption-ask-password"></span><span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--ask-password</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompt For User password</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-P">
+<span id="cmdoption-port"></span><span class="sig-name descname"><span class="pre">-P</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--port</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-P" title="Permalink to this definition">¶</a></dt>
+<dd><p>TCP/IP port to connect to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-S">
+<span id="cmdoption-socket"></span><span class="sig-name descname"><span class="pre">-S</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--socket</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-S" title="Permalink to this definition">¶</a></dt>
+<dd><p>UNIX domain socket file to use for connection</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-C">
+<span id="cmdoption-compress-protocol"></span><span class="sig-name descname"><span class="pre">-C</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress-protocol</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use compression on the MySQL connection</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ssl">
+<span class="sig-name descname"><span class="pre">--ssl</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ssl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect using SSL</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ssl-mode">
+<span class="sig-name descname"><span class="pre">--ssl-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ssl-mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-key">
+<span class="sig-name descname"><span class="pre">--key</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-key" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path name to the key file</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-cert">
+<span class="sig-name descname"><span class="pre">--cert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-cert" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path name to the certificate file</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ca">
+<span class="sig-name descname"><span class="pre">--ca</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ca" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path name to the certificate authority file</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-capath">
+<span class="sig-name descname"><span class="pre">--capath</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-capath" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path name to a directory that contains trusted SSL CA certificates in PEM format</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-cipher">
+<span class="sig-name descname"><span class="pre">--cipher</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-cipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of permissible ciphers to use for SSL encryption</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-tls-version">
+<span class="sig-name descname"><span class="pre">--tls-version</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-tls-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which protocols the server permits for encrypted connections</p>
+</dd></dl>
+
+</section>
+<section id="filter-options">
+<h1>Filter Options<a class="headerlink" href="#filter-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-x">
+<span id="cmdoption-regex"></span><span class="sig-name descname"><span class="pre">-x</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--regex</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expression for ‘db.table’ matching</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-B">
+<span id="cmdoption-database"></span><span class="sig-name descname"><span class="pre">-B</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database to dump</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-i">
+<span id="cmdoption-ignore-engines"></span><span class="sig-name descname"><span class="pre">-i</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--ignore-engines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comma delimited list of storage engines to ignore</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-where">
+<span class="sig-name descname"><span class="pre">--where</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-where" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump only selected records.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-U">
+<span id="cmdoption-updated-since"></span><span class="sig-name descname"><span class="pre">-U</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--updated-since</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-U" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use Update_time to dump only tables updated in the last U days</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-partition-regex">
+<span class="sig-name descname"><span class="pre">--partition-regex</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-partition-regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regex to filter by partition name.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-O">
+<span id="cmdoption-omit-from-file"></span><span class="sig-name descname"><span class="pre">-O</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--omit-from-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-O" title="Permalink to this definition">¶</a></dt>
+<dd><p>File containing a list of database[.table] entries to skip, one per line (skips before applying regex option)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-T">
+<span id="cmdoption-tables-list"></span><span class="sig-name descname"><span class="pre">-T</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--tables-list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2</p>
+</dd></dl>
+
+</section>
+<section id="lock-options">
+<h1>Lock Options<a class="headerlink" href="#lock-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-z">
+<span id="cmdoption-tidb-snapshot"></span><span class="sig-name descname"><span class="pre">-z</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--tidb-snapshot</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Snapshot to use for TiDB</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-k">
+<span id="cmdoption-no-locks"></span><span class="sig-name descname"><span class="pre">-k</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not execute the temporary shared read lock.</p>
+<p>WARNING: This will cause inconsistent backups</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-use-savepoints">
+<span class="sig-name descname"><span class="pre">--use-savepoints</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-use-savepoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use savepoints to reduce metadata locking issues, needs SUPER privilege</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-no-backup-locks">
+<span class="sig-name descname"><span class="pre">--no-backup-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-backup-locks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not use Percona backup locks</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-lock-all-tables">
+<span class="sig-name descname"><span class="pre">--lock-all-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lock-all-tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use LOCK TABLE for all, instead of FTWRL</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-less-locking">
+<span class="sig-name descname"><span class="pre">--less-locking</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-less-locking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimize locking time on InnoDB tables.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-trx-consistency-only">
+<span class="sig-name descname"><span class="pre">--trx-consistency-only</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-trx-consistency-only" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transactional consistency only</p>
+</dd></dl>
+
+</section>
+<section id="pmm-options">
+<h1>PMM Options<a class="headerlink" href="#pmm-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-pmm-path">
+<span class="sig-name descname"><span class="pre">--pmm-path</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-pmm-path" title="Permalink to this definition">¶</a></dt>
+<dd><p>which default value will be /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-pmm-resolution">
+<span class="sig-name descname"><span class="pre">--pmm-resolution</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-pmm-resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>which default will be high</p>
+</dd></dl>
+
+</section>
+<section id="exec-options">
+<h1>Exec Options<a class="headerlink" href="#exec-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-exec-threads">
+<span class="sig-name descname"><span class="pre">--exec-threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exec-threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amount of threads to use with –exec</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-exec">
+<span class="sig-name descname"><span class="pre">--exec</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command to execute using the file as parameter</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-exec-per-thread">
+<span class="sig-name descname"><span class="pre">--exec-per-thread</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exec-per-thread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the command that will receive by STDIN and write in the STDOUT into the output file</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-exec-per-thread-extension">
+<span class="sig-name descname"><span class="pre">--exec-per-thread-extension</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exec-per-thread-extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the extension for the STDOUT file when –exec-per-thread is used</p>
+</dd></dl>
+
+</section>
+<section id="if-long-query-running-found">
+<h1>If long query running found<a class="headerlink" href="#if-long-query-running-found" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-long-query-retries">
+<span class="sig-name descname"><span class="pre">--long-query-retries</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-long-query-retries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retry checking for long queries, default 0 (do not retry)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-long-query-retry-interval">
+<span class="sig-name descname"><span class="pre">--long-query-retry-interval</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-long-query-retry-interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time to wait before retrying the long query check in seconds, default 60</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-l">
+<span id="cmdoption-long-query-guard"></span><span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--long-query-guard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set long query timer in seconds, default 60</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-K">
+<span id="cmdoption-kill-long-queries"></span><span class="sig-name descname"><span class="pre">-K</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--kill-long-queries</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kill long running queries (instead of aborting)</p>
+</dd></dl>
+
+</section>
+<section id="job-options">
+<h1>Job Options<a class="headerlink" href="#job-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-max-rows">
+<span class="sig-name descname"><span class="pre">--max-rows</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-max-rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limit the number of rows per block after the table is estimated, default 1000000. It has been deprecated, use –rows instead. Removed in future releases</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-char-deep">
+<span class="sig-name descname"><span class="pre">--char-deep</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-deep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-char-chunk">
+<span class="sig-name descname"><span class="pre">--char-chunk</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-chunk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-r">
+<span id="cmdoption-rows"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--rows</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-split-partitions">
+<span class="sig-name descname"><span class="pre">--split-partitions</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-split-partitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump partitions into separate files. This options overrides the –rows option for partitioned tables.</p>
+</dd></dl>
+
+</section>
+<section id="checksum-options">
+<h1>Checksum Options<a class="headerlink" href="#checksum-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-M">
+<span id="cmdoption-checksum-all"></span><span class="sig-name descname"><span class="pre">-M</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--checksum-all</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-M" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump checksums for all elements</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-data-checksums">
+<span class="sig-name descname"><span class="pre">--data-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-data-checksums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump table checksums with the data</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-schema-checksums">
+<span class="sig-name descname"><span class="pre">--schema-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-schema-checksums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump schema table and view creation checksums</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-routine-checksums">
+<span class="sig-name descname"><span class="pre">--routine-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-routine-checksums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump triggers, functions and routines checksums</p>
+</dd></dl>
+
+</section>
+<section id="objects-options">
+<h1>Objects Options<a class="headerlink" href="#objects-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-m">
+<span id="cmdoption-no-schemas"></span><span class="sig-name descname"><span class="pre">-m</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-schemas</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not dump table schemas with the data and triggers</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-Y">
+<span id="cmdoption-all-tablespaces"></span><span class="sig-name descname"><span class="pre">-Y</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--all-tablespaces</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump all the tablespaces.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-d">
+<span id="cmdoption-no-data"></span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not dump table data</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-G">
+<span id="cmdoption-triggers"></span><span class="sig-name descname"><span class="pre">-G</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--triggers</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-G" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump triggers. By default, it do not dump triggers</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-E">
+<span id="cmdoption-events"></span><span class="sig-name descname"><span class="pre">-E</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--events</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-E" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump events. By default, it do not dump events</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-R">
+<span id="cmdoption-routines"></span><span class="sig-name descname"><span class="pre">-R</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--routines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump stored procedures and functions. By default, it do not dump stored procedures nor functions</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-views-as-tables">
+<span class="sig-name descname"><span class="pre">--views-as-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-views-as-tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export VIEWs as they were tables</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-W">
+<span id="cmdoption-no-views"></span><span class="sig-name descname"><span class="pre">-W</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-views</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not dump VIEWs</p>
+</dd></dl>
+
+</section>
+<section id="statement-options">
+<h1>Statement Options<a class="headerlink" href="#statement-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-load-data">
+<span class="sig-name descname"><span class="pre">--load-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-load-data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-csv">
+<span class="sig-name descname"><span class="pre">--csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically enables –load-data and set variables to export in CSV format.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-fields-terminated-by">
+<span class="sig-name descname"><span class="pre">--fields-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-terminated-by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-fields-enclosed-by">
+<span class="sig-name descname"><span class="pre">--fields-enclosed-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-enclosed-by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-fields-escaped-by">
+<span class="sig-name descname"><span class="pre">--fields-escaped-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-escaped-by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ‘'</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-lines-starting-by">
+<span class="sig-name descname"><span class="pre">--lines-starting-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lines-starting-by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the string at the begining of each row. When –load-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-lines-terminated-by">
+<span class="sig-name descname"><span class="pre">--lines-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lines-terminated-by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the string at the end of each row. When –load-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-statement-terminated-by">
+<span class="sig-name descname"><span class="pre">--statement-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-statement-terminated-by" title="Permalink to this definition">¶</a></dt>
+<dd><p>This might never be used, unless you know what are you doing</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-N">
+<span id="cmdoption-insert-ignore"></span><span class="sig-name descname"><span class="pre">-N</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--insert-ignore</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-N" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump rows with INSERT IGNORE</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-replace">
+<span class="sig-name descname"><span class="pre">--replace</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump rows with REPLACE</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-complete-insert">
+<span class="sig-name descname"><span class="pre">--complete-insert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-complete-insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use complete INSERT statements that include column names</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-hex-blob">
+<span class="sig-name descname"><span class="pre">--hex-blob</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-hex-blob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump binary columns using hexadecimal notation</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-definer">
+<span class="sig-name descname"><span class="pre">--skip-definer</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-definer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes DEFINER from the CREATE statement. By default, statements are not modified</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-s">
+<span id="cmdoption-statement-size"></span><span class="sig-name descname"><span class="pre">-s</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--statement-size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempted size of INSERT statement in bytes, default 1000000</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-tz-utc">
+<span class="sig-name descname"><span class="pre">--tz-utc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-tz-utc" title="Permalink to this definition">¶</a></dt>
+<dd><p>SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use –skip-tz-utc to disable.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-tz-utc">
+<span class="sig-name descname"><span class="pre">--skip-tz-utc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-tz-utc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-set-names">
+<span class="sig-name descname"><span class="pre">--set-names</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-set-names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the names, use it at your own risk, default binary</p>
+</dd></dl>
+
+</section>
+<section id="extra-options">
+<h1>Extra Options<a class="headerlink" href="#extra-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-F">
+<span id="cmdoption-chunk-filesize"></span><span class="sig-name descname"><span class="pre">-F</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--chunk-filesize</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-F" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split tables into chunks of this output file size. This value is in MB</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-exit-if-broken-table-found">
+<span class="sig-name descname"><span class="pre">--exit-if-broken-table-found</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exit-if-broken-table-found" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exits if a broken table has been found</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-success-on-1146">
+<span class="sig-name descname"><span class="pre">--success-on-1146</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-success-on-1146" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not increment error count and Warning instead of Critical in case of table doesn’t exist</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-e">
+<span id="cmdoption-build-empty-files"></span><span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--build-empty-files</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build dump files even if no data available from table</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-no-check-generated-fields">
+<span class="sig-name descname"><span class="pre">--no-check-generated-fields</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-check-generated-fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries related to generated fields are not going to be executed.It will lead to restoration issues if you have generated columns</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-order-by-primary">
+<span class="sig-name descname"><span class="pre">--order-by-primary</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-order-by-primary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the data by Primary Key or Unique key if no primary key exists</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-c">
+<span id="cmdoption-compress"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP</p>
+</dd></dl>
+
+</section>
+<section id="daemon-options">
+<h1>Daemon Options<a class="headerlink" href="#daemon-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-D">
+<span id="cmdoption-daemon"></span><span class="sig-name descname"><span class="pre">-D</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--daemon</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable daemon mode</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-I">
+<span id="cmdoption-snapshot-interval"></span><span class="sig-name descname"><span class="pre">-I</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--snapshot-interval</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-I" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interval between each dump snapshot (in minutes), requires –daemon, default 60</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-X">
+<span id="cmdoption-snapshot-count"></span><span class="sig-name descname"><span class="pre">-X</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--snapshot-count</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-X" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of snapshots, default 2</p>
+</dd></dl>
+
+</section>
+<section id="application-options">
+<h1>Application Options<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-0">
+<span id="cmdoption-help"></span><span class="sig-name descname"><span class="pre">-?</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show help options</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-o">
+<span id="cmdoption-outputdir"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputdir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory to output files to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-stream">
+<span class="sig-name descname"><span class="pre">--stream</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-L">
+<span id="cmdoption-logfile"></span><span class="sig-name descname"><span class="pre">-L</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--logfile</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-L" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log file name to use, by default stdout is used</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-disk-limits">
+<span class="sig-name descname"><span class="pre">--disk-limits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-disk-limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: ‘&lt;resume&gt;:&lt;pause&gt;’ in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-t">
+<span id="cmdoption-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of threads to use, default 4</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-V">
+<span id="cmdoption-version"></span><span class="sig-name descname"><span class="pre">-V</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--version</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-V" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the program version and exit</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-identifier-quote-character">
+<span class="sig-name descname"><span class="pre">--identifier-quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-identifier-quote-character" title="Permalink to this definition">¶</a></dt>
+<dd><p>This set the identifier quote character that is used to INSERT statements onlyon mydumper and to split statement on myloader. Use SQL_MODE to change theCREATE TABLE statementsPosible values are: BACKTICK and DOUBLE_QUOTE. Default: BACKTICK</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-v">
+<span id="cmdoption-verbose"></span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-defaults-file">
+<span class="sig-name descname"><span class="pre">--defaults-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-defaults-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a specific defaults file. Default: /etc/mydumper.cnf</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-defaults-extra-file">
+<span class="sig-name descname"><span class="pre">--defaults-extra-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-defaults-extra-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use an additional defaults file. This is loaded after –defaults-file, replacing previous defined values</p>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, David Ducos
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
