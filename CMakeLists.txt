@@ -49,6 +49,8 @@ if(GENERATE_DOC)
     "${BINARY_BUILD_DIR}/html"
   )
 
+message( " ${SPHINX_EXECUTABLE} ")
+
   add_custom_target(ALL
     DEPENDS "${REF_SOURCES_DIR}/${REF_MASTER_DOC}.rst"
   )

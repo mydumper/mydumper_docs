@@ -1,10 +1,20 @@
+.. image:: ../images/horizontal/color-dark.svg
+  :width: 50%
+  :alt: MyDumper's logo
+  :class: only-dark
+
+.. image:: ../images/horizontal/color-light.svg
+  :width: 50%
+  :alt: MyDumper's logo
+  :class: only-light
+
 Installing
 ==========
 
 Built packages
 ^^^^^^^^^^^^^^
 
-We build pacakges for multiple distributions that can be found in the `release section <https://github.com/mydumper/mydumper/releases>`_ of MyDumper
+We build packages for multiple distributions that can be found in the `release section <https://github.com/mydumper/mydumper/releases>`_ of MyDumper
 
 APT
 ^^^
