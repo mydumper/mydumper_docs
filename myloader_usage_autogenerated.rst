@@ -24,6 +24,10 @@ Connection Options
 
   UNIX domain socket file to use for connection
 
+.. option:: --protocol
+
+  The protocol to use for connection (tcp, socket)
+
 .. option:: -C, --compress-protocol
 
   Use compression on the MySQL connection
@@ -34,7 +38,7 @@ Connection Options
 
 .. option:: --ssl-mode
 
-  Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
+  Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
 
 .. option:: --key
 
@@ -76,7 +80,15 @@ Filter Options
 
 .. option:: --skip-post
 
-  Do not import events, stored procedures and functions. By default, it imports events, stored procedures nor functions
+  Do not import events, stored procedures and functions. By default, it imports events, stored procedures or functions
+
+.. option:: --skip-constraints
+
+  Do not import constraints. By default, it imports contraints
+
+.. option:: --skip-indexes
+
+  Do not import secondary index on InnoDB tables. By default, it import the indexes
 
 .. option:: --no-data
 
@@ -84,7 +96,7 @@ Filter Options
 
 .. option:: -O, --omit-from-file
 
-  File containing a list of database[.table] entries to skip, one per line (skips before applying regex option)
+  File containing a list of database.table entries to skip, one per line (skips before applying regex option)
 
 .. option:: -T, --tables-list
 
@@ -108,19 +120,37 @@ Execution Options
 
 .. option:: --innodb-optimize-keys
 
-  Creates the table without the indexes and it adds them at the end. Options: AFTER_IMPORT_PER_TABLE and AFTER_IMPORT_ALL_TABLES. Default: AFTER_IMPORT_PER_TABLE
+  Creates the table without the indexes unless SKIP is selected.
+
+Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
+--------------------------------------------------------------------------------------------------
+.. option:: --no-schema
+
+  Do not import table schemas and triggers
 
 .. option:: --purge-mode
 
-  This specify the truncate mode which can be: NONE, DROP, TRUNCATE and DELETE
+  This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
 
 .. option:: --disable-redo-log
 
   Disables the REDO_LOG and enables it after, doesn't check initial status
 
+.. option:: --checksum
+
+  Treat checksums: skip, fail(default), warn.
+
 .. option:: -o, --overwrite-tables
 
   Drop tables if they already exist
+
+.. option:: --overwrite-unsafe
+
+  Same as --overwrite-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
+
+.. option:: --retry-count
+
+  Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)
 
 .. option:: --serialized-table-creation
 
@@ -130,19 +160,31 @@ Execution Options
 
   It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
 
+.. option:: --metadata-refresh-interval
+
+  Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100
+
+.. option:: --ignore-errors
+
+  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+
+.. option:: --set-gtid-purged
+
+  After import, it will execute the SET GLOBAL gtid_purged with the value found on source section of the metadata file
+
 Threads Options
 ---------------
 .. option:: --max-threads-per-table
 
-  Maximum number of threads per table to use, default 4
-
-.. option:: --max-threads-per-table-hard
-
-  Maximum hard number of threads per table to use, we are not going to use more than this amount of threads per table, default 4
+  Maximum number of threads per table to use, defaults to --threads
 
 .. option:: --max-threads-for-index-creation
 
   Maximum number of threads for index creation, default 4
+
+.. option:: --max-threads-for-post-actions
+
+  Maximum number of threads for post action like: constraints, procedure, views and triggers, default 1
 
 .. option:: --max-threads-for-schema-creation
 
@@ -178,8 +220,12 @@ Statement Options
 
   Removes DEFINER from the CREATE statement. By default, statements are not modified
 
-Application Options
--------------------
+.. option:: --ignore-set
+
+  List of variables that will be ignored from the header of SET
+
+Application Options:
+--------------------
 .. option:: -?, --help
 
   Show help options
@@ -192,29 +238,45 @@ Application Options
 
   Log file name to use, by default stdout is used
 
+.. option:: --fifodir
+
+  Directory where the FIFO files will be created when needed. Default: Same as backup
+
 .. option:: -B, --database
 
   An alternative database to restore into
+
+.. option:: -Q, --quote-character
+
+  Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, " for double quote. Default: detect from dump if possible, otherwise BACKTICK
+
+.. option:: --show-warnings
+
+  If enabled, during INSERT IGNORE the warnings will be printed
 
 .. option:: --resume
 
   Expect to find resume file in backup dir and will only process those files
 
+.. option:: -k, --kill-at-once
+
+  When Ctrl+c is pressed it immediately terminates the process
+
 .. option:: -t, --threads
 
-  Number of threads to use, default 4
+  Number of threads to use, 0 means to use number of CPUs. Default: 4
 
 .. option:: -V, --version
 
   Show the program version and exit
 
-.. option:: --identifier-quote-character
-
-  This set the identifier quote character that is used to INSERT statements onlyon mydumper and to split statement on myloader. Use SQL_MODE to change theCREATE TABLE statementsPosible values are: BACKTICK and DOUBLE_QUOTE. Default: BACKTICK
-
 .. option:: -v, --verbose
 
   Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2
+
+.. option:: --debug
+
+  Turn on debugging output (automatically sets verbosity to 3)
 
 .. option:: --defaults-file
 
@@ -223,3 +285,8 @@ Application Options
 .. option:: --defaults-extra-file
 
   Use an additional defaults file. This is loaded after --defaults-file, replacing previous defined values
+
+.. option:: --source-control-command
+
+  Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+

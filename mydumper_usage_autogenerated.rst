@@ -24,6 +24,10 @@ Connection Options
 
   UNIX domain socket file to use for connection
 
+.. option:: --protocol
+
+  The protocol to use for connection (tcp, socket)
+
 .. option:: -C, --compress-protocol
 
   Use compression on the MySQL connection
@@ -34,7 +38,7 @@ Connection Options
 
 .. option:: --ssl-mode
 
-  Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
+  Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
 
 .. option:: --key
 
@@ -68,7 +72,7 @@ Filter Options
 
 .. option:: -B, --database
 
-  Database to dump
+  Comma delimited list of databases to dump
 
 .. option:: -i, --ignore-engines
 
@@ -88,7 +92,7 @@ Filter Options
 
 .. option:: -O, --omit-from-file
 
-  File containing a list of database[.table] entries to skip, one per line (skips before applying regex option)
+  File containing a list of database.table entries to skip, one per line (skips before applying regex option)
 
 .. option:: -T, --tables-list
 
@@ -126,6 +130,10 @@ Lock Options
 
   Transactional consistency only
 
+.. option:: --skip-ddl-locks
+
+  Do not send DDL locks when possible
+
 PMM Options
 -----------
 .. option:: --pmm-path
@@ -154,8 +162,6 @@ Exec Options
 
   Set the extension for the STDOUT file when --exec-per-thread is used
 
-If long query running found
----------------------------
 .. option:: --long-query-retries
 
   Retry checking for long queries, default 0 (do not retry)
@@ -174,17 +180,17 @@ If long query running found
 
 Job Options
 -----------
-.. option:: --max-rows
+.. option:: --max-threads-per-table
 
-  Limit the number of rows per block after the table is estimated, default 1000000. It has been deprecated, use --rows instead. Removed in future releases
+  Maximum number of threads per table to use
 
 .. option:: --char-deep
 
-
+  Defines the amount of characters to use when the primary key is a string
 
 .. option:: --char-chunk
 
-
+  Defines in how many pieces should split the table. By default we use the amount of threads
 
 .. option:: -r, --rows
 
@@ -238,6 +244,14 @@ Objects Options
 
   Dump stored procedures and functions. By default, it do not dump stored procedures nor functions
 
+.. option:: --skip-constraints
+
+  Remove the constraints from the CREATE TABLE statement. By default, the statement is not modified
+
+.. option:: --skip-indexes
+
+  Remove the indexes from the CREATE TABLE statement. By default, the statement is not modified
+
 .. option:: --views-as-tables
 
   Export VIEWs as they were tables
@@ -250,23 +264,31 @@ Statement Options
 -----------------
 .. option:: --load-data
 
-
+  Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use --format
 
 .. option:: --csv
 
-  Automatically enables --load-data and set variables to export in CSV format.
+  Automatically enables --load-data and set variables to export in CSV format. This option will be deprecated on future releases use --format
+
+.. option:: --format
+
+  Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT
+
+.. option:: --include-header
+
+  When --load-data or --csv is used, it will include the header with the column name
 
 .. option:: --fields-terminated-by
 
-
+  Defines the character that is written between fields
 
 .. option:: --fields-enclosed-by
 
-
+  Defines the character to enclose fields. Default: "
 
 .. option:: --fields-escaped-by
 
-  Single character that is going to be used to escape characters in theLOAD DATA stament, default: '\'
+  Single character that is going to be used to escape characters in theLOAD DATA stament, default: ''
 
 .. option:: --lines-starting-by
 
@@ -310,7 +332,7 @@ Statement Options
 
 .. option:: --skip-tz-utc
 
-
+  Doesn't add SET TIMEZONE on the backup files
 
 .. option:: --set-names
 
@@ -320,7 +342,7 @@ Extra Options
 -------------
 .. option:: -F, --chunk-filesize
 
-  Split tables into chunks of this output file size. This value is in MB
+  Split data files into pieces of this size in MB. Useful for myloader multi-threading.
 
 .. option:: --exit-if-broken-table-found
 
@@ -342,9 +364,25 @@ Extra Options
 
   Sort the data by Primary Key or Unique key if no primary key exists
 
+.. option:: --compact
+
+  Give less verbose output. Disables header/footer constructs.
+
 .. option:: -c, --compress
 
   Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP
+
+.. option:: --use-defer
+
+  Use defer integer sharding until all non-integer PK tables processed (saves RSS for huge quantities of tables)
+
+.. option:: --check-row-count
+
+  Run SELECT COUNT(*) and fail mydumper if dumped row count is different
+
+.. option:: --source-data
+
+  It will include the options in the metadata file, to allow myloader to establish replication
 
 Daemon Options
 --------------
@@ -360,8 +398,8 @@ Daemon Options
 
   number of snapshots, default 2
 
-Application Options
--------------------
+Application Options:
+--------------------
 .. option:: -?, --help
 
   Show help options
@@ -369,6 +407,14 @@ Application Options
 .. option:: -o, --outputdir
 
   Directory to output files to
+
+.. option:: --clear
+
+  Clear output directory before dumping
+
+.. option:: --dirty
+
+  Overwrite output directory without clearing (beware of leftower chunks)
 
 .. option:: --stream
 
@@ -384,19 +430,19 @@ Application Options
 
 .. option:: -t, --threads
 
-  Number of threads to use, default 4
+  Number of threads to use, 0 means to use number of CPUs. Default: 4
 
 .. option:: -V, --version
 
   Show the program version and exit
 
-.. option:: --identifier-quote-character
-
-  This set the identifier quote character that is used to INSERT statements onlyon mydumper and to split statement on myloader. Use SQL_MODE to change theCREATE TABLE statementsPosible values are: BACKTICK and DOUBLE_QUOTE. Default: BACKTICK
-
 .. option:: -v, --verbose
 
   Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2
+
+.. option:: --debug
+
+  Turn on debugging output (automatically sets verbosity to 3)
 
 .. option:: --defaults-file
 
@@ -405,3 +451,8 @@ Application Options
 .. option:: --defaults-extra-file
 
   Use an additional defaults file. This is loaded after --defaults-file, replacing previous defined values
+
+.. option:: --source-control-command
+
+  Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+

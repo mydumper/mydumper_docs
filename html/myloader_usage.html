@@ -302,6 +302,12 @@ backups.</p>
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-protocol">
+<span class="sig-name descname"><span class="pre">--protocol</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The protocol to use for connection (tcp, socket)</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-C">
 <span id="cmdoption-myloader-compress-protocol"></span><span class="sig-name descname"><span class="pre">-C</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress-protocol</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-C" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use compression on the MySQL connection</p>
@@ -316,7 +322,7 @@ backups.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-ssl-mode">
 <span class="sig-name descname"><span class="pre">--ssl-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-ssl-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY</p>
+<dd><p>Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY</p>
 </dd></dl>
 
 <dl class="std option">
@@ -379,7 +385,19 @@ backups.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-skip-post">
 <span class="sig-name descname"><span class="pre">--skip-post</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-post" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not import events, stored procedures and functions. By default, it imports events, stored procedures nor functions</p>
+<dd><p>Do not import events, stored procedures and functions. By default, it imports events, stored procedures or functions</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-constraints">
+<span class="sig-name descname"><span class="pre">--skip-constraints</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not import constraints. By default, it imports contraints</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-indexes">
+<span class="sig-name descname"><span class="pre">--skip-indexes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not import secondary index on InnoDB tables. By default, it import the indexes</p>
 </dd></dl>
 
 <dl class="std option">
@@ -391,7 +409,7 @@ backups.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-O">
 <span id="cmdoption-myloader-omit-from-file"></span><span class="sig-name descname"><span class="pre">-O</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--omit-from-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-O" title="Permalink to this definition">¶</a></dt>
-<dd><p>File containing a list of database[.table] entries to skip, one per line (skips before applying regex option)</p>
+<dd><p>File containing a list of database.table entries to skip, one per line (skips before applying regex option)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -427,13 +445,22 @@ backups.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-innodb-optimize-keys">
 <span class="sig-name descname"><span class="pre">--innodb-optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-innodb-optimize-keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates the table without the indexes and it adds them at the end. Options: AFTER_IMPORT_PER_TABLE and AFTER_IMPORT_ALL_TABLES. Default: AFTER_IMPORT_PER_TABLE</p>
+<dd><p>Creates the table without the indexes unless SKIP is selected.</p>
+</dd></dl>
+
+</section>
+<section id="options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table">
+<h2>Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE<a class="headerlink" href="#options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table" title="Permalink to this heading">¶</a></h2>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-no-schema">
+<span class="sig-name descname"><span class="pre">--no-schema</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-no-schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not import table schemas and triggers</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-purge-mode">
 <span class="sig-name descname"><span class="pre">--purge-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-purge-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>This specify the truncate mode which can be: NONE, DROP, TRUNCATE and DELETE</p>
+<dd><p>This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL</p>
 </dd></dl>
 
 <dl class="std option">
@@ -443,9 +470,27 @@ backups.</p>
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-checksum">
+<span class="sig-name descname"><span class="pre">--checksum</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Treat checksums: skip, fail(default), warn.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-o">
 <span id="cmdoption-myloader-overwrite-tables"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--overwrite-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-o" title="Permalink to this definition">¶</a></dt>
 <dd><p>Drop tables if they already exist</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-overwrite-unsafe">
+<span class="sig-name descname"><span class="pre">--overwrite-unsafe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-overwrite-unsafe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as –overwrite-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-retry-count">
+<span class="sig-name descname"><span class="pre">--retry-count</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-retry-count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -460,25 +505,43 @@ backups.</p>
 <dd><p>It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given</p>
 </dd></dl>
 
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-metadata-refresh-interval">
+<span class="sig-name descname"><span class="pre">--metadata-refresh-interval</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-metadata-refresh-interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-ignore-errors">
+<span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-ignore-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-set-gtid-purged">
+<span class="sig-name descname"><span class="pre">--set-gtid-purged</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-set-gtid-purged" title="Permalink to this definition">¶</a></dt>
+<dd><p>After import, it will execute the SET GLOBAL gtid_purged with the value found on source section of the metadata file</p>
+</dd></dl>
+
 </section>
 <section id="threads-options">
 <h2>Threads Options<a class="headerlink" href="#threads-options" title="Permalink to this heading">¶</a></h2>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-max-threads-per-table">
 <span class="sig-name descname"><span class="pre">--max-threads-per-table</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-threads-per-table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maximum number of threads per table to use, default 4</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-max-threads-per-table-hard">
-<span class="sig-name descname"><span class="pre">--max-threads-per-table-hard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-threads-per-table-hard" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maximum hard number of threads per table to use, we are not going to use more than this amount of threads per table, default 4</p>
+<dd><p>Maximum number of threads per table to use, defaults to –threads</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-max-threads-for-index-creation">
 <span class="sig-name descname"><span class="pre">--max-threads-for-index-creation</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-threads-for-index-creation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximum number of threads for index creation, default 4</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-max-threads-for-post-actions">
+<span class="sig-name descname"><span class="pre">--max-threads-for-post-actions</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-threads-for-post-actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of threads for post action like: constraints, procedure, views and triggers, default 1</p>
 </dd></dl>
 
 <dl class="std option">
@@ -532,9 +595,15 @@ backups.</p>
 <dd><p>Removes DEFINER from the CREATE statement. By default, statements are not modified</p>
 </dd></dl>
 
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-ignore-set">
+<span class="sig-name descname"><span class="pre">--ignore-set</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-ignore-set" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of variables that will be ignored from the header of SET</p>
+</dd></dl>
+
 </section>
 <section id="application-options">
-<h2>Application Options<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h2>
+<h2>Application Options:<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h2>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-0">
 <span id="cmdoption-myloader-help"></span><span class="sig-name descname"><span class="pre">-?</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-0" title="Permalink to this definition">¶</a></dt>
@@ -554,9 +623,27 @@ backups.</p>
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-fifodir">
+<span class="sig-name descname"><span class="pre">--fifodir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-fifodir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory where the FIFO files will be created when needed. Default: Same as backup</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-B">
 <span id="cmdoption-myloader-database"></span><span class="sig-name descname"><span class="pre">-B</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-B" title="Permalink to this definition">¶</a></dt>
 <dd><p>An alternative database to restore into</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-Q">
+<span id="cmdoption-myloader-quote-character"></span><span class="sig-name descname"><span class="pre">-Q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, “ for double quote. Default: detect from dump if possible, otherwise BACKTICK</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-show-warnings">
+<span class="sig-name descname"><span class="pre">--show-warnings</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-show-warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>If enabled, during INSERT IGNORE the warnings will be printed</p>
 </dd></dl>
 
 <dl class="std option">
@@ -566,9 +653,15 @@ backups.</p>
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-k">
+<span id="cmdoption-myloader-kill-at-once"></span><span class="sig-name descname"><span class="pre">-k</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--kill-at-once</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-k" title="Permalink to this definition">¶</a></dt>
+<dd><p>When Ctrl+c is pressed it immediately terminates the process</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-t">
 <span id="cmdoption-myloader-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-t" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of threads to use, default 4</p>
+<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4</p>
 </dd></dl>
 
 <dl class="std option">
@@ -578,15 +671,15 @@ backups.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-identifier-quote-character">
-<span class="sig-name descname"><span class="pre">--identifier-quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-identifier-quote-character" title="Permalink to this definition">¶</a></dt>
-<dd><p>This set the identifier quote character that is used to INSERT statements onlyon mydumper and to split statement on myloader. Use SQL_MODE to change theCREATE TABLE statementsPosible values are: BACKTICK and DOUBLE_QUOTE. Default: BACKTICK</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-v">
 <span id="cmdoption-myloader-verbose"></span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-v" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-debug">
+<span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on debugging output (automatically sets verbosity to 3)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -599,6 +692,12 @@ backups.</p>
 <dt class="sig sig-object std" id="cmdoption-myloader-defaults-extra-file">
 <span class="sig-name descname"><span class="pre">--defaults-extra-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-defaults-extra-file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use an additional defaults file. This is loaded after –defaults-file, replacing previous defined values</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-source-control-command">
+<span class="sig-name descname"><span class="pre">--source-control-command</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-source-control-command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS</p>
 </dd></dl>
 
 </section>
@@ -667,9 +766,10 @@ backups.</p>
 <li><a class="reference internal" href="#filter-options">Filter Options</a></li>
 <li><a class="reference internal" href="#pmm-options">PMM Options</a></li>
 <li><a class="reference internal" href="#execution-options">Execution Options</a></li>
+<li><a class="reference internal" href="#options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table">Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</a></li>
 <li><a class="reference internal" href="#threads-options">Threads Options</a></li>
 <li><a class="reference internal" href="#statement-options">Statement Options</a></li>
-<li><a class="reference internal" href="#application-options">Application Options</a></li>
+<li><a class="reference internal" href="#application-options">Application Options:</a></li>
 </ul>
 </li>
 </ul>

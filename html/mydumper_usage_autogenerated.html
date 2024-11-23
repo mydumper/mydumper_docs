@@ -285,6 +285,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-protocol">
+<span class="sig-name descname"><span class="pre">--protocol</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The protocol to use for connection (tcp, socket)</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-C">
 <span id="cmdoption-compress-protocol"></span><span class="sig-name descname"><span class="pre">-C</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress-protocol</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-C" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use compression on the MySQL connection</p>
@@ -299,7 +305,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ssl-mode">
 <span class="sig-name descname"><span class="pre">--ssl-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ssl-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY</p>
+<dd><p>Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY</p>
 </dd></dl>
 
 <dl class="std option">
@@ -350,7 +356,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-B">
 <span id="cmdoption-database"></span><span class="sig-name descname"><span class="pre">-B</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-B" title="Permalink to this definition">¶</a></dt>
-<dd><p>Database to dump</p>
+<dd><p>Comma delimited list of databases to dump</p>
 </dd></dl>
 
 <dl class="std option">
@@ -380,7 +386,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-O">
 <span id="cmdoption-omit-from-file"></span><span class="sig-name descname"><span class="pre">-O</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--omit-from-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-O" title="Permalink to this definition">¶</a></dt>
-<dd><p>File containing a list of database[.table] entries to skip, one per line (skips before applying regex option)</p>
+<dd><p>File containing a list of database.table entries to skip, one per line (skips before applying regex option)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -435,6 +441,12 @@
 <dd><p>Transactional consistency only</p>
 </dd></dl>
 
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-ddl-locks">
+<span class="sig-name descname"><span class="pre">--skip-ddl-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-ddl-locks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not send DDL locks when possible</p>
+</dd></dl>
+
 </section>
 <section id="pmm-options">
 <h1>PMM Options<a class="headerlink" href="#pmm-options" title="Permalink to this heading">¶</a></h1>
@@ -477,9 +489,6 @@
 <dd><p>Set the extension for the STDOUT file when –exec-per-thread is used</p>
 </dd></dl>
 
-</section>
-<section id="if-long-query-running-found">
-<h1>If long query running found<a class="headerlink" href="#if-long-query-running-found" title="Permalink to this heading">¶</a></h1>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-long-query-retries">
 <span class="sig-name descname"><span class="pre">--long-query-retries</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-long-query-retries" title="Permalink to this definition">¶</a></dt>
@@ -508,20 +517,22 @@
 <section id="job-options">
 <h1>Job Options<a class="headerlink" href="#job-options" title="Permalink to this heading">¶</a></h1>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-max-rows">
-<span class="sig-name descname"><span class="pre">--max-rows</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-max-rows" title="Permalink to this definition">¶</a></dt>
-<dd><p>Limit the number of rows per block after the table is estimated, default 1000000. It has been deprecated, use –rows instead. Removed in future releases</p>
+<dt class="sig sig-object std" id="cmdoption-max-threads-per-table">
+<span class="sig-name descname"><span class="pre">--max-threads-per-table</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-max-threads-per-table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of threads per table to use</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-char-deep">
 <span class="sig-name descname"><span class="pre">--char-deep</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-deep" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines the amount of characters to use when the primary key is a string</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-char-chunk">
 <span class="sig-name descname"><span class="pre">--char-chunk</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-chunk" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines in how many pieces should split the table. By default we use the amount of threads</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-r">
@@ -602,6 +613,18 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-constraints">
+<span class="sig-name descname"><span class="pre">--skip-constraints</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the constraints from the CREATE TABLE statement. By default, the statement is not modified</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-indexes">
+<span class="sig-name descname"><span class="pre">--skip-indexes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the indexes from the CREATE TABLE statement. By default, the statement is not modified</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-views-as-tables">
 <span class="sig-name descname"><span class="pre">--views-as-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-views-as-tables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export VIEWs as they were tables</p>
@@ -619,28 +642,43 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-load-data">
 <span class="sig-name descname"><span class="pre">--load-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-load-data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-csv">
 <span class="sig-name descname"><span class="pre">--csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-csv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Automatically enables –load-data and set variables to export in CSV format.</p>
+<dd><p>Automatically enables –load-data and set variables to export in CSV format. This option will be deprecated on future releases use –format</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-format">
+<span class="sig-name descname"><span class="pre">--format</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-include-header">
+<span class="sig-name descname"><span class="pre">--include-header</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-include-header" title="Permalink to this definition">¶</a></dt>
+<dd><p>When –load-data or –csv is used, it will include the header with the column name</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-fields-terminated-by">
 <span class="sig-name descname"><span class="pre">--fields-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-terminated-by" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines the character that is written between fields</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-fields-enclosed-by">
 <span class="sig-name descname"><span class="pre">--fields-enclosed-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-enclosed-by" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines the character to enclose fields. Default: “</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-fields-escaped-by">
 <span class="sig-name descname"><span class="pre">--fields-escaped-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-escaped-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ‘'</p>
+<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ‘’</p>
 </dd></dl>
 
 <dl class="std option">
@@ -706,7 +744,8 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-skip-tz-utc">
 <span class="sig-name descname"><span class="pre">--skip-tz-utc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-tz-utc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Doesn’t add SET TIMEZONE on the backup files</p>
+</dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-set-names">
@@ -720,7 +759,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-F">
 <span id="cmdoption-chunk-filesize"></span><span class="sig-name descname"><span class="pre">-F</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--chunk-filesize</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-F" title="Permalink to this definition">¶</a></dt>
-<dd><p>Split tables into chunks of this output file size. This value is in MB</p>
+<dd><p>Split data files into pieces of this size in MB. Useful for myloader multi-threading.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -754,9 +793,33 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-compact">
+<span class="sig-name descname"><span class="pre">--compact</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-compact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give less verbose output. Disables header/footer constructs.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-c">
 <span id="cmdoption-compress"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-use-defer">
+<span class="sig-name descname"><span class="pre">--use-defer</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-use-defer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use defer integer sharding until all non-integer PK tables processed (saves RSS for huge quantities of tables)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-check-row-count">
+<span class="sig-name descname"><span class="pre">--check-row-count</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-check-row-count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run SELECT COUNT(*) and fail mydumper if dumped row count is different</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-source-data">
+<span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-data" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
 </dd></dl>
 
 </section>
@@ -782,7 +845,7 @@
 
 </section>
 <section id="application-options">
-<h1>Application Options<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h1>
+<h1>Application Options:<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h1>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-0">
 <span id="cmdoption-help"></span><span class="sig-name descname"><span class="pre">-?</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-0" title="Permalink to this definition">¶</a></dt>
@@ -793,6 +856,18 @@
 <dt class="sig sig-object std" id="cmdoption-o">
 <span id="cmdoption-outputdir"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputdir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
 <dd><p>Directory to output files to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-clear">
+<span class="sig-name descname"><span class="pre">--clear</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear output directory before dumping</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dirty">
+<span class="sig-name descname"><span class="pre">--dirty</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dirty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite output directory without clearing (beware of leftower chunks)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -816,7 +891,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-t">
 <span id="cmdoption-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-t" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of threads to use, default 4</p>
+<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4</p>
 </dd></dl>
 
 <dl class="std option">
@@ -826,15 +901,15 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-identifier-quote-character">
-<span class="sig-name descname"><span class="pre">--identifier-quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-identifier-quote-character" title="Permalink to this definition">¶</a></dt>
-<dd><p>This set the identifier quote character that is used to INSERT statements onlyon mydumper and to split statement on myloader. Use SQL_MODE to change theCREATE TABLE statementsPosible values are: BACKTICK and DOUBLE_QUOTE. Default: BACKTICK</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-v">
 <span id="cmdoption-verbose"></span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-debug">
+<span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on debugging output (automatically sets verbosity to 3)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -847,6 +922,12 @@
 <dt class="sig sig-object std" id="cmdoption-defaults-extra-file">
 <span class="sig-name descname"><span class="pre">--defaults-extra-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-defaults-extra-file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use an additional defaults file. This is loaded after –defaults-file, replacing previous defined values</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-source-control-command">
+<span class="sig-name descname"><span class="pre">--source-control-command</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-control-command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS</p>
 </dd></dl>
 
 </section>
