@@ -100,7 +100,7 @@ or from ports
 MacOS
 ^^^^^
 
-By using Homebrew
+By using `Homebrew <https://formulae.brew.sh/formula/mydumper>`_
 
 .. code-block::  bash
 
