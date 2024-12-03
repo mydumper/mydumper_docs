@@ -1,7 +1,7 @@
 Output Files
 ============
 
-mydumper generates several files during the generation of the dump.  Many of
+:program:`mydumper` generates several files during the generation of the dump.  Many of
 these are for the table data itself since every table has at least one file.
 
 Metadata
@@ -87,14 +87,6 @@ For example::
   -rw-r----- 1 circleci circleci   758 Jul 16 13:59 sakila.film-schema.sql.bz2
   -rw-r----- 1 circleci circleci   322 Jul 16 13:59 sakila-schema-create.sql.bz2
   myloader -d data -o --exec-per-thread="/usr/bin/bzip2 -d" --exec-per-thread-extension=".bz2"
-
-Binary Logs
------------
-Binary logs are retrieved when :option:`--enable-binlog <myloader --enable-binlog>` option
-has been set.  This will store them in the ``binlog_snapshot/`` sub-directory
-inside the dump directory.
-
-The binary log files have the same filename as the MySQL server that supplies them and will also have a .gz on the end if they are compressed.
 
 Daemon mode
 -----------

@@ -246,7 +246,7 @@
         <article role="main" id="furo-main-content">
           <section id="output-files">
 <h1>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading">¶</a></h1>
-<p>mydumper generates several files during the generation of the dump.  Many of
+<p><strong class="program">mydumper</strong> generates several files during the generation of the dump.  Many of
 these are for the table data itself since every table has at least one file.</p>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h2>
@@ -333,13 +333,6 @@ need to set:</p>
 </pre></div>
 </div>
 </section>
-<section id="binary-logs">
-<h2>Binary Logs<a class="headerlink" href="#binary-logs" title="Permalink to this heading">¶</a></h2>
-<p>Binary logs are retrieved when <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-e"><code class="xref std std-option docutils literal notranslate"><span class="pre">--enable-binlog</span></code></a> option
-has been set.  This will store them in the <code class="docutils literal notranslate"><span class="pre">binlog_snapshot/</span></code> sub-directory
-inside the dump directory.</p>
-<p>The binary log files have the same filename as the MySQL server that supplies them and will also have a .gz on the end if they are compressed.</p>
-</section>
 <section id="daemon-mode">
 <h2>Daemon mode<a class="headerlink" href="#daemon-mode" title="Permalink to this heading">¶</a></h2>
 <p>Daemon mode does things a little differently.  There are the directories <code class="docutils literal notranslate"><span class="pre">0</span></code>
@@ -411,7 +404,6 @@ and constantly retreives the binary logs into the <code class="docutils literal 
 <li><a class="reference internal" href="#table-data">Table Data</a></li>
 <li><a class="reference internal" href="#table-schemas">Table Schemas</a></li>
 <li><a class="reference internal" href="#compression-since-0-15-1-1">Compression (since 0.15.1-1)</a></li>
-<li><a class="reference internal" href="#binary-logs">Binary Logs</a></li>
 <li><a class="reference internal" href="#daemon-mode">Daemon mode</a></li>
 </ul>
 </li>
