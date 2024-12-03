@@ -20,15 +20,19 @@ all databases using 4 worker threads.
 
 Regex
 -----
+
 To use :program:`mydumper`'s regex feature simply use the
 :option:`--regex <mydumper --regex>` option.  In the following example mydumper
-will ignore the ``test`` and ``mysql`` databases::
+will ignore the ``test`` and ``mysql`` databases
+
+.. code-block::  bash
 
   mydumper --regex '^(?!(mysql\.|test\.))'
 
+
 Restoring a dump
 ----------------
-Mydumper now include myloader which is a multi-threaded restoration tool.  To
+MyDumper now include myloader which is a multi-threaded restoration tool.  To
 use myloader with a mydumper dump you simply need to pass it the directory of
 the dump along with a user capable of restoring the schemas and data.  As an
 example the following will restore a dump overwriting any existing tables::

@@ -9,6 +9,7 @@
         <title>Examples - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
@@ -258,14 +259,14 @@ all databases using 4 worker threads.</p>
 <h2>Regex<a class="headerlink" href="#regex" title="Permalink to this heading">¶</a></h2>
 <p>To use <strong class="program">mydumper</strong>’s regex feature simply use the
 <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-x"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a> option.  In the following example mydumper
-will ignore the <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">mysql</span></code> databases:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydumper</span> <span class="o">--</span><span class="n">regex</span> <span class="s1">&#39;^(?!(mysql\.|test\.))&#39;</span>
+will ignore the <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">mysql</span></code> databases</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mydumper<span class="w"> </span>--regex<span class="w"> </span><span class="s1">&#39;^(?!(mysql\.|test\.))&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="restoring-a-dump">
 <h2>Restoring a dump<a class="headerlink" href="#restoring-a-dump" title="Permalink to this heading">¶</a></h2>
-<p>Mydumper now include myloader which is a multi-threaded restoration tool.  To
+<p>MyDumper now include myloader which is a multi-threaded restoration tool.  To
 use myloader with a mydumper dump you simply need to pass it the directory of
 the dump along with a user capable of restoring the schemas and data.  As an
 example the following will restore a dump overwriting any existing tables:</p>
@@ -354,5 +355,7 @@ every half an hour and log to an output file:</p>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     </body>
 </html>
