@@ -30,7 +30,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   authors
    installing
    compiling
    mydumper_usage
@@ -38,6 +37,7 @@ Contents:
    files
    stream
    examples
+   authors
 
 Indices and tables
 ==================

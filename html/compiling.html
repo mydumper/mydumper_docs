@@ -200,7 +200,6 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Compiling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mydumper_usage.html">mydumper Usage</a></li>
@@ -208,6 +207,7 @@
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
 
 </div>
@@ -360,19 +360,6 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
 <p>Binlog dump is disabled by default to compile with it you need to add -DWITH_BINLOG=ON to cmake options</p>
 <p>To build against mysql libs &lt; 5.7 you need to disable SSL adding -DWITH_SSL=OFF</p>
 </section>
-<section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">¶</a></h2>
-<p>If you wish to just compile the documentation you can do so with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
-<span class="n">make</span> <span class="n">doc_html</span>
-</pre></div>
-</div>
-<p>or for a man page output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
-<span class="n">make</span> <span class="n">doc_man</span>
-</pre></div>
-</div>
-</section>
 </section>
 
         </article>
@@ -455,7 +442,6 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
 </ul>
 </li>
 <li><a class="reference internal" href="#cmake">CMake</a></li>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
 </ul>

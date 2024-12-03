@@ -143,16 +143,3 @@ One has to make sure, that pkg-config, mysql_config, pcre-config are all in $PAT
 Binlog dump is disabled by default to compile with it you need to add -DWITH_BINLOG=ON to cmake options
 
 To build against mysql libs < 5.7 you need to disable SSL adding -DWITH_SSL=OFF
-
-Documentation
--------------
-
-If you wish to just compile the documentation you can do so with::
-
-  cmake .
-  make doc_html
-
-or for a man page output::
-
-  cmake .
-  make doc_man
