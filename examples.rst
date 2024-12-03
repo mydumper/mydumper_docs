@@ -13,9 +13,10 @@ Examples
 
 Simple Usage
 ------------
-Just running :program:`mydumper` without any options will try to connect to a
-server using the default socket path.  It will then dump the tables from all
-databases using 4 worker threads.
+Just running :program:`mydumper` without any options will load the configuration
+from :option:`--defaults-file <mydumper --defaults-file>` and try to connect to
+a server using the default connection string. It will then dump the tables from 
+all databases using 4 worker threads.
 
 Regex
 -----

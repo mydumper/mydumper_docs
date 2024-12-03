@@ -36,6 +36,7 @@ Contents:
    mydumper_usage
    myloader_usage
    files
+   stream
    examples
 
 Indices and tables

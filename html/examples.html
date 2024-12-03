@@ -248,9 +248,10 @@
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
 <section id="simple-usage">
 <h2>Simple Usage<a class="headerlink" href="#simple-usage" title="Permalink to this heading">¶</a></h2>
-<p>Just running <strong class="program">mydumper</strong> without any options will try to connect to a
-server using the default socket path.  It will then dump the tables from all
-databases using 4 worker threads.</p>
+<p>Just running <strong class="program">mydumper</strong> without any options will load the configuration
+from <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-defaults-file"><code class="xref std std-option docutils literal notranslate"><span class="pre">--defaults-file</span></code></a> and try to connect to
+a server using the default connection string. It will then dump the tables from
+all databases using 4 worker threads.</p>
 </section>
 <section id="regex">
 <h2>Regex<a class="headerlink" href="#regex" title="Permalink to this heading">¶</a></h2>
