@@ -20,17 +20,12 @@ APT
 ^^^
 
 You need to import the key.
-For old versions:
+
+In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. It SHOULD be created with permissions 0755 if it is needed and does not already exist.
 
 .. code-block::  bash
 
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 79EA15C0E82E34BA
-
-Recommended:
-
-.. code-block::  bash
-
-  wget -qO- 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1D357EA7D10C9320371BDD0279EA15C0E82E34BA&exact=on' | sudo tee /etc/apt/trusted.gpg.d/mydumper.asc
+  wget -qO- 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1D357EA7D10C9320371BDD0279EA15C0E82E34BA&exact=on' | sudo tee /etc/apt/keyrings/mydumper.asc
 
 Ubuntu
 ------
