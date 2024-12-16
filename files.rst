@@ -11,8 +11,12 @@
 Output Files
 ============
 
-:program:`mydumper` generates several files during the generation of the dump.  Many of
-these are for the table data itself since every table has at least one file.
+:program:`mydumper` generates 3 main types of files during the generation of the dump:
+
+* Metadata
+* Schema
+* Data
+
 
 Metadata
 --------
@@ -50,60 +54,50 @@ This is an example of the content of this file for older versions::
 
   Finished dump at: 2011-05-05 13:57:17
 
-Table Data
-----------
+Schemas
+-------
+As long as the :option:`--no-schemas <mydumper --no-schemas>` option is not specified, :program:`mydumper` will
+create a schema file per database, per table, per view, per trigger
+The files for databases are in the following format::
+
+  database-schema.sql
+
+The files for tables are in the following format::
+
+  database.table-schema.sql
+
+If :option:`--triggers <mydumper --triggers>` is specified, :program:`mydumper` will export the trigger.
+Depending the filter options that you selected you can get a single file for all the trigger::
+
+  database-schema-triggers.sql
+
+Or a file per table::
+
+  database.table-schema-triggers.sql
+
+If :option:`--events <mydumper --events>` and/or :option:`--events <mydumper --routines>` are specified, :program:`mydumper` will export the Events, Functions and Store Procedures in a single file following format::
+
+  database-schema-post.sql
+
+With :option:`--all-tablespaces <mydumper --all-tablespaces>`, it will export the tablespaces definition in a single file with this name::
+
+  all-schema-create-tablespace.sql
+
+
+Data
+----
 The data from every table is written into a separate file, also if the
 :option:`--rows <mydumper --rows>` option is used then each chunk of table will
 be in a separate file.  The file names for this are in the format::
 
-  database.table.sql(.gz|.zst)
+  database.table.sql
 
 or if chunked::
 
-  database.table.chunk.sql(.gz|.zst)
+  database.table.chunk.sql
 
-Where 'chunk' is a number padded with up to 5 zeros or:
-  database.table.chunk.chunk2.sql(.gz|.zst)
+Where 'chunk' is a number padded with up to 5 zeros or::
+
+  database.table.chunk.chunk2.sql
 
 Where 'chunk2' is a number padded with up to 5 zeros.
-
-
-Table Schemas
--------------
-As long as the :option:`--no-schemas <mydumper --no-schemas>` option is not specified, mydumper will
-create a file for the schema of every table it is writing data for.  The files
-for this are in the following format::
-
-  database.table-schema.sql(.gz|.zst)
-
-Compression (since 0.15.1-1)
-----------------------------
-mydumper default output are SQL files in the backup directory.
-mydumper can compress backups using :option:`--compress/-c <mydumper --compress>` which  by default is 
-going to use GZIP compression method. You can also use ZSTD to compress your backups :option:`-c ZSTD <mydumper --compress>` .
-The internal compression mechanisim has been removed from the code and we are using /usr/bin/gzip and 
-/usr/bin/zstd. If you need to change to a different location or different compression software, you
-need to set::
-
-  --exec-per-thread
-  --exec-per-thread-extension
-
-For example::
-
-  mydumper -o data --clear -T sakila.film --exec-per-thread="/usr/bin/bzip2" --exec-per-thread-extension=".bz2"
-  -rw-r--r-- 1 circleci circleci   520 Jul 16 13:59 metadata
-  -rw-r----- 1 circleci circleci 11500 Jul 16 13:59 sakila.film.00000.sql.bz2
-  -rw-r----- 1 circleci circleci 11360 Jul 16 13:59 sakila.film.00001.sql.bz2
-  -rw-r----- 1 circleci circleci   758 Jul 16 13:59 sakila.film-schema.sql.bz2
-  -rw-r----- 1 circleci circleci   322 Jul 16 13:59 sakila-schema-create.sql.bz2
-  myloader -d data -o --exec-per-thread="/usr/bin/bzip2 -d" --exec-per-thread-extension=".bz2"
-
-Daemon mode
------------
-Daemon mode does things a little differently.  There are the directories ``0``
-and ``1`` inside the dump directory.  These alternate when dumping so that if
-mydumper fails for any reason there is still a good snapshot.  When a snapshot
-dump is complete the ``last_dump`` symlink is updated to point to that dump.
-
-If binary logging is enabled mydumper will connect as if it is a slave server
-and constantly retreives the binary logs into the ``binlogs`` subdirectory.

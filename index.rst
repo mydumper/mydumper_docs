@@ -41,6 +41,7 @@ The tools developed in this Project are based on C, GLib and support the client 
    stream
    stages
    locks
+   daemon
    examples
    authors
 

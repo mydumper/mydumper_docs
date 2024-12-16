@@ -213,6 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -255,8 +256,12 @@
 <a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
 <section id="output-files">
 <h1>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading">¶</a></h1>
-<p><strong class="program">mydumper</strong> generates several files during the generation of the dump.  Many of
-these are for the table data itself since every table has at least one file.</p>
+<p><strong class="program">mydumper</strong> generates 3 main types of files during the generation of the dump:</p>
+<ul class="simple">
+<li><p>Metadata</p></li>
+<li><p>Schema</p></li>
+<li><p>Data</p></li>
+</ul>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h2>
 <p>When a dump is executed a file called <code class="docutils literal notranslate"><span class="pre">metadata.partial</span></code> is created in the output
@@ -293,64 +298,53 @@ post_checksum = 42085F07
 </pre></div>
 </div>
 </section>
-<section id="table-data">
-<h2>Table Data<a class="headerlink" href="#table-data" title="Permalink to this heading">¶</a></h2>
+<section id="schemas">
+<h2>Schemas<a class="headerlink" href="#schemas" title="Permalink to this heading">¶</a></h2>
+<p>As long as the <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-schemas</span></code></a> option is not specified, <strong class="program">mydumper</strong> will
+create a schema file per database, per table, per view, per trigger
+The files for databases are in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">-</span><span class="n">schema</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>The files for tables are in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">-</span><span class="n">schema</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-G"><code class="xref std std-option docutils literal notranslate"><span class="pre">--triggers</span></code></a> is specified, <strong class="program">mydumper</strong> will export the trigger.
+Depending the filter options that you selected you can get a single file for all the trigger:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">-</span><span class="n">schema</span><span class="o">-</span><span class="n">triggers</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>Or a file per table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">-</span><span class="n">schema</span><span class="o">-</span><span class="n">triggers</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-E"><code class="xref std std-option docutils literal notranslate"><span class="pre">--events</span></code></a> and/or <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-R"><code class="xref std std-option docutils literal notranslate"><span class="pre">--events</span></code></a> are specified, <strong class="program">mydumper</strong> will export the Events, Functions and Store Procedures in a single file following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">-</span><span class="n">schema</span><span class="o">-</span><span class="n">post</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>With <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-Y"><code class="xref std std-option docutils literal notranslate"><span class="pre">--all-tablespaces</span></code></a>, it will export the tablespaces definition in a single file with this name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="o">-</span><span class="n">schema</span><span class="o">-</span><span class="n">create</span><span class="o">-</span><span class="n">tablespace</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">¶</a></h2>
 <p>The data from every table is written into a separate file, also if the
 <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">--rows</span></code></a> option is used then each chunk of table will
 be in a separate file.  The file names for this are in the format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="o">.</span><span class="n">gz</span><span class="o">|.</span><span class="n">zst</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">sql</span>
 </pre></div>
 </div>
 <p>or if chunked:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="o">.</span><span class="n">gz</span><span class="o">|.</span><span class="n">zst</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">sql</span>
 </pre></div>
 </div>
-<dl class="simple">
-<dt>Where ‘chunk’ is a number padded with up to 5 zeros or:</dt><dd><p>database.table.chunk.chunk2.sql(.gz|.zst)</p>
-</dd>
-</dl>
+<p>Where ‘chunk’ is a number padded with up to 5 zeros or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">chunk2</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
 <p>Where ‘chunk2’ is a number padded with up to 5 zeros.</p>
-</section>
-<section id="table-schemas">
-<h2>Table Schemas<a class="headerlink" href="#table-schemas" title="Permalink to this heading">¶</a></h2>
-<p>As long as the <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-schemas</span></code></a> option is not specified, mydumper will
-create a file for the schema of every table it is writing data for.  The files
-for this are in the following format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">table</span><span class="o">-</span><span class="n">schema</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="o">.</span><span class="n">gz</span><span class="o">|.</span><span class="n">zst</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="compression-since-0-15-1-1">
-<h2>Compression (since 0.15.1-1)<a class="headerlink" href="#compression-since-0-15-1-1" title="Permalink to this heading">¶</a></h2>
-<p>mydumper default output are SQL files in the backup directory.
-mydumper can compress backups using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">--compress/-c</span></code></a> which  by default is
-going to use GZIP compression method. You can also use ZSTD to compress your backups <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span> <span class="pre">ZSTD</span></code></a> .
-The internal compression mechanisim has been removed from the code and we are using /usr/bin/gzip and
-/usr/bin/zstd. If you need to change to a different location or different compression software, you
-need to set:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span>
-<span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">extension</span>
-</pre></div>
-</div>
-<p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydumper</span> <span class="o">-</span><span class="n">o</span> <span class="n">data</span> <span class="o">--</span><span class="n">clear</span> <span class="o">-</span><span class="n">T</span> <span class="n">sakila</span><span class="o">.</span><span class="n">film</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">=</span><span class="s2">&quot;/usr/bin/bzip2&quot;</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.bz2&quot;</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">circleci</span> <span class="n">circleci</span>   <span class="mi">520</span> <span class="n">Jul</span> <span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">59</span> <span class="n">metadata</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">-----</span> <span class="mi">1</span> <span class="n">circleci</span> <span class="n">circleci</span> <span class="mi">11500</span> <span class="n">Jul</span> <span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">59</span> <span class="n">sakila</span><span class="o">.</span><span class="n">film</span><span class="mf">.00000</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">bz2</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">-----</span> <span class="mi">1</span> <span class="n">circleci</span> <span class="n">circleci</span> <span class="mi">11360</span> <span class="n">Jul</span> <span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">59</span> <span class="n">sakila</span><span class="o">.</span><span class="n">film</span><span class="mf">.00001</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">bz2</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">-----</span> <span class="mi">1</span> <span class="n">circleci</span> <span class="n">circleci</span>   <span class="mi">758</span> <span class="n">Jul</span> <span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">59</span> <span class="n">sakila</span><span class="o">.</span><span class="n">film</span><span class="o">-</span><span class="n">schema</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">bz2</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">-----</span> <span class="mi">1</span> <span class="n">circleci</span> <span class="n">circleci</span>   <span class="mi">322</span> <span class="n">Jul</span> <span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">59</span> <span class="n">sakila</span><span class="o">-</span><span class="n">schema</span><span class="o">-</span><span class="n">create</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">bz2</span>
-<span class="n">myloader</span> <span class="o">-</span><span class="n">d</span> <span class="n">data</span> <span class="o">-</span><span class="n">o</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">=</span><span class="s2">&quot;/usr/bin/bzip2 -d&quot;</span> <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.bz2&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="daemon-mode">
-<h2>Daemon mode<a class="headerlink" href="#daemon-mode" title="Permalink to this heading">¶</a></h2>
-<p>Daemon mode does things a little differently.  There are the directories <code class="docutils literal notranslate"><span class="pre">0</span></code>
-and <code class="docutils literal notranslate"><span class="pre">1</span></code> inside the dump directory.  These alternate when dumping so that if
-mydumper fails for any reason there is still a good snapshot.  When a snapshot
-dump is complete the <code class="docutils literal notranslate"><span class="pre">last_dump</span></code> symlink is updated to point to that dump.</p>
-<p>If binary logging is enabled mydumper will connect as if it is a slave server
-and constantly retreives the binary logs into the <code class="docutils literal notranslate"><span class="pre">binlogs</span></code> subdirectory.</p>
 </section>
 </section>
 
@@ -411,10 +405,8 @@ and constantly retreives the binary logs into the <code class="docutils literal 
             <ul>
 <li><a class="reference internal" href="#">Output Files</a><ul>
 <li><a class="reference internal" href="#metadata">Metadata</a></li>
-<li><a class="reference internal" href="#table-data">Table Data</a></li>
-<li><a class="reference internal" href="#table-schemas">Table Schemas</a></li>
-<li><a class="reference internal" href="#compression-since-0-15-1-1">Compression (since 0.15.1-1)</a></li>
-<li><a class="reference internal" href="#daemon-mode">Daemon mode</a></li>
+<li><a class="reference internal" href="#schemas">Schemas</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
 </ul>
 </li>
 </ul>

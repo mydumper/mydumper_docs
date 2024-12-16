@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Examples" href="examples.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Examples" href="examples.html" /><link rel="prev" title="Locks" href="locks.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Authors - MyDumper documentation</title>
+        <title>Daemon - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -213,9 +213,9 @@
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
 
 </div>
@@ -246,7 +246,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -254,31 +254,12 @@
         <article role="main" id="furo-main-content">
           <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="authors">
-<h1>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">¶</a></h1>
-<section id="developers">
-<h2>Developers<a class="headerlink" href="#developers" title="Permalink to this heading">¶</a></h2>
-<p>The code for MyDumper has been written by the following people:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="http://dom.as/">Domas Mituzas</a>, Facebook ( domas at fb dot com )</p></li>
-<li><p><a class="reference external" href="http://www.linuxjedi.co.uk">Andrew Hutchings</a>, MariaDB Foundation ( andrew at mariadb dot org )</p></li>
-<li><p><a class="reference external" href="http://www.markleith.co.uk/">Mark Leith</a>, Oracle Corporation ( mark dot leith at oracle dot com )</p></li>
-<li><p><a class="reference external" href="http://www.bube.com.ar">Max Bubenick</a>, Percona RDBA ( max dot bubenick at percona dot com )</p></li>
-<li><p><a class="reference external" href="https://www.linkedin.com/in/david-ducos/">David Ducos</a>, Percona Professional Services, ( david dot ducos at percona dot com )</p></li>
-<li><p><a class="reference external" href="https://github.com/mydumper/mydumper/graphs/contributors">And many others</a></p></li>
-</ul>
-</div></blockquote>
-</section>
-<section id="maintaners">
-<h2>Maintaners<a class="headerlink" href="#maintaners" title="Permalink to this heading">¶</a></h2>
-<p>The code repository, CI actions, merges and releases are executed by the following people:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="https://www.linkedin.com/in/david-ducos/">David Ducos</a>, Percona Professional Services, ( david dot ducos at percona dot com )</p></li>
-</ul>
-</div></blockquote>
-</section>
+<section id="daemon">
+<h1>Daemon<a class="headerlink" href="#daemon" title="Permalink to this heading">¶</a></h1>
+<p>Daemon mode does things a little differently.  There are the directories <code class="docutils literal notranslate"><span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">1</span></code> inside the dump directory.  These alternate when dumping so that if
+mydumper fails for any reason there is still a good snapshot.  When a snapshot
+dump is complete the <code class="docutils literal notranslate"><span class="pre">last_dump</span></code> symlink is updated to point to that dump.</p>
 </section>
 
         </article>
@@ -286,15 +267,23 @@
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="examples.html">
+          <a class="next-page" href="examples.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Examples</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="locks.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Examples</div>
+                <div class="title">Locks</div>
                 
               </div>
             </a>
@@ -316,28 +305,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Authors</a><ul>
-<li><a class="reference internal" href="#developers">Developers</a></li>
-<li><a class="reference internal" href="#maintaners">Maintaners</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
