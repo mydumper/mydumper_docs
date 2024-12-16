@@ -32,14 +32,56 @@ Ubuntu/Debian
 
 Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 
-.. code-block::  bash
+.. tab:: noble
 
-  deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/<distribution> <codename> main
-  #deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/<distribution> <codename> testing
+    .. code-block::  bash
 
-Replace ``<distribution>`` with either ``ubuntu`` or ``debian``
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu noble main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu noble testing
 
-Replace ``<codename>`` with your distributions codename, e.g. ``noble`` or ``bookworm``
+
+.. tab:: jammy 
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu jammy main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu jammy testing
+
+
+.. tab:: focal
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu focal main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu focal testing
+
+  
+Debian
+------
+
+Source file (/etc/apt/sources.list.d/mydumper.list) should be:
+
+.. tab:: bookworm
+
+    .. code-block::  bash
+
+ 
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm testing
+
+.. tab:: bullseye
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye testing
+
+.. tab:: buster
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster testing
 
 YUM
 ^^^

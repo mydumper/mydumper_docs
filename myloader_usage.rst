@@ -8,26 +8,10 @@
   :alt: MyDumper's logo
   :class: only-light
 
-myloader Usage
-==============
-
-Synopsis
---------
-
-:program:`myloader` :option:`--directory <myloader --directory>` = /path/to/mydumper/backup [:ref:`OPTIONS <myloader-options-label>`]
-
-Description
------------
-
-:program:`myloader` is a tool used for multi-threaded restoration of mydumper
-backups.
+myloader 
+========
 
 .. _myloader-options-label:
-
-Options
--------
-
-The :program:`myloader` tool has several available options:
 
 .. program:: myloader
 

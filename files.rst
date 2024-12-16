@@ -1,3 +1,13 @@
+.. image:: ../images/horizontal/color-dark.svg
+  :width: 50%
+  :alt: MyDumper's logo
+  :class: only-dark
+
+.. image:: ../images/horizontal/color-light.svg
+  :width: 50%
+  :alt: MyDumper's logo
+  :class: only-light
+
 Output Files
 ============
 
@@ -11,15 +21,6 @@ directory and is renamed to ``metadata`` when mydumper finish without error.
 This contains the start and end time of the dump as well as the
 master binary log positions if applicable.
 
-This is an example of the content of this file::
-
-  Started dump at: 2011-05-05 13:57:17
-  SHOW MASTER STATUS:
-    Log: linuxjedi-laptop-bin.000001
-    Pos: 106
-
-  Finished dump at: 2011-05-05 13:57:17
-  
 Since version 0.14.1-1 format has been changed to::
 
   # Started dump at: 2023-06-09 11:47:18
@@ -39,7 +40,15 @@ Since version 0.14.1-1 format has been changed to::
   schema_checksum = FDF2173B
   post_checksum = 42085F07
   # Finished dump at: 2023-06-09 11:47:18
-  
+
+This is an example of the content of this file for older versions::
+
+  Started dump at: 2011-05-05 13:57:17
+  SHOW MASTER STATUS:
+    Log: linuxjedi-laptop-bin.000001
+    Pos: 106
+
+  Finished dump at: 2011-05-05 13:57:17
 
 Table Data
 ----------
@@ -69,8 +78,9 @@ for this are in the following format::
 
 Compression (since 0.15.1-1)
 ----------------------------
-By default, mydumper is not compressing backup. In order to compress the file you need to use -c which 
-by default is going to use GZIP compression method. You can also use ZSTD to compress your backups.
+mydumper default output are SQL files in the backup directory.
+mydumper can compress backups using :option:`--compress/-c <mydumper --compress>` which  by default is 
+going to use GZIP compression method. You can also use ZSTD to compress your backups :option:`-c ZSTD <mydumper --compress>` .
 The internal compression mechanisim has been removed from the code and we are using /usr/bin/gzip and 
 /usr/bin/zstd. If you need to change to a different location or different compression software, you
 need to set::

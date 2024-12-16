@@ -1,5 +1,7 @@
+
 Connection Options
 ------------------
+
 .. option:: -h, --host
 
   The host to connect to
@@ -66,6 +68,7 @@ Connection Options
 
 Filter Options
 --------------
+
 .. option:: -x, --regex
 
   Regular expression for 'db.table' matching
@@ -104,6 +107,7 @@ Filter Options
 
 PMM Options
 -----------
+
 .. option:: --pmm-path
 
   which default value will be /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution
@@ -114,6 +118,7 @@ PMM Options
 
 Execution Options
 -----------------
+
 .. option:: -e, --enable-binlog
 
   Enable binary logging of the restore data
@@ -121,9 +126,8 @@ Execution Options
 .. option:: --innodb-optimize-keys
 
   Creates the table without the indexes unless SKIP is selected.
+  Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 
-Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
---------------------------------------------------------------------------------------------------
 .. option:: --no-schema
 
   Do not import table schemas and triggers
@@ -174,6 +178,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 
 Threads Options
 ---------------
+
 .. option:: --max-threads-per-table
 
   Maximum number of threads per table to use, defaults to --threads
@@ -200,6 +205,7 @@ Threads Options
 
 Statement Options
 -----------------
+
 .. option:: -r, --rows
 
   Split the INSERT statement into this many rows.
@@ -226,6 +232,7 @@ Statement Options
 
 Application Options:
 --------------------
+
 .. option:: -?, --help
 
   Show help options
@@ -289,4 +296,3 @@ Application Options:
 .. option:: --source-control-command
 
   Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
-

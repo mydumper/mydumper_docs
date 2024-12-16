@@ -3,13 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Output Files" href="files.html" /><link rel="prev" title="mydumper Usage" href="mydumper_usage.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compression, Encryption and more" href="exec_per_thread.html" /><link rel="prev" title="mydumper" href="mydumper_usage.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>myloader Usage - MyDumper documentation</title>
+        <title>myloader - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
@@ -202,10 +203,16 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mydumper_usage.html">mydumper Usage</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">myloader Usage</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="usage.html">Usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">myloader</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression, Encryption and more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -246,23 +253,10 @@
         <article role="main" id="furo-main-content">
           <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="myloader-usage">
-<h1>myloader Usage<a class="headerlink" href="#myloader-usage" title="Permalink to this heading">¶</a></h1>
-<section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
-<p><strong class="program">myloader</strong> <a class="reference internal" href="#cmdoption-myloader-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">--directory</span></code></a> = /path/to/mydumper/backup [<a class="reference internal" href="#myloader-options-label"><span class="std std-ref">OPTIONS</span></a>]</p>
-</section>
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p><strong class="program">myloader</strong> is a tool used for multi-threaded restoration of mydumper
-backups.</p>
-</section>
-<section id="options">
-<span id="myloader-options-label"></span><h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
-<p>The <strong class="program">myloader</strong> tool has several available options:</p>
-</section>
+<section id="myloader">
+<h1>myloader<a class="headerlink" href="#myloader" title="Permalink to this heading">¶</a></h1>
 <section id="connection-options">
-<h2>Connection Options<a class="headerlink" href="#connection-options" title="Permalink to this heading">¶</a></h2>
+<span id="myloader-options-label"></span><h2>Connection Options<a class="headerlink" href="#connection-options" title="Permalink to this heading">¶</a></h2>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-h">
 <span id="cmdoption-myloader-host"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--host</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-h" title="Permalink to this definition">¶</a></dt>
@@ -443,12 +437,10 @@ backups.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-innodb-optimize-keys">
 <span class="sig-name descname"><span class="pre">--innodb-optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-innodb-optimize-keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates the table without the indexes unless SKIP is selected.</p>
+<dd><p>Creates the table without the indexes unless SKIP is selected.
+Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
 </dd></dl>
 
-</section>
-<section id="options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table">
-<h2>Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE<a class="headerlink" href="#options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table" title="Permalink to this heading">¶</a></h2>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-no-schema">
 <span class="sig-name descname"><span class="pre">--no-schema</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-no-schema" title="Permalink to this definition">¶</a></dt>
@@ -706,12 +698,12 @@ backups.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="files.html">
+          <a class="next-page" href="exec_per_thread.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Output Files</div>
+                <div class="title">Compression, Encryption and more</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -722,7 +714,7 @@ backups.</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">mydumper Usage</div>
+                <div class="title">mydumper</div>
                 
               </div>
             </a>
@@ -756,15 +748,11 @@ backups.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">myloader Usage</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#">myloader</a><ul>
 <li><a class="reference internal" href="#connection-options">Connection Options</a></li>
 <li><a class="reference internal" href="#filter-options">Filter Options</a></li>
 <li><a class="reference internal" href="#pmm-options">PMM Options</a></li>
 <li><a class="reference internal" href="#execution-options">Execution Options</a></li>
-<li><a class="reference internal" href="#options-after-import-per-table-after-import-all-tables-and-skip-default-after-import-per-table">Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</a></li>
 <li><a class="reference internal" href="#threads-options">Threads Options</a></li>
 <li><a class="reference internal" href="#statement-options">Statement Options</a></li>
 <li><a class="reference internal" href="#application-options">Application Options:</a></li>
@@ -785,5 +773,6 @@ backups.</p>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
     </body>
 </html>

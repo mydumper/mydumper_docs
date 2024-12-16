@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installing" href="installing.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="mydumper" href="mydumper_usage.html" /><link rel="prev" title="Compiling" href="compiling.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>MyDumper documentation</title>
+        <title>Usage - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -189,7 +189,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">MyDumper  documentation</span>
@@ -200,10 +200,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
 </ul>
@@ -245,27 +245,36 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
+          <a class="only-dark reference internal image-reference" href="_images/color-dark.svg" id="mydumper-usage"><img alt="MyDumper's logo" class="only-dark" id="mydumper-usage" src="_images/color-dark.svg" width="50%" /></a>
 <a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="welcome-to-mydumper-project">
-<h1>Welcome to MyDumper Project<a class="headerlink" href="#welcome-to-mydumper-project" title="Permalink to this heading">¶</a></h1>
-<p>MyDumper was born out of necessity. mysqldump remains the norm for MySQL logical backups but to this day it remains a single-threaded process.</p>
-<p>For large databases, the only feasible way to take a logical backup - and restore it - in a reasonable amount of time is by parallelizing the process and executing it using multiple threads, which is the core value of MyDumper.</p>
-<p>MyDumper is a MySQL Logical Backup Tool with 2 programs:</p>
-<ul class="simple">
-<li><p><strong class="program">mydumper</strong> is responsible to export a consistent backup of MySQL databases</p></li>
-<li><p><strong class="program">myloader</strong> reads the backup from <strong class="program">mydumper</strong>, connects to the destination database and imports the backup.</p></li>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<p><strong class="program">mydumper</strong> [<a class="reference internal" href="mydumper_usage.html#mydumper-options-label"><span class="std std-ref">OPTIONS</span></a>]</p>
+<p><strong class="program">myloader</strong> <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">--directory</span></code></a> = /path/to/mydumper/backup [<a class="reference internal" href="myloader_usage.html#myloader-options-label"><span class="std std-ref">OPTIONS</span></a>]</p>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p><strong class="program">mydumper</strong> is a tool used for backing up MySQL database servers much
+faster than the mysqldump tool distributed with MySQL. The advantages of <strong class="program">mydumper</strong> are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Parallelism (hence, speed) and performance (avoids expensive character set conversion routines, efficient code overall)</p></li>
+<li><p>Easier to manage output (separate files for tables, dump metadata, etc, easy to view/parse data)</p></li>
+<li><p>Consistency - maintains snapshot across all threads, provides accurate master and slave log positions, etc</p></li>
+<li><p>Manageability - supports PCRE for specifying database and tables inclusions and exclusions</p></li>
 </ul>
-<p>MyDumper is Open Source and maintained by the community, it is not a Percona, MariaDB or MySQL product.</p>
-<p>The tools developed in this Project are based on C, GLib and support the client libraries of Percona, MariaDB and MySQL.</p>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 
         </article>
@@ -273,16 +282,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="installing.html">
+          <a class="next-page" href="mydumper_usage.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Installing</div>
+                <div class="title">mydumper</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="compiling.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Compiling</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -301,8 +320,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
