@@ -37,20 +37,56 @@ Ubuntu
 
 Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 
-.. code-block::  bash
+.. tab:: noble
 
-  deb https://mydumper.github.io/mydumper/repo/apt/ubuntu ./
-  #deb https://mydumper.github.io/mydumper/repo/apt/ubuntu/testing ./
+    .. code-block::  bash
 
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu noble main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu noble testing
+
+
+.. tab:: jammy 
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu jammy main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu jammy testing
+
+
+.. tab:: focal
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu focal main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu focal testing
+
+  
 Debian
 ------
 
 Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 
-.. code-block::  bash
+.. tab:: bookworm
 
-  deb https://mydumper.github.io/mydumper/repo/apt/debian ./
-  #deb https://mydumper.github.io/mydumper/repo/apt/debian/testing ./
+    .. code-block::  bash
+
+ 
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm testing
+
+.. tab:: bullseye
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye testing
+
+.. tab:: buster
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster testing
 
 YUM
 ^^^

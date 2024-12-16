@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installing" href="installing.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Examples" href="examples.html" /><link rel="prev" title="Backup Stages" href="stages.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>MyDumper documentation</title>
+        <title>Locks - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -189,7 +189,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">MyDumper  documentation</span>
@@ -200,7 +200,7 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -212,7 +212,7 @@
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Locks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -245,7 +245,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -253,19 +253,55 @@
         <article role="main" id="furo-main-content">
           <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="welcome-to-mydumper-project">
-<h1>Welcome to MyDumper Project<a class="headerlink" href="#welcome-to-mydumper-project" title="Permalink to this heading">¶</a></h1>
-<p>MyDumper was born out of necessity. mysqldump remains the norm for MySQL logical backups but to this day it remains a single-threaded process.</p>
-<p>For large databases, the only feasible way to take a logical backup - and restore it - in a reasonable amount of time is by parallelizing the process and executing it using multiple threads, which is the core value of MyDumper.</p>
-<p>MyDumper is a MySQL Logical Backup Tool with 2 programs:</p>
-<ul class="simple">
-<li><p><strong class="program">mydumper</strong> is responsible to export a consistent backup of MySQL databases</p></li>
-<li><p><strong class="program">myloader</strong> reads the backup from <strong class="program">mydumper</strong>, connects to the destination database and imports the backup.</p></li>
-</ul>
-<p>MyDumper is Open Source and maintained by the community, it is not a Percona, MariaDB or MySQL product.</p>
-<p>The tools developed in this Project are based on C, GLib and support the client libraries of Percona, MariaDB and MySQL.</p>
-<div class="toctree-wrapper compound">
-</div>
+<section id="locks">
+<span id="mydumper-locks"></span><h1>Locks<a class="headerlink" href="#locks" title="Permalink to this heading">¶</a></h1>
+<p>As any backup tool, <strong class="program">mydumper</strong> needs to be able to take a consistent backups.
+However, this is not an easy tasks if you have to sync multiple threads.</p>
+<section id="synchronizing-threads">
+<h2>Synchronizing threads<a class="headerlink" href="#synchronizing-threads" title="Permalink to this heading">¶</a></h2>
+<p>When you take a consistent backup, you must set the point in time where the backup is going to be taken. If you use multiple threads to take the backup, all of them must to be in the same point in time.
+By default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there are other options.</p>
+<section id="lock-all-tables">
+<h3>Lock all Tables<a class="headerlink" href="#lock-all-tables" title="Permalink to this heading">¶</a></h3>
+<p>In cases where FLUSH TABLE WITH READ LOCK is not available, we can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-lock-all-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--lock-all-tables</span></code></a> on <strong class="program">mydumper</strong> to lock all the tables that we are going to export.</p>
+</section>
+<section id="no-locks">
+<h3>No Locks<a class="headerlink" href="#no-locks" title="Permalink to this heading">¶</a></h3>
+<p>If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
+</section>
+</section>
+<section id="lock-strategy">
+<h2>Lock strategy<a class="headerlink" href="#lock-strategy" title="Permalink to this heading">¶</a></h2>
+<section id="savepoints">
+<h3>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this heading">¶</a></h3>
+<p>It is possible to use savepoints to reduce metadata locking issues.</p>
+</section>
+<section id="less-locking">
+<h3>Less Locking<a class="headerlink" href="#less-locking" title="Permalink to this heading">¶</a></h3>
+<p>In cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.</p>
+</section>
+<section id="innodb-tables-only">
+<h3>InnoDB tables only<a class="headerlink" href="#innodb-tables-only" title="Permalink to this heading">¶</a></h3>
+<p>In the cases where you are exporting transactional tables only, you should be using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-consistency-only"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-consistency-only</span></code></a>. <strong class="program">mydumper</strong> holds a lock to detect if the tables to dump are transactional, with this options we let it know that it can release it before reduce bloking scenarios.</p>
+</section>
+<section id="tidb-snapshot">
+<h3>TiDB Snapshot<a class="headerlink" href="#tidb-snapshot" title="Permalink to this heading">¶</a></h3>
+<p>In case that you are taking a backup from TiDB, <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-z"><code class="xref std std-option docutils literal notranslate"><span class="pre">--tidb-snapshot</span></code></a> allows you set the snapsnot to be used.</p>
+</section>
+</section>
+<section id="ddl-locks">
+<h2>DDL Locks<a class="headerlink" href="#ddl-locks" title="Permalink to this heading">¶</a></h2>
+<p>There are scenarios where a backup is cancel due DDL operations over tables that we are exporting. In order to avoid cancelling the backup, <strong class="program">mydumper</strong> send DDL locks like <cite>LOCK INSTANCE FOR BACKUP</cite> or <cite>BACKUP STAGE START</cite> when possible.</p>
+<section id="disable-ddl-locks">
+<h3>Disable DDL locks<a class="headerlink" href="#disable-ddl-locks" title="Permalink to this heading">¶</a></h3>
+<p>However, if you are tacking a partial backup or when you know that the operations that are being blocked are safe, you can disable this useing <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-skip-ddl-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--skip-ddl-locks</span></code></a></p>
+</section>
+<section id="disable-percona-backup-locks">
+<h3>Disable Percona Backup Locks<a class="headerlink" href="#disable-percona-backup-locks" title="Permalink to this heading">¶</a></h3>
+<p>On Percona Server 5.7, we have the option <cite>LOCK TABLES FOR BACKUP</cite> which has been replace by <cite>LOCK INSTANCE FOR BACKUP</cite> on Percona Server 8.0. We can disable this DDL locking mechanisim with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-backup-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-backup-locks</span></code></a></p>
+</section>
+</section>
 </section>
 
         </article>
@@ -273,16 +309,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="installing.html">
+          <a class="next-page" href="examples.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Installing</div>
+                <div class="title">Examples</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="stages.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Backup Stages</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -301,8 +347,43 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Locks</a><ul>
+<li><a class="reference internal" href="#synchronizing-threads">Synchronizing threads</a><ul>
+<li><a class="reference internal" href="#lock-all-tables">Lock all Tables</a></li>
+<li><a class="reference internal" href="#no-locks">No Locks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lock-strategy">Lock strategy</a><ul>
+<li><a class="reference internal" href="#savepoints">Savepoints</a></li>
+<li><a class="reference internal" href="#less-locking">Less Locking</a></li>
+<li><a class="reference internal" href="#innodb-tables-only">InnoDB tables only</a></li>
+<li><a class="reference internal" href="#tidb-snapshot">TiDB Snapshot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ddl-locks">DDL Locks</a><ul>
+<li><a class="reference internal" href="#disable-ddl-locks">Disable DDL locks</a></li>
+<li><a class="reference internal" href="#disable-percona-backup-locks">Disable Percona Backup Locks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

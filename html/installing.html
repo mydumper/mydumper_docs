@@ -3,13 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compiling" href="compiling.html" /><link rel="prev" title="Welcome to MyDumper’s documentation!" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compiling" href="compiling.html" /><link rel="prev" title="Welcome to MyDumper Project" href="index.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Installing - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
@@ -202,10 +203,16 @@
   <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mydumper_usage.html">mydumper Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="myloader_usage.html">myloader Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression, Encryption and more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -266,17 +273,49 @@ For old versions:</p>
 <section id="ubuntu">
 <h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this heading">¶</a></h3>
 <p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/ubuntu<span class="w"> </span>./
-<span class="c1">#deb https://mydumper.github.io/mydumper/repo/apt/ubuntu/testing ./</span>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">noble</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/ubuntu<span class="w"> </span>noble<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu noble testing</span>
 </pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">jammy</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/ubuntu<span class="w"> </span>jammy<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu jammy testing</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">focal</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/ubuntu<span class="w"> </span>focal<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu focal testing</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="debian">
 <h3>Debian<a class="headerlink" href="#debian" title="Permalink to this heading">¶</a></h3>
 <p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>./
-<span class="c1">#deb https://mydumper.github.io/mydumper/repo/apt/debian/testing ./</span>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">bookworm</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>bookworm<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm testing</span>
 </pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">bullseye</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>bullseye<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye testing</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">buster</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/trusted.gpg.d/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>buster<span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster testing</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -415,5 +454,6 @@ myloader<span class="w"> </span>--defaults-file<span class="o">=</span>/opt/home
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
     </body>
 </html>

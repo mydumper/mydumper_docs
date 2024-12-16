@@ -3,13 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Stream" href="stream.html" /><link rel="prev" title="myloader Usage" href="myloader_usage.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Stream" href="stream.html" /><link rel="prev" title="Compression, Encryption and more" href="exec_per_thread.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Output Files - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
@@ -202,10 +203,16 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mydumper_usage.html">mydumper Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="myloader_usage.html">myloader Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression, Encryption and more</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -244,7 +251,9 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="output-files">
+          <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
+<a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
+<section id="output-files">
 <h1>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading">¶</a></h1>
 <p><strong class="program">mydumper</strong> generates several files during the generation of the dump.  Many of
 these are for the table data itself since every table has at least one file.</p>
@@ -254,15 +263,6 @@ these are for the table data itself since every table has at least one file.</p>
 directory and is renamed to <code class="docutils literal notranslate"><span class="pre">metadata</span></code> when mydumper finish without error.
 This contains the start and end time of the dump as well as the
 master binary log positions if applicable.</p>
-<p>This is an example of the content of this file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Started</span> <span class="n">dump</span> <span class="n">at</span><span class="p">:</span> <span class="mi">2011</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">05</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">17</span>
-<span class="n">SHOW</span> <span class="n">MASTER</span> <span class="n">STATUS</span><span class="p">:</span>
-  <span class="n">Log</span><span class="p">:</span> <span class="n">linuxjedi</span><span class="o">-</span><span class="n">laptop</span><span class="o">-</span><span class="nb">bin</span><span class="mf">.000001</span>
-  <span class="n">Pos</span><span class="p">:</span> <span class="mi">106</span>
-
-<span class="n">Finished</span> <span class="n">dump</span> <span class="n">at</span><span class="p">:</span> <span class="mi">2011</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">05</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">17</span>
-</pre></div>
-</div>
 <p>Since version 0.14.1-1 format has been changed to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Started dump at: 2023-06-09 11:47:18
 [master]
@@ -281,6 +281,15 @@ indexes_checksum = B4D31E3
 schema_checksum = FDF2173B
 post_checksum = 42085F07
 # Finished dump at: 2023-06-09 11:47:18
+</pre></div>
+</div>
+<p>This is an example of the content of this file for older versions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Started</span> <span class="n">dump</span> <span class="n">at</span><span class="p">:</span> <span class="mi">2011</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">05</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">17</span>
+<span class="n">SHOW</span> <span class="n">MASTER</span> <span class="n">STATUS</span><span class="p">:</span>
+  <span class="n">Log</span><span class="p">:</span> <span class="n">linuxjedi</span><span class="o">-</span><span class="n">laptop</span><span class="o">-</span><span class="nb">bin</span><span class="mf">.000001</span>
+  <span class="n">Pos</span><span class="p">:</span> <span class="mi">106</span>
+
+<span class="n">Finished</span> <span class="n">dump</span> <span class="n">at</span><span class="p">:</span> <span class="mi">2011</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">05</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">17</span>
 </pre></div>
 </div>
 </section>
@@ -313,8 +322,9 @@ for this are in the following format:</p>
 </section>
 <section id="compression-since-0-15-1-1">
 <h2>Compression (since 0.15.1-1)<a class="headerlink" href="#compression-since-0-15-1-1" title="Permalink to this heading">¶</a></h2>
-<p>By default, mydumper is not compressing backup. In order to compress the file you need to use -c which
-by default is going to use GZIP compression method. You can also use ZSTD to compress your backups.
+<p>mydumper default output are SQL files in the backup directory.
+mydumper can compress backups using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">--compress/-c</span></code></a> which  by default is
+going to use GZIP compression method. You can also use ZSTD to compress your backups <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span> <span class="pre">ZSTD</span></code></a> .
 The internal compression mechanisim has been removed from the code and we are using /usr/bin/gzip and
 /usr/bin/zstd. If you need to change to a different location or different compression software, you
 need to set:</p>
@@ -358,14 +368,14 @@ and constantly retreives the binary logs into the <code class="docutils literal 
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="myloader_usage.html">
+          <a class="prev-page" href="exec_per_thread.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">myloader Usage</div>
+                <div class="title">Compression, Encryption and more</div>
                 
               </div>
             </a>
@@ -422,5 +432,6 @@ and constantly retreives the binary logs into the <code class="docutils literal 
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
     </body>
 </html>
