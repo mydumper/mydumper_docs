@@ -75,7 +75,7 @@ Or a file per table::
 
   database.table-schema-triggers.sql
 
-If :option:`--events <mydumper --events>` and/or :option:`--events <mydumper --routines>` are specified, :program:`mydumper` will export the Events, Functions and Store Procedures in a single file following format::
+If :option:`--events <mydumper --events>` and/or :option:`--routines <mydumper --routines>` are specified, :program:`mydumper` will export the Events, Functions and Store Procedures in a single file following format::
 
   database-schema-post.sql
 
