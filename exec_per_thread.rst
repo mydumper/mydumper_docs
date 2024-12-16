@@ -8,8 +8,8 @@
   :alt: MyDumper's logo
   :class: only-light
 
-Compression, Encryption and more
---------------------------------
+Compression and external commands
+---------------------------------
 
 It is possible to change what mydumper is writing and what myloader is receiving,
 with :option:`--exec-per-thread <mydumper --exec-per-thread>` and :option:`--exec-per-thread-extension <mydumper --exec-per-thread-extension>`.
