@@ -27,8 +27,8 @@ In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not ex
 
   wget -qO- 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1D357EA7D10C9320371BDD0279EA15C0E82E34BA&exact=on' | sudo tee /etc/apt/keyrings/mydumper.asc
 
-Ubuntu/Debian
--------------
+Ubuntu
+------
 
 Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 
