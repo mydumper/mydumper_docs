@@ -267,7 +267,7 @@
 </section>
 <section id="start-jobs-creation">
 <h2>Start jobs creation<a class="headerlink" href="#start-jobs-creation" title="Permalink to this heading">¶</a></h2>
-<p>At this point we are able to start to create jobs</p>
+<p>At this point we are able to start to create jobs depending the filters that has been used. For instance, if you used <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-B"><code class="xref std std-option docutils literal notranslate"><span class="pre">-B</span></code></a>, we need to export the schema definition but we also need to create the jobs to export the schema of the tables and the data in it.</p>
 </section>
 <section id="start-the-dump-threads">
 <h2>Start the dump threads<a class="headerlink" href="#start-the-dump-threads" title="Permalink to this heading">¶</a></h2>
@@ -275,15 +275,15 @@
 </section>
 <section id="release-lockings">
 <h2>Release lockings<a class="headerlink" href="#release-lockings" title="Permalink to this heading">¶</a></h2>
-<p>The threads will be on sync allowing the main connection to release some lockings.</p>
+<p>Once the working threads are in sync, the main connection is allowed to release lockings related to the synchronization of the workers.</p>
 </section>
 <section id="wait-backup-to-complete">
 <h2>Wait backup to complete<a class="headerlink" href="#wait-backup-to-complete" title="Permalink to this heading">¶</a></h2>
-<p>The workers will be processing the jobs and exporting the schema and data. The main thread will be waiting until they finish.</p>
+<p>The workers will be processing the jobs, exporting the schema and data. The main thread will be waiting until they finish.</p>
 </section>
 <section id="releasing-remaining-lockings">
 <h2>Releasing remaining lockings<a class="headerlink" href="#releasing-remaining-lockings" title="Permalink to this heading">¶</a></h2>
-<p>Depending on the locking mechanisim that you configure, we might need to release some locks.</p>
+<p>Depending on the locking mechanisim that you configure, we might need to release the remaining locks.</p>
 </section>
 </section>
 

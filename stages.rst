@@ -28,7 +28,7 @@ Send locking statements
 Start jobs creation
 -------------------
 
-At this point we are able to start to create jobs 
+At this point we are able to start to create jobs depending the filters that has been used. For instance, if you used :option:`-B <mydumper -B>`, we need to export the schema definition but we also need to create the jobs to export the schema of the tables and the data in it.
 
 Start the dump threads
 ----------------------
@@ -38,14 +38,14 @@ As the locking mechanisim is in please we are allow to create the working thread
 Release lockings
 ----------------
 
-The threads will be on sync allowing the main connection to release some lockings.
+Once the working threads are in sync, the main connection is allowed to release lockings related to the synchronization of the workers.
 
 Wait backup to complete
 -----------------------
 
-The workers will be processing the jobs and exporting the schema and data. The main thread will be waiting until they finish.
+The workers will be processing the jobs, exporting the schema and data. The main thread will be waiting until they finish.
 
 Releasing remaining lockings
 ----------------------------
 
-Depending on the locking mechanisim that you configure, we might need to release some locks.
+Depending on the locking mechanisim that you configure, we might need to release the remaining locks.
