@@ -2,15 +2,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: ../images/horizontal/color-dark.svg
-  :width: 50%
-  :alt: MyDumper's logo
-  :class: only-dark
-
-.. image:: ../images/horizontal/color-light.svg
-  :width: 50%
-  :alt: MyDumper's logo
-  :class: only-light
+.. include:: header.rst
 
 Welcome to MyDumper Project
 ===========================
