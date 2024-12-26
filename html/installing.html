@@ -328,13 +328,13 @@ rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 <p>On /etc/yum.repos.d/mydumper.repo</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>mydumper<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>MyDumper
-<span class="nv">baseurl</span><span class="o">=</span>https://mydumper.github.io/mydumper/repo/yum/
+<span class="nv">baseurl</span><span class="o">=</span>https://mydumper.github.io/mydumper/repo/yum/<span class="nv">$releasever</span>
 <span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
 
 <span class="o">[</span>mydumper-testing<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>MyDumper
-<span class="nv">baseurl</span><span class="o">=</span>https://mydumper.github.io/mydumper/repo/yum/testing/
+<span class="nv">baseurl</span><span class="o">=</span>https://mydumper.github.io/mydumper/repo/yum/<span class="nv">$releasever</span>/testing/
 <span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
 </pre></div>

@@ -94,13 +94,13 @@ On /etc/yum.repos.d/mydumper.repo
 
   [mydumper]
   name=MyDumper
-  baseurl=https://mydumper.github.io/mydumper/repo/yum/
+  baseurl=https://mydumper.github.io/mydumper/repo/yum/$releasever
   enabled=1
   gpgcheck=1
 
   [mydumper-testing]
   name=MyDumper
-  baseurl=https://mydumper.github.io/mydumper/repo/yum/testing/
+  baseurl=https://mydumper.github.io/mydumper/repo/yum/$releasever/testing/
   enabled=0
   gpgcheck=1
 
