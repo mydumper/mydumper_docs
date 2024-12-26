@@ -29,4 +29,3 @@ faster than the mysqldump tool distributed with MySQL. The advantages of :progra
    mydumper_usage
    myloader_usage
 
-
