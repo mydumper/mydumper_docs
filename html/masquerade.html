@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Daemon" href="daemon.html" /><link rel="prev" title="Replication Options" href="replication.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>&lt;no title&gt; - MyDumper documentation</title>
+        <title>Masquerade - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -200,7 +200,7 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -214,7 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="replication.html">Replication Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Masquerade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -248,7 +248,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -256,14 +256,84 @@
         <article role="main" id="furo-main-content">
           <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
+<section id="masquerade">
+<span id="mydumper-masquerade"></span><h1>Masquerade<a class="headerlink" href="#masquerade" title="Permalink to this heading">¶</a></h1>
+<p>In today’s data-driven world, the need for data privacy and security has never been more critical. Organizations are tasked with safeguarding sensitive information while also ensuring compliance with various regulations such as GDPR and HIPAA. As developers and data engineers, we must find effective ways to obfuscate data without compromising its utility for testing, development, and analytics. This is where masquerade backups come into play, allowing teams to create realistic yet anonymized datasets that maintain the integrity of the original data while protecting personally identifiable information (PII).</p>
+<section id="basic-functions">
+<h2>Basic Functions<a class="headerlink" href="#basic-functions" title="Permalink to this heading">¶</a></h2>
+<p>The nexts functions doesn’t receive any parameter and replaces the content of the column.</p>
+<section id="random-string-random-string-with-mem">
+<h3>random_string / random_string_with_mem<a class="headerlink" href="#random-string-random-string-with-mem" title="Permalink to this heading">¶</a></h3>
+<p>It replaces the characters in the string. It doesn’t alter the size of the string.
+When random_string_with_mem is used, it keeps in memory to replace with same contents, for instance, if it has replaced “AAA” with “BBB”, on other rows with “AAA”, it will replace it with “BBB”.</p>
+</section>
+<section id="random-int-random-int-with-mem">
+<h3>random_int / random_int_with_mem<a class="headerlink" href="#random-int-random-int-with-mem" title="Permalink to this heading">¶</a></h3>
+<p>It replaces the digits on the numeric value. It doesn’t alter the length of the number but could be 0 at the begining.
+When random_int_with_mem is used, it keeps in memory to replace with same contents, for instance, if it has replaced 111 with 222, on other rows with 111, it will replace it with 222.</p>
+</section>
+<section id="random-uuid-random-uuid-with-mem">
+<h3>random_uuid / random_uuid_with_mem<a class="headerlink" href="#random-uuid-random-uuid-with-mem" title="Permalink to this heading">¶</a></h3>
+<p>If MyDumper has been compiled with GLIB version higher than 2.52, it will use <a class="reference external" href="https://docs.gtk.org/glib/func.uuid_string_random.html">g_uuid_string_random</a> on other cases it will replaces with alphanumeric values the character that are not equal to ‘-‘.
+When random_uuid_with_mem is used, it keeps in memory to replace with same UUID.</p>
+</section>
+</section>
+<section id="advance">
+<h2>Advance<a class="headerlink" href="#advance" title="Permalink to this heading">¶</a></h2>
+<p>The nexts functions receives parameter that needs to be parsed.</p>
+<section id="random-format">
+<h3>random_format<a class="headerlink" href="#random-format" title="Permalink to this heading">¶</a></h3>
+<p>The parameter of this funtion is parsed. It expected 3 kinds of tags: file, string and number. You can also use other character between the tags, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="sb">`</span>pad<span class="sb">`</span><span class="o">=</span>random_format<span class="w"> </span>&lt;file<span class="w"> </span>words_alpha.txt.100&gt;-&lt;file<span class="w"> </span>words_alpha.txt.100&gt;-&lt;file<span class="w"> </span>words_alpha.txt.100&gt;-&lt;file<span class="w"> </span>words_alpha.txt.100&gt;-&lt;file<span class="w"> </span>words_alpha.txt.100&gt;
+<span class="sb">`</span>pad<span class="sb">`</span><span class="o">=</span>random_format<span class="w"> </span>&lt;number<span class="w"> </span><span class="m">9</span>&gt;-&lt;number<span class="w"> </span><span class="m">9</span>&gt;-&lt;number<span class="w"> </span><span class="m">9</span>&gt;-&lt;number<span class="w"> </span><span class="m">9</span>&gt;-&lt;number<span class="w"> </span><span class="m">9</span>&gt;
+</pre></div>
+</div>
+<p>The size of the number or the string is specified after the tag name.</p>
+</section>
+<section id="apply">
+<h3>apply<a class="headerlink" href="#apply" title="Permalink to this heading">¶</a></h3>
+<p>This functions is used when you want to apply a function to a column which value will be shown. This can not be considered a data masking function, as the content of the column will be written anyways. This is an examples that you can test with sakila.film table:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="sb">`</span>title<span class="sb">`</span><span class="o">=</span>apply<span class="w"> </span><span class="s1">&#39;concat(&#39;</span><span class="w"> </span><span class="s1">&#39;,&quot; - part 2&quot;)&#39;</span>
+<span class="sb">`</span>last_update<span class="sb">`</span><span class="o">=</span>apply<span class="w"> </span><span class="s1">&#39;date_add(&#39;</span><span class="w"> </span><span class="s1">&#39;, interval 1 year)&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="constant">
+<h3>constant<a class="headerlink" href="#constant" title="Permalink to this heading">¶</a></h3>
+<p>The parameter passed to this function will replace the content of the column. This is useful if you need to calculate values based on other columns, such as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="sb">`</span>email<span class="sb">`</span><span class="o">=</span>constant<span class="w"> </span>concat<span class="o">(</span>first_name,concat<span class="o">(</span><span class="s2">&quot;.&quot;</span>,concat<span class="o">(</span>last_name,<span class="s2">&quot;@sakilacustomer.org&quot;</span><span class="o">)))</span>
+<span class="sb">`</span>tax<span class="sb">`</span><span class="o">=</span>constant<span class="w"> </span>price*21/100
+</pre></div>
+</div>
+</section>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="daemon.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Daemon</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="replication.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Replication Options</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -282,8 +352,38 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Masquerade</a><ul>
+<li><a class="reference internal" href="#basic-functions">Basic Functions</a><ul>
+<li><a class="reference internal" href="#random-string-random-string-with-mem">random_string / random_string_with_mem</a></li>
+<li><a class="reference internal" href="#random-int-random-int-with-mem">random_int / random_int_with_mem</a></li>
+<li><a class="reference internal" href="#random-uuid-random-uuid-with-mem">random_uuid / random_uuid_with_mem</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advance">Advance</a><ul>
+<li><a class="reference internal" href="#random-format">random_format</a></li>
+<li><a class="reference internal" href="#apply">apply</a></li>
+<li><a class="reference internal" href="#constant">constant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

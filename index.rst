@@ -34,6 +34,7 @@ The tools developed in this Project are based on C, GLib and support the client 
    stages
    locks
    replication
+   masquerade
    daemon
    examples
    authors
