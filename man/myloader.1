@@ -1,0 +1,389 @@
+.\" Man page generated from reStructuredText.
+.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.TH "MYLOADER" "1" "Jan 07, 2025" "" "MyDumper"
+\fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
+.INDENT 0.0
+.TP
+.B \-h, \-\-host
+The host to connect to
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-u, \-\-user
+Username with the necessary privileges
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-p, \-\-password
+User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-a, \-\-ask\-password
+Prompt For User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-P, \-\-port
+TCP/IP port to connect to
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-S, \-\-socket
+UNIX domain socket file to use for connection
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-protocol
+The protocol to use for connection (tcp, socket)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-C, \-\-compress\-protocol
+Use compression on the MySQL connection
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ssl
+Connect using SSL
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ssl\-mode
+Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-key
+The path name to the key file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-cert
+The path name to the certificate file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ca
+The path name to the certificate authority file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-capath
+The path name to a directory that contains trusted SSL CA certificates in PEM format
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-cipher
+A list of permissible ciphers to use for SSL encryption
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-tls\-version
+Which protocols the server permits for encrypted connections
+.UNINDENT
+.SH FILTER OPTIONS
+.INDENT 0.0
+.TP
+.B \-x, \-\-regex
+Regular expression for ‘db.table’ matching
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-s, \-\-source\-db
+Database to restore
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-triggers
+Do not import triggers. By default, it imports triggers
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-post
+Do not import events, stored procedures and functions. By default, it imports events, stored procedures or functions
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-constraints
+Do not import constraints. By default, it imports contraints
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-indexes
+Do not import secondary index on InnoDB tables. By default, it import the indexes
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-data
+Do not dump or import table data
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-O, \-\-omit\-from\-file
+File containing a list of database.table entries to skip, one per line (skips before applying regex option)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-T, \-\-tables\-list
+Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
+.UNINDENT
+.SH PMM OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-pmm\-path
+which default value will be /usr/local/percona/pmm2/collectors/textfile\-collector/high\-resolution
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-pmm\-resolution
+which default will be high
+.UNINDENT
+.SH EXECUTION OPTIONS
+.INDENT 0.0
+.TP
+.B \-e, \-\-enable\-binlog
+Enable binary logging of the restore data
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-innodb\-optimize\-keys
+Creates the table without the indexes unless SKIP is selected.
+Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-schema
+Do not import table schemas and triggers
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-purge\-mode
+This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-disable\-redo\-log
+Disables the REDO_LOG and enables it after, doesn’t check initial status
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-checksum
+Treat checksums: skip, fail(default), warn.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-o, \-\-overwrite\-tables
+Drop tables if they already exist
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-overwrite\-unsafe
+Same as –overwrite\-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-retry\-count
+Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-serialized\-table\-creation
+Table recreation will be executed in series, one thread at a time. This means –max\-threads\-for\-schema\-creation=1. This option will be removed in future releases
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-stream
+It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-metadata\-refresh\-interval
+Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ignore\-errors
+Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-set\-gtid\-purged
+After import, it will execute the SET GLOBAL gtid_purged with the value found on source section of the metadata file
+.UNINDENT
+.SH THREADS OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-max\-threads\-per\-table
+Maximum number of threads per table to use, defaults to –threads
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-threads\-for\-index\-creation
+Maximum number of threads for index creation, default 4
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-threads\-for\-post\-actions
+Maximum number of threads for post action like: constraints, procedure, views and triggers, default 1
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-threads\-for\-schema\-creation
+Maximum number of threads for schema creation. When this is set to 1, is the same than –serialized\-table\-creation, default 4
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exec\-per\-thread
+Set the command that will receive by STDIN from the input file and write in the STDOUT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exec\-per\-thread\-extension
+Set the input file extension when –exec\-per\-thread is used. Otherwise it will be ignored
+.UNINDENT
+.SH STATEMENT OPTIONS
+.INDENT 0.0
+.TP
+.B \-r, \-\-rows
+Split the INSERT statement into this many rows.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-q, \-\-queries\-per\-transaction
+Number of queries per transaction, default 1000
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-append\-if\-not\-exist
+Appends IF NOT EXISTS to the create table statements. This will be removed when \fI\%https://bugs.mysql.com/bug.php?id=103791\fP has been implemented
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-set\-names
+Sets the names, use it at your own risk, default binary
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-definer
+Removes DEFINER from the CREATE statement. By default, statements are not modified
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ignore\-set
+List of variables that will be ignored from the header of SET
+.UNINDENT
+.SH APPLICATION OPTIONS:
+.INDENT 0.0
+.TP
+.B \-?, \-\-help
+Show help options
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-d, \-\-directory
+Directory of the dump to import
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-L, \-\-logfile
+Log file name to use, by default stdout is used
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-fifodir
+Directory where the FIFO files will be created when needed. Default: Same as backup
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-B, \-\-database
+An alternative database to restore into
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-Q, \-\-quote\-character
+Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, “ for double quote. Default: detect from dump if possible, otherwise BACKTICK
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-show\-warnings
+If enabled, during INSERT IGNORE the warnings will be printed
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-resume
+Expect to find resume file in backup dir and will only process those files
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-k, \-\-kill\-at\-once
+When Ctrl+c is pressed it immediately terminates the process
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-t, \-\-threads
+Number of threads to use, 0 means to use number of CPUs. Default: 4
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-V, \-\-version
+Show the program version and exit
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-v, \-\-verbose
+Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-debug
+Turn on debugging output (automatically sets verbosity to 3)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-defaults\-file
+Use a specific defaults file. Default: /etc/mydumper.cnf
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-defaults\-extra\-file
+Use an additional defaults file. This is loaded after –defaults\-file, replacing previous defined values
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-control\-command
+Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+.UNINDENT
+.SH AUTHOR
+David Ducos
+.SH COPYRIGHT
+2024, David Ducos
+.\" Generated by docutils manpage writer.
+.

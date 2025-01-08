@@ -1,0 +1,590 @@
+.\" Man page generated from reStructuredText.
+.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.TH "MYDUMPER" "1" "Jan 07, 2025" "" "MyDumper"
+\fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
+.INDENT 0.0
+.TP
+.B \-h, \-\-host
+The host to connect to
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-u, \-\-user
+Username with the necessary privileges
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-p, \-\-password
+User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-a, \-\-ask\-password
+Prompt For User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-P, \-\-port
+TCP/IP port to connect to
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-S, \-\-socket
+UNIX domain socket file to use for connection
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-protocol
+The protocol to use for connection (tcp, socket)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-C, \-\-compress\-protocol
+Use compression on the MySQL connection
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ssl
+Connect using SSL
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ssl\-mode
+Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-key
+The path name to the key file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-cert
+The path name to the certificate file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ca
+The path name to the certificate authority file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-capath
+The path name to a directory that contains trusted SSL CA certificates in PEM format
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-cipher
+A list of permissible ciphers to use for SSL encryption
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-tls\-version
+Which protocols the server permits for encrypted connections
+.UNINDENT
+.SH FILTER OPTIONS
+.INDENT 0.0
+.TP
+.B \-x, \-\-regex
+Regular expression for ‘db.table’ matching
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-B, \-\-database
+Comma delimited list of databases to dump
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-i, \-\-ignore\-engines
+Comma delimited list of storage engines to ignore
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-where
+Dump only selected records.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-U, \-\-updated\-since
+Use Update_time to dump only tables updated in the last U days
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-partition\-regex
+Regex to filter by partition name.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-O, \-\-omit\-from\-file
+File containing a list of database.table entries to skip, one per line (skips before applying regex option)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-T, \-\-tables\-list
+Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
+.UNINDENT
+.SH LOCK OPTIONS
+.INDENT 0.0
+.TP
+.B \-z, \-\-tidb\-snapshot
+Snapshot to use for TiDB
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-k, \-\-no\-locks
+Do not execute the temporary shared read lock.
+.sp
+WARNING: This will cause inconsistent backups
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-use\-savepoints
+Use savepoints to reduce metadata locking issues, needs SUPER privilege
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-backup\-locks
+Do not use Percona backup locks
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-lock\-all\-tables
+Use LOCK TABLE for all, instead of FTWRL
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-less\-locking
+Minimize locking time on InnoDB tables.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-trx\-consistency\-only
+Transactional consistency only
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-ddl\-locks
+Do not send DDL locks when possible
+.UNINDENT
+.SH PMM OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-pmm\-path
+which default value will be /usr/local/percona/pmm2/collectors/textfile\-collector/high\-resolution
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-pmm\-resolution
+which default will be high
+.UNINDENT
+.SH EXEC OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-exec\-threads
+Amount of threads to use with –exec
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exec
+Command to execute using the file as parameter
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exec\-per\-thread
+Set the command that will receive by STDIN and write in the STDOUT into the output file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exec\-per\-thread\-extension
+Set the extension for the STDOUT file when –exec\-per\-thread is used
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-long\-query\-retries
+Retry checking for long queries, default 0 (do not retry)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-long\-query\-retry\-interval
+Time to wait before retrying the long query check in seconds, default 60
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-l, \-\-long\-query\-guard
+Set long query timer in seconds, default 60
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-K, \-\-kill\-long\-queries
+Kill long running queries (instead of aborting)
+.UNINDENT
+.SH JOB OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-max\-threads\-per\-table
+Maximum number of threads per table to use
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-char\-deep
+Defines the amount of characters to use when the primary key is a string
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-char\-chunk
+Defines in how many pieces should split the table. By default we use the amount of threads
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-r, \-\-rows
+Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-split\-partitions
+Dump partitions into separate files. This options overrides the –rows option for partitioned tables.
+.UNINDENT
+.SH CHECKSUM OPTIONS
+.INDENT 0.0
+.TP
+.B \-M, \-\-checksum\-all
+Dump checksums for all elements
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-data\-checksums
+Dump table checksums with the data
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-schema\-checksums
+Dump schema table and view creation checksums
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-routine\-checksums
+Dump triggers, functions and routines checksums
+.UNINDENT
+.SH OBJECTS OPTIONS
+.INDENT 0.0
+.TP
+.B \-m, \-\-no\-schemas
+Do not dump table schemas with the data and triggers
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-Y, \-\-all\-tablespaces
+Dump all the tablespaces.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-d, \-\-no\-data
+Do not dump table data
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-G, \-\-triggers
+Dump triggers. By default, it do not dump triggers
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-E, \-\-events
+Dump events. By default, it do not dump events
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-R, \-\-routines
+Dump stored procedures and functions. By default, it do not dump stored procedures nor functions
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-constraints
+Remove the constraints from the CREATE TABLE statement. By default, the statement is not modified
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-indexes
+Remove the indexes from the CREATE TABLE statement. By default, the statement is not modified
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-views\-as\-tables
+Export VIEWs as they were tables
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-W, \-\-no\-views
+Do not dump VIEWs
+.UNINDENT
+.SH STATEMENT OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-load\-data
+Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-csv
+Automatically enables –load\-data and set variables to export in CSV format. This option will be deprecated on future releases use –format
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-format
+Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-include\-header
+When –load\-data or –csv is used, it will include the header with the column name
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-fields\-terminated\-by
+Defines the character that is written between fields
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-fields\-enclosed\-by
+Defines the character to enclose fields. Default: “
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-fields\-escaped\-by
+Single character that is going to be used to escape characters in theLOAD DATA stament, default: ‘’
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-lines\-starting\-by
+Adds the string at the begining of each row. When –load\-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-lines\-terminated\-by
+Adds the string at the end of each row. When –load\-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-statement\-terminated\-by
+This might never be used, unless you know what are you doing
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-N, \-\-insert\-ignore
+Dump rows with INSERT IGNORE
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-replace
+Dump rows with REPLACE
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-complete\-insert
+Use complete INSERT statements that include column names
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-hex\-blob
+Dump binary columns using hexadecimal notation
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-definer
+Removes DEFINER from the CREATE statement. By default, statements are not modified
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-s, \-\-statement\-size
+Attempted size of INSERT statement in bytes, default 1000000
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-tz\-utc
+SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use –skip\-tz\-utc to disable.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-tz\-utc
+Doesn’t add SET TIMEZONE on the backup files
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-set\-names
+Sets the names, use it at your own risk, default binary
+.UNINDENT
+.SH EXTRA OPTIONS
+.INDENT 0.0
+.TP
+.B \-F, \-\-chunk\-filesize
+Split data files into pieces of this size in MB. Useful for myloader multi\-threading.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exit\-if\-broken\-table\-found
+Exits if a broken table has been found
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-success\-on\-1146
+Not increment error count and Warning instead of Critical in case of table doesn’t exist
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-e, \-\-build\-empty\-files
+Build dump files even if no data available from table
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-check\-generated\-fields
+Queries related to generated fields are not going to be executed.It will lead to restoration issues if you have generated columns
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-order\-by\-primary
+Sort the data by Primary Key or Unique key if no primary key exists
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-compact
+Give less verbose output. Disables header/footer constructs.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-c, \-\-compress
+Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-use\-defer
+Use defer integer sharding until all non\-integer PK tables processed (saves RSS for huge quantities of tables)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-check\-row\-count
+Run SELECT COUNT(*) and fail mydumper if dumped row count is different
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-data
+It will include the options in the metadata file, to allow myloader to establish replication
+.UNINDENT
+.SH DAEMON OPTIONS
+.INDENT 0.0
+.TP
+.B \-D, \-\-daemon
+Enable daemon mode
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-I, \-\-snapshot\-interval
+Interval between each dump snapshot (in minutes), requires –daemon, default 60
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-X, \-\-snapshot\-count
+number of snapshots, default 2
+.UNINDENT
+.SH APPLICATION OPTIONS:
+.INDENT 0.0
+.TP
+.B \-?, \-\-help
+Show help options
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-o, \-\-outputdir
+Directory to output files to
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-clear
+Clear output directory before dumping
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-dirty
+Overwrite output directory without clearing (beware of leftower chunks)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-stream
+It will stream over STDOUT once the files has been written. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-L, \-\-logfile
+Log file name to use, by default stdout is used
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-disk\-limits
+Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: ‘<resume>:<pause>’ in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-t, \-\-threads
+Number of threads to use, 0 means to use number of CPUs. Default: 4
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-V, \-\-version
+Show the program version and exit
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-v, \-\-verbose
+Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-debug
+Turn on debugging output (automatically sets verbosity to 3)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-defaults\-file
+Use a specific defaults file. Default: /etc/mydumper.cnf
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-defaults\-extra\-file
+Use an additional defaults file. This is loaded after –defaults\-file, replacing previous defined values
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-control\-command
+Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+.UNINDENT
+.SH AUTHOR
+David Ducos
+.SH COPYRIGHT
+2024, David Ducos
+.\" Generated by docutils manpage writer.
+.
