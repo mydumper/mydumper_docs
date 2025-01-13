@@ -362,7 +362,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-x">
 <span id="cmdoption-mydumper-regex"></span><span class="sig-name descname"><span class="pre">-x</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--regex</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-x" title="Permalink to this definition">¶</a></dt>
-<dd><p>Regular expression for ‘db.table’ matching</p>
+<dd><p>Regular expression for 'db.table' matching</p>
 </dd></dl>
 
 <dl class="std option">
@@ -480,7 +480,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-exec-threads">
 <span class="sig-name descname"><span class="pre">--exec-threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-exec-threads" title="Permalink to this definition">¶</a></dt>
-<dd><p>Amount of threads to use with –exec</p>
+<dd><p>Amount of threads to use with --exec</p>
 </dd></dl>
 
 <dl class="std option">
@@ -498,7 +498,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-exec-per-thread-extension">
 <span class="sig-name descname"><span class="pre">--exec-per-thread-extension</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-exec-per-thread-extension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the extension for the STDOUT file when –exec-per-thread is used</p>
+<dd><p>Set the extension for the STDOUT file when --exec-per-thread is used</p>
 </dd></dl>
 
 <dl class="std option">
@@ -555,7 +555,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-split-partitions">
 <span class="sig-name descname"><span class="pre">--split-partitions</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-split-partitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dump partitions into separate files. This options overrides the –rows option for partitioned tables.</p>
+<dd><p>Dump partitions into separate files. This options overrides the --rows option for partitioned tables.</p>
 </dd></dl>
 
 </section>
@@ -654,13 +654,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-load-data">
 <span class="sig-name descname"><span class="pre">--load-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-load-data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format</p>
+<dd><p>Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use --format</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-csv">
 <span class="sig-name descname"><span class="pre">--csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-csv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Automatically enables –load-data and set variables to export in CSV format. This option will be deprecated on future releases use –format</p>
+<dd><p>Automatically enables --load-data and set variables to export in CSV format. This option will be deprecated on future releases use --format</p>
 </dd></dl>
 
 <dl class="std option">
@@ -672,7 +672,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-include-header">
 <span class="sig-name descname"><span class="pre">--include-header</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-include-header" title="Permalink to this definition">¶</a></dt>
-<dd><p>When –load-data or –csv is used, it will include the header with the column name</p>
+<dd><p>When --load-data or --csv is used, it will include the header with the column name</p>
 </dd></dl>
 
 <dl class="std option">
@@ -684,25 +684,25 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-fields-enclosed-by">
 <span class="sig-name descname"><span class="pre">--fields-enclosed-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-fields-enclosed-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the character to enclose fields. Default: “</p>
+<dd><p>Defines the character to enclose fields. Default: &quot;</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-fields-escaped-by">
 <span class="sig-name descname"><span class="pre">--fields-escaped-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-fields-escaped-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ‘’</p>
+<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ''</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-lines-starting-by">
 <span class="sig-name descname"><span class="pre">--lines-starting-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-lines-starting-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the string at the begining of each row. When –load-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+<dd><p>Adds the string at the begining of each row. When --load-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-lines-terminated-by">
 <span class="sig-name descname"><span class="pre">--lines-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-lines-terminated-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the string at the end of each row. When –load-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+<dd><p>Adds the string at the end of each row. When --load-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -750,13 +750,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-tz-utc">
 <span class="sig-name descname"><span class="pre">--tz-utc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-tz-utc" title="Permalink to this definition">¶</a></dt>
-<dd><p>SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use –skip-tz-utc to disable.</p>
+<dd><p>SET TIME_ZONE='+00:00' at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use --skip-tz-utc to disable.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-skip-tz-utc">
 <span class="sig-name descname"><span class="pre">--skip-tz-utc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-skip-tz-utc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Doesn’t add SET TIMEZONE on the backup files</p>
+<dd><p>Doesn't add SET TIMEZONE on the backup files</p>
 </dd></dl>
 
 <dl class="std option">
@@ -783,7 +783,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-success-on-1146">
 <span class="sig-name descname"><span class="pre">--success-on-1146</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-success-on-1146" title="Permalink to this definition">¶</a></dt>
-<dd><p>Not increment error count and Warning instead of Critical in case of table doesn’t exist</p>
+<dd><p>Not increment error count and Warning instead of Critical in case of table doesn't exist</p>
 </dd></dl>
 
 <dl class="std option">
@@ -846,7 +846,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-I">
 <span id="cmdoption-mydumper-snapshot-interval"></span><span class="sig-name descname"><span class="pre">-I</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--snapshot-interval</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-I" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interval between each dump snapshot (in minutes), requires –daemon, default 60</p>
+<dd><p>Interval between each dump snapshot (in minutes), requires --daemon, default 60</p>
 </dd></dl>
 
 <dl class="std option">
@@ -897,7 +897,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-disk-limits">
 <span class="sig-name descname"><span class="pre">--disk-limits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-disk-limits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: ‘&lt;resume&gt;:&lt;pause&gt;’ in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available</p>
+<dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '&lt;resume&gt;:&lt;pause&gt;' in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available</p>
 </dd></dl>
 
 <dl class="std option">
@@ -933,7 +933,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-defaults-extra-file">
 <span class="sig-name descname"><span class="pre">--defaults-extra-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-defaults-extra-file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use an additional defaults file. This is loaded after –defaults-file, replacing previous defined values</p>
+<dd><p>Use an additional defaults file. This is loaded after --defaults-file, replacing previous defined values</p>
 </dd></dl>
 
 <dl class="std option">

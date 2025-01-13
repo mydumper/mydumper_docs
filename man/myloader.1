@@ -113,7 +113,7 @@ Which protocols the server permits for encrypted connections
 .INDENT 0.0
 .TP
 .B \-x, \-\-regex
-Regular expression for ‘db.table’ matching
+Regular expression for \(aqdb.table\(aq matching
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -191,7 +191,7 @@ This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELE
 .INDENT 0.0
 .TP
 .B \-\-disable\-redo\-log
-Disables the REDO_LOG and enables it after, doesn’t check initial status
+Disables the REDO_LOG and enables it after, doesn\(aqt check initial status
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -206,7 +206,7 @@ Drop tables if they already exist
 .INDENT 0.0
 .TP
 .B \-\-overwrite\-unsafe
-Same as –overwrite\-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
+Same as \-\-overwrite\-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -216,7 +216,7 @@ Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABL
 .INDENT 0.0
 .TP
 .B \-\-serialized\-table\-creation
-Table recreation will be executed in series, one thread at a time. This means –max\-threads\-for\-schema\-creation=1. This option will be removed in future releases
+Table recreation will be executed in series, one thread at a time. This means \-\-max\-threads\-for\-schema\-creation=1. This option will be removed in future releases
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -242,7 +242,7 @@ After import, it will execute the SET GLOBAL gtid_purged with the value found on
 .INDENT 0.0
 .TP
 .B \-\-max\-threads\-per\-table
-Maximum number of threads per table to use, defaults to –threads
+Maximum number of threads per table to use, defaults to \-\-threads
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -257,7 +257,7 @@ Maximum number of threads for post action like: constraints, procedure, views an
 .INDENT 0.0
 .TP
 .B \-\-max\-threads\-for\-schema\-creation
-Maximum number of threads for schema creation. When this is set to 1, is the same than –serialized\-table\-creation, default 4
+Maximum number of threads for schema creation. When this is set to 1, is the same than \-\-serialized\-table\-creation, default 4
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -267,7 +267,7 @@ Set the command that will receive by STDIN from the input file and write in the 
 .INDENT 0.0
 .TP
 .B \-\-exec\-per\-thread\-extension
-Set the input file extension when –exec\-per\-thread is used. Otherwise it will be ignored
+Set the input file extension when \-\-exec\-per\-thread is used. Otherwise it will be ignored
 .UNINDENT
 .SH STATEMENT OPTIONS
 .INDENT 0.0
@@ -329,7 +329,7 @@ An alternative database to restore into
 .INDENT 0.0
 .TP
 .B \-Q, \-\-quote\-character
-Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, “ for double quote. Default: detect from dump if possible, otherwise BACKTICK
+Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, \(dq for double quote. Default: detect from dump if possible, otherwise BACKTICK
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -374,7 +374,7 @@ Use a specific defaults file. Default: /etc/mydumper.cnf
 .INDENT 0.0
 .TP
 .B \-\-defaults\-extra\-file
-Use an additional defaults file. This is loaded after –defaults\-file, replacing previous defined values
+Use an additional defaults file. This is loaded after \-\-defaults\-file, replacing previous defined values
 .UNINDENT
 .INDENT 0.0
 .TP

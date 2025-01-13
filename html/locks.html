@@ -270,7 +270,7 @@ By default, <strong class="program">mydumper</strong> uses the simplest way, whi
 </section>
 <section id="no-locks">
 <h3>No Locks<a class="headerlink" href="#no-locks" title="Permalink to this heading">¶</a></h3>
-<p>If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+<p>If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
 </section>
 </section>

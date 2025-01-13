@@ -267,7 +267,7 @@ all databases using 4 worker threads.</p>
 </section>
 <section id="regex">
 <h2>Regex<a class="headerlink" href="#regex" title="Permalink to this heading">¶</a></h2>
-<p>To use <strong class="program">mydumper</strong>’s regex feature simply use the
+<p>To use <strong class="program">mydumper</strong>'s regex feature simply use the
 <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-x"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a> option.  In the following example mydumper
 will ignore the <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">mysql</span></code> databases</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mydumper<span class="w"> </span>--regex<span class="w"> </span><span class="s1">&#39;^(?!(mysql\.|test\.))&#39;</span>
