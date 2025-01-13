@@ -42,10 +42,6 @@ foreach(file
   )
 endforeach(file)
 
-set(CLEAN_FILES
-  "${BINARY_BUILD_DIR}/html"
-)
-
 message( " ${SPHINX_EXECUTABLE} ")
 
 add_custom_target(ALL
@@ -58,18 +54,23 @@ add_custom_target(ALL
 add_custom_target(doc_sources ALL
   "${CMAKE_COMMAND}" -P "${BINARY_BUILD_DIR}/sources.cmake"
 )
-list(APPEND CLEAN_FILES
+set(CLEAN_FILES
   "${SOURCES_DIR}"
 )
 
+# note the trailing slash to exclude directory name
+install(DIRECTORY "${SOURCES_DIR}/"
+  DESTINATION "share/doc/mydumper"
+)
+
+# Sphinx cache with pickled ReST documents
+set(SPHINX_CACHE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees")
+
+list(APPEND CLEAN_FILES
+  "${SPHINX_CACHE_DIR}"
+)
 
 if (WITH_HTML)
-
-  # note the trailing slash to exclude directory name
-  install(DIRECTORY "${SOURCES_DIR}/"
-    DESTINATION "share/doc/mydumper"
-  )
-
   # Sphinx cache with pickled ReST documents
   set(SPHINX_CACHE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees")
   # HTML output directory
@@ -85,18 +86,20 @@ if (WITH_HTML)
       "${SPHINX_HTML_DIR}"
     COMMENT "Building HTML documentation with Sphinx"
   )
-  list(APPEND CLEAN_FILES
-    "${SPHINX_CACHE_DIR}"
-    "${SPHINX_HTML_DIR}"
-  )
+
   add_dependencies(doc_html
     doc_sources
   )
+
   install(DIRECTORY "${SPHINX_HTML_DIR}"
     DESTINATION "share/doc/mydumper"
-)
-
+  )
 endif()
+
+list(APPEND CLEAN_FILES
+  "${BINARY_BUILD_DIR}/html"
+  "${SPHINX_HTML_DIR}"
+)
 
 # MAN Building
 if (WITH_MAN)
@@ -113,9 +116,7 @@ if (WITH_MAN)
       "${SPHINX_MAN_DIR}"
     COMMENT "Building manual page with Sphinx"
   )
-  list(APPEND CLEAN_FILES
-    "${SPHINX_MAN_DIR}"
-  )
+
   add_dependencies(doc_man
     doc_sources
   )
@@ -124,10 +125,15 @@ if (WITH_MAN)
   add_dependencies(doc_man
     doc_sources
   )
+
   install(FILES "${SPHINX_MAN_DIR}/mydumper.1" "${SPHINX_MAN_DIR}/myloader.1"
     DESTINATION "share/man/man1"
   )
 endif()
+
+list(APPEND CLEAN_FILES
+  "${SPHINX_MAN_DIR}"
+)
 
 # This target builds PDF documentation using Sphinx and LaTeX.
 if(PDFLATEX_COMPILER)
@@ -167,3 +173,11 @@ set_directory_properties(PROPERTIES
   ADDITIONAL_MAKE_CLEAN_FILES "${CLEAN_FILES}"
 )
 
+
+MESSAGE(STATUS "------------------------------------------------")
+MESSAGE(STATUS "WITH_HTML = ${WITH_HTML}")
+MESSAGE(STATUS "WITH_MAN = ${WITH_MAN}")
+MESSAGE(STATUS "PDFLATEX_COMPILER = ${PDFLATEX_COMPILER}")
+MESSAGE(STATUS "Change a values with: cmake -D<Variable>=<Value>")
+MESSAGE(STATUS "------------------------------------------------")
+MESSAGE(STATUS)
