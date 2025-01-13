@@ -75,6 +75,14 @@ Source file (/etc/apt/sources.list.d/mydumper.list) should be:
         deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster main
         #deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster testing
 
+Ansible
+-------
+
+    .. code-block::  bash
+
+        deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main
+        #deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} testing
+
 YUM
 ^^^
 

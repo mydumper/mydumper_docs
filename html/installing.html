@@ -317,6 +317,15 @@
 </div>
 </div>
 </section>
+<section id="ansible">
+<h3>Ansible<a class="headerlink" href="#ansible" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/<span class="o">{{</span><span class="w"> </span>ansible_distribution<span class="w"> </span><span class="p">|</span><span class="w"> </span>lower<span class="w"> </span><span class="o">}}</span><span class="w"> </span><span class="o">{{</span><span class="w"> </span>ansible_distribution_release<span class="w"> </span><span class="o">}}</span><span class="w"> </span>main
+<span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} testing</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
 </section>
 <section id="yum">
 <h2>YUM<a class="headerlink" href="#yum" title="Permalink to this heading">¶</a></h2>
@@ -428,6 +437,7 @@ myloader<span class="w"> </span>--defaults-file<span class="o">=</span>/opt/home
 <li><a class="reference internal" href="#apt">APT</a><ul>
 <li><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
 <li><a class="reference internal" href="#debian">Debian</a></li>
+<li><a class="reference internal" href="#ansible">Ansible</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#yum">YUM</a><ul>
