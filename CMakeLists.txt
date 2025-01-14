@@ -71,8 +71,6 @@ list(APPEND CLEAN_FILES
 )
 
 if (WITH_HTML)
-  # Sphinx cache with pickled ReST documents
-  set(SPHINX_CACHE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees")
   # HTML output directory
   set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/html")
 
