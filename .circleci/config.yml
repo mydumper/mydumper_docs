@@ -20,7 +20,7 @@ jobs:
           cmake .
           make clean
           make
-          # git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
           git commit -am "[skip ci] Auto updated submodule references" && git push
 
   publish_docs:
