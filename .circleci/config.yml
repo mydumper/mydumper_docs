@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   capture-tag: rvla/capture-tag@0.0.2
 jobs:
-  make-docs:
+  make_docs:
     docker:
       - image: mydumper/mydumper-builder-focal
     steps:
@@ -23,7 +23,7 @@ jobs:
           # git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
           git commit -am "[skip ci] Auto updated submodule references" && git push
 
-  publish-docs:
+  publish_docs:
     docker:
       - image: mydumper/mydumper-builder-noble
     steps:
@@ -54,6 +54,6 @@ workflows:
   version: 2
   mydumper_docs:
     jobs:
-    - publish-docs:
+    - publish_docs:
         requires:
-          - make-docs
+          - make_docs
