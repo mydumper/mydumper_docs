@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compression and external commands" href="exec_per_thread.html" /><link rel="prev" title="mydumper" href="mydumper_usage.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuration" href="configure.html" /><link rel="prev" title="mydumper" href="mydumper_usage.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>myloader - MyDumper documentation</title>
@@ -208,13 +208,17 @@
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">myloader</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="configure.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html">New Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="replication.html">Replication Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -317,7 +321,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-ssl-mode">
 <span class="sig-name descname"><span class="pre">--ssl-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-ssl-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY</p>
+<dd><p>Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY</p>
 </dd></dl>
 
 <dl class="std option">
@@ -434,7 +438,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-e">
 <span id="cmdoption-myloader-enable-binlog"></span><span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--enable-binlog</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable binary logging of the restore data</p>
+<dd><p>Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the --defaults-file instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -495,13 +499,19 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-stream">
 <span class="sig-name descname"><span class="pre">--stream</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-stream" title="Permalink to this definition">¶</a></dt>
-<dd><p>It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given</p>
+<dd><p>It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-metadata-refresh-interval">
 <span class="sig-name descname"><span class="pre">--metadata-refresh-interval</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-metadata-refresh-interval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-table-sorting">
+<span class="sig-name descname"><span class="pre">--skip-table-sorting</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-table-sorting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables</p>
 </dd></dl>
 
 <dl class="std option">
@@ -652,6 +662,12 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-mysqldump">
+<span class="sig-name descname"><span class="pre">--mysqldump</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-mysqldump" title="Permalink to this definition">¶</a></dt>
+<dd><p>It expect a mysqldump format when stream is used</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-t">
 <span id="cmdoption-myloader-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-t" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4</p>
@@ -693,6 +709,12 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dd><p>Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS</p>
 </dd></dl>
 
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-source-data">
+<span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-source-data" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -701,12 +723,12 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="exec_per_thread.html">
+          <a class="next-page" href="configure.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Compression and external commands</div>
+                <div class="title">Configuration</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

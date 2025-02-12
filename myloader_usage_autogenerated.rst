@@ -40,7 +40,7 @@ Connection Options
 
 .. option:: --ssl-mode
 
-  Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+  Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
 
 .. option:: --key
 
@@ -121,7 +121,7 @@ Execution Options
 
 .. option:: -e, --enable-binlog
 
-  Enable binary logging of the restore data
+  Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the --defaults-file instead
 
 .. option:: --innodb-optimize-keys
 
@@ -162,11 +162,15 @@ Execution Options
 
 .. option:: --stream
 
-  It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+  It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
 
 .. option:: --metadata-refresh-interval
 
   Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100
+
+.. option:: --skip-table-sorting
+
+  Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables
 
 .. option:: --ignore-errors
 
@@ -269,6 +273,10 @@ Application Options:
 
   When Ctrl+c is pressed it immediately terminates the process
 
+.. option:: --mysqldump
+
+  It expect a mysqldump format when stream is used
+
 .. option:: -t, --threads
 
   Number of threads to use, 0 means to use number of CPUs. Default: 4
@@ -296,3 +304,7 @@ Application Options:
 .. option:: --source-control-command
 
   Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+
+.. option:: --source-data
+
+  It will include the options in the metadata file, to allow myloader to establish replication

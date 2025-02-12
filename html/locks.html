@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Replication Options" href="replication.html" /><link rel="prev" title="Backup Stages" href="stages.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Masquerade" href="masquerade.html" /><link rel="prev" title="Stream" href="stream.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Locks - MyDumper documentation</title>
+        <title>New Lock modes - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -208,13 +208,17 @@
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="configure.html">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">New Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Locks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="replication.html">Replication Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -256,42 +260,44 @@
         <article role="main" id="furo-main-content">
           <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="locks">
-<span id="mydumper-locks"></span><h1>Locks<a class="headerlink" href="#locks" title="Permalink to this heading">¶</a></h1>
-<p>As any backup tool, <strong class="program">mydumper</strong> needs to be able to take a consistent backups.
-However, this is not an easy tasks if you have to sync multiple threads.</p>
+<section id="new-lock-modes">
+<span id="mydumper-locks"></span><h1>New Lock modes<a class="headerlink" href="#new-lock-modes" title="Permalink to this heading">¶</a></h1>
 <section id="synchronizing-threads">
 <h2>Synchronizing threads<a class="headerlink" href="#synchronizing-threads" title="Permalink to this heading">¶</a></h2>
-<p>When you take a consistent backup, you must set the point in time where the backup is going to be taken. If you use multiple threads to take the backup, all of them must to be in the same point in time.
-By default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there are other options.</p>
+<p>When you take a consistent backup, you must set the point in time where the backup is going to be taken. If you use multiple threads to take the backup, all of them must to be in the same point in time. The option <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-sync-thread-lock-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--sync-thread-lock-mode</span></code></a> sets the mode that mydumper can use to keep the threads in sync.</p>
+<section id="flush-table-with-read-lock">
+<h3>FLUSH TABLE WITH READ LOCK<a class="headerlink" href="#flush-table-with-read-lock" title="Permalink to this heading">¶</a></h3>
+<p>By default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there are other options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>FTWRL
+</pre></div>
+</div>
+</section>
 <section id="lock-all-tables">
 <h3>Lock all Tables<a class="headerlink" href="#lock-all-tables" title="Permalink to this heading">¶</a></h3>
-<p>In cases where FLUSH TABLE WITH READ LOCK is not available, we can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-lock-all-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--lock-all-tables</span></code></a> on <strong class="program">mydumper</strong> to lock all the tables that we are going to export.</p>
+<p>In cases where FLUSH TABLE WITH READ LOCK is not available, we can use <cite>LOCK_ALL</cite> to lock all the tables that we are going to export.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>LOCK_ALL
+</pre></div>
+</div>
 </section>
 <section id="no-locks">
 <h3>No Locks<a class="headerlink" href="#no-locks" title="Permalink to this heading">¶</a></h3>
 <p>If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>NO_LOCK
+</pre></div>
+</div>
+</section>
+<section id="using-gtid">
+<h3>Using GTID<a class="headerlink" href="#using-gtid" title="Permalink to this heading">¶</a></h3>
+<p>On Percona Server, we can check the status variable binlog_snapshot_gtid_executed when you execute <cite>START TRANSACTION WITH CONSISTENT SNAPSHOT</cite> to check the GTID position which mydumper uses to determine if all the threads are watching the same point in time of the database.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>GTID
+</pre></div>
+</div>
 </section>
 </section>
-<section id="lock-strategy">
-<h2>Lock strategy<a class="headerlink" href="#lock-strategy" title="Permalink to this heading">¶</a></h2>
-<section id="savepoints">
-<h3>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this heading">¶</a></h3>
-<p>It is possible to use savepoints to reduce metadata locking issues.</p>
-</section>
-<section id="less-locking">
-<h3>Less Locking<a class="headerlink" href="#less-locking" title="Permalink to this heading">¶</a></h3>
-<p>In cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.</p>
-</section>
-<section id="innodb-tables-only">
-<h3>InnoDB tables only<a class="headerlink" href="#innodb-tables-only" title="Permalink to this heading">¶</a></h3>
-<p>In the cases where you are exporting transactional tables only, you should be using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-consistency-only"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-consistency-only</span></code></a>. <strong class="program">mydumper</strong> holds a lock to detect if the tables to dump are transactional, with this options we let it know that it can release it before reduce bloking scenarios.</p>
-</section>
-<section id="tidb-snapshot">
-<h3>TiDB Snapshot<a class="headerlink" href="#tidb-snapshot" title="Permalink to this heading">¶</a></h3>
-<p>In case that you are taking a backup from TiDB, <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-z"><code class="xref std std-option docutils literal notranslate"><span class="pre">--tidb-snapshot</span></code></a> allows you set the snapsnot to be used.</p>
-</section>
+<section id="transactional-tables">
+<h2>Transactional tables<a class="headerlink" href="#transactional-tables" title="Permalink to this heading">¶</a></h2>
+<p>When you have transactional table only, you can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables</span></code></a> which reduces the amount of time we held the global lockings.</p>
 </section>
 <section id="ddl-locks">
 <h2>DDL Locks<a class="headerlink" href="#ddl-locks" title="Permalink to this heading">¶</a></h2>
@@ -304,6 +310,40 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 <h3>Disable Percona Backup Locks<a class="headerlink" href="#disable-percona-backup-locks" title="Permalink to this heading">¶</a></h3>
 <p>On Percona Server 5.7, we have the option <cite>LOCK TABLES FOR BACKUP</cite> which has been replace by <cite>LOCK INSTANCE FOR BACKUP</cite> on Percona Server 8.0. We can disable this DDL locking mechanisim with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-backup-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-backup-locks</span></code></a></p>
 </section>
+<section id="savepoints">
+<h3>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this heading">¶</a></h3>
+<p>It is possible to use savepoints to reduce metadata locking issues.</p>
+</section>
+</section>
+</section>
+<section id="old-lock-modes">
+<h1>Old Lock modes<a class="headerlink" href="#old-lock-modes" title="Permalink to this heading">¶</a></h1>
+<p>As any backup tool, <strong class="program">mydumper</strong> needs to be able to take a consistent backups.
+However, this is not an easy tasks if you have to sync multiple threads.</p>
+<section id="id1">
+<h2>Synchronizing threads<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<p>On version previous to v0.18.1, by default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there was this other options:</p>
+<section id="id2">
+<h3>Lock all Tables<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>This option has been deprecated since v0.18.1, so, in cases where FLUSH TABLE WITH READ LOCK is not available, we can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-lock-all-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--lock-all-tables</span></code></a> on <strong class="program">mydumper</strong> to lock all the tables that we are going to export.</p>
+</section>
+<section id="id3">
+<h3>No Locks<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>This option has been deprecated since v0.18.1. Previously, If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
+</section>
+</section>
+<section id="old-lock-strategy">
+<h2>Old Lock strategy<a class="headerlink" href="#old-lock-strategy" title="Permalink to this heading">¶</a></h2>
+<p>This options has been deprecated</p>
+<section id="less-locking">
+<h3>Less Locking<a class="headerlink" href="#less-locking" title="Permalink to this heading">¶</a></h3>
+<p>This option has been deprecated since v0.18.1 and it was use in cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.</p>
+</section>
+<section id="innodb-tables-only">
+<h3>InnoDB tables only<a class="headerlink" href="#innodb-tables-only" title="Permalink to this heading">¶</a></h3>
+<p>This option has been deprecated since v0.18.1 and it was used in the cases where you are exporting transactional tables only, you should be using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-consistency-only"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-consistency-only</span></code></a>. <strong class="program">mydumper</strong> holds a lock to detect if the tables to dump are transactional, with this options we let it know that it can release it before reduce bloking scenarios.</p>
+</section>
 </section>
 </section>
 
@@ -312,23 +352,23 @@ This option has been modified for Percona Server, as after sending START TRANSAC
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="replication.html">
+          <a class="next-page" href="masquerade.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Replication Options</div>
+                <div class="title">Masquerade</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="stages.html">
+          <a class="prev-page" href="stream.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Backup Stages</div>
+                <div class="title">Stream</div>
                 
               </div>
             </a>
@@ -362,22 +402,32 @@ This option has been modified for Percona Server, as after sending START TRANSAC
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Locks</a><ul>
+<li><a class="reference internal" href="#">New Lock modes</a><ul>
 <li><a class="reference internal" href="#synchronizing-threads">Synchronizing threads</a><ul>
+<li><a class="reference internal" href="#flush-table-with-read-lock">FLUSH TABLE WITH READ LOCK</a></li>
 <li><a class="reference internal" href="#lock-all-tables">Lock all Tables</a></li>
 <li><a class="reference internal" href="#no-locks">No Locks</a></li>
+<li><a class="reference internal" href="#using-gtid">Using GTID</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#lock-strategy">Lock strategy</a><ul>
-<li><a class="reference internal" href="#savepoints">Savepoints</a></li>
-<li><a class="reference internal" href="#less-locking">Less Locking</a></li>
-<li><a class="reference internal" href="#innodb-tables-only">InnoDB tables only</a></li>
-<li><a class="reference internal" href="#tidb-snapshot">TiDB Snapshot</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#transactional-tables">Transactional tables</a></li>
 <li><a class="reference internal" href="#ddl-locks">DDL Locks</a><ul>
 <li><a class="reference internal" href="#disable-ddl-locks">Disable DDL locks</a></li>
 <li><a class="reference internal" href="#disable-percona-backup-locks">Disable Percona Backup Locks</a></li>
+<li><a class="reference internal" href="#savepoints">Savepoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#old-lock-modes">Old Lock modes</a><ul>
+<li><a class="reference internal" href="#id1">Synchronizing threads</a><ul>
+<li><a class="reference internal" href="#id2">Lock all Tables</a></li>
+<li><a class="reference internal" href="#id3">No Locks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#old-lock-strategy">Old Lock strategy</a><ul>
+<li><a class="reference internal" href="#less-locking">Less Locking</a></li>
+<li><a class="reference internal" href="#innodb-tables-only">InnoDB tables only</a></li>
 </ul>
 </li>
 </ul>

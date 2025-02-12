@@ -208,13 +208,17 @@
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="configure.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html">New Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stream.html">Stream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="locks.html">Locks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="replication.html">Replication Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -313,7 +317,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ssl-mode">
 <span class="sig-name descname"><span class="pre">--ssl-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ssl-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY</p>
+<dd><p>Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY</p>
 </dd></dl>
 
 <dl class="std option">
@@ -415,8 +419,19 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-k">
 <span id="cmdoption-no-locks"></span><span class="sig-name descname"><span class="pre">-k</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-k" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not execute the temporary shared read lock.</p>
-<p>WARNING: This will cause inconsistent backups</p>
+<dd><p>This option is deprecated use --sync-thread-lock-mode instead</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-lock-all-tables">
+<span class="sig-name descname"><span class="pre">--lock-all-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lock-all-tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is deprecated use --sync-thread-lock-mode instead</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-sync-thread-lock-mode">
+<span class="sig-name descname"><span class="pre">--sync-thread-lock-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-sync-thread-lock-mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>There are 3 modes that can be use to sync: FTWRL, LOCK_ALL and GTID. If you don't need a consistent backup, use: NO_LOCK. More info <a class="reference external" href="https://mydumper.github.io/mydumper/docs/html/locks.html">https://mydumper.github.io/mydumper/docs/html/locks.html</a>. Default: AUTO which uses the best option depending on the database vendor</p>
 </dd></dl>
 
 <dl class="std option">
@@ -432,21 +447,21 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-lock-all-tables">
-<span class="sig-name descname"><span class="pre">--lock-all-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lock-all-tables" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use LOCK TABLE for all, instead of FTWRL</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-less-locking">
 <span class="sig-name descname"><span class="pre">--less-locking</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-less-locking" title="Permalink to this definition">¶</a></dt>
-<dd><p>Minimize locking time on InnoDB tables.</p>
+<dd><p>This option is deprecated and its behaviour is the default which is useful if you don't have transaction tables. Use --trx-tables otherwise</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-trx-consistency-only">
 <span class="sig-name descname"><span class="pre">--trx-consistency-only</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-trx-consistency-only" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transactional consistency only</p>
+<dd><p>This option is deprecated use --trx-tables instead</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-trx-tables">
+<span class="sig-name descname"><span class="pre">--trx-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-trx-tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>The backup process change if we known that we are exporitng transactional tables only</p>
 </dd></dl>
 
 <dl class="std option">
@@ -546,6 +561,12 @@
 <dt class="sig sig-object std" id="cmdoption-r">
 <span id="cmdoption-rows"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--rows</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-r" title="Permalink to this definition">¶</a></dt>
 <dd><p>Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-rows-hard">
+<span class="sig-name descname"><span class="pre">--rows-hard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-rows-hard" title="Permalink to this definition">¶</a></dt>
+<dd><p>This set the MIN and MAX limit when even if --rows is 0</p>
 </dd></dl>
 
 <dl class="std option">
@@ -824,12 +845,6 @@
 <dd><p>Run SELECT COUNT(*) and fail mydumper if dumped row count is different</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-source-data">
-<span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-data" title="Permalink to this definition">¶</a></dt>
-<dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
-</dd></dl>
-
 </section>
 <section id="daemon-options">
 <h1>Daemon Options<a class="headerlink" href="#daemon-options" title="Permalink to this heading">¶</a></h1>
@@ -881,7 +896,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-stream">
 <span class="sig-name descname"><span class="pre">--stream</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-stream" title="Permalink to this definition">¶</a></dt>
-<dd><p>It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given</p>
+<dd><p>It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1</p>
 </dd></dl>
 
 <dl class="std option">
@@ -894,6 +909,12 @@
 <dt class="sig sig-object std" id="cmdoption-disk-limits">
 <span class="sig-name descname"><span class="pre">--disk-limits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-disk-limits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '&lt;resume&gt;:&lt;pause&gt;' in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-masquerade-filename">
+<span class="sig-name descname"><span class="pre">--masquerade-filename</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-masquerade-filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masquerades the filenames</p>
 </dd></dl>
 
 <dl class="std option">
@@ -936,6 +957,12 @@
 <dt class="sig sig-object std" id="cmdoption-source-control-command">
 <span class="sig-name descname"><span class="pre">--source-control-command</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-control-command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-source-data">
+<span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-data" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
 </dd></dl>
 
 </section>

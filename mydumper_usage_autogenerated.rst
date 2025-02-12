@@ -38,7 +38,7 @@ Connection Options
 
 .. option:: --ssl-mode
 
-  Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+  Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
 
 .. option:: --key
 
@@ -106,9 +106,15 @@ Lock Options
 
 .. option:: -k, --no-locks
 
-  Do not execute the temporary shared read lock.
+  This option is deprecated use --sync-thread-lock-mode instead
 
-  WARNING: This will cause inconsistent backups
+.. option:: --lock-all-tables
+
+  This option is deprecated use --sync-thread-lock-mode instead
+
+.. option:: --sync-thread-lock-mode
+
+  There are 3 modes that can be use to sync: FTWRL, LOCK_ALL and GTID. If you don't need a consistent backup, use: NO_LOCK. More info https://mydumper.github.io/mydumper/docs/html/locks.html. Default: AUTO which uses the best option depending on the database vendor
 
 .. option:: --use-savepoints
 
@@ -118,17 +124,17 @@ Lock Options
 
   Do not use Percona backup locks
 
-.. option:: --lock-all-tables
-
-  Use LOCK TABLE for all, instead of FTWRL
-
 .. option:: --less-locking
 
-  Minimize locking time on InnoDB tables.
+  This option is deprecated and its behaviour is the default which is useful if you don't have transaction tables. Use --trx-tables otherwise
 
 .. option:: --trx-consistency-only
 
-  Transactional consistency only
+  This option is deprecated use --trx-tables instead
+
+.. option:: --trx-tables
+
+  The backup process change if we known that we are exporitng transactional tables only
 
 .. option:: --skip-ddl-locks
 
@@ -195,6 +201,10 @@ Job Options
 .. option:: -r, --rows
 
   Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
+
+.. option:: --rows-hard
+
+  This set the MIN and MAX limit when even if --rows is 0
 
 .. option:: --split-partitions
 
@@ -380,10 +390,6 @@ Extra Options
 
   Run SELECT COUNT(*) and fail mydumper if dumped row count is different
 
-.. option:: --source-data
-
-  It will include the options in the metadata file, to allow myloader to establish replication
-
 Daemon Options
 --------------
 .. option:: -D, --daemon
@@ -418,7 +424,7 @@ Application Options:
 
 .. option:: --stream
 
-  It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+  It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
 
 .. option:: -L, --logfile
 
@@ -427,6 +433,10 @@ Application Options:
 .. option:: --disk-limits
 
   Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '<resume>:<pause>' in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available
+
+.. option:: --masquerade-filename
+
+  Masquerades the filenames
 
 .. option:: -t, --threads
 
@@ -455,4 +465,8 @@ Application Options:
 .. option:: --source-control-command
 
   Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+
+.. option:: --source-data
+
+  It will include the options in the metadata file, to allow myloader to establish replication
 

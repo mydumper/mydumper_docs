@@ -28,13 +28,9 @@ The tools developed in this Project are based on C, GLib and support the client 
    installing
    compiling
    usage
-   exec_per_thread
+   configure
    files
-   stream
    stages
-   locks
-   replication
-   masquerade
    daemon
    examples
    authors

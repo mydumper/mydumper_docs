@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Jan 14, 2025" "" "MyDumper"
+.TH "MYLOADER" "1" "Feb 12, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -77,7 +77,7 @@ Connect using SSL
 .INDENT 0.0
 .TP
 .B \-\-ssl\-mode
-Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -170,7 +170,7 @@ which default will be high
 .INDENT 0.0
 .TP
 .B \-e, \-\-enable\-binlog
-Enable binary logging of the restore data
+Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the \-\-defaults\-file instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -221,12 +221,17 @@ Table recreation will be executed in series, one thread at a time. This means \-
 .INDENT 0.0
 .TP
 .B \-\-stream
-It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3\-1
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-metadata\-refresh\-interval
 Every this amount of tables the internal metadata will be refreshed. If the amount of tables you have in your metadata file is high, then you should increase this value. Default: 100
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-table\-sorting
+Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -348,6 +353,11 @@ When Ctrl+c is pressed it immediately terminates the process
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-mysqldump
+It expect a mysqldump format when stream is used
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-t, \-\-threads
 Number of threads to use, 0 means to use number of CPUs. Default: 4
 .UNINDENT
@@ -380,6 +390,11 @@ Use an additional defaults file. This is loaded after \-\-defaults\-file, replac
 .TP
 .B \-\-source\-control\-command
 Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-data
+It will include the options in the metadata file, to allow myloader to establish replication
 .UNINDENT
 .SH AUTHOR
 David Ducos

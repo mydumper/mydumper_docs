@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Jan 14, 2025" "" "MyDumper"
+.TH "MYDUMPER" "1" "Feb 12, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -77,7 +77,7 @@ Connect using SSL
 .INDENT 0.0
 .TP
 .B \-\-ssl\-mode
-Desired security state of the connection to the server: REQUIRED, VERIFY_IDENTITY
+Desired security state of the connection to the server: DISABLED, PREFERRED, REQUIRED, VERIFY_CA, VERIFY_IDENTITY
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -159,9 +159,17 @@ Snapshot to use for TiDB
 .INDENT 0.0
 .TP
 .B \-k, \-\-no\-locks
-Do not execute the temporary shared read lock.
-.sp
-WARNING: This will cause inconsistent backups
+This option is deprecated use \-\-sync\-thread\-lock\-mode instead
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-lock\-all\-tables
+This option is deprecated use \-\-sync\-thread\-lock\-mode instead
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-sync\-thread\-lock\-mode
+There are 3 modes that can be use to sync: FTWRL, LOCK_ALL and GTID. If you don\(aqt need a consistent backup, use: NO_LOCK. More info \fI\%https://mydumper.github.io/mydumper/docs/html/locks.html\fP\&. Default: AUTO which uses the best option depending on the database vendor
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -175,18 +183,18 @@ Do not use Percona backup locks
 .UNINDENT
 .INDENT 0.0
 .TP
-.B \-\-lock\-all\-tables
-Use LOCK TABLE for all, instead of FTWRL
-.UNINDENT
-.INDENT 0.0
-.TP
 .B \-\-less\-locking
-Minimize locking time on InnoDB tables.
+This option is deprecated and its behaviour is the default which is useful if you don\(aqt have transaction tables. Use \-\-trx\-tables otherwise
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-trx\-consistency\-only
-Transactional consistency only
+This option is deprecated use \-\-trx\-tables instead
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-trx\-tables
+The backup process change if we known that we are exporitng transactional tables only
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -265,6 +273,11 @@ Defines in how many pieces should split the table. By default we use the amount 
 .TP
 .B \-r, \-\-rows
 Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-rows\-hard
+This set the MIN and MAX limit when even if \-\-rows is 0
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -490,11 +503,6 @@ Use defer integer sharding until all non\-integer PK tables processed (saves RSS
 .B \-\-check\-row\-count
 Run SELECT COUNT(*) and fail mydumper if dumped row count is different
 .UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-source\-data
-It will include the options in the metadata file, to allow myloader to establish replication
-.UNINDENT
 .SH DAEMON OPTIONS
 .INDENT 0.0
 .TP
@@ -535,7 +543,7 @@ Overwrite output directory without clearing (beware of leftower chunks)
 .INDENT 0.0
 .TP
 .B \-\-stream
-It will stream over STDOUT once the files has been written. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given
+It will stream over STDOUT once the files has been written. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3\-1
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -546,6 +554,11 @@ Log file name to use, by default stdout is used
 .TP
 .B \-\-disk\-limits
 Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: \(aq<resume>:<pause>\(aq in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-masquerade\-filename
+Masquerades the filenames
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -581,6 +594,11 @@ Use an additional defaults file. This is loaded after \-\-defaults\-file, replac
 .TP
 .B \-\-source\-control\-command
 Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-data
+It will include the options in the metadata file, to allow myloader to establish replication
 .UNINDENT
 .SH AUTHOR
 David Ducos

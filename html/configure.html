@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="mydumper" href="mydumper_usage.html" /><link rel="prev" title="Compiling" href="compiling.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compression and external commands" href="exec_per_thread.html" /><link rel="prev" title="myloader" href="myloader_usage.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Usage - MyDumper documentation</title>
+        <title>Configuration - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -203,12 +203,12 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="configure.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
@@ -258,27 +258,58 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <a class="reference external image-reference" href="index.html" id="mydumper-usage"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
+          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
 <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
-<section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
-<p><strong class="program">mydumper</strong> [<a class="reference internal" href="mydumper_usage.html#mydumper-options-label"><span class="std std-ref">OPTIONS</span></a>]</p>
-<p><strong class="program">myloader</strong> <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">--directory</span></code></a> = /path/to/mydumper/backup [<a class="reference internal" href="myloader_usage.html#myloader-options-label"><span class="std std-ref">OPTIONS</span></a>]</p>
+<section id="configuration">
+<span id="mydumper-configure"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
+<p>We kept the main configuration of MyDumper in /etc/mydumper.cnf by default.</p>
+<section id="defaults-file">
+<h2>--defaults-file<a class="headerlink" href="#defaults-file" title="Permalink to this heading">¶</a></h2>
+<p>We kept relevant configuration in it as you can find sections like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>mydumper<span class="o">]</span>
+<span class="o">[</span>mydumper_session_variables<span class="o">]</span>
+<span class="o">[</span>myloader<span class="o">]</span>
+<span class="o">[</span>myloader_session_variables<span class="o">]</span>
+</pre></div>
+</div>
+<p>Where we kept the defaults when mydumper and myloader is executed and the default session level variables.
+In case of <cite>[myloader_session_variables]</cite> we have this defaults:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>myloader_session_variables<span class="o">]</span>
+<span class="nv">SQL_MODE</span><span class="o">=</span><span class="s1">&#39;NO_AUTO_VALUE_ON_ZERO&#39;</span><span class="w"> </span>/*!40101
+<span class="nv">UNIQUE_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
+<span class="nv">FOREIGN_KEY_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
+</pre></div>
+</div>
+<p>Which is replaced when you connect to MariaDB:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>myloader_session_variables_mariadb<span class="o">]</span>
+<span class="c1"># This setting replaces the default in the section [myloader_session_variables]. More details in #987</span>
+<span class="nv">SQL_MODE</span><span class="o">=</span><span class="s1">&#39;NO_AUTO_VALUE_ON_ZERO&#39;</span><span class="w"> </span>/*!40101
+<span class="nv">UNIQUE_CHECKS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>/*!40114
+<span class="nv">FOREIGN_KEY_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
+</pre></div>
+</div>
 </section>
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p><strong class="program">mydumper</strong> is a tool used for backing up MySQL database servers much
-faster than the mysqldump tool distributed with MySQL. The advantages of <strong class="program">mydumper</strong> are:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Parallelism (hence, speed) and performance (avoids expensive character set conversion routines, efficient code overall)</p></li>
-<li><p>Easier to manage output (separate files for tables, dump metadata, etc, easy to view/parse data)</p></li>
-<li><p>Consistency - maintains snapshot across all threads, provides accurate master and slave log positions, etc</p></li>
-<li><p>Manageability - supports PCRE for specifying database and tables inclusions and exclusions</p></li>
+<section id="defaults-extra-file">
+<h2>--defaults-extra-file<a class="headerlink" href="#defaults-extra-file" title="Permalink to this heading">¶</a></h2>
+<p>We recommend you to use for <code class="code docutils literal notranslate"><span class="pre">[`database`.`table`]</span></code> sections, in which you can add this options:</p>
+<ul class="simple">
+<li><p>where: receives a comparasion compatible with the table definition.</p></li>
+<li><p>limit: which receives a number and forces the select statement to do not read more reads if it reaches the limit.</p></li>
+<li><p>num_threads: Defines the amount of threads that will be used for the table.</p></li>
+<li><p>object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER.</p></li>
+<li><p>columns_on_select: the list of columns in the SELECT statement will be replace by the content of this parameter.</p></li>
+<li><p>columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter.</p></li>
+<li><p>object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER.</p></li>
+<li><p>partition_regex: Defines a regular expression to filter the partitions to export</p></li>
 </ul>
-</div></blockquote>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>column<span class="w"> </span>&gt;<span class="w"> </span><span class="m">20</span>
+<span class="nv">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
+<span class="nv">object_to_export</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SCHEMA
+<span class="nv">columns_on_select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price+20
+<span class="nv">columns_on_insert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -289,23 +320,23 @@ faster than the mysqldump tool distributed with MySQL. The advantages of <strong
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="mydumper_usage.html">
+          <a class="next-page" href="exec_per_thread.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">mydumper</div>
+                <div class="title">Compression and external commands</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="compiling.html">
+          <a class="prev-page" href="myloader_usage.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Compiling</div>
+                <div class="title">myloader</div>
                 
               </div>
             </a>
@@ -339,9 +370,9 @@ faster than the mysqldump tool distributed with MySQL. The advantages of <strong
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Usage</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#defaults-file">--defaults-file</a></li>
+<li><a class="reference internal" href="#defaults-extra-file">--defaults-extra-file</a></li>
 </ul>
 </li>
 </ul>
