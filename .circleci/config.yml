@@ -4,6 +4,25 @@ version: 2.1
 orbs:
   capture-tag: rvla/capture-tag@0.0.2
 jobs:
+  make-docs:
+    docker:
+      - image: mydumper/mydumper-builder-focal
+    steps:
+    - run:
+        command: |
+          git config --global user.name "David Ducos"
+          git config --global user.email "david.ducos@gmail.com"
+          git clone https://github.com/mydumper/mydumper_docs.git mydumper_docs
+          cd mydumper_docs/
+          sudo apt-get update
+          sudo apt-get install pip sphinx-common
+          pip install furo sphinx_copybutton sphinx-inline-tabs
+          cmake .
+          make clean
+          make
+          # git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
+          git commit -am "[skip ci] Auto updated submodule references" && git push
+
   publish-docs:
     docker:
       - image: mydumper/mydumper-builder-noble
@@ -28,25 +47,7 @@ jobs:
           #          cmake . && make
           #          git commit -am "[skip ci] Auto updated  references" && git push
 
-jobs:
-  make-docs:
-    docker:
-      - image: mydumper/mydumper-builder-focal
-    steps:
-    - run:
-        command: |
-          git config --global user.name "David Ducos"
-          git config --global user.email "david.ducos@gmail.com"
-          git clone https://github.com/mydumper/mydumper_docs.git mydumper_docs
-          cd mydumper_docs/
-          sudo apt-get update
-          sudo apt-get install pip sphinx-common
-          pip install furo sphinx_copybutton sphinx-inline-tabs
-          cmake .
-          make clean
-          make
-          # git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
-          git commit -am "[skip ci] Auto updated submodule references" && git push
+
 
 
 workflows:
