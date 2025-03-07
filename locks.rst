@@ -104,7 +104,7 @@ This options has been deprecated
 Less Locking
 ------------
 
-This option has been deprecated since v0.18.1 and it was use in cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.
+This option has been deprecated since v0.18.1 and it was used in cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.
 
 InnoDB tables only
 ------------------

@@ -11,25 +11,33 @@ In today's data-driven world, the need for data privacy and security has never b
 Basic Functions
 ---------------
 
-The nexts functions doesn't receive any parameter and replaces the content of the column.
+Since v0.18.1-1, the basic functions %_with_mem has been removed and the remaining random_string, random_int and random_uuid receives the sames parameters:
 
-random_string / random_string_with_mem
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+random_string
+^^^^^^^^^^^^^
 
-It replaces the characters in the string. It doesn't alter the size of the string.
-When random_string_with_mem is used, it keeps in memory to replace with same contents, for instance, if it has replaced "AAA" with "BBB", on other rows with "AAA", it will replace it with "BBB". 
+It replaces the characters in the string. 
 
-random_int / random_int_with_mem
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+random_int
+^^^^^^^^^^
 
 It replaces the digits on the numeric value. It doesn't alter the length of the number but could be 0 at the begining.
-When random_int_with_mem is used, it keeps in memory to replace with same contents, for instance, if it has replaced 111 with 222, on other rows with 111, it will replace it with 222.
 
-random_uuid / random_uuid_with_mem
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+random_uuid
+^^^^^^^^^^^
 
 If MyDumper has been compiled with GLIB version higher than 2.52, it will use `g_uuid_string_random <https://docs.gtk.org/glib/func.uuid_string_random.html>`_ on other cases it will replaces with alphanumeric values the character that are not equal to '-'.
-When random_uuid_with_mem is used, it keeps in memory to replace with same UUID.
+
+Options
+^^^^^^^
+
+**WITH_MEM**: It keeps in memory to replace with same contents, for instance, if it has replaced "AAA" with "BBB", on other rows with "AAA", it will replace it with "BBB".
+
+**REPLACE_NULL**: When the column has a NULL value, it will return a value. If this option is not used, it will return NULL. It recieves an integer as parameter which will determine the size of the new value.
+
+**UNIQUE**: It keeps record of the value that has been used and it will not repeat the same value twice, making it unique for each row.
+
+**MAX_LENGTH**: This setting set the max length of the return value, when the value is not NULL.
 
 Advance
 -------
@@ -39,14 +47,15 @@ The nexts functions receives parameter that needs to be parsed.
 random_format
 ^^^^^^^^^^^^^
 
-The parameter of this funtion is parsed. It expected 3 kinds of tags: file, string and number. You can also use other character between the tags, for example:
+The parameter of this funtion is parsed. It expected 4 kinds of tags: file, string, number and regex. You can also use other character between the tags, for example:
 
 .. code-block::  bash
 
   `pad`=random_format <file words_alpha.txt.100>-<file words_alpha.txt.100>-<file words_alpha.txt.100>-<file words_alpha.txt.100>-<file words_alpha.txt.100>
-  `pad`=random_format <number 9>-<number 9>-<number 9>-<number 9>-<number 9>  
+  `pad`=random_format <number 9>-<number 9>-<number 9>-<number 9>-<number 9>
+  `phone_number`=random_format <regex '.{4}$'><number 4>
 
-The size of the number or the string is specified after the tag name.
+The size of tags number or string is specified after the tag name.
 
 apply
 ^^^^^
