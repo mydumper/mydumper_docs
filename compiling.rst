@@ -6,114 +6,76 @@ Compiling
 Requirements
 ------------
 
-Development Tools
-^^^^^^^^^^^^^^^^^
+Development dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-MyDumper requires the following development tools before it can be compiled:
+MyDumper requires the following development tools and libraries before it can be compiled:
 
-Ubuntu/Debian
-~~~~~~~~~~~~~
+.. tab:: Ubuntu/Debian
 
-.. code-block::  bash
+    .. code-block::  bash
 
-  apt-get install cmake g++ git
+        apt-get install cmake g++ git
+        apt-get install libglib2.0-dev libpcre3-dev libssl-dev
 
-Fedora/Redhat/CentOS
-~~~~~~~~~~~~~~~~~~~~
+.. tab:: Fedora/Redhat/CentOS
 
-.. code-block::  bash
+    .. code-block:: bash
 
-  yum install -y cmake gcc gcc-c++ git make
+        yum install -y cmake gcc gcc-c++ git make
+        yum install glib2-devel pcre-devel openssl-devel
 
+.. tab:: Mac OSX
 
-Mac OSX
-~~~~~~~
+    for MacOS <= 10.13 (High Sierra) < 13 (Ventura) with MacPorts package manager:
 
-for MacOS <= 10.13 (High Sierra) < 13 (Ventura) with MacPorts package manager:
+    .. code-block:: bash
 
-.. code-block::  bash
+        sudo port install cmake pkgconfig
+        sudo port install glib2 pcre
 
-  sudo port install cmake pkgconfig
+.. tab:: OpenSUSE
 
+    .. code-block:: bash
 
-
-Additionally the following packages are optional:
-
- * `python-sphinx <https://www.sphinx-doc.org/>`_ (for documentation)
-
-Development Libraries
-^^^^^^^^^^^^^^^^^^^^^
-
-Ubuntu/Debian
-~~~~~~~~~~~~~
-
-.. code-block::  bash
-
-   apt-get install libglib2.0-dev libpcre3-dev libssl-dev
-
-Fedora/Redhat/CentOS
-~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-   yum install glib2-devel pcre-devel openssl-devel
-
-OpenSUSE
-~~~~~~~~
-
-.. code-block:: bash
-
-   zypper install glib2-devel pcre-devel
-
-Mac OSX
-~~~~~~~
-
-.. code-block:: bash
-
-   port install glib2 pcre
+        zypper install glib2-devel pcre-devel
 
 MySQL/Percona/MariaDB development libraries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You need to select one vendor development library.
 
+.. tab:: Ubuntu/Debian
 
-Ubuntu/Debian
-~~~~~~~~~~~~~
+    .. code-block::  bash
 
-.. code-block::  bash
-
-  apt-get install libmysqlclient-dev
-  apt-get install libperconaserverclient20-dev
-  apt-get install libmariadbclient-dev
+        apt-get install libmysqlclient-dev
+        apt-get install libperconaserverclient20-dev
+        apt-get install libmariadbclient-dev
 
 
-Fedora/Redhat/CentOS
-~~~~~~~~~~~~~~~~~~~~
+.. tab:: Fedora/Redhat/CentOS
 
-.. code-block:: bash
+    .. code-block:: bash
 
-  yum install -y mysql-devel
-  yum install -y Percona-Server-devel-57
-  yum install -y mariadb-devel
+        yum install -y mysql-devel
+        yum install -y Percona-Server-devel-57
+        yum install -y mariadb-devel
 
-OpenSUSE
-~~~~~~~~
+.. tab:: Mac OSX
 
-.. code-block:: bash
+    MacOS <= 10.13 (High Sierra) < 13 (Ventura) with MacPorts package manager
 
-  zypper install libmysqlclient-devel
+    .. code-block:: bash
 
-Mac OSX
-~~~~~~~
+        sudo port install mariadb-10.11
+        sudo port select mysql
+        
+.. tab:: OpenSUSE
 
-MacOS <= 10.13 (High Sierra) < 13 (Ventura) with MacPorts package manager
+    .. code-block:: bash
 
-
-.. code-block:: bash
-
-  sudo port install mariadb-10.11
-  sudo port select mysql
+        zypper install libmysqlclient-devel
 
 CMake
 -----
@@ -123,7 +85,6 @@ CMake is used for MyDumper's build system and is executed as follows::
   cmake .
   make
   sudo make install
-
 
 You can optionally provide parameters for CMake, the possible options are:
 

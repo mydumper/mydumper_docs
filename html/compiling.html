@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Compiling - MyDumper documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
@@ -264,95 +264,67 @@
 <h1>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading">¶</a></h1>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
-<section id="development-tools">
-<h3>Development Tools<a class="headerlink" href="#development-tools" title="Permalink to this heading">¶</a></h3>
-<p>MyDumper requires the following development tools before it can be compiled:</p>
-<section id="ubuntu-debian">
-<h4>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this heading">¶</a></h4>
+<section id="development-dependencies">
+<h3>Development dependencies<a class="headerlink" href="#development-dependencies" title="Permalink to this heading">¶</a></h3>
+<p>MyDumper requires the following development tools and libraries before it can be compiled:</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>g++<span class="w"> </span>git
+apt-get<span class="w"> </span>install<span class="w"> </span>libglib2.0-dev<span class="w"> </span>libpcre3-dev<span class="w"> </span>libssl-dev
 </pre></div>
 </div>
-</section>
-<section id="fedora-redhat-centos">
-<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Permalink to this heading">¶</a></h4>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>git<span class="w"> </span>make
+yum<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel<span class="w"> </span>openssl-devel
 </pre></div>
 </div>
-</section>
-<section id="mac-osx">
-<h4>Mac OSX<a class="headerlink" href="#mac-osx" title="Permalink to this heading">¶</a></h4>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Mac OSX</label><div class="tab-content docutils container">
 <p>for MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>pkgconfig
+sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>glib2<span class="w"> </span>pcre
 </pre></div>
 </div>
-<p>Additionally the following packages are optional:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="https://www.sphinx-doc.org/">python-sphinx</a> (for documentation)</p></li>
-</ul>
-</div></blockquote>
-</section>
-</section>
-<section id="development-libraries">
-<h3>Development Libraries<a class="headerlink" href="#development-libraries" title="Permalink to this heading">¶</a></h3>
-<section id="id1">
-<h4>Ubuntu/Debian<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>libglib2.0-dev<span class="w"> </span>libpcre3-dev<span class="w"> </span>libssl-dev
-</pre></div>
 </div>
-</section>
-<section id="id2">
-<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel<span class="w"> </span>openssl-devel
-</pre></div>
-</div>
-</section>
-<section id="opensuse">
-<h4>OpenSUSE<a class="headerlink" href="#opensuse" title="Permalink to this heading">¶</a></h4>
+<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">OpenSUSE</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel
 </pre></div>
 </div>
-</section>
-<section id="id3">
-<h4>Mac OSX<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>port<span class="w"> </span>install<span class="w"> </span>glib2<span class="w"> </span>pcre
-</pre></div>
 </div>
-</section>
+</div>
 </section>
 <section id="mysql-percona-mariadb-development-libraries">
 <h3>MySQL/Percona/MariaDB development libraries<a class="headerlink" href="#mysql-percona-mariadb-development-libraries" title="Permalink to this heading">¶</a></h3>
 <p>You need to select one vendor development library.</p>
-<section id="id4">
-<h4>Ubuntu/Debian<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>libmysqlclient-dev
 apt-get<span class="w"> </span>install<span class="w"> </span>libperconaserverclient20-dev
 apt-get<span class="w"> </span>install<span class="w"> </span>libmariadbclient-dev
 </pre></div>
 </div>
-</section>
-<section id="id5">
-<h4>Fedora/Redhat/CentOS<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-devel
 yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>Percona-Server-devel-57
 yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-devel
 </pre></div>
 </div>
-</section>
-<section id="id6">
-<h4>OpenSUSE<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>libmysqlclient-devel
-</pre></div>
 </div>
-</section>
-<section id="id7">
-<h4>Mac OSX<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">Mac OSX</label><div class="tab-content docutils container">
 <p>MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>mariadb-10.11
 sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</span><span class="w"> </span>mysql
 </pre></div>
 </div>
-</section>
+</div>
+<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--4">OpenSUSE</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>libmysqlclient-devel
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="cmake">
@@ -433,26 +405,8 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
             <ul>
 <li><a class="reference internal" href="#">Compiling</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a><ul>
-<li><a class="reference internal" href="#development-tools">Development Tools</a><ul>
-<li><a class="reference internal" href="#ubuntu-debian">Ubuntu/Debian</a></li>
-<li><a class="reference internal" href="#fedora-redhat-centos">Fedora/Redhat/CentOS</a></li>
-<li><a class="reference internal" href="#mac-osx">Mac OSX</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#development-libraries">Development Libraries</a><ul>
-<li><a class="reference internal" href="#id1">Ubuntu/Debian</a></li>
-<li><a class="reference internal" href="#id2">Fedora/Redhat/CentOS</a></li>
-<li><a class="reference internal" href="#opensuse">OpenSUSE</a></li>
-<li><a class="reference internal" href="#id3">Mac OSX</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#mysql-percona-mariadb-development-libraries">MySQL/Percona/MariaDB development libraries</a><ul>
-<li><a class="reference internal" href="#id4">Ubuntu/Debian</a></li>
-<li><a class="reference internal" href="#id5">Fedora/Redhat/CentOS</a></li>
-<li><a class="reference internal" href="#id6">OpenSUSE</a></li>
-<li><a class="reference internal" href="#id7">Mac OSX</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#development-dependencies">Development dependencies</a></li>
+<li><a class="reference internal" href="#mysql-percona-mariadb-development-libraries">MySQL/Percona/MariaDB development libraries</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cmake">CMake</a></li>
