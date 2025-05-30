@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mydumper/mydumper_docs/tree/main.svg?style=svg)](https://circleci.com/gh/mydumper/mydumper_docs/tree/main)
+
 Build
 -----
 I'm currently using Ubuntu Jammy
