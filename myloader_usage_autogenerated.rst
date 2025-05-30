@@ -121,9 +121,13 @@ Execution Options
 
 .. option:: -e, --enable-binlog
 
-  Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the --defaults-file instead
+  This option is discouraged. Use [myloader_session_variables] in the --defaults-file or --defaults-extra-file instead
 
 .. option:: --innodb-optimize-keys
+
+  Option --innodb-optimize-keys is deprecated use --optimize-keys instead
+
+.. option:: --optimize-keys
 
   Creates the table without the indexes unless SKIP is selected.
   Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
@@ -171,10 +175,6 @@ Execution Options
 .. option:: --skip-table-sorting
 
   Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables
-
-.. option:: --ignore-errors
-
-  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
 
 .. option:: --set-gtid-purged
 
@@ -234,6 +234,17 @@ Statement Options
 
   List of variables that will be ignored from the header of SET
 
+Load from metadata Options
+--------------------------
+
+.. option:: -Q, --quote-character
+
+  Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, " for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
+
+.. option:: --local-infile
+
+  Enables the ability to use the 'LOAD DATA LOCAL INFILE' statementDefault: detect from metadata file if possible, otherwise is disabled
+
 Application Options:
 --------------------
 
@@ -256,10 +267,6 @@ Application Options:
 .. option:: -B, --database
 
   An alternative database to restore into
-
-.. option:: -Q, --quote-character
-
-  Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, " for double quote. Default: detect from dump if possible, otherwise BACKTICK
 
 .. option:: --show-warnings
 
@@ -293,6 +300,10 @@ Application Options:
 
   Turn on debugging output (automatically sets verbosity to 3)
 
+.. option:: --ignore-errors
+
+  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+
 .. option:: --defaults-file
 
   Use a specific defaults file. Default: /etc/mydumper.cnf
@@ -305,6 +316,14 @@ Application Options:
 
   Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
 
+.. option:: --optimize-keys-engines
+
+  List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB
+
 .. option:: --source-data
 
   It will include the options in the metadata file, to allow myloader to establish replication
+
+.. option:: --throttle
+
+  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads

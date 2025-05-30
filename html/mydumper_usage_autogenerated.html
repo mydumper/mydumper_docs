@@ -546,15 +546,9 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-char-deep">
-<span class="sig-name descname"><span class="pre">--char-deep</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-deep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the amount of characters to use when the primary key is a string</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-char-chunk">
-<span class="sig-name descname"><span class="pre">--char-chunk</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-char-chunk" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines in how many pieces should split the table. By default we use the amount of threads</p>
+<dt class="sig sig-object std" id="cmdoption-use-single-column">
+<span class="sig-name descname"><span class="pre">--use-single-column</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-use-single-column" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will ignore if the table has multiple columns and use only the first column to split the table</p>
 </dd></dl>
 
 <dl class="std option">
@@ -782,6 +776,12 @@
 <dd><p>Sets the names, use it at your own risk, default binary</p>
 </dd></dl>
 
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-table-engine-for-view-dependency">
+<span class="sig-name descname"><span class="pre">--table-engine-for-view-dependency</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-table-engine-for-view-dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table engine to be use for the CREATE TABLE statement for temporary tables when using views</p>
+</dd></dl>
+
 </section>
 <section id="extra-options">
 <h1>Extra Options<a class="headerlink" href="#extra-options" title="Permalink to this heading">¶</a></h1>
@@ -830,7 +830,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-c">
 <span id="cmdoption-compress"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--compress</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP</p>
+<dd><p>Compress output files using: gzip and zstd. Options: gzip and zstd. Default: gzip. On future releases the default will be zstd</p>
 </dd></dl>
 
 <dl class="std option">
@@ -894,6 +894,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-merge">
+<span class="sig-name descname"><span class="pre">--merge</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge the metadata with preious backup and overwrite output directory without clearing (beware of leftower chunks)</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-stream">
 <span class="sig-name descname"><span class="pre">--stream</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-stream" title="Permalink to this definition">¶</a></dt>
 <dd><p>It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1</p>
@@ -942,6 +948,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ignore-errors">
+<span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ignore-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-defaults-file">
 <span class="sig-name descname"><span class="pre">--defaults-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-defaults-file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use a specific defaults file. Default: /etc/mydumper.cnf</p>
@@ -960,9 +972,21 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-keys-engines">
+<span class="sig-name descname"><span class="pre">--optimize-keys-engines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-optimize-keys-engines" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-source-data">
 <span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-data" title="Permalink to this definition">¶</a></dt>
 <dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-throttle">
+<span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-throttle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>

@@ -434,12 +434,18 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-e">
 <span id="cmdoption-enable-binlog"></span><span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--enable-binlog</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the --defaults-file instead</p>
+<dd><p>This option is discouraged. Use [myloader_session_variables] in the --defaults-file or --defaults-extra-file instead</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-innodb-optimize-keys">
 <span class="sig-name descname"><span class="pre">--innodb-optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-innodb-optimize-keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option --innodb-optimize-keys is deprecated use --optimize-keys instead</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-keys">
+<span class="sig-name descname"><span class="pre">--optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-optimize-keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the table without the indexes unless SKIP is selected.
 Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
 </dd></dl>
@@ -508,12 +514,6 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dt class="sig sig-object std" id="cmdoption-skip-table-sorting">
 <span class="sig-name descname"><span class="pre">--skip-table-sorting</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-table-sorting" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-ignore-errors">
-<span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ignore-errors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
 </dd></dl>
 
 <dl class="std option">
@@ -601,6 +601,21 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 </dd></dl>
 
 </section>
+<section id="load-from-metadata-options">
+<h1>Load from metadata Options<a class="headerlink" href="#load-from-metadata-options" title="Permalink to this heading">¶</a></h1>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-Q">
+<span id="cmdoption-quote-character"></span><span class="sig-name descname"><span class="pre">-Q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, &quot; for double quote. Default: detect from metadata file if possible, otherwise BACKTICK</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-local-infile">
+<span class="sig-name descname"><span class="pre">--local-infile</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-local-infile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the ability to use the 'LOAD DATA LOCAL INFILE' statementDefault: detect from metadata file if possible, otherwise is disabled</p>
+</dd></dl>
+
+</section>
 <section id="application-options">
 <h1>Application Options:<a class="headerlink" href="#application-options" title="Permalink to this heading">¶</a></h1>
 <dl class="std option">
@@ -631,12 +646,6 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dt class="sig sig-object std" id="cmdoption-B">
 <span id="cmdoption-database"></span><span class="sig-name descname"><span class="pre">-B</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-B" title="Permalink to this definition">¶</a></dt>
 <dd><p>An alternative database to restore into</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-Q">
-<span id="cmdoption-quote-character"></span><span class="sig-name descname"><span class="pre">-Q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-Q" title="Permalink to this definition">¶</a></dt>
-<dd><p>Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, &quot; for double quote. Default: detect from dump if possible, otherwise BACKTICK</p>
 </dd></dl>
 
 <dl class="std option">
@@ -688,6 +697,12 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ignore-errors">
+<span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ignore-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-defaults-file">
 <span class="sig-name descname"><span class="pre">--defaults-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-defaults-file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use a specific defaults file. Default: /etc/mydumper.cnf</p>
@@ -706,9 +721,21 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-keys-engines">
+<span class="sig-name descname"><span class="pre">--optimize-keys-engines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-optimize-keys-engines" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-source-data">
 <span class="sig-name descname"><span class="pre">--source-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-source-data" title="Permalink to this definition">¶</a></dt>
 <dd><p>It will include the options in the metadata file, to allow myloader to establish replication</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-throttle">
+<span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-throttle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>

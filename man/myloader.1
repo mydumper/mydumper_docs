@@ -170,11 +170,16 @@ which default will be high
 .INDENT 0.0
 .TP
 .B \-e, \-\-enable\-binlog
-Enable binary logging of the restore data. This option is deprecated and will be removed in the next release. Use [myloader_session_variables] in the \-\-defaults\-file instead
+This option is discouraged. Use [myloader_session_variables] in the \-\-defaults\-file or \-\-defaults\-extra\-file instead
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-innodb\-optimize\-keys
+Option \-\-innodb\-optimize\-keys is deprecated use \-\-optimize\-keys instead
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-optimize\-keys
 Creates the table without the indexes unless SKIP is selected.
 Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 .UNINDENT
@@ -232,11 +237,6 @@ Every this amount of tables the internal metadata will be refreshed. If the amou
 .TP
 .B \-\-skip\-table\-sorting
 Starting with largest table is better, but this can be ignored due performance impact when you have high amount of tables
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-ignore\-errors
-Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -305,6 +305,17 @@ Removes DEFINER from the CREATE statement. By default, statements are not modifi
 .B \-\-ignore\-set
 List of variables that will be ignored from the header of SET
 .UNINDENT
+.SH LOAD FROM METADATA OPTIONS
+.INDENT 0.0
+.TP
+.B \-Q, \-\-quote\-character
+Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, \(dq for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-local\-infile
+Enables the ability to use the \(aqLOAD DATA LOCAL INFILE\(aq statementDefault: detect from metadata file if possible, otherwise is disabled
+.UNINDENT
 .SH APPLICATION OPTIONS:
 .INDENT 0.0
 .TP
@@ -330,11 +341,6 @@ Directory where the FIFO files will be created when needed. Default: Same as bac
 .TP
 .B \-B, \-\-database
 An alternative database to restore into
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-Q, \-\-quote\-character
-Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, \(dq for double quote. Default: detect from dump if possible, otherwise BACKTICK
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -378,6 +384,11 @@ Turn on debugging output (automatically sets verbosity to 3)
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-ignore\-errors
+Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-\-defaults\-file
 Use a specific defaults file. Default: /etc/mydumper.cnf
 .UNINDENT
@@ -393,8 +404,18 @@ Instruct the proper commands to execute depending where are configuring the repl
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-optimize\-keys\-engines
+List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-\-source\-data
 It will include the options in the metadata file, to allow myloader to establish replication
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-throttle
+Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 .UNINDENT
 .SH AUTHOR
 David Ducos

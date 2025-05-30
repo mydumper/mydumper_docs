@@ -190,13 +190,9 @@ Job Options
 
   Maximum number of threads per table to use
 
-.. option:: --char-deep
+.. option:: --use-single-column
 
-  Defines the amount of characters to use when the primary key is a string
-
-.. option:: --char-chunk
-
-  Defines in how many pieces should split the table. By default we use the amount of threads
+  It will ignore if the table has multiple columns and use only the first column to split the table
 
 .. option:: -r, --rows
 
@@ -348,6 +344,10 @@ Statement Options
 
   Sets the names, use it at your own risk, default binary
 
+.. option:: --table-engine-for-view-dependency
+
+  Table engine to be use for the CREATE TABLE statement for temporary tables when using views
+
 Extra Options
 -------------
 .. option:: -F, --chunk-filesize
@@ -380,7 +380,7 @@ Extra Options
 
 .. option:: -c, --compress
 
-  Compress output files using: /usr/bin/gzip and /usr/bin/zstd. Options: GZIP and ZSTD. Default: GZIP
+  Compress output files using: gzip and zstd. Options: gzip and zstd. Default: gzip. On future releases the default will be zstd
 
 .. option:: --use-defer
 
@@ -422,6 +422,10 @@ Application Options:
 
   Overwrite output directory without clearing (beware of leftower chunks)
 
+.. option:: --merge
+
+  Merge the metadata with preious backup and overwrite output directory without clearing (beware of leftower chunks)
+
 .. option:: --stream
 
   It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
@@ -454,6 +458,10 @@ Application Options:
 
   Turn on debugging output (automatically sets verbosity to 3)
 
+.. option:: --ignore-errors
+
+  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+
 .. option:: --defaults-file
 
   Use a specific defaults file. Default: /etc/mydumper.cnf
@@ -466,7 +474,15 @@ Application Options:
 
   Instruct the proper commands to execute depending where are configuring the replication. Options: TRADITIONAL, AWS
 
+.. option:: --optimize-keys-engines
+
+  List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB
+
 .. option:: --source-data
 
   It will include the options in the metadata file, to allow myloader to establish replication
+
+.. option:: --throttle
+
+  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 
