@@ -134,7 +134,7 @@ Lock Options
 
 .. option:: --trx-tables
 
-  The backup process change if we known that we are exporitng transactional tables only
+  The backup process changes if we know that we are exporting transactional tables only
 
 .. option:: --skip-ddl-locks
 
