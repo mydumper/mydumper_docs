@@ -12,6 +12,10 @@ Connection Options
 
   User password
 
+.. option:: --default-connection-database
+
+  Set the database name to connect to. Default: INFORMATION_SCHEMA
+
 .. option:: -a, --ask-password
 
   Prompt For User password
@@ -196,7 +200,7 @@ Job Options
 
 .. option:: -r, --rows
 
-  Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
+  Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
 
 .. option:: --rows-hard
 
@@ -204,7 +208,7 @@ Job Options
 
 .. option:: --split-partitions
 
-  Dump partitions into separate files. This options overrides the --rows option for partitioned tables.
+  Dump partitions into separate files. This option overrides the --rows option for partitioned tables.
 
 Checksum Options
 ----------------
@@ -248,7 +252,7 @@ Objects Options
 
 .. option:: -R, --routines
 
-  Dump stored procedures and functions. By default, it do not dump stored procedures nor functions
+  Dump stored procedures and functions. By default, it does not dump stored procedures nor functions
 
 .. option:: --skip-constraints
 
@@ -294,15 +298,15 @@ Statement Options
 
 .. option:: --fields-escaped-by
 
-  Single character that is going to be used to escape characters in theLOAD DATA stament, default: ''
+  Single character that is going to be used to escape characters in theLOAD DATA statement, default: ''
 
 .. option:: --lines-starting-by
 
-  Adds the string at the begining of each row. When --load-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+  Adds the string at the beginning of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 
 .. option:: --lines-terminated-by
 
-  Adds the string at the end of each row. When --load-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+  Adds the string at the end of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 
 .. option:: --statement-terminated-by
 
@@ -346,7 +350,7 @@ Statement Options
 
 .. option:: --table-engine-for-view-dependency
 
-  Table engine to be use for the CREATE TABLE statement for temporary tables when using views
+  Table engine to be used for the CREATE TABLE statement for temporary tables when using views
 
 Extra Options
 -------------
@@ -424,7 +428,7 @@ Application Options:
 
 .. option:: --merge
 
-  Merge the metadata with preious backup and overwrite output directory without clearing (beware of leftower chunks)
+  Merge the metadata with previous backup and overwrite output directory without clearing (beware of leftower chunks)
 
 .. option:: --stream
 
@@ -436,15 +440,23 @@ Application Options:
 
 .. option:: --disk-limits
 
-  Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '<resume>:<pause>' in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available
+  Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '<resume>:<pause>' in MB.For instance: 100:500 will pause when there is only 100MB free and will resume if 500MB are available
 
 .. option:: --masquerade-filename
 
   Masquerades the filenames
 
+.. option:: --ftwrl-max-wait-time
+
+  Sets the max time that we are going to wait before kill the FLUSH TABLES related commands. Default: 60
+
+.. option:: --ftwrl-timeout-retries
+
+  Sets the amount of retries before give up acquiring FLUSH TABLES. Default: 0, never gives up.
+
 .. option:: -t, --threads
 
-  Number of threads to use, 0 means to use number of CPUs. Default: 4
+  Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
 
 .. option:: -V, --version
 
@@ -460,7 +472,7 @@ Application Options:
 
 .. option:: --ignore-errors
 
-  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+  Not increment error count and Warning instead of Critical in case of any of the comma-separated error number list
 
 .. option:: --defaults-file
 
@@ -484,5 +496,5 @@ Application Options:
 
 .. option:: --throttle
 
-  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 

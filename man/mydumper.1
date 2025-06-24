@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Jun 02, 2025" "" "MyDumper"
+.TH "MYDUMPER" "1" "Jun 24, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -43,6 +43,11 @@ Username with the necessary privileges
 .TP
 .B \-p, \-\-password
 User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-default\-connection\-database
+Set the database name to connect to. Default: INFORMATION_SCHEMA
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -267,7 +272,7 @@ It will ignore if the table has multiple columns and use only the first column t
 .INDENT 0.0
 .TP
 .B \-r, \-\-rows
-Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
+Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -277,7 +282,7 @@ This set the MIN and MAX limit when even if \-\-rows is 0
 .INDENT 0.0
 .TP
 .B \-\-split\-partitions
-Dump partitions into separate files. This options overrides the \-\-rows option for partitioned tables.
+Dump partitions into separate files. This option overrides the \-\-rows option for partitioned tables.
 .UNINDENT
 .SH CHECKSUM OPTIONS
 .INDENT 0.0
@@ -329,7 +334,7 @@ Dump events. By default, it do not dump events
 .INDENT 0.0
 .TP
 .B \-R, \-\-routines
-Dump stored procedures and functions. By default, it do not dump stored procedures nor functions
+Dump stored procedures and functions. By default, it does not dump stored procedures nor functions
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -385,17 +390,17 @@ Defines the character to enclose fields. Default: \(dq
 .INDENT 0.0
 .TP
 .B \-\-fields\-escaped\-by
-Single character that is going to be used to escape characters in theLOAD DATA stament, default: \(aq\(aq
+Single character that is going to be used to escape characters in theLOAD DATA statement, default: \(aq\(aq
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lines\-starting\-by
-Adds the string at the begining of each row. When \-\-load\-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+Adds the string at the beginning of each row. When \-\-load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lines\-terminated\-by
-Adds the string at the end of each row. When \-\-load\-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.
+Adds the string at the end of each row. When \-\-load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -450,7 +455,7 @@ Sets the names, use it at your own risk, default binary
 .INDENT 0.0
 .TP
 .B \-\-table\-engine\-for\-view\-dependency
-Table engine to be use for the CREATE TABLE statement for temporary tables when using views
+Table engine to be used for the CREATE TABLE statement for temporary tables when using views
 .UNINDENT
 .SH EXTRA OPTIONS
 .INDENT 0.0
@@ -543,7 +548,7 @@ Overwrite output directory without clearing (beware of leftower chunks)
 .INDENT 0.0
 .TP
 .B \-\-merge
-Merge the metadata with preious backup and overwrite output directory without clearing (beware of leftower chunks)
+Merge the metadata with previous backup and overwrite output directory without clearing (beware of leftower chunks)
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -558,7 +563,7 @@ Log file name to use, by default stdout is used
 .INDENT 0.0
 .TP
 .B \-\-disk\-limits
-Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: \(aq<resume>:<pause>\(aq in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available
+Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: \(aq<resume>:<pause>\(aq in MB.For instance: 100:500 will pause when there is only 100MB free and will resume if 500MB are available
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -567,8 +572,18 @@ Masquerades the filenames
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-ftwrl\-max\-wait\-time
+Sets the max time that we are going to wait before kill the FLUSH TABLES related commands. Default: 60
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-ftwrl\-timeout\-retries
+Sets the amount of retries before give up acquiring FLUSH TABLES. Default: 0, never gives up.
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-t, \-\-threads
-Number of threads to use, 0 means to use number of CPUs. Default: 4
+Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -588,7 +603,7 @@ Turn on debugging output (automatically sets verbosity to 3)
 .INDENT 0.0
 .TP
 .B \-\-ignore\-errors
-Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+Not increment error count and Warning instead of Critical in case of any of the comma\-separated error number list
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -618,7 +633,7 @@ It will include the options in the metadata file, to allow myloader to establish
 .INDENT 0.0
 .TP
 .B \-\-throttle
-Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 .UNINDENT
 .SH AUTHOR
 David Ducos

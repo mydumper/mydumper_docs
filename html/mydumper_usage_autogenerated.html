@@ -279,6 +279,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-default-connection-database">
+<span class="sig-name descname"><span class="pre">--default-connection-database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-default-connection-database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the database name to connect to. Default: INFORMATION_SCHEMA</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-a">
 <span id="cmdoption-ask-password"></span><span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--ask-password</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompt For User password</p>
@@ -554,7 +560,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-r">
 <span id="cmdoption-rows"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--rows</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-r" title="Permalink to this definition">¶</a></dt>
-<dd><p>Spliting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds</p>
+<dd><p>Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds</p>
 </dd></dl>
 
 <dl class="std option">
@@ -566,7 +572,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-split-partitions">
 <span class="sig-name descname"><span class="pre">--split-partitions</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-split-partitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dump partitions into separate files. This options overrides the --rows option for partitioned tables.</p>
+<dd><p>Dump partitions into separate files. This option overrides the --rows option for partitioned tables.</p>
 </dd></dl>
 
 </section>
@@ -632,7 +638,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-R">
 <span id="cmdoption-routines"></span><span class="sig-name descname"><span class="pre">-R</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--routines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-R" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dump stored procedures and functions. By default, it do not dump stored procedures nor functions</p>
+<dd><p>Dump stored procedures and functions. By default, it does not dump stored procedures nor functions</p>
 </dd></dl>
 
 <dl class="std option">
@@ -701,19 +707,19 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-fields-escaped-by">
 <span class="sig-name descname"><span class="pre">--fields-escaped-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fields-escaped-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Single character that is going to be used to escape characters in theLOAD DATA stament, default: ''</p>
+<dd><p>Single character that is going to be used to escape characters in theLOAD DATA statement, default: ''</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-lines-starting-by">
 <span class="sig-name descname"><span class="pre">--lines-starting-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lines-starting-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the string at the begining of each row. When --load-data is usedit is added to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+<dd><p>Adds the string at the beginning of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-lines-terminated-by">
 <span class="sig-name descname"><span class="pre">--lines-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-lines-terminated-by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the string at the end of each row. When --load-data is used it isadded to the LOAD DATA statement. Its affects INSERT INTO statementsalso when it is used.</p>
+<dd><p>Adds the string at the end of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -779,7 +785,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-table-engine-for-view-dependency">
 <span class="sig-name descname"><span class="pre">--table-engine-for-view-dependency</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-table-engine-for-view-dependency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Table engine to be use for the CREATE TABLE statement for temporary tables when using views</p>
+<dd><p>Table engine to be used for the CREATE TABLE statement for temporary tables when using views</p>
 </dd></dl>
 
 </section>
@@ -896,7 +902,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-merge">
 <span class="sig-name descname"><span class="pre">--merge</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-merge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge the metadata with preious backup and overwrite output directory without clearing (beware of leftower chunks)</p>
+<dd><p>Merge the metadata with previous backup and overwrite output directory without clearing (beware of leftower chunks)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -914,7 +920,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-disk-limits">
 <span class="sig-name descname"><span class="pre">--disk-limits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-disk-limits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '&lt;resume&gt;:&lt;pause&gt;' in MB.For instance: 100:500 will pause when there is only 100MB free and willresume if 500MB are available</p>
+<dd><p>Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: '&lt;resume&gt;:&lt;pause&gt;' in MB.For instance: 100:500 will pause when there is only 100MB free and will resume if 500MB are available</p>
 </dd></dl>
 
 <dl class="std option">
@@ -924,9 +930,21 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ftwrl-max-wait-time">
+<span class="sig-name descname"><span class="pre">--ftwrl-max-wait-time</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ftwrl-max-wait-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the max time that we are going to wait before kill the FLUSH TABLES related commands. Default: 60</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ftwrl-timeout-retries">
+<span class="sig-name descname"><span class="pre">--ftwrl-timeout-retries</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ftwrl-timeout-retries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the amount of retries before give up acquiring FLUSH TABLES. Default: 0, never gives up.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-t">
 <span id="cmdoption-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-t" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4</p>
+<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2</p>
 </dd></dl>
 
 <dl class="std option">
@@ -950,7 +968,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ignore-errors">
 <span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ignore-errors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
+<dd><p>Not increment error count and Warning instead of Critical in case of any of the comma-separated error number list</p>
 </dd></dl>
 
 <dl class="std option">
@@ -986,7 +1004,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-throttle">
 <span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-throttle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
+<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>

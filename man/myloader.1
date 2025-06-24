@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Jun 02, 2025" "" "MyDumper"
+.TH "MYLOADER" "1" "Jun 24, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -43,6 +43,11 @@ Username with the necessary privileges
 .TP
 .B \-p, \-\-password
 User password
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-default\-connection\-database
+Set the database name to connect to. Default: INFORMATION_SCHEMA
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -133,12 +138,12 @@ Do not import events, stored procedures and functions. By default, it imports ev
 .INDENT 0.0
 .TP
 .B \-\-skip\-constraints
-Do not import constraints. By default, it imports contraints
+Do not import constraints. By default, it imports constraints
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-skip\-indexes
-Do not import secondary index on InnoDB tables. By default, it import the indexes
+Do not import secondary indexes on InnoDB tables. By default, it import the indexes
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -180,8 +185,7 @@ Option \-\-innodb\-optimize\-keys is deprecated use \-\-optimize\-keys instead
 .INDENT 0.0
 .TP
 .B \-\-optimize\-keys
-Creates the table without the indexes unless SKIP is selected.
-Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
+Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -191,7 +195,7 @@ Do not import table schemas and triggers
 .INDENT 0.0
 .TP
 .B \-\-purge\-mode
-This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
+This specifies the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -226,7 +230,7 @@ Table recreation will be executed in series, one thread at a time. This means \-
 .INDENT 0.0
 .TP
 .B \-\-stream
-It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3\-1
+It will receive the stream from STDIN and create the file in the disk before start processing. Since v0.12.7\-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3\-1
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -309,7 +313,7 @@ List of variables that will be ignored from the header of SET
 .INDENT 0.0
 .TP
 .B \-Q, \-\-quote\-character
-Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, \(dq for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
+Identifier quote character used in INSERT statements. Possible values are: BACKTICK, bt, \(ga for backtick and DOUBLE_QUOTE, dt, \(dq for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -365,7 +369,7 @@ It expect a mysqldump format when stream is used
 .INDENT 0.0
 .TP
 .B \-t, \-\-threads
-Number of threads to use, 0 means to use number of CPUs. Default: 4
+Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -385,7 +389,7 @@ Turn on debugging output (automatically sets verbosity to 3)
 .INDENT 0.0
 .TP
 .B \-\-ignore\-errors
-Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+Not increment error count and Warning instead of Critical in case of any of the comma\-separated error number list
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -415,7 +419,7 @@ It will include the options in the metadata file, to allow myloader to establish
 .INDENT 0.0
 .TP
 .B \-\-throttle
-Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 .UNINDENT
 .SH AUTHOR
 David Ducos

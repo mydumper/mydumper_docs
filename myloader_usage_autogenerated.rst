@@ -14,6 +14,10 @@ Connection Options
 
   User password
 
+.. option:: --default-connection-database
+
+  Set the database name to connect to. Default: INFORMATION_SCHEMA
+
 .. option:: -a, --ask-password
 
   Prompt For User password
@@ -87,11 +91,11 @@ Filter Options
 
 .. option:: --skip-constraints
 
-  Do not import constraints. By default, it imports contraints
+  Do not import constraints. By default, it imports constraints
 
 .. option:: --skip-indexes
 
-  Do not import secondary index on InnoDB tables. By default, it import the indexes
+  Do not import secondary indexes on InnoDB tables. By default, it import the indexes
 
 .. option:: --no-data
 
@@ -129,8 +133,7 @@ Execution Options
 
 .. option:: --optimize-keys
 
-  Creates the table without the indexes unless SKIP is selected.
-  Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
+  Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 
 .. option:: --no-schema
 
@@ -138,7 +141,7 @@ Execution Options
 
 .. option:: --purge-mode
 
-  This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
+  This specifies the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
 
 .. option:: --disable-redo-log
 
@@ -166,7 +169,7 @@ Execution Options
 
 .. option:: --stream
 
-  It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
+  It will receive the stream from STDIN and create the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
 
 .. option:: --metadata-refresh-interval
 
@@ -239,7 +242,7 @@ Load from metadata Options
 
 .. option:: -Q, --quote-character
 
-  Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, " for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
+  Identifier quote character used in INSERT statements. Possible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, " for double quote. Default: detect from metadata file if possible, otherwise BACKTICK
 
 .. option:: --local-infile
 
@@ -286,7 +289,7 @@ Application Options:
 
 .. option:: -t, --threads
 
-  Number of threads to use, 0 means to use number of CPUs. Default: 4
+  Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
 
 .. option:: -V, --version
 
@@ -302,7 +305,7 @@ Application Options:
 
 .. option:: --ignore-errors
 
-  Not increment error count and Warning instead of Critical in case of any of the comman separated error number list
+  Not increment error count and Warning instead of Critical in case of any of the comma-separated error number list
 
 .. option:: --defaults-file
 
@@ -326,4 +329,4 @@ Application Options:
 
 .. option:: --throttle
 
-  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads

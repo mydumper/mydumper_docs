@@ -283,6 +283,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-default-connection-database">
+<span class="sig-name descname"><span class="pre">--default-connection-database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-default-connection-database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the database name to connect to. Default: INFORMATION_SCHEMA</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-a">
 <span id="cmdoption-myloader-ask-password"></span><span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--ask-password</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompt For User password</p>
@@ -390,13 +396,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-skip-constraints">
 <span class="sig-name descname"><span class="pre">--skip-constraints</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-constraints" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not import constraints. By default, it imports contraints</p>
+<dd><p>Do not import constraints. By default, it imports constraints</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-skip-indexes">
 <span class="sig-name descname"><span class="pre">--skip-indexes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-indexes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not import secondary index on InnoDB tables. By default, it import the indexes</p>
+<dd><p>Do not import secondary indexes on InnoDB tables. By default, it import the indexes</p>
 </dd></dl>
 
 <dl class="std option">
@@ -450,8 +456,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-optimize-keys">
 <span class="sig-name descname"><span class="pre">--optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-optimize-keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates the table without the indexes unless SKIP is selected.
-Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
+<dd><p>Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
 </dd></dl>
 
 <dl class="std option">
@@ -463,7 +468,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-purge-mode">
 <span class="sig-name descname"><span class="pre">--purge-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-purge-mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>This specify the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL</p>
+<dd><p>This specifies the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL</p>
 </dd></dl>
 
 <dl class="std option">
@@ -505,7 +510,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-stream">
 <span class="sig-name descname"><span class="pre">--stream</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-stream" title="Permalink to this definition">¶</a></dt>
-<dd><p>It will receive the stream from STDIN and creates the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1</p>
+<dd><p>It will receive the stream from STDIN and create the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1</p>
 </dd></dl>
 
 <dl class="std option">
@@ -610,7 +615,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-Q">
 <span id="cmdoption-myloader-quote-character"></span><span class="sig-name descname"><span class="pre">-Q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--quote-character</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-Q" title="Permalink to this definition">¶</a></dt>
-<dd><p>Identifier quote character used in INSERT statements. Posible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, &quot; for double quote. Default: detect from metadata file if possible, otherwise BACKTICK</p>
+<dd><p>Identifier quote character used in INSERT statements. Possible values are: BACKTICK, bt, ` for backtick and DOUBLE_QUOTE, dt, &quot; for double quote. Default: detect from metadata file if possible, otherwise BACKTICK</p>
 </dd></dl>
 
 <dl class="std option">
@@ -679,7 +684,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-t">
 <span id="cmdoption-myloader-threads"></span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--threads</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-t" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4</p>
+<dd><p>Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2</p>
 </dd></dl>
 
 <dl class="std option">
@@ -703,7 +708,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-ignore-errors">
 <span class="sig-name descname"><span class="pre">--ignore-errors</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-ignore-errors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Not increment error count and Warning instead of Critical in case of any of the comman separated error number list</p>
+<dd><p>Not increment error count and Warning instead of Critical in case of any of the comma-separated error number list</p>
 </dd></dl>
 
 <dl class="std option">
@@ -739,7 +744,7 @@ Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTE
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-throttle">
 <span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-throttle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
+<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>
