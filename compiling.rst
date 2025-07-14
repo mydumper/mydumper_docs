@@ -80,7 +80,7 @@ You need to select one vendor development library.
 CMake
 -----
 
-CMake is used for MyDumper's build system and is executed as follows::
+CMake is used by MyDumper's build system and is executed as follows::
 
   cmake .
   make
