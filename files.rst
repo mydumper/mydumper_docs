@@ -12,12 +12,12 @@ Output Files
 
 Metadata
 --------
-When a dump is executed a file called ``metadata.partial`` is created in the output
-directory and is renamed to ``metadata`` when mydumper finish without error.  
+When a dump is executed, a file called ``metadata.partial`` is created in the output
+directory and, if MyDumper finishes without error, it gets renamed to ``metadata`` .  
 This contains the start and end time of the dump as well as the
 master binary log positions if applicable.
 
-Since version 0.14.1-1 format has been changed to::
+Since version 0.14.1-1, format has been changed to::
 
   # Started dump at: 2023-06-09 11:47:18
   [master]
@@ -49,7 +49,7 @@ This is an example of the content of this file for older versions::
 Schemas
 -------
 As long as the :option:`--no-schemas <mydumper --no-schemas>` option is not specified, :program:`mydumper` will
-create a schema file per database, per table, per view, per trigger
+create a schema file per database, per table, per view, per trigger.
 The files for databases are in the following format::
 
   database-schema.sql
@@ -59,7 +59,7 @@ The files for tables are in the following format::
   database.table-schema.sql
 
 If :option:`--triggers <mydumper --triggers>` is specified, :program:`mydumper` will export the trigger.
-Depending the filter options that you selected you can get a single file for all the trigger::
+Depending on the filter options that you selected you can get a single file for all the trigger::
 
   database-schema-triggers.sql
 
@@ -78,8 +78,8 @@ With :option:`--all-tablespaces <mydumper --all-tablespaces>`, it will export th
 
 Data
 ----
-The data from every table is written into a separate file, also if the
-:option:`--rows <mydumper --rows>` option is used then each chunk of table will
+The data from every table is written into a separate file. If the
+:option:`--rows <mydumper --rows>` option is used, each chunk of table will
 be in a separate file.  The file names for this are in the format::
 
   database.table.sql
