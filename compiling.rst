@@ -91,8 +91,8 @@ You can optionally provide parameters for CMake, the possible options are:
  * ``-DMYSQL_CONFIG=/path/to/mysql_config`` - The path and filename for the mysql_config executable
  * ``-DCMAKE_INSTALL_PREFIX=/install/path`` - The path where mydumper should be installed
 
-One has to make sure, that pkg-config, mysql_config, pcre-config are all in $PATH
+You have to make sure that pkg-config, mysql_config and pcre-config are all in $PATH
 
-Binlog dump is disabled by default to compile with it you need to add -DWITH_BINLOG=ON to cmake options
+Binlog dump is disabled by default, to compile with it you need to add -DWITH_BINLOG=ON to cmake options
 
-To build against mysql libs < 5.7 you need to disable SSL adding -DWITH_SSL=OFF
+To build against mysql libs < 5.7, you need to disable SSL adding -DWITH_SSL=OFF
