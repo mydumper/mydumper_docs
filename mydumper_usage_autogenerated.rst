@@ -364,7 +364,7 @@ Extra Options
 
 .. option:: --success-on-1146
 
-  Not increment error count and Warning instead of Critical in case of table doesn't exist
+  This option is deprecated use --ignore-errors instead
 
 .. option:: -e, --build-empty-files
 
