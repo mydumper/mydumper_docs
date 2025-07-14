@@ -342,9 +342,9 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
 <li><p><code class="docutils literal notranslate"><span class="pre">-DCMAKE_INSTALL_PREFIX=/install/path</span></code> - The path where mydumper should be installed</p></li>
 </ul>
 </div></blockquote>
-<p>One has to make sure, that pkg-config, mysql_config, pcre-config are all in $PATH</p>
-<p>Binlog dump is disabled by default to compile with it you need to add -DWITH_BINLOG=ON to cmake options</p>
-<p>To build against mysql libs &lt; 5.7 you need to disable SSL adding -DWITH_SSL=OFF</p>
+<p>You have to make sure that pkg-config, mysql_config and pcre-config are all in $PATH</p>
+<p>Binlog dump is disabled by default, to compile with it you need to add -DWITH_BINLOG=ON to cmake options</p>
+<p>To build against mysql libs &lt; 5.7, you need to disable SSL adding -DWITH_SSL=OFF</p>
 </section>
 </section>
 
