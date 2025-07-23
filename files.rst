@@ -13,7 +13,7 @@ Output Files
 Metadata
 --------
 When a dump is executed, a file called ``metadata.partial`` is created in the output
-directory and, if MyDumper finishes without error, it gets renamed to ``metadata`` .  
+directory and, if mydumper finishes without error, it gets renamed to ``metadata`` .  
 This contains the start and end time of the dump as well as the
 master binary log positions if applicable.
 
