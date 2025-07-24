@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Daemon" href="daemon.html" /><link rel="prev" title="Output Files" href="files.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
         <title>Backup Stages - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -24,14 +24,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -191,7 +191,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  
   <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -258,37 +257,39 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
+          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" style="width: 50%;" />
+</a>
+<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" style="width: 50%;" />
+</a>
 <section id="backup-stages">
-<h1>Backup Stages<a class="headerlink" href="#backup-stages" title="Permalink to this heading">¶</a></h1>
+<h1>Backup Stages<a class="headerlink" href="#backup-stages" title="Link to this heading">¶</a></h1>
 <p>When <strong class="program">mydumper</strong> start to take a backup needs to execute multiple task and reach milestone.</p>
 <section id="determine-backup-strategy">
-<h2>Determine backup strategy<a class="headerlink" href="#determine-backup-strategy" title="Permalink to this heading">¶</a></h2>
+<h2>Determine backup strategy<a class="headerlink" href="#determine-backup-strategy" title="Link to this heading">¶</a></h2>
 <p>There are multiple <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-z"><code class="xref std std-option docutils literal notranslate"><span class="pre">locking</span> <span class="pre">options</span></code></a> that you can instruct <strong class="program">mydumper</strong> to take backups. You should review which <a class="reference internal" href="locks.html#mydumper-locks"><span class="std std-ref">locking mechanisim</span></a> is the best for you.</p>
 </section>
 <section id="send-locking-statements">
-<h2>Send locking statements<a class="headerlink" href="#send-locking-statements" title="Permalink to this heading">¶</a></h2>
+<h2>Send locking statements<a class="headerlink" href="#send-locking-statements" title="Link to this heading">¶</a></h2>
 <p><strong class="program">mydumper</strong> establishes a primary main connection and in some cases a secondary main connection. We need them to synchronize the working threads.</p>
 </section>
 <section id="start-jobs-creation">
-<h2>Start jobs creation<a class="headerlink" href="#start-jobs-creation" title="Permalink to this heading">¶</a></h2>
+<h2>Start jobs creation<a class="headerlink" href="#start-jobs-creation" title="Link to this heading">¶</a></h2>
 <p>At this point we are able to start to create jobs depending the filters that has been used. For instance, if you used <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-B"><code class="xref std std-option docutils literal notranslate"><span class="pre">-B</span></code></a>, we need to export the schema definition but we also need to create the jobs to export the schema of the tables and the data in it.</p>
 </section>
 <section id="start-the-dump-threads">
-<h2>Start the dump threads<a class="headerlink" href="#start-the-dump-threads" title="Permalink to this heading">¶</a></h2>
+<h2>Start the dump threads<a class="headerlink" href="#start-the-dump-threads" title="Link to this heading">¶</a></h2>
 <p>As the locking mechanisim is in please we are allow to create the working threads to start processing the jobs.</p>
 </section>
 <section id="release-lockings">
-<h2>Release lockings<a class="headerlink" href="#release-lockings" title="Permalink to this heading">¶</a></h2>
+<h2>Release lockings<a class="headerlink" href="#release-lockings" title="Link to this heading">¶</a></h2>
 <p>Once the working threads are in sync, the main connection is allowed to release lockings related to the synchronization of the workers.</p>
 </section>
 <section id="wait-backup-to-complete">
-<h2>Wait backup to complete<a class="headerlink" href="#wait-backup-to-complete" title="Permalink to this heading">¶</a></h2>
+<h2>Wait backup to complete<a class="headerlink" href="#wait-backup-to-complete" title="Link to this heading">¶</a></h2>
 <p>The workers will be processing the jobs, exporting the schema and data. The main thread will be waiting until they finish.</p>
 </section>
 <section id="releasing-remaining-lockings">
-<h2>Releasing remaining lockings<a class="headerlink" href="#releasing-remaining-lockings" title="Permalink to this heading">¶</a></h2>
+<h2>Releasing remaining lockings<a class="headerlink" href="#releasing-remaining-lockings" title="Link to this heading">¶</a></h2>
 <p>Depending on the locking mechanisim that you configure, we might need to release the remaining locks.</p>
 </section>
 </section>
@@ -367,10 +368,10 @@
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>

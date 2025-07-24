@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compiling" href="compiling.html" /><link rel="prev" title="Welcome to MyDumper Project" href="index.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
         <title>Installing - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -24,14 +24,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -191,7 +191,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  
   <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -258,23 +257,25 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
+          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" style="width: 50%;" />
+</a>
+<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" style="width: 50%;" />
+</a>
 <section id="installing">
-<h1>Installing<a class="headerlink" href="#installing" title="Permalink to this heading">¶</a></h1>
+<h1>Installing<a class="headerlink" href="#installing" title="Link to this heading">¶</a></h1>
 <section id="built-packages">
-<h2>Built packages<a class="headerlink" href="#built-packages" title="Permalink to this heading">¶</a></h2>
+<h2>Built packages<a class="headerlink" href="#built-packages" title="Link to this heading">¶</a></h2>
 <p>We build packages for multiple distributions that can be found in the <a class="reference external" href="https://github.com/mydumper/mydumper/releases">release section</a> of MyDumper</p>
 </section>
 <section id="apt">
-<h2>APT<a class="headerlink" href="#apt" title="Permalink to this heading">¶</a></h2>
+<h2>APT<a class="headerlink" href="#apt" title="Link to this heading">¶</a></h2>
 <p>You need to import the key.</p>
 <p>In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. It SHOULD be created with permissions 0755 if it is needed and does not already exist.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-qO-<span class="w"> </span><span class="s1">&#39;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x1D357EA7D10C9320371BDD0279EA15C0E82E34BA&amp;exact=on&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/keyrings/mydumper.asc
 </pre></div>
 </div>
 <section id="ubuntu">
-<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this heading">¶</a></h3>
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Link to this heading">¶</a></h3>
 <p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">noble</label><div class="tab-content docutils container">
@@ -298,7 +299,7 @@
 </div>
 </section>
 <section id="debian">
-<h3>Debian<a class="headerlink" href="#debian" title="Permalink to this heading">¶</a></h3>
+<h3>Debian<a class="headerlink" href="#debian" title="Link to this heading">¶</a></h3>
 <p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">bookworm</label><div class="tab-content docutils container">
@@ -322,7 +323,7 @@
 </div>
 </section>
 <section id="ansible">
-<h3>Ansible<a class="headerlink" href="#ansible" title="Permalink to this heading">¶</a></h3>
+<h3>Ansible<a class="headerlink" href="#ansible" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/<span class="o">{{</span><span class="w"> </span>ansible_distribution<span class="w"> </span><span class="p">|</span><span class="w"> </span>lower<span class="w"> </span><span class="o">}}</span><span class="w"> </span><span class="o">{{</span><span class="w"> </span>ansible_distribution_release<span class="w"> </span><span class="o">}}</span><span class="w"> </span>main
 <span class="c1">#deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} testing</span>
@@ -332,9 +333,9 @@
 </section>
 </section>
 <section id="yum">
-<h2>YUM<a class="headerlink" href="#yum" title="Permalink to this heading">¶</a></h2>
+<h2>YUM<a class="headerlink" href="#yum" title="Link to this heading">¶</a></h2>
 <section id="fedora-redhat-centos">
-<h3>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Permalink to this heading">¶</a></h3>
+<h3>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Link to this heading">¶</a></h3>
 <p>We need to import the GPG key:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>GPG-KEY-MyDumper<span class="w"> </span><span class="s2">&quot;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x79EA15C0E82E34BA&quot;</span>
 rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
@@ -357,7 +358,7 @@ rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 </section>
 </section>
 <section id="freebsd">
-<h2>FreeBSD<a class="headerlink" href="#freebsd" title="Permalink to this heading">¶</a></h2>
+<h2>FreeBSD<a class="headerlink" href="#freebsd" title="Link to this heading">¶</a></h2>
 <p>By using pkg</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pkg<span class="w"> </span>install<span class="w"> </span>mydumper
 </pre></div>
@@ -368,7 +369,7 @@ rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 </div>
 </section>
 <section id="macos">
-<h2>MacOS<a class="headerlink" href="#macos" title="Permalink to this heading">¶</a></h2>
+<h2>MacOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h2>
 <p>By using <a class="reference external" href="https://formulae.brew.sh/formula/mydumper">Homebrew</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>mydumper
 </pre></div>
@@ -461,10 +462,10 @@ myloader<span class="w"> </span>--defaults-file<span class="o">=</span>/opt/home
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>

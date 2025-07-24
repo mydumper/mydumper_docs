@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="New Lock modes" href="locks.html" /><link rel="prev" title="Replication Options" href="replication.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
         <title>Stream - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -24,14 +24,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -191,7 +191,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  
   <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -258,10 +257,12 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
+          <a class="only-dark reference internal image-reference" href="_images/color-dark.svg"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" style="width: 50%;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/color-light.svg"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" style="width: 50%;" />
+</a>
 <section id="stream">
-<h1>Stream<a class="headerlink" href="#stream" title="Permalink to this heading">¶</a></h1>
+<h1>Stream<a class="headerlink" href="#stream" title="Link to this heading">¶</a></h1>
 <p>When you take a backup with <strong class="program">mydumper</strong>, it will connect to the database,
 export the data and save into files in <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-o"><code class="xref std std-option docutils literal notranslate"><span class="pre">backup</span> <span class="pre">directory</span></code></a>.
 It is also possible to <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a> the backup to STDOUT
@@ -269,7 +270,7 @@ to save the backup in a single file or to send it over the network.
 <strong class="program">myloader</strong> has also the availity to read a stream from the STDIN and
 restore it.</p>
 <section id="streaming-backup">
-<h2>Streaming backup<a class="headerlink" href="#streaming-backup" title="Permalink to this heading">¶</a></h2>
+<h2>Streaming backup<a class="headerlink" href="#streaming-backup" title="Link to this heading">¶</a></h2>
 <p>Even when <strong class="program">mydumper</strong> uses <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a>, it will
 connect to the database and stores the backup in the <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-o"><code class="xref std std-option docutils literal notranslate"><span class="pre">directory</span></code></a>.
 After each time that a backup file is close, it will stream the header of the file
@@ -277,32 +278,32 @@ to STDOUT, and depending the option that we set, it will be write the content of
 file and delete from the directory.
 The options that <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a> allows are:</p>
 <section id="traditional">
-<h3>TRADITIONAL<a class="headerlink" href="#traditional" title="Permalink to this heading">¶</a></h3>
+<h3>TRADITIONAL<a class="headerlink" href="#traditional" title="Link to this heading">¶</a></h3>
 <p>It will write the content of the file to STDOUT and delete the file after.
 It is useful when you want to keep the backup in a single file, which is easier to
 transfer later.</p>
 </section>
 <section id="no-delete">
-<h3>NO_DELETE<a class="headerlink" href="#no-delete" title="Permalink to this heading">¶</a></h3>
+<h3>NO_DELETE<a class="headerlink" href="#no-delete" title="Link to this heading">¶</a></h3>
 <p>It will write the content of the file to STDOUT and will not delete the file.
 This option is useful for debuging as you can review the files that are being sent
 to myloader.</p>
 </section>
 <section id="no-stream-and-no-delete">
-<h3>NO_STREAM_AND_NO_DELETE<a class="headerlink" href="#no-stream-and-no-delete" title="Permalink to this heading">¶</a></h3>
+<h3>NO_STREAM_AND_NO_DELETE<a class="headerlink" href="#no-stream-and-no-delete" title="Link to this heading">¶</a></h3>
 <p>It will not write the content and it will not delete the file.
 In this case, only the header is being send to STDOUT, but the file is kept on the
 directory which is useful as <strong class="program">myloader</strong> is able to read the file from it
 and delete it after restore it.</p>
 </section>
 <section id="no-stream">
-<h3>NO_STREAM<a class="headerlink" href="#no-stream" title="Permalink to this heading">¶</a></h3>
+<h3>NO_STREAM<a class="headerlink" href="#no-stream" title="Link to this heading">¶</a></h3>
 <p>It will not write the content and it will delete the files.
 This is mostly for compatibility with <strong class="program">myloader</strong>.</p>
 </section>
 </section>
 <section id="restore-stream">
-<h2>Restore Stream<a class="headerlink" href="#restore-stream" title="Permalink to this heading">¶</a></h2>
+<h2>Restore Stream<a class="headerlink" href="#restore-stream" title="Link to this heading">¶</a></h2>
 <p>By default, <strong class="program">myloader</strong> reads the files from the <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">directory</span></code></a>,
 but when <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a> is used, it will be a bit more
 complex.
@@ -310,26 +311,26 @@ It will create a thread that will read from STDIN the headers of the file and it
 will into the <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">directory</span></code></a> the content depending what
 we set on <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a>:</p>
 <section id="id1">
-<h3>TRADITIONAL<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>TRADITIONAL<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>It will read the content from STDIN, write the files in the directory for processing
 and delete the file after.
 It is the common way to restore backups from a single file.</p>
 </section>
 <section id="id2">
-<h3>NO_DELETE<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<h3>NO_DELETE<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>It will read the content from STDIN, write the files in the directory for processing
 and it will not delete the files after.
 This option is useful for debuging as you can review the files that are being restored.</p>
 </section>
 <section id="id3">
-<h3>NO_STREAM_AND_NO_DELETE<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<h3>NO_STREAM_AND_NO_DELETE<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p>It will read the header from STDIN but it will not expect the content of the file, then
 it will process and it will not delete the files after.
 This is useful when <strong class="program">mydumper</strong> shares the backup directory with <strong class="program">myloader</strong>
 but you want to keep with the backup files.</p>
 </section>
 <section id="id4">
-<h3>NO_STREAM<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<h3>NO_STREAM<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>It will read the header from STDIN but it will not expect the content of the file, then
 it will process and it will delete the files after.
 This is useful when <strong class="program">mydumper</strong> shares the backup directory with <strong class="program">myloader</strong>.</p>
@@ -418,10 +419,10 @@ This is useful when <strong class="program">mydumper</strong> shares the backup 
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
