@@ -20,7 +20,7 @@ Said configuration is found in sections like:
   [myloader_session_variables]
 
 Where the defaults of mydumper, myloader and the session level variables are kept, when they are executed. 
-In the case of :code:`[\`myloader_session_variables\`]` , the default setting is: 
+In the case of :code:`[myloader_session_variables]` , the default setting is: 
 
 .. code-block::  bash
 
