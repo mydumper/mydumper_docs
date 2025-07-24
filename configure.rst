@@ -5,12 +5,12 @@
 Configuration
 =============
 
-We kept the main configuration of MyDumper in /etc/mydumper.cnf by default.
+The main configuration of MyDumper is kept in /etc/mydumper.cnf by default.
 
---defaults-file
----------------
+--defaults-file[=/etc/mydumper.cnf]
+-----------------------------------
 
-We kept relevant configuration in it as you can find sections like:
+Said configuration is found in sections like: 
 
 .. code-block::  bash
 
@@ -19,8 +19,8 @@ We kept relevant configuration in it as you can find sections like:
   [myloader]
   [myloader_session_variables]
 
-Where we kept the defaults when mydumper and myloader is executed and the default session level variables.
-In case of `[myloader_session_variables]` we have this defaults:
+Where the defaults of mydumper, myloader and the session level variables are kept, when they are executed. 
+In the case of :code:`[\`myloader_session_variables\`]` , the default setting is: 
 
 .. code-block::  bash
 
@@ -29,7 +29,7 @@ In case of `[myloader_session_variables]` we have this defaults:
   UNIQUE_CHECKS=0 /*!40114
   FOREIGN_KEY_CHECKS=0 /*!40114
 
-Which is replaced when you connect to MariaDB:
+But, when you connect to MariaDB it gets replaced by: 
 
 .. code-block::  bash
 
@@ -44,16 +44,16 @@ Which is replaced when you connect to MariaDB:
 --defaults-extra-file
 ---------------------
 
-We recommend you to use for :code:`[\`database\`.\`table\`]` sections, in which you can add this options:
+Using :code:`[\`database\`.\`table\`]` sections may be helpful, since you can add:
 
-* where: receives a comparasion compatible with the table definition.
-* limit: which receives a number and forces the select statement to do not read more reads if it reaches the limit.
-* num_threads: Defines the amount of threads that will be used for the table.
-* object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER.
-* columns_on_select: the list of columns in the SELECT statement will be replace by the content of this parameter.
-* columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter.
-* object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER.
-* partition_regex: Defines a regular expression to filter the partitions to export 
+* where: It receives a comparison compatible with the table definition;
+* limit: It receives a number and forces the SELECT statement to avoid reading more reads if it reaches the limit;
+* num_threads: It defines the amount of threads that will be used for the table;
+* object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
+* columns_on_select: The list of columns in the SELECT statement will be replaced by the content of this parameter;
+* columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter;
+* object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
+* partition_regex: It defines a regular expression to filter the partitions to export. 
 
 For example:
 
