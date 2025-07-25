@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Jul 24, 2025" "" "MyDumper"
+.TH "MYLOADER" "1" "Jul 25, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -410,6 +410,11 @@ Instruct the proper commands to execute depending where are configuring the repl
 .TP
 .B \-\-optimize\-keys\-engines
 List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-server\-version
+Set the server version avoid automatic detection
 .UNINDENT
 .INDENT 0.0
 .TP

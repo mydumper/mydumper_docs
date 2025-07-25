@@ -490,6 +490,10 @@ Application Options:
 
   List of engines that will be used to split the create table statement into multiple stages if possible. Default: InnoDB,ROCKSDB
 
+.. option:: --server-version
+
+  Set the server version avoid automatic detection
+
 .. option:: --source-data
 
   It will include the options in the metadata file, to allow myloader to establish replication

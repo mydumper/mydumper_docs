@@ -302,19 +302,25 @@
 <h3>Debian<a class="headerlink" href="#debian" title="Link to this heading">¶</a></h3>
 <p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">bookworm</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">trixie</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>trixie<span class="w"> </span>main
+<span class="c1">#deb [signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian trixie testing</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">bookworm</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>bookworm<span class="w"> </span>main
 <span class="c1">#deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bookworm testing</span>
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">bullseye</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">bullseye</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>bullseye<span class="w"> </span>main
 <span class="c1">#deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian bullseye testing</span>
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">buster</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--4">buster</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>buster<span class="w"> </span>main
 <span class="c1">#deb [arch=amd64 signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian buster testing</span>
 </pre></div>
