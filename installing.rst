@@ -53,6 +53,14 @@ Debian
 
 Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 
+.. tab:: trixie
+
+    .. code-block::  bash
+
+
+        deb [signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian trixie main
+        #deb [signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/debian trixie testing
+
 .. tab:: bookworm
 
     .. code-block::  bash
