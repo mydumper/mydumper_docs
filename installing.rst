@@ -121,7 +121,7 @@ On /etc/yum.repos.d/mydumper.repo
 FreeBSD
 ^^^^^^^
 
-Mydumper can be installed in FreeBSD using: 
+MyDumper can be installed in FreeBSD using: 
 
 .. code-block::  bash
 
@@ -137,7 +137,7 @@ Or, if it is installled from ports;
 MacOS
 ^^^^^
 
-Mydumper can be installed on MacOS using `Homebrew <https://formulae.brew.sh/formula/mydumper>`_: 
+MyDumper can be installed on MacOS using `Homebrew <https://formulae.brew.sh/formula/mydumper>`_: 
 
 .. code-block::  bash
 
