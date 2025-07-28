@@ -265,18 +265,17 @@
 <h1>Installing<a class="headerlink" href="#installing" title="Link to this heading">¶</a></h1>
 <section id="built-packages">
 <h2>Built packages<a class="headerlink" href="#built-packages" title="Link to this heading">¶</a></h2>
-<p>We build packages for multiple distributions that can be found in the <a class="reference external" href="https://github.com/mydumper/mydumper/releases">release section</a> of MyDumper</p>
+<p>Packages for multiple distributions can be found in the <a class="reference external" href="https://github.com/mydumper/mydumper/releases">release section</a> of MyDumper</p>
 </section>
 <section id="apt">
 <h2>APT<a class="headerlink" href="#apt" title="Link to this heading">¶</a></h2>
-<p>You need to import the key.</p>
-<p>In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. It SHOULD be created with permissions 0755 if it is needed and does not already exist.</p>
+<p>In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. Hence, it must be created with permissions 0755.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-qO-<span class="w"> </span><span class="s1">&#39;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x1D357EA7D10C9320371BDD0279EA15C0E82E34BA&amp;exact=on&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/keyrings/mydumper.asc
 </pre></div>
 </div>
 <section id="ubuntu">
 <h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Link to this heading">¶</a></h3>
-<p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
+<p>Depending on the operating system, the source file (/etc/apt/sources.list.d/mydumper.list) should include:</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">noble</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="w"> </span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/ubuntu<span class="w"> </span>noble<span class="w"> </span>main
@@ -300,7 +299,7 @@
 </section>
 <section id="debian">
 <h3>Debian<a class="headerlink" href="#debian" title="Link to this heading">¶</a></h3>
-<p>Source file (/etc/apt/sources.list.d/mydumper.list) should be:</p>
+<p>Depending on the operating system, the source file (/etc/apt/sources.list.d/mydumper.list) should include:</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">trixie</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span><span class="o">[</span>signed-by<span class="o">=</span>/etc/apt/keyrings/mydumper.asc<span class="o">]</span><span class="w"> </span>https://mydumper.github.io/mydumper/repo/apt/debian<span class="w"> </span>trixie<span class="w"> </span>main
@@ -342,7 +341,7 @@
 <h2>YUM<a class="headerlink" href="#yum" title="Link to this heading">¶</a></h2>
 <section id="fedora-redhat-centos">
 <h3>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Link to this heading">¶</a></h3>
-<p>We need to import the GPG key:</p>
+<p>The GPG key needs to be imported, you should use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>GPG-KEY-MyDumper<span class="w"> </span><span class="s2">&quot;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x79EA15C0E82E34BA&quot;</span>
 rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 </pre></div>
@@ -365,22 +364,22 @@ rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 </section>
 <section id="freebsd">
 <h2>FreeBSD<a class="headerlink" href="#freebsd" title="Link to this heading">¶</a></h2>
-<p>By using pkg</p>
+<p>MyDumper can be installed in FreeBSD using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pkg<span class="w"> </span>install<span class="w"> </span>mydumper
 </pre></div>
 </div>
-<p>or from ports</p>
+<p>Or, if it is installled from ports;</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/usr/ports/databases/mydumper<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
 <section id="macos">
 <h2>MacOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h2>
-<p>By using <a class="reference external" href="https://formulae.brew.sh/formula/mydumper">Homebrew</a></p>
+<p>MyDumper can be installed on MacOS using <a class="reference external" href="https://formulae.brew.sh/formula/mydumper">Homebrew</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>mydumper
 </pre></div>
 </div>
-<p>Take into account that the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc. So, you might need to run mydumper/myloader with:</p>
+<p>Bear in mind that since the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc, you might need to run mydumper/myloader with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mydumper<span class="w"> </span>--defaults-file<span class="o">=</span>/opt/homebrew/etc/mydumper.cnf
 myloader<span class="w"> </span>--defaults-file<span class="o">=</span>/opt/homebrew/etc/mydumper.cnf
 </pre></div>
