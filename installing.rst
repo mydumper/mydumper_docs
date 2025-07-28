@@ -6,14 +6,12 @@ Installing
 Built packages
 ^^^^^^^^^^^^^^
 
-We build packages for multiple distributions that can be found in the `release section <https://github.com/mydumper/mydumper/releases>`_ of MyDumper
+Packages for multiple distributions can be found in the `release section <https://github.com/mydumper/mydumper/releases>`_ of MyDumper
 
 APT
 ^^^
 
-You need to import the key.
-
-In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. It SHOULD be created with permissions 0755 if it is needed and does not already exist.
+In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. Hence, it must be created with permissions 0755. 
 
 .. code-block::  bash
 
@@ -22,7 +20,7 @@ In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not ex
 Ubuntu
 ------
 
-Source file (/etc/apt/sources.list.d/mydumper.list) should be:
+Depending on the operating system, the source file (/etc/apt/sources.list.d/mydumper.list) should include:
 
 .. tab:: noble
 
@@ -51,7 +49,7 @@ Source file (/etc/apt/sources.list.d/mydumper.list) should be:
 Debian
 ------
 
-Source file (/etc/apt/sources.list.d/mydumper.list) should be:
+Depending on the operating system, the source file (/etc/apt/sources.list.d/mydumper.list) should include:
 
 .. tab:: trixie
 
@@ -97,7 +95,7 @@ YUM
 Fedora/Redhat/CentOS
 --------------------
 
-We need to import the GPG key:
+The GPG key needs to be imported, you should use:
 
 .. code-block::  bash
 
@@ -123,13 +121,13 @@ On /etc/yum.repos.d/mydumper.repo
 FreeBSD
 ^^^^^^^
 
-By using pkg
+Mydumper can be installed in FreeBSD using: 
 
 .. code-block::  bash
 
   pkg install mydumper
 
-or from ports
+Or, if it is installled from ports;
 
 .. code-block::  bash
 
@@ -139,13 +137,13 @@ or from ports
 MacOS
 ^^^^^
 
-By using `Homebrew <https://formulae.brew.sh/formula/mydumper>`_
+Mydumper can be installed on MacOS using `Homebrew <https://formulae.brew.sh/formula/mydumper>`_: 
 
 .. code-block::  bash
 
   brew install mydumper
 
-Take into account that the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc. So, you might need to run mydumper/myloader with:
+Bear in mind that since the mydumper.cnf file is going to be located on /usr/local/etc or /opt/homebrew/etc, you might need to run mydumper/myloader with:
 
 .. code-block::  bash
 
