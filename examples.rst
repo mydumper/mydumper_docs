@@ -92,7 +92,7 @@ Restoring a dump
 MyDumper now include myloader which is a multi-threaded restoration tool.  To
 use myloader with a mydumper dump you simply need to pass it the directory of
 the dump along with a user capable of restoring the schemas and data.  As an
-example the following will restore a dump overwriting any existing tables::
+example the following will restore a dump overwriting any existing tables:
 
 .. code-block:: bash
 
