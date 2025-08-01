@@ -341,12 +341,9 @@ to encrypt each separate backup key.</p>
 use myloader with a mydumper dump you simply need to pass it the directory of
 the dump along with a user capable of restoring the schemas and data.  As an
 example the following will restore a dump overwriting any existing tables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># myloader --directory=export-20110614-094953 --overwrite-tables --user=root</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p># myloader --directory=export-20110614-094953 --overwrite-tables --user=root</p>
-</div></blockquote>
 <p>If your backup is encrypted following the example above, you will need to reverse
 the process with myloader. The backup should contain the encrypted key used during
 the encryption process, or otherwise be located via whatever storage means used in
