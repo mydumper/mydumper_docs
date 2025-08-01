@@ -365,12 +365,9 @@ consistent backup right up to the point where the database server fails.  To use
 this you simply need to use the <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-D"><code class="xref std std-option docutils literal notranslate"><span class="pre">--daemon</span></code></a> option.</p>
 <p>In the following example mydumper will use daemon mode, creating a snapshot
 every half an hour and log to an output file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --daemon --snapshot-interval=30 --logfile=dump.log</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p># mydumper --daemon --snapshot-interval=30 --logfile=dump.log</p>
-</div></blockquote>
 </section>
 </section>
 
