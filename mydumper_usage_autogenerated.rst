@@ -190,6 +190,10 @@ Exec Options
 
 Job Options
 -----------
+.. option:: --max-time-per-select
+
+  Maximum amount of seconds that a select should take. Default: 2
+
 .. option:: --max-threads-per-table
 
   Maximum number of threads per table to use

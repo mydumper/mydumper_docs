@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Jul 28, 2025" "" "MyDumper"
+.TH "MYDUMPER" "1" "Aug 01, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -259,6 +259,11 @@ Set long query timer in seconds, default 60
 Kill long running queries (instead of aborting)
 .UNINDENT
 .SH JOB OPTIONS
+.INDENT 0.0
+.TP
+.B \-\-max\-time\-per\-select
+Maximum amount of seconds that a select should take. Default: 2
+.UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-max\-threads\-per\-table
