@@ -120,7 +120,7 @@ consistent backup right up to the point where the database server fails.  To use
 this you simply need to use the :option:`--daemon <mydumper --daemon>` option.
 
 In the following example mydumper will use daemon mode, creating a snapshot
-every half an hour and log to an output file::
+every half an hour and log to an output file:
 
 .. code-block:: bash
 
