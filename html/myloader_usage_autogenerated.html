@@ -463,7 +463,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-purge-mode">
 <span class="sig-name descname"><span class="pre">--purge-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-purge-mode" title="Link to this definition">¶</a></dt>
-<dd><p>This specifies the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL</p>
+<dd><p>Option --purge-mode is deprecated use -o/--drop-table instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -479,9 +479,21 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-drop-database">
+<span class="sig-name descname"><span class="pre">--drop-database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-drop-database" title="Link to this definition">¶</a></dt>
+<dd><p>Executes a DROP DATABASE if the schema database file is found.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-o">
-<span id="cmdoption-overwrite-tables"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--overwrite-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-o" title="Link to this definition">¶</a></dt>
-<dd><p>Drop tables if they already exist</p>
+<span id="cmdoption-drop-table"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--drop-table</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-o" title="Link to this definition">¶</a></dt>
+<dd><p>Executes or simulates a DROP TABLE if the table already exists. The drop modes can be: FAIL, NONE, DROP, TRUNCATE and DELETE. This option accepts no parameter which set default to: DROP. If this option is not used, the default is set to: FAIL</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-overwrite-tables">
+<span class="sig-name descname"><span class="pre">--overwrite-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-overwrite-tables" title="Link to this definition">¶</a></dt>
+<dd><p>Option --overwrite-tables has been deprecated. User -o/--drop-table instead.</p>
 </dd></dl>
 
 <dl class="std option">

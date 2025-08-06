@@ -278,6 +278,28 @@ will ignore the <code class="docutils literal notranslate"><span class="pre">tes
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(?!(mysql\.|test\.))&#39;</span>
 </pre></div>
 </div>
+<p>Once can use --regex functionality, for example not to dump mysql, sys and test databases:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(?!(mysql\.|sys\.|test\.))&#39;</span>
+</pre></div>
+</div>
+<p>To dump only mysql and test databases:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(mysql\.|test\.)&#39;</span>
+</pre></div>
+</div>
+<p>To not dump all databases starting with test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(?!(test))&#39;</span>
+</pre></div>
+</div>
+<p>To dump specific tables in different databases (Note: The name of tables should end with $:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(db1\.table1$|db2\.table2$)&#39;</span>
+</pre></div>
+</div>
+<p>If you want to dump a couple of databases but discard some tables, you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(?=(?:(db1\.|db2\.)))(?!(?:(db1\.table1$|db2\.table2$)))&#39;</span>
+</pre></div>
+</div>
+<p>Which will dump all the tables in db1 and db2 but it will exclude db1.table1 and db2.table2</p>
+<p>Of course, regex functionality can be used to describe pretty much any list of tables.</p>
 </section>
 <section id="encryption-encrypted-backups">
 <h2>Encryption / Encrypted Backups<a class="headerlink" href="#encryption-encrypted-backups" title="Link to this heading">¶</a></h2>

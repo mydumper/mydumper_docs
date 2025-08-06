@@ -141,7 +141,7 @@ Execution Options
 
 .. option:: --purge-mode
 
-  This specifies the truncate mode which can be: FAIL, NONE, DROP, TRUNCATE and DELETE. Default if not set: FAIL
+  Option --purge-mode is deprecated use -o/--drop-table instead
 
 .. option:: --disable-redo-log
 
@@ -151,9 +151,17 @@ Execution Options
 
   Treat checksums: skip, fail(default), warn.
 
-.. option:: -o, --overwrite-tables
+.. option:: --drop-database
 
-  Drop tables if they already exist
+  Executes a DROP DATABASE if the schema database file is found.
+
+.. option:: -o, --drop-table
+
+  Executes or simulates a DROP TABLE if the table already exists. The drop modes can be: FAIL, NONE, DROP, TRUNCATE and DELETE. This option accepts no parameter which set default to: DROP. If this option is not used, the default is set to: FAIL
+
+.. option:: --overwrite-tables
+
+  Option --overwrite-tables has been deprecated. User -o/--drop-table instead.
 
 .. option:: --overwrite-unsafe
 
