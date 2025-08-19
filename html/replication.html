@@ -265,7 +265,7 @@
 <h1>Replication Options<a class="headerlink" href="#replication-options" title="Link to this heading">¶</a></h1>
 <p>The metadata file is a way to share information between mydumper and myloader.</p>
 <p>There are 3 options on the metadata file to control which replication commands will execute myloader.</p>
-<p>The option is <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-source-data"><code class="xref std std-option docutils literal notranslate"><span class="pre">--source-data</span></code></a>, which accepts a value between 0 and 7 following this table:</p>
+<p>The option is <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-source-data"><code class="xref std std-option docutils literal notranslate"><span class="pre">--source-data</span></code></a>, which accepts a value between -1 and 7 following this table:</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
@@ -319,7 +319,8 @@
 </tbody>
 </table>
 </div>
-<p>Where 0 means that it will not be executed and 1 means that it will be executed.</p>
+<p>Where 0 means that it will not be executed and 1 means that it will be executed.
+If -1 is provided, it will not collect information related to the replication.</p>
 </section>
 
         </article>

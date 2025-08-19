@@ -70,6 +70,10 @@ Connection Options
 
   Which protocols the server permits for encrypted connections
 
+.. option:: --enable-cleartext-plugin
+
+  Enable the clear text authentication plugin which is disable by default.
+
 Filter Options
 --------------
 
