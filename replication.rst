@@ -9,7 +9,7 @@ The metadata file is a way to share information between mydumper and myloader.
 
 There are 3 options on the metadata file to control which replication commands will execute myloader.
 
-The option is :option:`--source-data <mydumper --source-data>`, which accepts a value between 0 and 7 following this table:
+The option is :option:`--source-data <mydumper --source-data>`, which accepts a value between -1 and 7 following this table:
 
 =============  =========================  ===========================  =========================
 --source-data  myloader_exec_start_slave  myloader_exec_change_master  myloader_exec_reset_slave
@@ -25,4 +25,5 @@ The option is :option:`--source-data <mydumper --source-data>`, which accepts a 
 =============  =========================  ===========================  =========================
 
 Where 0 means that it will not be executed and 1 means that it will be executed.
+If -1 is provided, it will not collect information related to the replication.
 
