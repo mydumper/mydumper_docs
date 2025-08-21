@@ -28,7 +28,8 @@ jobs:
           make clean
           make
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/mydumper/mydumper_docs.git
-          git commit -am "[skip ci] Building html" && git push
+          git add .
+          git commit -am "[skip ci] Building html" && git push || true 
 
   publish_docs:
     docker:
