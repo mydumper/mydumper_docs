@@ -466,6 +466,14 @@ Application Options:
 
   Sets the amount of retries before give up acquiring FLUSH TABLES. Default: 0, never gives up.
 
+.. option:: --replica-data
+
+  Includes the replica information
+
+.. option:: --source-data
+
+  It will include the options in the metadata file, to allow myloader to establish replication
+
 .. option:: -t, --threads
 
   Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
@@ -505,10 +513,6 @@ Application Options:
 .. option:: --server-version
 
   Set the server version avoid automatic detection
-
-.. option:: --source-data
-
-  It will include the options in the metadata file, to allow myloader to establish replication
 
 .. option:: --throttle
 

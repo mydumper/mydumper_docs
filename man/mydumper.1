@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Aug 20, 2025" "" "MyDumper"
+.TH "MYDUMPER" "1" "Aug 21, 2025" "" "MyDumper"
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
 .INDENT 0.0
 .TP
@@ -597,6 +597,16 @@ Sets the amount of retries before give up acquiring FLUSH TABLES. Default: 0, ne
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-replica\-data
+Includes the replica information
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-source\-data
+It will include the options in the metadata file, to allow myloader to establish replication
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-t, \-\-threads
 Number of threads to use, 0 means to use number of CPUs. Default: 4, Minimum: 2
 .UNINDENT
@@ -644,11 +654,6 @@ List of engines that will be used to split the create table statement into multi
 .TP
 .B \-\-server\-version
 Set the server version avoid automatic detection
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-source\-data
-It will include the options in the metadata file, to allow myloader to establish replication
 .UNINDENT
 .INDENT 0.0
 .TP
