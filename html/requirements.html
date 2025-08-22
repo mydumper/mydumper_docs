@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -252,7 +252,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -264,22 +264,72 @@
 </a>
 <section id="requirements">
 <span id="mydumper-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h1>
-<p>To create a backup user in MySQL for MyDumper, you need to grant the necessary privileges to allow the user to perform backups efficiently. Here’s the SQL script to create a backup user:</p>
+<p>To create a backup user in MySQL for MyDumper. Here’s the SQL script to create a backup user:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CREATE<span class="w"> </span>USER<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>IDENTIFIED<span class="w"> </span>BY<span class="w"> </span><span class="s1">&#39;StrongPassword&#39;</span><span class="p">;</span>
-GRANT<span class="w"> </span>RELOAD,<span class="w"> </span>LOCK<span class="w"> </span>TABLES,<span class="w"> </span>PROCESS,<span class="w"> </span>REPLICATION<span class="w"> </span>CLIENT,<span class="w"> </span>SHOW<span class="w"> </span>VIEW,<span class="w"> </span>EVENT,<span class="w"> </span>TRIGGER,<span class="w"> </span>SELECT<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Explanation of Privileges:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SELECT<span class="w"> </span>ON<span class="w"> </span>*.*:<span class="w"> </span>Allows<span class="w"> </span>reading<span class="w"> </span>all<span class="w"> </span>databases<span class="w"> </span>and<span class="w"> </span>tables.
-RELOAD:<span class="w"> </span>Required<span class="w"> </span><span class="k">for</span><span class="w"> </span>FLUSH<span class="w"> </span>operations<span class="w"> </span><span class="o">(</span>used<span class="w"> </span><span class="k">in</span><span class="w"> </span>mydumper<span class="o">)</span>.
-LOCK<span class="w"> </span>TABLES:<span class="w"> </span>Needed<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>FLUSH<span class="w"> </span>TABLES<span class="w"> </span>WITH<span class="w"> </span>READ<span class="w"> </span>LOCK<span class="w"> </span><span class="k">for</span><span class="w"> </span>consistent<span class="w"> </span>backups.
-PROCESS:<span class="w"> </span>Grants<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>process<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>SHOW<span class="w"> </span>PROCESSLIST<span class="o">)</span>.
-REPLICATION<span class="w"> </span>CLIENT:<span class="w"> </span>Required<span class="w"> </span><span class="k">for</span><span class="w"> </span>reading<span class="w"> </span>binary<span class="w"> </span>log<span class="w"> </span>positions.
+<section id="privileges-on-mydumper">
+<h2>Privileges on mydumper<a class="headerlink" href="#privileges-on-mydumper" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PROCESS<span class="w"> </span>ON<span class="w"> </span>*.*:<span class="w"> </span>Grants<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>process<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>SHOW<span class="w"> </span>PROCESSLIST<span class="o">)</span>.
+REPLICATION<span class="w"> </span>CLIENT<span class="w"> </span>ON<span class="w"> </span>*.*:<span class="w"> </span>Required<span class="w"> </span><span class="k">for</span><span class="w"> </span>reading<span class="w"> </span>binary<span class="w"> </span>and<span class="w"> </span>replication<span class="w"> </span>log<span class="w"> </span>positions.
+BACKUP_ADMIN:<span class="w"> </span>required<span class="w"> </span>to<span class="w"> </span>DDL<span class="w"> </span>locks<span class="w"> </span>when<span class="w"> </span>LOCK<span class="w"> </span>INSTANCE<span class="w"> </span>FOR<span class="w"> </span>BACKUP<span class="w"> </span>is<span class="w"> </span>executed.
+FLUSH_TABLES<span class="w"> </span>or<span class="w"> </span>RELOAD:<span class="w"> </span>Required<span class="w"> </span><span class="k">for</span><span class="w"> </span>FLUSH<span class="w"> </span>operations.
+LOCK<span class="w"> </span>TABLES:<span class="w"> </span>Needed<span class="w"> </span>when<span class="w"> </span>--sync-thread-lock-mode<span class="o">=</span>LOCK_ALL<span class="w"> </span>is<span class="w"> </span>used,<span class="w"> </span>it<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>ignored<span class="w"> </span>otherwise.
 SHOW<span class="w"> </span>VIEW:<span class="w"> </span>Allows<span class="w"> </span>viewing<span class="w"> </span>database<span class="w"> </span>views.
-EVENT:<span class="w"> </span>Grants<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>backup<span class="w"> </span>database<span class="w"> </span>events.
+SHOW_ROUTINE:<span class="w"> </span>Allows<span class="w"> </span>viewing<span class="w"> </span>database<span class="w"> </span>store<span class="w"> </span>procedure<span class="w"> </span>and<span class="w"> </span>functions.
 TRIGGER:<span class="w"> </span>Allows<span class="w"> </span>backing<span class="w"> </span>up<span class="w"> </span>triggers.
+EVENT:<span class="w"> </span>Grants<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>backup<span class="w"> </span>database<span class="w"> </span>events.
+SELECT<span class="w"> </span>ON<span class="w"> </span>*.*:<span class="w"> </span>Allows<span class="w"> </span>reading<span class="w"> </span>all<span class="w"> </span>databases,<span class="w"> </span>tables<span class="w"> </span>and<span class="w"> </span>routines
 </pre></div>
 </div>
+<p>You need to grant the necessary GLOBAL privileges to allow the user to perform backups efficiently:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>FLUSH_TABLES,<span class="w"> </span>PROCESS,<span class="w"> </span>REPLICATION<span class="w"> </span>CLIENT<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The simplest privilege setting, is to grant privileges to ALL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>SHOW<span class="w"> </span>VIEW,<span class="w"> </span>EVENT,<span class="w"> </span>TRIGGER,<span class="w"> </span>SELECT<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>When the user is only allow to SELECT to a particular database for instance <cite>sakila</cite>, we need to add SHOW_ROUTINE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>SHOW<span class="w"> </span>VIEW,<span class="w"> </span>EVENT,<span class="w"> </span>TRIGGER,<span class="w"> </span>SELECT<span class="w"> </span>ON<span class="w"> </span><span class="sb">`</span>sakila<span class="sb">`</span>.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+GRANT<span class="w"> </span>SHOW_ROUTINE<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>When --sync-thread-lock-mode=LOCK_ALL is used you must grant LOCK TABLES:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>LOCK<span class="w"> </span>TABLES<span class="w"> </span>ON<span class="w"> </span><span class="sb">`</span>sakila<span class="sb">`</span>.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="privileges-on-myloader">
+<h2>Privileges on myloader<a class="headerlink" href="#privileges-on-myloader" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SESSION_VARIABLES_ADMIN<span class="w"> </span>ON<span class="w"> </span>*.*:<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>required<span class="w"> </span>due<span class="w"> </span>the<span class="w"> </span>disabling<span class="w"> </span>of<span class="w"> </span>SQL_LOG_BIN
+CREATE:<span class="w"> </span>Allows<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>databases,<span class="w"> </span>tables<span class="w"> </span>and<span class="w"> </span>indexes
+DROP:<span class="w"> </span>Allows<span class="w"> </span>to<span class="w"> </span>drop<span class="w"> </span>databases,<span class="w"> </span>tables<span class="w"> </span>or<span class="w"> </span>views<span class="w"> </span>which<span class="w"> </span>is<span class="w"> </span>required<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>overwrite
+CREATE<span class="w"> </span>VIEW:<span class="w"> </span>Only<span class="w"> </span>required<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>VIEWs
+TRIGGER:<span class="w"> </span>Only<span class="w"> </span>required<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>the<span class="w"> </span>triggers
+ALTER<span class="w"> </span>TABLE:<span class="w"> </span>Required<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>secondary<span class="w"> </span>indexes<span class="w"> </span>and<span class="w"> </span>constraints.
+REFERENCES:<span class="w"> </span>Only<span class="w"> </span>required<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>Foreign<span class="w"> </span>Keys.
+ALTER<span class="w"> </span>ROUTINE:<span class="w"> </span>Only<span class="w"> </span>required<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>creating<span class="w"> </span>store<span class="w"> </span>procedure<span class="w"> </span>or<span class="w"> </span>functions
+INSERT:<span class="w"> </span>Mandatory<span class="w"> </span>as<span class="w"> </span>you<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>inserting<span class="w"> </span>data.
+</pre></div>
+</div>
+<p>The only necessary GLOBAL privilege is SESSION_VARIABLES_ADMIN:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>SESSION_VARIABLES_ADMIN<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You will need this priveleges to successfuly import the database into <cite>new_sakila</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>INSERT,<span class="w"> </span>CREATE,<span class="w"> </span>DROP,<span class="w"> </span>REFERENCES,<span class="w"> </span>ALTER,<span class="w"> </span>CREATE<span class="w"> </span>VIEW,<span class="w"> </span>CREATE<span class="w"> </span>ROUTINE,<span class="w"> </span>ALTER<span class="w"> </span>ROUTINE<span class="w"> </span>ON<span class="w"> </span><span class="sb">`</span>new_sakila<span class="sb">`</span>.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Take into account that when using VIEWs you might need SELECT on the destination database.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>SELECT<span class="w"> </span>ON<span class="w"> </span><span class="sb">`</span>new_sakila<span class="sb">`</span>.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>When you create store procedures, functions, views and triggers, and the DEFINER is not the current user, you will need to use --skip-definer or this privileges:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GRANT<span class="w"> </span>SET_USER_ID,<span class="w"> </span>SYSTEM_USER<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;backup_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -325,8 +375,28 @@ TRIGGER:<span class="w"> </span>Allows<span class="w"> </span>backing<span class
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Requirements</a><ul>
+<li><a class="reference internal" href="#privileges-on-mydumper">Privileges on mydumper</a></li>
+<li><a class="reference internal" href="#privileges-on-myloader">Privileges on myloader</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
