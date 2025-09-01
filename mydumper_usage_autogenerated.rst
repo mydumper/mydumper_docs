@@ -354,11 +354,11 @@ Statement Options
 
 .. option:: --set-names
 
-  Accepts a list of up to 2 charsets, and executes 'SET NAMES' with the proper charset from the list, where the first item when executes SHOW CREATE TABLE and the second item for the rest. Use it at your own risk as it might cause inconsistencies #1974. Default: auto,binary. auto means that it is going to use the table character set.
+  Accepts a list of up to 2 charsets, and adds 'SET NAMES' with the proper charset from the list, where the first item is used for the schema files and the second item is used for the data files. Use it at your own risk as it might cause inconsistencies #1974. Default: binary,binary
 
 .. option:: --default-character-set
 
-  Accepts a list of up to 2 charsets, and adds 'SET NAMES' with the proper charset from the list, where the first item for the schema files and the second item for the data files. Use it at your own risk as it might cause inconsistencies #1974. Default: binary,binary
+  Accepts a list of up to 2 charsets, and executes 'SET NAMES' with the proper charset from the list, where the first item is used when executes SHOW CREATE TABLE and the second item is used for the rest. Use it at your own risk as it might cause inconsistencies #1974. Default: auto,binary. auto means that it is going to use the table character set.
 
 .. option:: --table-engine-for-view-dependency
 
