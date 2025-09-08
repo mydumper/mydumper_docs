@@ -148,11 +148,11 @@ as usual.
 
 Overwrite tables
 ----------------
-myloader expects CREATE TABLE statements in *-schema.sql which will create the tables. However, 
+myloader expects CREATE TABLE statements in `*-schema.sql` which will create the tables. However, 
 it is possible to instruct myloader to drop the tables in case you want to overwrite the table.
 
 By default, myloader doesn't execute any overwrite command and it will FAIL if it is not succed 
-creating it.
+creating it, which can be ignored using the value NONE.
 
 When you use `-o`/`--drop-table`, it executes DROP TABLE by default, previously executing the 
 CREATE TABLE statement. 
@@ -165,7 +165,6 @@ TRUNCATE: myloader will execute a TRUNCATE TABLE statement and MySQL internally 
 
 Take into account that --skip-constraints and --skip-indexes should be used to avoid issue or will be 
 set by default on myloader in future releases.
-
 
 Daemon mode
 -----------
