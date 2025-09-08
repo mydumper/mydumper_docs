@@ -161,7 +161,7 @@ Execution Options
 
 .. option:: -o, --drop-table
 
-  Executes or simulates a DROP TABLE if the table already exists. The drop modes can be: FAIL, NONE, DROP, TRUNCATE and DELETE. This option accepts no parameter which set default to: DROP. If this option is not used, the default is set to: FAIL
+  Executes or simulates a DROP TABLE if the table already exists. The drop modes can be: FAIL, NONE, DROP, TRUNCATE and DELETE. If the option is not set, the default is set to: FAIL. If the option is used without a parameter, the default is: DROP.
 
 .. option:: --overwrite-tables
 

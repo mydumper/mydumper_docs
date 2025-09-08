@@ -382,10 +382,10 @@ as usual.</p>
 </section>
 <section id="overwrite-tables">
 <h2>Overwrite tables<a class="headerlink" href="#overwrite-tables" title="Link to this heading">¶</a></h2>
-<p>myloader expects CREATE TABLE statements in <a href="#id1"><span class="problematic" id="id2">*</span></a>-schema.sql which will create the tables. However,
+<p>myloader expects CREATE TABLE statements in <cite>*-schema.sql</cite> which will create the tables. However,
 it is possible to instruct myloader to drop the tables in case you want to overwrite the table.</p>
 <p>By default, myloader doesn't execute any overwrite command and it will FAIL if it is not succed
-creating it.</p>
+creating it, which can be ignored using the value NONE.</p>
 <p>When you use <cite>-o</cite>/<cite>--drop-table</cite>, it executes DROP TABLE by default, previously executing the
 CREATE TABLE statement.</p>
 <p>There are other ways to remove all the data from the table:</p>
