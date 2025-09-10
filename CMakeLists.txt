@@ -30,6 +30,10 @@ set(REF_SOURCES_DIR "${SOURCES_DIR}/reference")
 # master document with modules index
 set(REF_MASTER_DOC "modules")
 
+# vars necessary for manpages generation
+set(MYDUMPER_PROGRAM_DESC "multi-threaded MySQL dumping")
+set(MYLOADER_PROGRAM_DESC "multi-threaded MySQL loader")
+
 # substitute variables in configuration and scripts
 foreach(file
     conf.py
