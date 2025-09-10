@@ -63,9 +63,10 @@ set(CLEAN_FILES
 )
 
 # note the trailing slash to exclude directory name
-install(DIRECTORY "${SOURCES_DIR}/"
-  DESTINATION "share/doc/mydumper"
-)
+# Commented next 3 lines due to https://github.com/mydumper/mydumper/issues/2019
+# install(DIRECTORY "${SOURCES_DIR}/"
+#  DESTINATION "share/doc/mydumper"
+# )
 
 # Sphinx cache with pickled ReST documents
 set(SPHINX_CACHE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees")
