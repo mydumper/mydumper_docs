@@ -154,7 +154,7 @@ it is possible to instruct myloader to drop the tables in case you want to overw
 By default, myloader doesn't execute any overwrite command and it will FAIL if it is not succed 
 creating it, which can be ignored using the value NONE.
 
-When you use `-o`/`--drop-table`, it executes DROP TABLE by default, previously executing the 
+When you use :option:`-o/--drop-table <mydumper --drop-table>`, it executes DROP TABLE by default, previously executing the 
 CREATE TABLE statement. 
 
 There are other ways to remove all the data from the table:
