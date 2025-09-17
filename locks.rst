@@ -39,6 +39,15 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 
   --sync-thread-lock-mode=NO_LOCK
 
+Safe No Locks
+-------------
+
+This mode is very similar to NO_LOCK but it will stop the backup if detects that the are differences in the binlog position at the beginning of the backup and after syncing threads.
+
+.. code-block::  bash
+
+  --sync-thread-lock-mode=SAFE_NO_LOCK
+
 Using GTID
 ----------
 
