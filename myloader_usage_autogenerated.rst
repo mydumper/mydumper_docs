@@ -233,6 +233,14 @@ Statement Options
 
   Number of queries per transaction, default 1000
 
+.. option:: --max-statement-size
+
+  Informs what is the max statement size. Currently not being used.
+
+.. option:: --max-transaction-size
+
+  Set the max size of the transaction in megabytes, default 1000
+
 .. option:: --append-if-not-exist
 
   Appends IF NOT EXISTS to the create table statements. This will be removed when https://bugs.mysql.com/bug.php?id=103791 has been implemented

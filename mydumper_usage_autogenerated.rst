@@ -122,7 +122,7 @@ Lock Options
 
 .. option:: --sync-thread-lock-mode
 
-  There are 3 modes that can be use to sync: FTWRL, LOCK_ALL and GTID. If you don't need a consistent backup, use: NO_LOCK. More info https://mydumper.github.io/mydumper/docs/html/locks.html. Default: AUTO which uses the best option depending on the database vendor
+  There are 4 modes that can be use to sync: SAFE_NO_LOCK, FTWRL, LOCK_ALL and GTID. If you don't need a consistent backup, use: NO_LOCK. More info https://mydumper.github.io/mydumper/docs/html/locks.html. Default: AUTO which uses the best option depending on the database vendor
 
 .. option:: --use-savepoints
 

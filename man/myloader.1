@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Sep 11, 2025" "" "MyDumper"
+.TH "MYLOADER" "1" "Sep 17, 2025" "" "MyDumper"
 .SH NAME
 myloader \- multi-threaded MySQL loader
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
@@ -305,6 +305,16 @@ Split the INSERT statement into this many rows.
 .TP
 .B \-q, \-\-queries\-per\-transaction
 Number of queries per transaction, default 1000
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-statement\-size
+Informs what is the max statement size. Currently not being used.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-transaction\-size
+Set the max size of the transaction in megabytes, default 1000
 .UNINDENT
 .INDENT 0.0
 .TP

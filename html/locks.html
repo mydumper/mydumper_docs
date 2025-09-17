@@ -289,6 +289,13 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 </pre></div>
 </div>
 </section>
+<section id="safe-no-locks">
+<h3>Safe No Locks<a class="headerlink" href="#safe-no-locks" title="Link to this heading">¶</a></h3>
+<p>This mode is very similar to NO_LOCK but it will stop the backup if detects that the are differences in the binlog position at the beginning of the backup and after syncing threads.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>SAFE_NO_LOCK
+</pre></div>
+</div>
+</section>
 <section id="using-gtid">
 <h3>Using GTID<a class="headerlink" href="#using-gtid" title="Link to this heading">¶</a></h3>
 <p>On Percona Server, we can check the status variable binlog_snapshot_gtid_executed when you execute <cite>START TRANSACTION WITH CONSISTENT SNAPSHOT</cite> to check the GTID position which mydumper uses to determine if all the threads are watching the same point in time of the database.</p>
@@ -409,6 +416,7 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 <li><a class="reference internal" href="#flush-table-with-read-lock">FLUSH TABLE WITH READ LOCK</a></li>
 <li><a class="reference internal" href="#lock-all-tables">Lock all Tables</a></li>
 <li><a class="reference internal" href="#no-locks">No Locks</a></li>
+<li><a class="reference internal" href="#safe-no-locks">Safe No Locks</a></li>
 <li><a class="reference internal" href="#using-gtid">Using GTID</a></li>
 </ul>
 </li>
