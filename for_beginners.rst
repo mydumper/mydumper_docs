@@ -13,9 +13,9 @@ What do you want to backup? a single database? multiple databases? a few tables?
 
 You can use 
 
-* -B with a list of databases
-* -T with a list of tables
-* multiple instances of --regex
+* :option:`-B <mydumper -B>` with a list of databases
+* :option:`-T <mydumper -T>` with a list of tables
+* multiple instances of :option:`--regex <mydumper --regex>` are allowed
 
 
 What kind of lockings can be used?
@@ -43,17 +43,17 @@ https://mydumper.github.io/mydumper/docs/html/exec_per_thread.html
 Do you want a single backup file?
 ^^^^^
 
-Use :option:`--outputdir <mydumper --stream>`
+Use :option:`--stream <mydumper --stream>`
 
 Do you need the replica position?
 ^^^^^
 
-Use :option:`--outputdir <mydumper --replica-data>`
+Use :option:`--replica-data <mydumper --replica-data>`
 
 
 Do you want to check the consistency?
 ^^^^^
-Use Use :option:`--outputdir <mydumper -M>`
+Use Use :option:`-M <mydumper -M>`
 
 If you are not sure follow this guidance:
 
@@ -70,5 +70,5 @@ myloader
 Are you going to replace the tables? -o/--drop-tables?
 ^^^^^
 
-Use :option:`--outputdir <mydumper --drop-tables>`
+Use :option:`--drop-tables <mydumper --drop-tables>`
 
