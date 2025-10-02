@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Installing" href="installing.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Usage" href="usage.html"><link rel="prev" title="Requirements" href="requirements.html">
 
     <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.09.25 -->
-        <title>MyDumper documentation</title>
+        <title>For beginners - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -163,7 +163,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -174,7 +174,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -182,7 +182,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   <span class="sidebar-brand-text">MyDumper  documentation</span>
   
@@ -192,11 +192,11 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">For beginners</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input aria-label="Toggle navigation of Usage" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
@@ -245,7 +245,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
@@ -254,19 +254,64 @@
 </a>
 <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" style="width: 50%;" />
 </a>
-<section id="welcome-to-mydumper-project">
-<h1>Welcome to MyDumper Project<a class="headerlink" href="#welcome-to-mydumper-project" title="Link to this heading">¶</a></h1>
-<p>MyDumper was born out of necessity. mysqldump remains the norm for MySQL logical backups but to this day it remains a single-threaded process.</p>
-<p>For large databases, the only feasible way to take a logical backup - and restore it - in a reasonable amount of time is by parallelizing the process and executing it using multiple threads, which is the core value of MyDumper.</p>
-<p>MyDumper is a MySQL Logical Backup Tool with 2 programs:</p>
+<section id="for-beginners">
+<h1>For beginners<a class="headerlink" href="#for-beginners" title="Link to this heading">¶</a></h1>
+<section id="mydumper">
+<h2>mydumper<a class="headerlink" href="#mydumper" title="Link to this heading">¶</a></h2>
+<p>You need to use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-o"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a>  to set the directory of the backup or a backup dir will be created.</p>
+<section id="what-do-you-want-to-backup-a-single-database-multiple-databases-a-few-tables">
+<h3>What do you want to backup? a single database? multiple databases? a few tables?<a class="headerlink" href="#what-do-you-want-to-backup-a-single-database-multiple-databases-a-few-tables" title="Link to this heading">¶</a></h3>
+<p>You can use</p>
 <ul class="simple">
-<li><p><strong class="program">mydumper</strong> is responsible to export a consistent backup of MySQL databases</p></li>
-<li><p><strong class="program">myloader</strong> reads the backup from <strong class="program">mydumper</strong>, connects to the destination database and imports the backup.</p></li>
+<li><p>-B with a list of databases</p></li>
+<li><p>-T with a list of tables</p></li>
+<li><p>multiple instances of --regex</p></li>
 </ul>
-<p>MyDumper is Open Source and maintained by the community, it is not a Percona, MariaDB or MySQL product.</p>
-<p>The tools developed in this Project are based on C, GLib and support the client libraries of Percona, MariaDB and MySQL.</p>
-<div class="toctree-wrapper compound">
-</div>
+</section>
+<section id="what-kind-of-lockings-can-be-used">
+<h3>What kind of lockings can be used?<a class="headerlink" href="#what-kind-of-lockings-can-be-used" title="Link to this heading">¶</a></h3>
+<p>mydumper needs to sync the threads and it provides different options based on your capabilities <a class="reference external" href="https://mydumper.github.io/mydumper/docs/html/locks.html#synchronizing-threads">https://mydumper.github.io/mydumper/docs/html/locks.html#synchronizing-threads</a></p>
+</section>
+<section id="what-about-ddl-locks">
+<h3>What about DDL locks?<a class="headerlink" href="#what-about-ddl-locks" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://mydumper.github.io/mydumper/docs/html/locks.html#ddl-locks">https://mydumper.github.io/mydumper/docs/html/locks.html#ddl-locks</a></p>
+</section>
+<section id="do-you-have-non-transactional-tables">
+<h3>Do you have non transactional tables?<a class="headerlink" href="#do-you-have-non-transactional-tables" title="Link to this heading">¶</a></h3>
+<p>If you do, you must set --trx-tables=0 or --no-trx-tables (if available)</p>
+</section>
+<section id="do-you-want-to-compress-the-backup">
+<h3>Do you want to compress the backup?<a class="headerlink" href="#do-you-want-to-compress-the-backup" title="Link to this heading">¶</a></h3>
+<p>fyi: zstd takes the same amount of time than raw files and reduce it like gzip compression</p>
+<p><a class="reference external" href="https://mydumper.github.io/mydumper/docs/html/exec_per_thread.html">https://mydumper.github.io/mydumper/docs/html/exec_per_thread.html</a></p>
+</section>
+<section id="do-you-want-a-single-backup-file">
+<h3>Do you want a single backup file?<a class="headerlink" href="#do-you-want-a-single-backup-file" title="Link to this heading">¶</a></h3>
+<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+</section>
+<section id="do-you-need-the-replica-position">
+<h3>Do you need the replica position?<a class="headerlink" href="#do-you-need-the-replica-position" title="Link to this heading">¶</a></h3>
+<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-replica-data"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+</section>
+<section id="do-you-want-to-check-the-consistency">
+<h3>Do you want to check the consistency?<a class="headerlink" href="#do-you-want-to-check-the-consistency" title="Link to this heading">¶</a></h3>
+<p>Use Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-M"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+<p>If you are not sure follow this guidance:</p>
+<ul class="simple">
+<li><p>if it is a migration, you should do it</p></li>
+<li><p>if it is just for testings, you need it fast and it is a large backup, you can avoid it.</p></li>
+<li><p>if it is a daily backup you can avoid it to reduce the backup timings</p></li>
+<li><p>if it is a daily backup that you are going to test, then you must use it</p></li>
+</ul>
+</section>
+</section>
+<section id="myloader">
+<h2>myloader<a class="headerlink" href="#myloader" title="Link to this heading">¶</a></h2>
+<section id="are-you-going-to-replace-the-tables-o-drop-tables">
+<h3>Are you going to replace the tables? -o/--drop-tables?<a class="headerlink" href="#are-you-going-to-replace-the-tables-o-drop-tables" title="Link to this heading">¶</a></h3>
+<p>Use <code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></p>
+</section>
+</section>
 </section>
 
         </article>
@@ -274,16 +319,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="installing.html">
+          <a class="next-page" href="usage.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Installing</div>
+                <div class="title">Usage</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="requirements.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Requirements</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -302,8 +357,41 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">For beginners</a><ul>
+<li><a class="reference internal" href="#mydumper">mydumper</a><ul>
+<li><a class="reference internal" href="#what-do-you-want-to-backup-a-single-database-multiple-databases-a-few-tables">What do you want to backup? a single database? multiple databases? a few tables?</a></li>
+<li><a class="reference internal" href="#what-kind-of-lockings-can-be-used">What kind of lockings can be used?</a></li>
+<li><a class="reference internal" href="#what-about-ddl-locks">What about DDL locks?</a></li>
+<li><a class="reference internal" href="#do-you-have-non-transactional-tables">Do you have non transactional tables?</a></li>
+<li><a class="reference internal" href="#do-you-want-to-compress-the-backup">Do you want to compress the backup?</a></li>
+<li><a class="reference internal" href="#do-you-want-a-single-backup-file">Do you want a single backup file?</a></li>
+<li><a class="reference internal" href="#do-you-need-the-replica-position">Do you need the replica position?</a></li>
+<li><a class="reference internal" href="#do-you-want-to-check-the-consistency">Do you want to check the consistency?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#myloader">myloader</a><ul>
+<li><a class="reference internal" href="#are-you-going-to-replace-the-tables-o-drop-tables">Are you going to replace the tables? -o/--drop-tables?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
