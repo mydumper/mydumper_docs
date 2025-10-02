@@ -28,6 +28,7 @@ The tools developed in this Project are based on C, GLib and support the client 
    installing
    compiling
    requirements
+   for_beginners
    usage
    configure
    files
