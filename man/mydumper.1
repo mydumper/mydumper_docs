@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Sep 17, 2025" "" "MyDumper"
+.TH "MYDUMPER" "1" "Oct 02, 2025" "" "MyDumper"
 .SH NAME
 mydumper \- multi-threaded MySQL dumping
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
@@ -207,6 +207,11 @@ This option is deprecated use \-\-trx\-tables instead
 .TP
 .B \-\-trx\-tables
 The backup process changes, if we know that we are exporting transactional tables only
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-trx\-tables
+Indicates that some or all are not transactional tables. Locks will take longer to be released, as it needs to determine which tables are not transactional and export them before releasing global lock
 .UNINDENT
 .INDENT 0.0
 .TP

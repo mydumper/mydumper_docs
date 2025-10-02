@@ -144,6 +144,10 @@ Lock Options
 
   The backup process changes, if we know that we are exporting transactional tables only
 
+.. option:: --no-trx-tables
+
+  Indicates that some or all are not transactional tables. Locks will take longer to be released, as it needs to determine which tables are not transactional and export them before releasing global lock
+
 .. option:: --skip-ddl-locks
 
   Do not send DDL locks when possible
