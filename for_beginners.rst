@@ -51,19 +51,24 @@ Do you need the replica position?
 Use :option:`--outputdir <mydumper --replica-data>`
 
 
-Do you want to check the consistency? Use -M https://mydumper.github.io/mydumper/docs/html/mydumper_usage.html#checksum-options
-if it is a migration, you should do it
-if it is just for testings, you need it fast and it is a large backup, you can avoid it.
-if it is a daily backup you can avoid it to reduce the backup timings
-if it is a daily backup that you are going to test, then you must use it
+Do you want to check the consistency?
+^^^^^
+Use Use :option:`--outputdir <mydumper -M>`
+
+If you are not sure follow this guidance:
+
+- if it is a migration, you should do it
+- if it is just for testings, you need it fast and it is a large backup, you can avoid it.
+- if it is a daily backup you can avoid it to reduce the backup timings
+- if it is a daily backup that you are going to test, then you must use it
 
 
 
 myloader
-
+--------
 
 Are you going to replace the tables? -o/--drop-tables?
+^^^^^
 
-https://mydumper.github.io/mydumper/docs/html/myloader_usage.html#cmdoption-myloader-o
-
+Use :option:`--outputdir <mydumper --drop-tables>`
 
