@@ -263,9 +263,9 @@
 <h3>What do you want to backup? a single database? multiple databases? a few tables?<a class="headerlink" href="#what-do-you-want-to-backup-a-single-database-multiple-databases-a-few-tables" title="Link to this heading">¶</a></h3>
 <p>You can use</p>
 <ul class="simple">
-<li><p>-B with a list of databases</p></li>
-<li><p>-T with a list of tables</p></li>
-<li><p>multiple instances of --regex</p></li>
+<li><p><a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-B"><code class="xref std std-option docutils literal notranslate"><span class="pre">-B</span></code></a> with a list of databases</p></li>
+<li><p><a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-T"><code class="xref std std-option docutils literal notranslate"><span class="pre">-T</span></code></a> with a list of tables</p></li>
+<li><p>multiple instances of <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-x"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a> are allowed</p></li>
 </ul>
 </section>
 <section id="what-kind-of-lockings-can-be-used">
@@ -287,15 +287,15 @@
 </section>
 <section id="do-you-want-a-single-backup-file">
 <h3>Do you want a single backup file?<a class="headerlink" href="#do-you-want-a-single-backup-file" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-stream"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stream</span></code></a></p>
 </section>
 <section id="do-you-need-the-replica-position">
 <h3>Do you need the replica position?<a class="headerlink" href="#do-you-need-the-replica-position" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-replica-data"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+<p>Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-replica-data"><code class="xref std std-option docutils literal notranslate"><span class="pre">--replica-data</span></code></a></p>
 </section>
 <section id="do-you-want-to-check-the-consistency">
 <h3>Do you want to check the consistency?<a class="headerlink" href="#do-you-want-to-check-the-consistency" title="Link to this heading">¶</a></h3>
-<p>Use Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-M"><code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></a></p>
+<p>Use Use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-M"><code class="xref std std-option docutils literal notranslate"><span class="pre">-M</span></code></a></p>
 <p>If you are not sure follow this guidance:</p>
 <ul class="simple">
 <li><p>if it is a migration, you should do it</p></li>
@@ -309,7 +309,7 @@
 <h2>myloader<a class="headerlink" href="#myloader" title="Link to this heading">¶</a></h2>
 <section id="are-you-going-to-replace-the-tables-o-drop-tables">
 <h3>Are you going to replace the tables? -o/--drop-tables?<a class="headerlink" href="#are-you-going-to-replace-the-tables-o-drop-tables" title="Link to this heading">¶</a></h3>
-<p>Use <code class="xref std std-option docutils literal notranslate"><span class="pre">--outputdir</span></code></p>
+<p>Use <code class="xref std std-option docutils literal notranslate"><span class="pre">--drop-tables</span></code></p>
 </section>
 </section>
 </section>
