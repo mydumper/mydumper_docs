@@ -295,6 +295,7 @@ In the case of <code class="code docutils literal notranslate"><span class="pre"
 <li><p>columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter;</p></li>
 <li><p>object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;</p></li>
 <li><p>partition_regex: It defines a regular expression to filter the partitions to export.</p></li>
+<li><p>rows: It replaces the value of <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">--rows</span></code></a> or its default value.</p></li>
 </ul>
 <p>For example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>column<span class="w"> </span>&gt;<span class="w"> </span><span class="m">20</span>
@@ -302,6 +303,7 @@ In the case of <code class="code docutils literal notranslate"><span class="pre"
 <span class="nv">object_to_export</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SCHEMA
 <span class="nv">columns_on_select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price+20
 <span class="nv">columns_on_insert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price
+<span class="nv">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000000</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
