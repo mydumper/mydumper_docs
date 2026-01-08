@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Requirements" href="requirements.html"><link rel="prev" title="Installing" href="installing.html">
 
-    <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.09.25 -->
+    <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
         <title>Compiling - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -262,26 +262,26 @@
 <h3>Development dependencies<a class="headerlink" href="#development-dependencies" title="Link to this heading">¶</a></h3>
 <p>MyDumper requires the following development tools and libraries before it can be compiled:</p>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>g++<span class="w"> </span>git
 apt-get<span class="w"> </span>install<span class="w"> </span>libglib2.0-dev<span class="w"> </span>libpcre3-dev<span class="w"> </span>libssl-dev
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>git<span class="w"> </span>make
 yum<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel<span class="w"> </span>openssl-devel
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Mac OSX</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--3">Mac OSX</label><div class="tab-content docutils container">
 <p>for MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>pkgconfig
 sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>glib2<span class="w"> </span>pcre
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">OpenSUSE</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--4">OpenSUSE</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel
 </pre></div>
 </div>
@@ -292,28 +292,28 @@ sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> 
 <h3>MySQL/Percona/MariaDB development libraries<a class="headerlink" href="#mysql-percona-mariadb-development-libraries" title="Link to this heading">¶</a></h3>
 <p>You need to select one vendor development library.</p>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>libmysqlclient-dev
 apt-get<span class="w"> </span>install<span class="w"> </span>libperconaserverclient20-dev
 apt-get<span class="w"> </span>install<span class="w"> </span>libmariadbclient-dev
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-devel
 yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>Percona-Server-devel-57
 yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-devel
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">Mac OSX</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--3">Mac OSX</label><div class="tab-content docutils container">
 <p>MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>mariadb-10.11
 sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</span><span class="w"> </span>mysql
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--4">OpenSUSE</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--4">OpenSUSE</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>libmysqlclient-devel
 </pre></div>
 </div>

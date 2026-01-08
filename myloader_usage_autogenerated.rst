@@ -153,7 +153,7 @@ Execution Options
 
 .. option:: --checksum
 
-  Treat checksums: skip, fail(default), warn.
+  Treat checksums: skip, fail, warn(default).
 
 .. option:: --drop-database
 
@@ -194,6 +194,10 @@ Execution Options
 .. option:: --set-gtid-purged
 
   After import, it will execute the SET GLOBAL gtid_purged with the value found on source section of the metadata file
+
+.. option:: --num-sequences
+
+  Amount of sequences in the backup. It is read from [config] in the metadata file. Default: 0
 
 Threads Options
 ---------------

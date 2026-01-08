@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="myloader" href="myloader_usage.html"><link rel="prev" title="Usage" href="usage.html">
 
-    <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.09.25 -->
+    <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
         <title>mydumper - MyDumper documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -609,7 +609,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-schema-checksums">
 <span class="sig-name descname"><span class="pre">--schema-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-schema-checksums" title="Link to this definition">¶</a></dt>
-<dd><p>Dump schema table and view creation checksums</p>
+<dd><p>Dump schema table and view creation checksums (enabled by default)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-no-schema-checksums">
+<span class="sig-name descname"><span class="pre">--no-schema-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-no-schema-checksums" title="Link to this definition">¶</a></dt>
+<dd><p>Disable schema checksums</p>
 </dd></dl>
 
 <dl class="std option">
@@ -667,6 +673,12 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-skip-indexes">
 <span class="sig-name descname"><span class="pre">--skip-indexes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-skip-indexes" title="Link to this definition">¶</a></dt>
 <dd><p>Remove the indexes from the CREATE TABLE statement. By default, the statement is not modified</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-skip-metadata-sorting">
+<span class="sig-name descname"><span class="pre">--skip-metadata-sorting</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-skip-metadata-sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Skip sorting tables/databases in metadata file. Saves 30-60s on 250K+ tables. Only affects metadata file readability, not restore functionality</p>
 </dd></dl>
 
 <dl class="std option">
@@ -805,6 +817,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-load-data-character-set">
+<span class="sig-name descname"><span class="pre">--load-data-character-set</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-load-data-character-set" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the character that will be added to the CHARACTER SET clause in the LOAD DATA statement. Use it at your own risk as it might cause inconsistencies. By default CHARACTER SET will not be added</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-table-engine-for-view-dependency">
 <span class="sig-name descname"><span class="pre">--table-engine-for-view-dependency</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-table-engine-for-view-dependency" title="Link to this definition">¶</a></dt>
 <dd><p>Table engine to be used for the CREATE TABLE statement for temporary tables when using views</p>
@@ -841,6 +859,12 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-no-check-generated-fields">
 <span class="sig-name descname"><span class="pre">--no-check-generated-fields</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-no-check-generated-fields" title="Link to this definition">¶</a></dt>
 <dd><p>Queries related to generated fields are not going to be executed.It will lead to restoration issues if you have generated columns</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-bulk-metadata-prefetch">
+<span class="sig-name descname"><span class="pre">--bulk-metadata-prefetch</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-bulk-metadata-prefetch" title="Link to this definition">¶</a></dt>
+<dd><p>Prefetch JSON and generated column metadata in bulk at startup. Significantly faster for dumping many tables, but slower for small dumps with -T</p>
 </dd></dl>
 
 <dl class="std option">

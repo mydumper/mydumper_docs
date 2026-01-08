@@ -234,7 +234,11 @@ Checksum Options
 
 .. option:: --schema-checksums
 
-  Dump schema table and view creation checksums
+  Dump schema table and view creation checksums (enabled by default)
+
+.. option:: --no-schema-checksums
+
+  Disable schema checksums
 
 .. option:: --routine-checksums
 
@@ -273,6 +277,10 @@ Objects Options
 .. option:: --skip-indexes
 
   Remove the indexes from the CREATE TABLE statement. By default, the statement is not modified
+
+.. option:: --skip-metadata-sorting
+
+  Skip sorting tables/databases in metadata file. Saves 30-60s on 250K+ tables. Only affects metadata file readability, not restore functionality
 
 .. option:: --views-as-tables
 
@@ -364,6 +372,10 @@ Statement Options
 
   Accepts a list of up to 2 charsets, and executes 'SET NAMES' with the proper charset from the list, where the first item is used when executes SHOW CREATE TABLE and the second item is used for the rest. Use it at your own risk as it might cause inconsistencies #1974. Default: auto,binary. auto means that it is going to use the table character set.
 
+.. option:: --load-data-character-set
+
+  Sets the character that will be added to the CHARACTER SET clause in the LOAD DATA statement. Use it at your own risk as it might cause inconsistencies. By default CHARACTER SET will not be added
+
 .. option:: --table-engine-for-view-dependency
 
   Table engine to be used for the CREATE TABLE statement for temporary tables when using views
@@ -389,6 +401,10 @@ Extra Options
 .. option:: --no-check-generated-fields
 
   Queries related to generated fields are not going to be executed.It will lead to restoration issues if you have generated columns
+
+.. option:: --bulk-metadata-prefetch
+
+  Prefetch JSON and generated column metadata in bulk at startup. Significantly faster for dumping many tables, but slower for small dumps with -T
 
 .. option:: --order-by-primary
 
