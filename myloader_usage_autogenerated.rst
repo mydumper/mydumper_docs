@@ -165,7 +165,7 @@ Execution Options
 
 .. option:: --overwrite-tables
 
-  Option --overwrite-tables has been deprecated. User -o/--drop-table instead.
+  Option --overwrite-tables has been deprecated. Use -o/--drop-table instead.
 
 .. option:: --overwrite-unsafe
 
@@ -256,6 +256,10 @@ Statement Options
 .. option:: --skip-definer
 
   Removes DEFINER from the CREATE statement. By default, statements are not modified
+
+.. option:: --replace-definer
+
+  Replaces the user in the DEFINER by the new string. By default, statements are not modified
 
 .. option:: --ignore-set
 

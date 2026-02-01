@@ -352,6 +352,10 @@ Statement Options
 
   Removes DEFINER from the CREATE statement. By default, statements are not modified
 
+.. option:: --replace-definer
+
+  Replaces the user in the DEFINER by the new string. By default, statements are not modified
+
 .. option:: -s, --statement-size
 
   Attempted size of INSERT statement in bytes, default 1000000
