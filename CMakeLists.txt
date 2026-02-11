@@ -91,7 +91,7 @@ if (WITH_HTML)
   )
   
   add_custom_command(TARGET doc_html POST_BUILD
-    COMMAND sed -i "2 i\ ROOT_URL: \\'\\'," html/_static/documentation_options.js
+    COMMAND sed -i "2 i\ URL_ROOT: \\'\\'," html/_static/documentation_options.js
   )
   
   add_dependencies(doc_html
