@@ -68,7 +68,7 @@ myloader
 --------
 
 Are you going to replace the tables? -o/--drop-tables?
-^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use :option:`--drop-tables <myloader --drop-tables>`
 
