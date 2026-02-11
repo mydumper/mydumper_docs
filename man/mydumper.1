@@ -125,7 +125,7 @@ Enable the clear text authentication plugin which is disable by default.
 .INDENT 0.0
 .TP
 .B \-x, \-\-regex
-Regular expression for \(aqdb.table\(aq matching
+Regular expression for ‘db.table’ matching
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -171,17 +171,17 @@ Snapshot to use for TiDB
 .INDENT 0.0
 .TP
 .B \-k, \-\-no\-locks
-This option is deprecated use \-\-sync\-thread\-lock\-mode instead
+This option is deprecated use –sync\-thread\-lock\-mode instead
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lock\-all\-tables
-This option is deprecated use \-\-sync\-thread\-lock\-mode instead
+This option is deprecated use –sync\-thread\-lock\-mode instead
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-sync\-thread\-lock\-mode
-There are 4 modes that can be use to sync: SAFE_NO_LOCK, FTWRL, LOCK_ALL and GTID. If you don\(aqt need a consistent backup, use: NO_LOCK. More info \X'tty: link https://mydumper.github.io/mydumper/docs/html/locks.html'\fI\%https://mydumper.github.io/mydumper/docs/html/locks.html\fP\X'tty: link'\&. Default: AUTO which uses the best option depending on the database vendor
+There are 4 modes that can be use to sync: SAFE_NO_LOCK, FTWRL, LOCK_ALL and GTID. If you don’t need a consistent backup, use: NO_LOCK. More info \fI\%https://mydumper.github.io/mydumper/docs/html/locks.html\fP\&. Default: AUTO which uses the best option depending on the database vendor
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -196,12 +196,12 @@ Do not use Percona backup locks
 .INDENT 0.0
 .TP
 .B \-\-less\-locking
-This option is deprecated and its behaviour is the default which is useful if you don\(aqt have transaction tables. Use \-\-trx\-tables otherwise
+This option is deprecated and its behaviour is the default which is useful if you don’t have transaction tables. Use –trx\-tables otherwise
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-trx\-consistency\-only
-This option is deprecated use \-\-trx\-tables instead
+This option is deprecated use –trx\-tables instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -233,7 +233,7 @@ which default will be high
 .INDENT 0.0
 .TP
 .B \-\-exec\-threads
-Amount of threads to use with \-\-exec
+Amount of threads to use with –exec
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -248,7 +248,7 @@ Set the command that will receive by STDIN and write in the STDOUT into the outp
 .INDENT 0.0
 .TP
 .B \-\-exec\-per\-thread\-extension
-Set the extension for the STDOUT file when \-\-exec\-per\-thread is used
+Set the extension for the STDOUT file when –exec\-per\-thread is used
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -294,12 +294,12 @@ Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX 
 .INDENT 0.0
 .TP
 .B \-\-rows\-hard
-This set the MIN and MAX limit when even if \-\-rows is 0
+This set the MIN and MAX limit when even if –rows is 0
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-split\-partitions
-Dump partitions into separate files. This option overrides the \-\-rows option for partitioned tables.
+Dump partitions into separate files. This option overrides the –rows option for partitioned tables.
 .UNINDENT
 .SH CHECKSUM OPTIONS
 .INDENT 0.0
@@ -387,12 +387,12 @@ Do not dump VIEWs
 .INDENT 0.0
 .TP
 .B \-\-load\-data
-Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use \-\-format
+Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-csv
-Automatically enables \-\-load\-data and set variables to export in CSV format. This option will be deprecated on future releases use \-\-format
+Automatically enables –load\-data and set variables to export in CSV format. This option will be deprecated on future releases use –format
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -402,7 +402,7 @@ Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default
 .INDENT 0.0
 .TP
 .B \-\-include\-header
-When \-\-load\-data or \-\-csv is used, it will include the header with the column name
+When –load\-data or –csv is used, it will include the header with the column name
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -412,22 +412,22 @@ Defines the character that is written between fields
 .INDENT 0.0
 .TP
 .B \-\-fields\-enclosed\-by
-Defines the character to enclose fields. Default: \(dq
+Defines the character to enclose fields. Default: “
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-fields\-escaped\-by
-Single character that is going to be used to escape characters in theLOAD DATA statement, default: \(aq\(aq
+Single character that is going to be used to escape characters in theLOAD DATA statement, default: ‘’
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lines\-starting\-by
-Adds the string at the beginning of each row. When \-\-load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+Adds the string at the beginning of each row. When –load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lines\-terminated\-by
-Adds the string at the end of each row. When \-\-load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+Adds the string at the end of each row. When –load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -472,22 +472,22 @@ Attempted size of INSERT statement in bytes, default 1000000
 .INDENT 0.0
 .TP
 .B \-\-tz\-utc
-SET TIME_ZONE=\(aq+00:00\(aq at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use \-\-skip\-tz\-utc to disable.
+SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use –skip\-tz\-utc to disable.
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-skip\-tz\-utc
-Doesn\(aqt add SET TIMEZONE on the backup files
+Doesn’t add SET TIMEZONE on the backup files
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-set\-names
-Accepts a list of up to 2 charsets, and adds \(aqSET NAMES\(aq with the proper charset from the list, where the first item is used for the schema files and the second item is used for the data files. Use it at your own risk as it might cause inconsistencies #1974. Default: binary,binary
+Accepts a list of up to 2 charsets, and adds ‘SET NAMES’ with the proper charset from the list, where the first item is used for the schema files and the second item is used for the data files. Use it at your own risk as it might cause inconsistencies #1974. Default: binary,binary
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-default\-character\-set
-Accepts a list of up to 2 charsets, and executes \(aqSET NAMES\(aq with the proper charset from the list, where the first item is used when executes SHOW CREATE TABLE and the second item is used for the rest. Use it at your own risk as it might cause inconsistencies #1974. Default: auto,binary. auto means that it is going to use the table character set.
+Accepts a list of up to 2 charsets, and executes ‘SET NAMES’ with the proper charset from the list, where the first item is used when executes SHOW CREATE TABLE and the second item is used for the rest. Use it at your own risk as it might cause inconsistencies #1974. Default: auto,binary. auto means that it is going to use the table character set.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -513,7 +513,7 @@ Exits if a broken table has been found
 .INDENT 0.0
 .TP
 .B \-\-success\-on\-1146
-This option is deprecated use \-\-ignore\-errors instead
+This option is deprecated use –ignore\-errors instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -564,7 +564,7 @@ Enable daemon mode
 .INDENT 0.0
 .TP
 .B \-I, \-\-snapshot\-interval
-Interval between each dump snapshot (in minutes), requires \-\-daemon, default 60
+Interval between each dump snapshot (in minutes), requires –daemon, default 60
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -610,7 +610,7 @@ Log file name to use, by default stdout is used
 .INDENT 0.0
 .TP
 .B \-\-disk\-limits
-Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: \(aq<resume>:<pause>\(aq in MB.For instance: 100:500 will pause when there is only 100MB free and will resume if 500MB are available
+Set the limit to pause and resume if determines there is no enough disk space.Accepts values like: ‘<resume>:<pause>’ in MB.For instance: 100:500 will pause when there is only 100MB free and will resume if 500MB are available
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -670,7 +670,7 @@ Use a specific defaults file. Default: /etc/mydumper.cnf
 .INDENT 0.0
 .TP
 .B \-\-defaults\-extra\-file
-Use an additional defaults file. This is loaded after \-\-defaults\-file, replacing previous defined values
+Use an additional defaults file. This is loaded after –defaults\-file, replacing previous defined values
 .UNINDENT
 .INDENT 0.0
 .TP

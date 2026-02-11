@@ -1,17 +1,17 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head><meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Masquerade" href="masquerade.html"><link rel="prev" title="Stream" href="stream.html">
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Masquerade" href="masquerade.html" /><link rel="prev" title="Stream" href="stream.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.png"><!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>New Lock modes - MyDumper documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=9701f087" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=8f9e6779" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=e61b947c" />
     
     
 
@@ -70,7 +70,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -85,73 +85,34 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
-    <title>Auto light/dark, in light mode</title>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
-      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
-      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
-      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
-      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
-      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
-      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
-      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
-      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
-      <circle cx="14.5" cy="9.55" r="3.6"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
-    <title>Auto light/dark, in dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
-      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
-      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
-      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
-      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
-      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
-      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
-      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-pencil" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
-      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
-      <path d="M13.5 6.5l4 4" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
-    </svg>
-  </symbol>
-  <symbol id="svg-eye" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-      <path
-        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
     </svg>
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
-
-<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 
 
@@ -159,7 +120,8 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
     <div class="header-center">
@@ -167,15 +129,16 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
-          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
   </header>
@@ -183,6 +146,7 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
   
   <span class="sidebar-brand-text">MyDumper  documentation</span>
   
@@ -197,12 +161,12 @@
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input aria-label="Toggle navigation of Usage" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="configure.html">Configuration</a><input aria-label="Toggle navigation of Configuration" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="configure.html">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
@@ -236,60 +200,58 @@
         </a>
         <div class="content-icon-container">
           
-
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
-              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main" id="furo-main-content">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" style="width: 50%;" />
-</a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" style="width: 50%;" />
-</a>
+        <article role="main">
+          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
+<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
 <section id="new-lock-modes">
-<span id="mydumper-locks"></span><h1>New Lock modes<a class="headerlink" href="#new-lock-modes" title="Link to this heading">¶</a></h1>
+<span id="mydumper-locks"></span><h1>New Lock modes<a class="headerlink" href="#new-lock-modes" title="Link to this heading">#</a></h1>
 <section id="synchronizing-threads">
-<h2>Synchronizing threads<a class="headerlink" href="#synchronizing-threads" title="Link to this heading">¶</a></h2>
+<h2>Synchronizing threads<a class="headerlink" href="#synchronizing-threads" title="Link to this heading">#</a></h2>
 <p>When you take a consistent backup, you must set the point in time where the backup is going to be taken. If you use multiple threads to take the backup, all of them must to be in the same point in time. The option <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-sync-thread-lock-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--sync-thread-lock-mode</span></code></a> sets the mode that mydumper can use to keep the threads in sync.</p>
 <section id="flush-table-with-read-lock">
-<h3>FLUSH TABLE WITH READ LOCK<a class="headerlink" href="#flush-table-with-read-lock" title="Link to this heading">¶</a></h3>
+<h3>FLUSH TABLE WITH READ LOCK<a class="headerlink" href="#flush-table-with-read-lock" title="Link to this heading">#</a></h3>
 <p>By default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there are other options:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>FTWRL
 </pre></div>
 </div>
 </section>
 <section id="lock-all-tables">
-<h3>Lock all Tables<a class="headerlink" href="#lock-all-tables" title="Link to this heading">¶</a></h3>
+<h3>Lock all Tables<a class="headerlink" href="#lock-all-tables" title="Link to this heading">#</a></h3>
 <p>In cases where FLUSH TABLE WITH READ LOCK is not available, we can use <cite>LOCK_ALL</cite> to lock all the tables that we are going to export.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>LOCK_ALL
 </pre></div>
 </div>
 </section>
 <section id="no-locks">
-<h3>No Locks<a class="headerlink" href="#no-locks" title="Link to this heading">¶</a></h3>
-<p>If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+<h3>No Locks<a class="headerlink" href="#no-locks" title="Link to this heading">#</a></h3>
+<p>If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>NO_LOCK
 </pre></div>
 </div>
 </section>
 <section id="safe-no-locks">
-<h3>Safe No Locks<a class="headerlink" href="#safe-no-locks" title="Link to this heading">¶</a></h3>
+<h3>Safe No Locks<a class="headerlink" href="#safe-no-locks" title="Link to this heading">#</a></h3>
 <p>This mode is very similar to NO_LOCK but it will stop the backup if detects that the are differences in the binlog position at the beginning of the backup and after syncing threads.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>SAFE_NO_LOCK
 </pre></div>
 </div>
 </section>
 <section id="using-gtid">
-<h3>Using GTID<a class="headerlink" href="#using-gtid" title="Link to this heading">¶</a></h3>
+<h3>Using GTID<a class="headerlink" href="#using-gtid" title="Link to this heading">#</a></h3>
 <p>On Percona Server, we can check the status variable binlog_snapshot_gtid_executed when you execute <cite>START TRANSACTION WITH CONSISTENT SNAPSHOT</cite> to check the GTID position which mydumper uses to determine if all the threads are watching the same point in time of the database.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>GTID
 </pre></div>
@@ -297,52 +259,52 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 </section>
 </section>
 <section id="transactional-tables">
-<h2>Transactional tables<a class="headerlink" href="#transactional-tables" title="Link to this heading">¶</a></h2>
+<h2>Transactional tables<a class="headerlink" href="#transactional-tables" title="Link to this heading">#</a></h2>
 <p>When you have transactional table only, you can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables</span></code></a> which reduces the amount of time we held the global lockings.</p>
 </section>
 <section id="ddl-locks">
-<h2>DDL Locks<a class="headerlink" href="#ddl-locks" title="Link to this heading">¶</a></h2>
+<h2>DDL Locks<a class="headerlink" href="#ddl-locks" title="Link to this heading">#</a></h2>
 <p>There are scenarios where a backup is cancel due DDL operations over tables that we are exporting. In order to avoid cancelling the backup, <strong class="program">mydumper</strong> send DDL locks like <cite>LOCK INSTANCE FOR BACKUP</cite> or <cite>BACKUP STAGE START</cite> when possible.</p>
 <section id="disable-ddl-locks">
-<h3>Disable DDL locks<a class="headerlink" href="#disable-ddl-locks" title="Link to this heading">¶</a></h3>
+<h3>Disable DDL locks<a class="headerlink" href="#disable-ddl-locks" title="Link to this heading">#</a></h3>
 <p>However, if you are tacking a partial backup or when you know that the operations that are being blocked are safe, you can disable this useing <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-skip-ddl-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--skip-ddl-locks</span></code></a></p>
 </section>
 <section id="disable-percona-backup-locks">
-<h3>Disable Percona Backup Locks<a class="headerlink" href="#disable-percona-backup-locks" title="Link to this heading">¶</a></h3>
+<h3>Disable Percona Backup Locks<a class="headerlink" href="#disable-percona-backup-locks" title="Link to this heading">#</a></h3>
 <p>On Percona Server 5.7, we have the option <cite>LOCK TABLES FOR BACKUP</cite> which has been replace by <cite>LOCK INSTANCE FOR BACKUP</cite> on Percona Server 8.0. We can disable this DDL locking mechanisim with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-backup-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-backup-locks</span></code></a></p>
 </section>
 <section id="savepoints">
-<h3>Savepoints<a class="headerlink" href="#savepoints" title="Link to this heading">¶</a></h3>
+<h3>Savepoints<a class="headerlink" href="#savepoints" title="Link to this heading">#</a></h3>
 <p>It is possible to use savepoints to reduce metadata locking issues.</p>
 </section>
 </section>
 </section>
 <section id="old-lock-modes">
-<h1>Old Lock modes<a class="headerlink" href="#old-lock-modes" title="Link to this heading">¶</a></h1>
+<h1>Old Lock modes<a class="headerlink" href="#old-lock-modes" title="Link to this heading">#</a></h1>
 <p>As any backup tool, <strong class="program">mydumper</strong> needs to be able to take a consistent backups.
 However, this is not an easy tasks if you have to sync multiple threads.</p>
 <section id="id1">
-<h2>Synchronizing threads<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<h2>Synchronizing threads<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>On version previous to v0.18.1, by default, <strong class="program">mydumper</strong> uses the simplest way, which is send a FLUSH TABLE WITH READ LOCK, but there was this other options:</p>
 <section id="id2">
-<h3>Lock all Tables<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<h3>Lock all Tables<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>This option has been deprecated since v0.18.1, so, in cases where FLUSH TABLE WITH READ LOCK is not available, we can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-lock-all-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--lock-all-tables</span></code></a> on <strong class="program">mydumper</strong> to lock all the tables that we are going to export.</p>
 </section>
 <section id="id3">
-<h3>No Locks<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p>This option has been deprecated since v0.18.1. Previously, If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+<h3>No Locks<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>This option has been deprecated since v0.18.1. Previously, If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
 </section>
 </section>
 <section id="old-lock-strategy">
-<h2>Old Lock strategy<a class="headerlink" href="#old-lock-strategy" title="Link to this heading">¶</a></h2>
+<h2>Old Lock strategy<a class="headerlink" href="#old-lock-strategy" title="Link to this heading">#</a></h2>
 <p>This options has been deprecated</p>
 <section id="less-locking">
-<h3>Less Locking<a class="headerlink" href="#less-locking" title="Link to this heading">¶</a></h3>
+<h3>Less Locking<a class="headerlink" href="#less-locking" title="Link to this heading">#</a></h3>
 <p>This option has been deprecated since v0.18.1 and it was used in cases where you have non transcational tables, you can use this option to reduce the locking on transactional tables.</p>
 </section>
 <section id="innodb-tables-only">
-<h3>InnoDB tables only<a class="headerlink" href="#innodb-tables-only" title="Link to this heading">¶</a></h3>
+<h3>InnoDB tables only<a class="headerlink" href="#innodb-tables-only" title="Link to this heading">#</a></h3>
 <p>This option has been deprecated since v0.18.1 and it was used in the cases where you are exporting transactional tables only, you should be using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-consistency-only"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-consistency-only</span></code></a>. <strong class="program">mydumper</strong> holds a lock to detect if the tables to dump are transactional, with this options we let it know that it can release it before reduce bloking scenarios.</p>
 </section>
 </section>
@@ -444,11 +406,11 @@ This option has been modified for Percona Server, as after sending START TRANSAC
     </aside>
   </div>
 </div><script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script type="module" src="_static/scripts/furo.js?v=3e7832f7"></script>
+    <script src="_static/clipboard.min.js?v=66b4909c"></script>
+    <script src="_static/copybutton.js?v=71494f10"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
     </body>
 </html>
