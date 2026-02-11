@@ -89,7 +89,11 @@ if (WITH_HTML)
       "${SPHINX_HTML_DIR}"
     COMMENT "Building HTML documentation with Sphinx"
   )
-
+  
+  add_custom_command(TARGET doc_html POST_BUILD
+    COMMAND sed -i "2 i\    ROOT_URL: ''," html/_static/documentation_options.js
+  )
+  
   add_dependencies(doc_html
     doc_sources
   )
