@@ -94,7 +94,7 @@ Looking inside `dump/` directory, we see our backup files, each one is encrypted
   sbtest_proxysql.sbtest1.00000.sql.enc  sbtest_proxysql.sbtest1-schema.sql.enc
 
   # file dump/sbtest_direct-schema-create.sql.enc
-  dump/sbtest_direct-schema-create.sql.enc: openssl enc'd data with salted password
+  dump/sbtest_direct-schema-create.sql.enc: openssl enc\'d data with salted password
 
 Now that the backup is complete, encrypt the random key used for this backup. In the
 example below, `${PUBKEY}.bin` would be file containing your public key as fetched
