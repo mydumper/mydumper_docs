@@ -1,5 +1,5 @@
 const DOCUMENTATION_OPTIONS = {
-ROOT_URL: ,
+ROOT_URL: '',
     VERSION: '',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,
