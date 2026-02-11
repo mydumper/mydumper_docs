@@ -8,5 +8,4 @@ _sources/
 html/.buildinfo
 html/_sources/
 html/objects.inv
-html/searchindex.js
 cmake_install.cmake
