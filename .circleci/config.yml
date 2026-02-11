@@ -92,4 +92,5 @@ workflows:
     - make_docs_noble
     - publish_docs:
         requires:
-          - make_docs_focal
+#          - make_docs_focal
+          - make_docs_noble
