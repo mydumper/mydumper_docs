@@ -88,8 +88,8 @@ workflows:
   version: 2
   mydumper_docs:
     jobs:
-    - make_docs_focal
-#    - make_docs_noble
+#    - make_docs_focal
+    - make_docs_noble
     - publish_docs:
         requires:
           - make_docs_focal
