@@ -60,7 +60,7 @@ For example:
 
 .. code-block::  bash
 
-  [\`database\`.\`table\`]
+  [`database`.`table`]
   where = column > 20
   limit = 1000
   object_to_export = SCHEMA,DATA
