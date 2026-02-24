@@ -422,6 +422,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-optimize-keys-batchsize">
+<span class="sig-name descname"><span class="pre">--optimize-keys-batchsize</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-optimize-keys-batchsize" title="Link to this definition">#</a></dt>
+<dd><p>Limits the amount of indexes per ALTER TABLE statement that adds the indexes, defaults: 0 (unlimited)</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-no-schema">
 <span class="sig-name descname"><span class="pre">--no-schema</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-no-schema" title="Link to this definition">#</a></dt>
 <dd><p>Do not import table schemas and triggers</p>
@@ -646,7 +652,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-fifodir">
 <span class="sig-name descname"><span class="pre">--fifodir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-fifodir" title="Link to this definition">#</a></dt>
-<dd><p>Directory where the FIFO files will be created when needed. Default: Same as backup</p>
+<dd><p>Directory where the FIFO files will be created when needed. Default: temporary directoy will be created</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-load-data-tmp-dir">
+<span class="sig-name descname"><span class="pre">--load-data-tmp-dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-load-data-tmp-dir" title="Link to this definition">#</a></dt>
+<dd><p>Directory where the FIFO temporary files will be created when needed for LOAD DATA statements. Default: temporary directoy will be created</p>
 </dd></dl>
 
 <dl class="std option">

@@ -139,6 +139,10 @@ Execution Options
 
   Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 
+.. option:: --optimize-keys-batchsize
+
+  Limits the amount of indexes per ALTER TABLE statement that adds the indexes, defaults: 0 (unlimited)
+
 .. option:: --no-schema
 
   Do not import table schemas and triggers
@@ -293,7 +297,11 @@ Application Options:
 
 .. option:: --fifodir
 
-  Directory where the FIFO files will be created when needed. Default: Same as backup
+  Directory where the FIFO files will be created when needed. Default: temporary directoy will be created
+
+.. option:: --load-data-tmp-dir
+
+  Directory where the FIFO temporary files will be created when needed for LOAD DATA statements. Default: temporary directoy will be created
 
 .. option:: -B, --database
 
