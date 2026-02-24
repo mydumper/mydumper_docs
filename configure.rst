@@ -49,7 +49,7 @@ Using :code:`[\`database\`.\`table\`]` sections may be helpful, since you can ad
 * where: It receives a comparison compatible with the table definition;
 * limit: It receives a number and forces the SELECT statement to avoid reading more reads if it reaches the limit;
 * num_threads: It defines the amount of threads that will be used for the table;
-* object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
+* object_to_export/object_to_import: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
 * columns_on_select: The list of columns in the SELECT statement will be replaced by the content of this parameter;
 * columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter;
 * object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
@@ -60,9 +60,11 @@ For example:
 
 .. code-block::  bash
 
+  [\`database\`.\`table\`]
   where = column > 20
   limit = 1000
-  object_to_export = SCHEMA
+  object_to_export = SCHEMA,DATA
+  object_to_import = SCHEMA
   columns_on_select = qty,price+20
   columns_on_insert = qty,price
   rows = 1000000
