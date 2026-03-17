@@ -35,5 +35,6 @@ The tools developed in this Project are based on C, GLib and support the client 
    stages
    daemon
    examples
+   sponsor
    authors
 
