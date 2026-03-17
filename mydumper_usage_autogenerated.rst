@@ -210,6 +210,10 @@ Job Options
 
   It will ignore if the table has multiple columns and use only the first column to split the table
 
+.. option:: --split-string-pk
+
+  Enables the split of string primary keys
+
 .. option:: -r, --rows
 
   Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX can be 0 which means that there is no limit. It will double the chunk size if query takes less than 1 second and half of the size if it is more than 2 seconds
@@ -217,6 +221,14 @@ Job Options
 .. option:: --rows-hard
 
   This set the MIN and MAX limit when even if --rows is 0
+
+.. option:: --max-char-size
+
+  When the primary key is an string, it will split up to this amount of character. Default: 2
+
+.. option:: --max-items-per-string-chunk
+
+  Limits the amount of string will be covered in a string chunk. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN
 
 .. option:: --split-partitions
 
@@ -468,7 +480,7 @@ Application Options:
 
 .. option:: --stream
 
-  It will stream over STDOUT once the files has been written. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
+  It will stream over STDOUT once the files has been written. Accepts NO_STREAM, NO_DELETE, NO_STREAM_AND_NO_DELETE, UNPACK and TRADITIONAL which is the default value and used if no parameter is given
 
 .. option:: -L, --logfile
 
@@ -537,6 +549,10 @@ Application Options:
 .. option:: --server-version
 
   Set the server version avoid automatic detection
+
+.. option:: --dry-run
+
+  In dry-run mode, it skips the connection to the database and the execution of any query
 
 .. option:: --throttle
 

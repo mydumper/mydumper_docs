@@ -185,7 +185,7 @@ Execution Options
 
 .. option:: --stream
 
-  It will receive the stream from STDIN and create the file in the disk before start processing. Since v0.12.7-1, accepts NO_DELETE, NO_STREAM_AND_NO_DELETE and TRADITIONAL which is the default value and used if no parameter is given and also NO_STREAM since v0.16.3-1
+  It will receive the stream from STDIN and create the file in the disk before start processing. Accepts NO_STREAM, NO_DELETE, NO_STREAM_AND_NO_DELETE, UNPACK and TRADITIONAL which is the default value and used if no parameter is given
 
 .. option:: --metadata-refresh-interval
 
@@ -366,6 +366,10 @@ Application Options:
 .. option:: --server-version
 
   Set the server version avoid automatic detection
+
+.. option:: --dry-run
+
+  In dry-run mode, it skips the connection to the database and the execution of any query
 
 .. option:: --throttle
 
