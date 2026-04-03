@@ -69,8 +69,8 @@ For example:
   object_to_import = SCHEMA
   columns_on_select = qty,price+20
   columns_on_select_replace = `film_id`:film_id * 3,`title`:"The new film tittle"
-  columns_on_select_replace_`film_id`=film_id * 3
-  columns_on_select_replace_`title`="The new film tittle"
+  columns_on_select_replace_`film_id` = film_id * 3
+  columns_on_select_replace_`title` = "The new film tittle"
   columns_on_insert = qty,price
   rows = 1000000
 
