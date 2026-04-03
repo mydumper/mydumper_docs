@@ -51,6 +51,8 @@ Using :code:`[\`database\`.\`table\`]` sections may be helpful, since you can ad
 * num_threads: It defines the amount of threads that will be used for the table;
 * object_to_export/object_to_import: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
 * columns_on_select: The list of columns in the SELECT statement will be replaced by the content of this parameter;
+* columns_on_select_replace: Receives a list dilimited by comma of pairs of column and column replacement. 
+* columns_on_select_replace_`column`: Similar to columns_on_select_replace but it is based on each column. 
 * columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter;
 * object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;
 * partition_regex: It defines a regular expression to filter the partitions to export. 
@@ -66,6 +68,9 @@ For example:
   object_to_export = SCHEMA,DATA
   object_to_import = SCHEMA
   columns_on_select = qty,price+20
+  columns_on_select_replace = `film_id`:film_id * 3,`title`:"The new film tittle"
+  columns_on_select_replace_`film_id`=film_id * 3
+  columns_on_select_replace_`title`="The new film tittle"
   columns_on_insert = qty,price
   rows = 1000000
 
