@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Mar 17, 2026" "" "MyDumper"
+.TH "MYLOADER" "1" "Apr 03, 2026" "" "MyDumper"
 .SH NAME
 myloader \- multi-threaded MySQL loader
 \fI\%MyDumper\(aqs logo\fP\fI\%MyDumper\(aqs logo\fP.SH CONNECTION OPTIONS
@@ -351,6 +351,72 @@ Replaces the user in the DEFINER by the new string. By default, statements are n
 .B \-\-ignore\-set
 List of variables that will be ignored from the header of SET
 .UNINDENT
+.SH CHECKSUM OPTIONS
+.INDENT 0.0
+.TP
+.B \-M, \-\-checksum\-all
+Enables checksums for all elements
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-data\-checksums
+Disables table checksums with the data
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-schema\-checksums
+Enables schema, table, indexes and view creation checksums. (Defaults to on; use –no\-schema\-checksums to disable)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-no\-schema\-checksums
+Disables schema, table and view creation checksums
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-routine\-checksums
+Enables triggers, functions and routines checksums.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-database\-checksums
+Disables checksums over the schema of the database
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-data\-checksums
+Disables checksums over the data of the table.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-table\-checksums
+Disables checksums over the table schema
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-index\-checksums
+Disables checksums over the indexes of the table
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-view\-checksums
+Disables checksums over the schema of the view
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-trigger\-checksums
+Disables checksums over the triggers of the table or the database.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-routine\-checksums
+Disables checksums over the funtions and store procedures.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-event\-checksums
+Disables checksums over the events.
+.UNINDENT
 .SH LOAD FROM METADATA OPTIONS
 .INDENT 0.0
 .TP
@@ -376,7 +442,7 @@ Directory of the dump to import
 .INDENT 0.0
 .TP
 .B \-L, \-\-logfile
-Log file name to use, by default stdout is used
+Log file name to use, by default stderr is used
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -437,6 +503,11 @@ Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2
 .TP
 .B \-\-debug
 Turn on debugging output (automatically sets verbosity to 3)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-machine\-log\-json
+Emit runtime logs as JSON lines for machine consumption
 .UNINDENT
 .INDENT 0.0
 .TP

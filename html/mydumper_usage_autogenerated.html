@@ -574,31 +574,79 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-M">
 <span id="cmdoption-checksum-all"></span><span class="sig-name descname"><span class="pre">-M</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--checksum-all</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-M" title="Link to this definition">#</a></dt>
-<dd><p>Dump checksums for all elements</p>
+<dd><p>Enables checksums for all elements</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-data-checksums">
 <span class="sig-name descname"><span class="pre">--data-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-data-checksums" title="Link to this definition">#</a></dt>
-<dd><p>Dump table checksums with the data</p>
+<dd><p>Disables table checksums with the data</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-schema-checksums">
 <span class="sig-name descname"><span class="pre">--schema-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-schema-checksums" title="Link to this definition">#</a></dt>
-<dd><p>Dump schema table and view creation checksums (enabled by default)</p>
+<dd><p>Enables schema, table, indexes and view creation checksums. (Defaults to on; use –no-schema-checksums to disable)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-no-schema-checksums">
 <span class="sig-name descname"><span class="pre">--no-schema-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-schema-checksums" title="Link to this definition">#</a></dt>
-<dd><p>Disable schema checksums</p>
+<dd><p>Disables schema, table and view creation checksums</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-routine-checksums">
 <span class="sig-name descname"><span class="pre">--routine-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-routine-checksums" title="Link to this definition">#</a></dt>
-<dd><p>Dump triggers, functions and routines checksums</p>
+<dd><p>Enables triggers, functions and routines checksums.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-database-checksums">
+<span class="sig-name descname"><span class="pre">--skip-database-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-database-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the schema of the database</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-data-checksums">
+<span class="sig-name descname"><span class="pre">--skip-data-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-data-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the data of the table.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-table-checksums">
+<span class="sig-name descname"><span class="pre">--skip-table-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-table-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the table schema</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-index-checksums">
+<span class="sig-name descname"><span class="pre">--skip-index-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-index-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the indexes of the table</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-view-checksums">
+<span class="sig-name descname"><span class="pre">--skip-view-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-view-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the schema of the view</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-trigger-checksums">
+<span class="sig-name descname"><span class="pre">--skip-trigger-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-trigger-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the triggers of the table or the database.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-routine-checksums">
+<span class="sig-name descname"><span class="pre">--skip-routine-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-routine-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the funtions and store procedures.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-skip-event-checksums">
+<span class="sig-name descname"><span class="pre">--skip-event-checksums</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-skip-event-checksums" title="Link to this definition">#</a></dt>
+<dd><p>Disables checksums over the events.</p>
 </dd></dl>
 
 </section>
@@ -943,7 +991,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-L">
 <span id="cmdoption-logfile"></span><span class="sig-name descname"><span class="pre">-L</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--logfile</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-L" title="Link to this definition">#</a></dt>
-<dd><p>Log file name to use, by default stdout is used</p>
+<dd><p>Log file name to use, by default stderr is used</p>
 </dd></dl>
 
 <dl class="std option">
@@ -1004,6 +1052,12 @@
 <dt class="sig sig-object std" id="cmdoption-debug">
 <span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-debug" title="Link to this definition">#</a></dt>
 <dd><p>Turn on debugging output (automatically sets verbosity to 3)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-machine-log-json">
+<span class="sig-name descname"><span class="pre">--machine-log-json</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-machine-log-json" title="Link to this definition">#</a></dt>
+<dd><p>Emit runtime logs as JSON lines for machine consumption</p>
 </dd></dl>
 
 <dl class="std option">

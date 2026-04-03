@@ -269,6 +269,61 @@ Statement Options
 
   List of variables that will be ignored from the header of SET
 
+Checksum Options
+----------------
+
+.. option:: -M, --checksum-all
+
+  Enables checksums for all elements
+
+.. option:: --data-checksums
+
+  Disables table checksums with the data
+
+.. option:: --schema-checksums
+
+  Enables schema, table, indexes and view creation checksums. (Defaults to on; use --no-schema-checksums to disable)
+
+.. option:: --no-schema-checksums
+
+  Disables schema, table and view creation checksums
+
+.. option:: --routine-checksums
+
+  Enables triggers, functions and routines checksums.
+
+.. option:: --skip-database-checksums
+
+  Disables checksums over the schema of the database
+
+.. option:: --skip-data-checksums
+
+  Disables checksums over the data of the table.
+
+.. option:: --skip-table-checksums
+
+  Disables checksums over the table schema
+
+.. option:: --skip-index-checksums
+
+  Disables checksums over the indexes of the table
+
+.. option:: --skip-view-checksums
+
+  Disables checksums over the schema of the view
+
+.. option:: --skip-trigger-checksums
+
+  Disables checksums over the triggers of the table or the database.
+
+.. option:: --skip-routine-checksums
+
+  Disables checksums over the funtions and store procedures.
+
+.. option:: --skip-event-checksums
+
+  Disables checksums over the events.
+
 Load from metadata Options
 --------------------------
 
@@ -293,7 +348,7 @@ Application Options:
 
 .. option:: -L, --logfile
 
-  Log file name to use, by default stdout is used
+  Log file name to use, by default stderr is used
 
 .. option:: --fifodir
 
@@ -342,6 +397,10 @@ Application Options:
 .. option:: --debug
 
   Turn on debugging output (automatically sets verbosity to 3)
+
+.. option:: --machine-log-json
+
+  Emit runtime logs as JSON lines for machine consumption
 
 .. option:: --ignore-errors
 
