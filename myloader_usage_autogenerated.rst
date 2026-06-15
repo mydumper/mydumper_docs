@@ -278,7 +278,7 @@ Checksum Options
 
 .. option:: --data-checksums
 
-  Enables table checksums with the data
+  Disables table checksums with the data
 
 .. option:: --schema-checksums
 
