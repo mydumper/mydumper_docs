@@ -383,6 +383,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-include-from-file">
+<span class="sig-name descname"><span class="pre">--include-from-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-include-from-file" title="Link to this definition">#</a></dt>
+<dd><p>File containing a list of database.table entries to include, one per line.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-T">
 <span id="cmdoption-mydumper-tables-list"></span><span class="sig-name descname"><span class="pre">-T</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--tables-list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-T" title="Link to this definition">#</a></dt>
 <dd><p>Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2</p>
@@ -395,18 +401,6 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-z">
 <span id="cmdoption-mydumper-tidb-snapshot"></span><span class="sig-name descname"><span class="pre">-z</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--tidb-snapshot</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-z" title="Link to this definition">#</a></dt>
 <dd><p>Snapshot to use for TiDB</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-k">
-<span id="cmdoption-mydumper-no-locks"></span><span class="sig-name descname"><span class="pre">-k</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-k" title="Link to this definition">#</a></dt>
-<dd><p>This option is deprecated use –sync-thread-lock-mode instead</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-lock-all-tables">
-<span class="sig-name descname"><span class="pre">--lock-all-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-lock-all-tables" title="Link to this definition">#</a></dt>
-<dd><p>This option is deprecated use –sync-thread-lock-mode instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -425,18 +419,6 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-no-backup-locks">
 <span class="sig-name descname"><span class="pre">--no-backup-locks</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-no-backup-locks" title="Link to this definition">#</a></dt>
 <dd><p>Do not use Percona backup locks</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-less-locking">
-<span class="sig-name descname"><span class="pre">--less-locking</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-less-locking" title="Link to this definition">#</a></dt>
-<dd><p>This option is deprecated and its behaviour is the default which is useful if you don’t have transaction tables. Use –trx-tables otherwise</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-trx-consistency-only">
-<span class="sig-name descname"><span class="pre">--trx-consistency-only</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-trx-consistency-only" title="Link to this definition">#</a></dt>
-<dd><p>This option is deprecated use –trx-tables instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -560,6 +542,12 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-rows-hard">
 <span class="sig-name descname"><span class="pre">--rows-hard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-rows-hard" title="Link to this definition">#</a></dt>
 <dd><p>This set the MIN and MAX limit when even if –rows is 0</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-mydumper-max-split-of-step-in-integer-chunk">
+<span class="sig-name descname"><span class="pre">--max-split-of-step-in-integer-chunk</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-max-split-of-step-in-integer-chunk" title="Link to this definition">#</a></dt>
+<dd><p>Limits the amount of times a step in the integer chunk will be split. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN</p>
 </dd></dl>
 
 <dl class="std option">
@@ -734,18 +722,6 @@
 <section id="statement-options">
 <h2>Statement Options<a class="headerlink" href="#statement-options" title="Link to this heading">#</a></h2>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-load-data">
-<span class="sig-name descname"><span class="pre">--load-data</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-load-data" title="Link to this definition">#</a></dt>
-<dd><p>Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-csv">
-<span class="sig-name descname"><span class="pre">--csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-csv" title="Link to this definition">#</a></dt>
-<dd><p>Automatically enables –load-data and set variables to export in CSV format. This option will be deprecated on future releases use –format</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-format">
 <span class="sig-name descname"><span class="pre">--format</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-format" title="Link to this definition">#</a></dt>
 <dd><p>Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT</p>
@@ -754,7 +730,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-include-header">
 <span class="sig-name descname"><span class="pre">--include-header</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-include-header" title="Link to this definition">#</a></dt>
-<dd><p>When –load-data or –csv is used, it will include the header with the column name</p>
+<dd><p>When –format is CSV or LOAD_DATA, it will include the header with the column name</p>
 </dd></dl>
 
 <dl class="std option">
@@ -778,13 +754,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-lines-starting-by">
 <span class="sig-name descname"><span class="pre">--lines-starting-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-lines-starting-by" title="Link to this definition">#</a></dt>
-<dd><p>Adds the string at the beginning of each row. When –load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
+<dd><p>Adds the string at the beginning of each row. When –format is LOAD_DATA or CSV, it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-lines-terminated-by">
 <span class="sig-name descname"><span class="pre">--lines-terminated-by</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-lines-terminated-by" title="Link to this definition">#</a></dt>
-<dd><p>Adds the string at the end of each row. When –load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
+<dd><p>Adds the string at the end of each row. When –format is LOAD_DATA or CSV, added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -884,12 +860,6 @@
 <dt class="sig sig-object std" id="cmdoption-mydumper-exit-if-broken-table-found">
 <span class="sig-name descname"><span class="pre">--exit-if-broken-table-found</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-exit-if-broken-table-found" title="Link to this definition">#</a></dt>
 <dd><p>Exits if a broken table has been found</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mydumper-success-on-1146">
-<span class="sig-name descname"><span class="pre">--success-on-1146</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-success-on-1146" title="Link to this definition">#</a></dt>
-<dd><p>This option is deprecated use –ignore-errors instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -1117,7 +1087,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mydumper-throttle">
 <span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-mydumper-throttle" title="Link to this definition">#</a></dt>
-<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
+<dd><p>Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>

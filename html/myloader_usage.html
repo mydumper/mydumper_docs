@@ -353,6 +353,18 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-create-table">
+<span class="sig-name descname"><span class="pre">--skip-create-table</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-create-table" title="Link to this definition">#</a></dt>
+<dd><p>Do not execute the CREATE TABLE statement. By default, it executes the CREATE TABLE statement</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-create-database">
+<span class="sig-name descname"><span class="pre">--skip-create-database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-create-database" title="Link to this definition">#</a></dt>
+<dd><p>Do not execute any CREATE DATABASE statement, when -schema-create.sql file is found or even when -B is used. By default, it executes the CREATE DATABASE statement</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-skip-triggers">
 <span class="sig-name descname"><span class="pre">--skip-triggers</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-triggers" title="Link to this definition">#</a></dt>
 <dd><p>Do not import triggers. By default, it imports triggers</p>
@@ -389,6 +401,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-include-from-file">
+<span class="sig-name descname"><span class="pre">--include-from-file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-include-from-file" title="Link to this definition">#</a></dt>
+<dd><p>File containing a list of database.table entries to include, one per line.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-T">
 <span id="cmdoption-myloader-tables-list"></span><span class="sig-name descname"><span class="pre">-T</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--tables-list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-T" title="Link to this definition">#</a></dt>
 <dd><p>Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2</p>
@@ -419,12 +437,6 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-innodb-optimize-keys">
-<span class="sig-name descname"><span class="pre">--innodb-optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-innodb-optimize-keys" title="Link to this definition">#</a></dt>
-<dd><p>Option –innodb-optimize-keys is deprecated use –optimize-keys instead</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-optimize-keys">
 <span class="sig-name descname"><span class="pre">--optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-optimize-keys" title="Link to this definition">#</a></dt>
 <dd><p>Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
@@ -437,15 +449,9 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-no-schema">
-<span class="sig-name descname"><span class="pre">--no-schema</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-no-schema" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-myloader-no-schemas">
+<span class="sig-name descname"><span class="pre">--no-schemas</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-no-schemas" title="Link to this definition">#</a></dt>
 <dd><p>Do not import table schemas and triggers</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-purge-mode">
-<span class="sig-name descname"><span class="pre">--purge-mode</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-purge-mode" title="Link to this definition">#</a></dt>
-<dd><p>Option –purge-mode is deprecated use -o/–drop-table instead</p>
 </dd></dl>
 
 <dl class="std option">
@@ -473,12 +479,6 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-overwrite-tables">
-<span class="sig-name descname"><span class="pre">--overwrite-tables</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-overwrite-tables" title="Link to this definition">#</a></dt>
-<dd><p>Option –overwrite-tables has been deprecated. Use -o/–drop-table instead.</p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-overwrite-unsafe">
 <span class="sig-name descname"><span class="pre">--overwrite-unsafe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-overwrite-unsafe" title="Link to this definition">#</a></dt>
 <dd><p>Same as –overwrite-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.</p>
@@ -488,12 +488,6 @@
 <dt class="sig sig-object std" id="cmdoption-myloader-retry-count">
 <span class="sig-name descname"><span class="pre">--retry-count</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-retry-count" title="Link to this definition">#</a></dt>
 <dd><p>Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)</p>
-</dd></dl>
-
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-myloader-serialized-table-creation">
-<span class="sig-name descname"><span class="pre">--serialized-table-creation</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-serialized-table-creation" title="Link to this definition">#</a></dt>
-<dd><p>Table recreation will be executed in series, one thread at a time. This means –max-threads-for-schema-creation=1. This option will be removed in future releases</p>
 </dd></dl>
 
 <dl class="std option">
@@ -550,7 +544,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-max-threads-for-schema-creation">
 <span class="sig-name descname"><span class="pre">--max-threads-for-schema-creation</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-threads-for-schema-creation" title="Link to this definition">#</a></dt>
-<dd><p>Maximum number of threads for schema creation. When this is set to 1, is the same than –serialized-table-creation, default 4</p>
+<dd><p>Maximum number of threads for schema creation, default 4</p>
 </dd></dl>
 
 <dl class="std option">
@@ -862,7 +856,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-throttle">
 <span class="sig-name descname"><span class="pre">--throttle</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-throttle" title="Link to this definition">#</a></dt>
-<dd><p>Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
+<dd><p>Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads</p>
 </dd></dl>
 
 </section>
