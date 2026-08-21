@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Replication Options" href="replication.html" /><link rel="prev" title="Configuration" href="configure.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Replication Options" href="replication.html" /><link rel="prev" title="Features" href="features.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Compression and external commands - MyDumper documentation</title>
+        <title>External commands - MyDumper</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=9701f087" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=8f9e6779" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/color-light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/color-dark.svg" alt="Dark Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -157,28 +160,35 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="installing.html">Installing</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="APT.html">APT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YUM.html">YUM</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">User Privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="configure.html">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Compression and external commands</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="features.html">Features</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">External commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html">New Lock modes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html">Lock modes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overwrite.html">Overwrite tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regex.html">Regex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="daemon.html">Daemon</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="internals.html">Internals</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Internals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="files.html">Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sponsor.html">Sponsor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -215,12 +225,12 @@
           </label>
         </div>
         <article role="main">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="compression-and-external-commands">
-<h1>Compression and external commands<a class="headerlink" href="#compression-and-external-commands" title="Link to this heading">#</a></h1>
+          <section id="external-commands">
+<h1>External commands<a class="headerlink" href="#external-commands" title="Link to this heading">#</a></h1>
 <p>It is possible to change what mydumper is writing and what myloader is receiving,
 with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-exec-per-thread"><code class="xref std std-option docutils literal notranslate"><span class="pre">--exec-per-thread</span></code></a> and <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-exec-per-thread-extension"><code class="xref std std-option docutils literal notranslate"><span class="pre">--exec-per-thread-extension</span></code></a>.</p>
+<section id="compression">
+<h2>Compression<a class="headerlink" href="#compression" title="Link to this heading">#</a></h2>
 <p>When you use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">mydumper</span> <span class="pre">-c/--compress</span></code></a>, <strong class="program">mydumper</strong> internally set:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">=</span><span class="s2">&quot;/usr/bin/gzip -c&quot;</span>
 <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.gz&quot;</span>
@@ -236,8 +246,6 @@ with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-
 <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">extension</span>
 </pre></div>
 </div>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>If you want to compress with bzip2, you need to run on <strong class="program">mydumper</strong> with this parameters, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydumper</span> <span class="o">-</span><span class="n">o</span> <span class="n">data</span> <span class="o">--</span><span class="n">clear</span> <span class="o">-</span><span class="n">T</span> <span class="n">sakila</span><span class="o">.</span><span class="n">film</span> \
          <span class="o">--</span><span class="n">exec</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">thread</span><span class="o">=</span><span class="s2">&quot;/usr/bin/bzip2&quot;</span> \
@@ -259,6 +267,62 @@ with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-
 </pre></div>
 </div>
 </section>
+<section id="encryption-encrypted-backups">
+<h2>Encryption / Encrypted Backups<a class="headerlink" href="#encryption-encrypted-backups" title="Link to this heading">#</a></h2>
+<p>Encrypting database backups is an important, and typically required, step to
+protect the contents of the backup. Thanks to mydumper’s <a class="reference internal" href="mydumper_usage_autogenerated.html#cmdoption-exec-per-thread"><code class="xref std std-option docutils literal notranslate"><span class="pre">--exec-per-thread</span></code></a>
+option, we can encrypt each table’s backup file during the backup process.</p>
+<p>Create a random key for this backup. A different random key is used for each
+backup to ensure maximum security. Each backup key is encrypted with a static
+public key. This public key could be managed by a KMS like OpenBao, or fetched
+from AWS KMS.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOW=`date +&quot;%Y%m%d&quot;`</span>
+<span class="c1"># ENCKEY=$(mktemp)</span>
+<span class="c1"># openssl rand -base64 32 &gt; ${ENCKEY}</span>
+</pre></div>
+</div>
+<p>Run mydumper with your usual parameters, adding the two extra flags for
+<a class="reference internal" href="mydumper_usage_autogenerated.html#cmdoption-exec-per-thread"><code class="xref std std-option docutils literal notranslate"><span class="pre">--exec-per-thread</span></code></a> and <a class="reference internal" href="mydumper_usage_autogenerated.html#cmdoption-exec-per-thread-extension"><code class="xref std std-option docutils literal notranslate"><span class="pre">--exec-per-thread-extension</span></code></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper \</span>
+<span class="w">      </span>--defaults-extra-file<span class="o">=</span>.my.cnf<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--verbose<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--exec-per-thread<span class="w"> </span><span class="s2">&quot;openssl enc -aes-256-cbc -salt -pbkdf2 -pass file:</span><span class="si">${</span><span class="nv">ENCKEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--exec-per-thread-extension<span class="o">=</span>.enc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-o<span class="w"> </span>dump
+</pre></div>
+</div>
+<p>Looking inside <cite>dump/</cite> directory, we see our backup files, each one is encrypted:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ls dump/</span>
+metadata<span class="w">                               </span>sbtest_proxysql.sbtest1.00001.sql.enc
+sbtest_direct-schema-create.sql.enc<span class="w">    </span>sbtest_proxysql.sbtest1.00002.sql.enc
+sbtest_proxysql.sbtest1.00000.sql.enc<span class="w">  </span>sbtest_proxysql.sbtest1-schema.sql.enc
+
+<span class="c1"># file dump/sbtest_direct-schema-create.sql.enc</span>
+dump/sbtest_direct-schema-create.sql.enc:<span class="w"> </span>openssl<span class="w"> </span>enc<span class="se">\&#39;</span>d<span class="w"> </span>data<span class="w"> </span>with<span class="w"> </span>salted<span class="w"> </span>password
+</pre></div>
+</div>
+<p>Now that the backup is complete, encrypt the random key used for this backup. In the
+example below, <cite>${PUBKEY}.bin</cite> would be file containing your public key as fetched
+from whatever source/storage you are using.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># openssl pkeyutl \</span>
+<span class="w">      </span>-in<span class="w"> </span><span class="si">${</span><span class="nv">ENCKEY</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-out<span class="w"> </span>backup_key_<span class="o">{</span><span class="nv">$NOW</span><span class="o">}</span>.enc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-inkey<span class="w"> </span><span class="si">${</span><span class="nv">PUBKEY</span><span class="si">}</span>.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-keyform<span class="w"> </span>DER<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-pubin<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-encrypt<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-pkeyopt<span class="w"> </span>rsa_padding_mode:oaep<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-pkeyopt<span class="w"> </span>rsa_oaep_md:sha256
+</pre></div>
+</div>
+<p>In the case of a KMS like OpenBao, in which you cannot fetch/download the public key,
+you would instead call the API to encrypt the key; sending the backup key to the KMS
+which returns back the encrypted bytes.</p>
+<p>From here, we can copy our encrypted backup key, and backup files to remote storage.
+Be sure to include the key with the backup! Without this key, you cannot decrypt this
+backup. Remember, each backup uses a different backup key. The KMS/public key is used
+to encrypt each separate backup key.</p>
+</section>
 </section>
 
         </article>
@@ -275,14 +339,14 @@ with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="configure.html">
+          <a class="prev-page" href="features.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Configuration</div>
+                <div class="title">Features</div>
                 
               </div>
             </a>
@@ -316,8 +380,9 @@ with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Compression and external commands</a><ul>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#">External commands</a><ul>
+<li><a class="reference internal" href="#compression">Compression</a></li>
+<li><a class="reference internal" href="#encryption-encrypted-backups">Encryption / Encrypted Backups</a></li>
 </ul>
 </li>
 </ul>

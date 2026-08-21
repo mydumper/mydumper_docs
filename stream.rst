@@ -1,13 +1,3 @@
-.. image:: ../images/horizontal/color-dark.svg
-  :width: 50%
-  :alt: MyDumper's logo
-  :class: only-dark
-
-.. image:: ../images/horizontal/color-light.svg
-  :width: 50%
-  :alt: MyDumper's logo
-  :class: only-light
-
 Stream
 ======
 

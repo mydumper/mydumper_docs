@@ -1,3 +1,8 @@
+
+
+
+
+
 .. image:: ../images/horizontal/color-dark.svg
   :width: 50%
   :alt: MyDumper's logo

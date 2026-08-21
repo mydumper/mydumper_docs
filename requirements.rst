@@ -1,9 +1,7 @@
-.. include:: header.rst
-
 .. _mydumper_requirements:
 
-Requirements
-============
+User Privileges
+===============
 
 To create a backup user in MySQL for MyDumper. Here’s the SQL script to create a backup user:
 

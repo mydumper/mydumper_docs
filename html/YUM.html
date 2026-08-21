@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Requirements" href="requirements.html" /><link rel="prev" title="Installing" href="installing.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage" href="usage.html" /><link rel="prev" title="APT" href="APT.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Compiling - MyDumper documentation</title>
+        <title>YUM - MyDumper</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=9701f087" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=8f9e6779" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/color-light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/color-dark.svg" alt="Dark Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -157,28 +160,35 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="installing.html">Installing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="APT.html">APT</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">YUM</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">User Privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="configure.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="features.html">Features</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">External commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html">New Lock modes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html">Lock modes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overwrite.html">Overwrite tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regex.html">Regex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="daemon.html">Daemon</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="internals.html">Internals</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Internals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="files.html">Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sponsor.html">Sponsor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -215,93 +225,29 @@
           </label>
         </div>
         <article role="main">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="compiling">
-<h1>Compiling<a class="headerlink" href="#compiling" title="Link to this heading">#</a></h1>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
-<section id="development-dependencies">
-<h3>Development dependencies<a class="headerlink" href="#development-dependencies" title="Link to this heading">#</a></h3>
-<p>MyDumper requires the following development tools and libraries before it can be compiled:</p>
-<div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>g++<span class="w"> </span>git
-apt-get<span class="w"> </span>install<span class="w"> </span>libglib2.0-dev<span class="w"> </span>libpcre3-dev<span class="w"> </span>libssl-dev
+          <section id="yum">
+<h1>YUM<a class="headerlink" href="#yum" title="Link to this heading">#</a></h1>
+<section id="fedora-redhat-centos">
+<h2>Fedora/Redhat/CentOS<a class="headerlink" href="#fedora-redhat-centos" title="Link to this heading">#</a></h2>
+<p>The GPG key needs to be imported:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>GPG-KEY-MyDumper<span class="w"> </span><span class="s2">&quot;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x79EA15C0E82E34BA&quot;</span>
+rpm<span class="w"> </span>--import<span class="w"> </span>GPG-KEY-MyDumper
 </pre></div>
 </div>
-</div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>git<span class="w"> </span>make
-yum<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel<span class="w"> </span>openssl-devel
+<p>And the repository configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[mydumper]</span>
+<span class="s2">name=MyDumper</span>
+<span class="s2">baseurl=https://mydumper.github.io/mydumper/repo/yum/</span><span class="nv">$releasever</span>
+<span class="s2">enabled=1</span>
+<span class="s2">gpgcheck=1</span>
+
+<span class="s2">[mydumper-testing]</span>
+<span class="s2">name=MyDumper</span>
+<span class="s2">baseurl=https://mydumper.github.io/mydumper/repo/yum/</span><span class="nv">$releasever</span><span class="s2">/testing/</span>
+<span class="s2">enabled=0</span>
+<span class="s2">gpgcheck=1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/yum.repos.d/mydumper.repo
 </pre></div>
 </div>
-</div>
-<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Mac OSX</label><div class="tab-content docutils container">
-<p>for MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>pkgconfig
-sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>glib2<span class="w"> </span>pcre
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">OpenSUSE</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>glib2-devel<span class="w"> </span>pcre-devel
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="mysql-percona-mariadb-development-libraries">
-<h3>MySQL/Percona/MariaDB development libraries<a class="headerlink" href="#mysql-percona-mariadb-development-libraries" title="Link to this heading">#</a></h3>
-<p>You need to select one vendor development library.</p>
-<div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Ubuntu/Debian</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>libmysqlclient-dev
-apt-get<span class="w"> </span>install<span class="w"> </span>libperconaserverclient20-dev
-apt-get<span class="w"> </span>install<span class="w"> </span>libmariadbclient-dev
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Fedora/Redhat/CentOS</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-devel
-yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>Percona-Server-devel-57
-yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-devel
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">Mac OSX</label><div class="tab-content docutils container">
-<p>MacOS &lt;= 10.13 (High Sierra) &lt; 13 (Ventura) with MacPorts package manager</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>mariadb-10.11
-sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</span><span class="w"> </span>mysql
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--4">OpenSUSE</label><div class="tab-content docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper<span class="w"> </span>install<span class="w"> </span>libmysqlclient-devel
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="cmake">
-<h2>CMake<a class="headerlink" href="#cmake" title="Link to this heading">#</a></h2>
-<p>CMake is used by MyDumper’s build system and is executed as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
-<span class="n">make</span>
-<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>You can optionally provide parameters for CMake, the possible options are:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-DMYSQL_CONFIG=/path/to/mysql_config</span></code> - The path and filename for the mysql_config executable</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-DCMAKE_INSTALL_PREFIX=/install/path</span></code> - The path where mydumper should be installed</p></li>
-</ul>
-</div></blockquote>
-<p>You have to make sure that pkg-config, mysql_config and pcre-config are all in $PATH</p>
-<p>Binlog dump is disabled by default, to compile with it you need to add -DWITH_BINLOG=ON to cmake options</p>
-<p>To build against mysql libs &lt; 5.7, you need to disable SSL adding -DWITH_SSL=OFF</p>
 </section>
 </section>
 
@@ -310,23 +256,23 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="requirements.html">
+          <a class="next-page" href="usage.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Requirements</div>
+                <div class="title">Usage</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="installing.html">
+          <a class="prev-page" href="APT.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Installing</div>
+                <div class="title">APT</div>
                 
               </div>
             </a>
@@ -360,13 +306,8 @@ sudo<span class="w"> </span>port<span class="w"> </span><span class="k">select</
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Compiling</a><ul>
-<li><a class="reference internal" href="#requirements">Requirements</a><ul>
-<li><a class="reference internal" href="#development-dependencies">Development dependencies</a></li>
-<li><a class="reference internal" href="#mysql-percona-mariadb-development-libraries">MySQL/Percona/MariaDB development libraries</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#cmake">CMake</a></li>
+<li><a class="reference internal" href="#">YUM</a><ul>
+<li><a class="reference internal" href="#fedora-redhat-centos">Fedora/Redhat/CentOS</a></li>
 </ul>
 </li>
 </ul>

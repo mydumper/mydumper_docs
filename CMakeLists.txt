@@ -30,6 +30,8 @@ set(REF_SOURCES_DIR "${SOURCES_DIR}/reference")
 # master document with modules index
 set(REF_MASTER_DOC "modules")
 
+file(MAKE_DIRECTORY "${BINARY_BUILD_DIR}/_static")
+
 # vars necessary for manpages generation
 set(MYDUMPER_PROGRAM_DESC "multi-threaded MySQL dumping")
 set(MYLOADER_PROGRAM_DESC "multi-threaded MySQL loader")

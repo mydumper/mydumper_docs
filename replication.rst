@@ -1,6 +1,4 @@
-.. _mydumper_usage:
-
-.. include:: header.rst
+.. _mydumper_replication:
 
 Replication Options
 ===================

@@ -22,19 +22,13 @@ MyDumper is Open Source and maintained by the community, it is not a Percona, Ma
 The tools developed in this Project are based on C, GLib and support the client libraries of Percona, MariaDB and MySQL.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :hidden:
 
    installing
-   compiling
-   requirements
-   for_beginners
    usage
-   configure
-   files
-   stages
-   daemon
-   examples
+   features
+   internals
    sponsor
    authors
 

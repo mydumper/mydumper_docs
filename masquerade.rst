@@ -1,5 +1,3 @@
-.. include:: header.rst
-
 .. _mydumper_masquerade:
 
 Masquerade

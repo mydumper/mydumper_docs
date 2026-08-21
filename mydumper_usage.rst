@@ -1,7 +1,5 @@
 .. _mydumper_usage:
 
-.. include:: header.rst
-
 mydumper
 ========
 

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Compression and external commands" href="exec_per_thread.html" /><link rel="prev" title="myloader" href="myloader_usage.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Regex" href="regex.html" /><link rel="prev" title="Masquerade" href="masquerade.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Configuration - MyDumper documentation</title>
+        <title>Overwrite tables - MyDumper</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=9701f087" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=8f9e6779" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">MyDumper  documentation</div></a>
+      <a href="index.html"><div class="brand">MyDumper</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/color-light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/color-dark.svg" alt="Dark Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">MyDumper  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -157,28 +160,35 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="installing.html">Installing</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="APT.html">APT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YUM.html">YUM</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage.html">Usage</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="mydumper_usage.html">mydumper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="myloader_usage.html">myloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="for_beginners.html">For beginners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">User Privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">Compression and external commands</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="features.html">Features</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exec_per_thread.html">External commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Replication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Stream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html">New Lock modes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="locks.html#old-lock-modes">Old Lock modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locks.html">Lock modes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="masquerade.html">Masquerade</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Overwrite tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regex.html">Regex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="daemon.html">Daemon</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="files.html">Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stages.html">Backup Stages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daemon.html">Daemon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="internals.html">Internals</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Internals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="files.html">Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stages.html">Backup Stages</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sponsor.html">Sponsor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 </ul>
@@ -209,76 +219,25 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-dark" src="_images/color-dark.svg" width="50%" /></a>
-<a class="reference external image-reference" href="index.html"><img alt="MyDumper's logo" class="only-light" src="_images/color-light.svg" width="50%" /></a>
-<section id="configuration">
-<span id="mydumper-configure"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h1>
-<p>The main configuration of MyDumper is kept in /etc/mydumper.cnf by default.</p>
-<section id="defaults-file-etc-mydumper-cnf">
-<h2>–defaults-file[=/etc/mydumper.cnf]<a class="headerlink" href="#defaults-file-etc-mydumper-cnf" title="Link to this heading">#</a></h2>
-<p>Said configuration is found in sections like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>mydumper<span class="o">]</span>
-<span class="o">[</span>mydumper_session_variables<span class="o">]</span>
-<span class="o">[</span>myloader<span class="o">]</span>
-<span class="o">[</span>myloader_session_variables<span class="o">]</span>
-</pre></div>
-</div>
-<p>Where the defaults of mydumper, myloader and the session level variables are kept when they are executed.
-In the case of <code class="code docutils literal notranslate"><span class="pre">[myloader_session_variables]</span></code> , the default setting is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>myloader_session_variables<span class="o">]</span>
-<span class="nv">SQL_MODE</span><span class="o">=</span><span class="s1">&#39;NO_AUTO_VALUE_ON_ZERO&#39;</span><span class="w"> </span>/*!40101
-<span class="nv">UNIQUE_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
-<span class="nv">FOREIGN_KEY_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
-</pre></div>
-</div>
-<p>But, when you connect to MariaDB it gets replaced by:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>myloader_session_variables_mariadb<span class="o">]</span>
-<span class="c1"># This setting replaces the default in the section [myloader_session_variables]. More details in #987</span>
-<span class="nv">SQL_MODE</span><span class="o">=</span><span class="s1">&#39;NO_AUTO_VALUE_ON_ZERO&#39;</span><span class="w"> </span>/*!40101
-<span class="nv">UNIQUE_CHECKS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>/*!40114
-<span class="nv">FOREIGN_KEY_CHECKS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/*!40114
-</pre></div>
-</div>
-</section>
-<section id="defaults-extra-file">
-<h2>–defaults-extra-file<a class="headerlink" href="#defaults-extra-file" title="Link to this heading">#</a></h2>
-<p>Using <code class="code docutils literal notranslate"><span class="pre">[`database`.`table`]</span></code> sections may be helpful, since you can add:</p>
-<ul class="simple">
-<li><p>where: It receives a comparison compatible with the table definition;</p></li>
-<li><p>limit: It receives a number and forces the SELECT statement to avoid reading more reads if it reaches the limit;</p></li>
-<li><p>num_threads: It defines the amount of threads that will be used for the table;</p></li>
-<li><p>object_to_export/object_to_import: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;</p></li>
-<li><p>columns_on_select: The list of columns in the SELECT statement will be replaced by the content of this parameter;</p></li>
-<li><p>columns_on_select_replace: Receives a list dilimited by comma of pairs of column and column replacement.</p></li>
-<li><p>columns_on_select_replace_`column`: Similar to columns_on_select_replace but it is based on each column.</p></li>
-<li><p>columns_on_insert: The columns in the INSERT statemnt will be replace by the content of this parameter;</p></li>
-<li><p>object_to_export: It receives a comma delimited list with this options: SCHEMA, DATA, TRIGGER, ALL and NONE. ALL is equal to SCHEMA,DATA,TRIGGER;</p></li>
-<li><p>partition_regex: It defines a regular expression to filter the partitions to export.</p></li>
-<li><p>rows: It replaces the value of <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">--rows</span></code></a> or its default value.</p></li>
-</ul>
-<p>For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="sb">`</span>database<span class="sb">`</span>.<span class="sb">`</span>table<span class="sb">`</span><span class="o">]</span>
-<span class="nv">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>column<span class="w"> </span>&gt;<span class="w"> </span><span class="m">20</span>
-<span class="nv">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
-<span class="nv">object_to_export</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SCHEMA,DATA
-<span class="nv">object_to_import</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SCHEMA
-<span class="nv">columns_on_select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price+20
-<span class="nv">columns_on_select_replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>film_id<span class="sb">`</span>:film_id<span class="w"> </span>*<span class="w"> </span><span class="m">3</span>,<span class="sb">`</span>title<span class="sb">`</span>:<span class="s2">&quot;The new film tittle&quot;</span>
-columns_on_select_replace_<span class="sb">`</span>film_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>film_id<span class="w"> </span>*<span class="w"> </span><span class="m">3</span>
-columns_on_select_replace_<span class="sb">`</span>title<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The new film tittle&quot;</span>
-<span class="nv">columns_on_insert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qty,price
-<span class="nv">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000000</span>
-</pre></div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</section>
+          <section id="overwrite-tables">
+<h1>Overwrite tables<a class="headerlink" href="#overwrite-tables" title="Link to this heading">#</a></h1>
+<p>myloader expects CREATE TABLE statements in <cite>*-schema.sql</cite> which will create the tables. However,
+it is possible to instruct myloader to drop the tables in case you want to overwrite the table.</p>
+<p>By default, myloader doesn’t execute any overwrite command and it will FAIL if it is not succed
+creating it, which can be ignored using the value NONE.</p>
+<p>When you use <a class="reference internal" href="myloader_usage.html#cmdoption-myloader-o"><code class="xref std std-option docutils literal notranslate"><span class="pre">-o/--drop-table</span></code></a>, it executes DROP TABLE by default, previously executing the
+CREATE TABLE statement.</p>
+<p>There are other ways to remove all the data from the table:</p>
+<p>DELETE: myloader will execute a DELETE statement which is going to remove all the rows from the table.</p>
+<p>TRUNCATE: myloader will execute a TRUNCATE TABLE statement and MySQL internally is going to drop and recreate the table.</p>
+<p>Take into account that –skip-constraints and –skip-indexes should be used to avoid issue or will be
+set by default on myloader in future releases.</p>
 </section>
 
         </article>
@@ -286,23 +245,23 @@ columns_on_select_replace_<span class="sb">`</span>title<span class="sb">`</span
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="exec_per_thread.html">
+          <a class="next-page" href="regex.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Compression and external commands</div>
+                <div class="title">Regex</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="myloader_usage.html">
+          <a class="prev-page" href="masquerade.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">myloader</div>
+                <div class="title">Masquerade</div>
                 
               </div>
             </a>
@@ -324,28 +283,8 @@ columns_on_select_replace_<span class="sb">`</span>title<span class="sb">`</span
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Configuration</a><ul>
-<li><a class="reference internal" href="#defaults-file-etc-mydumper-cnf">–defaults-file[=/etc/mydumper.cnf]</a></li>
-<li><a class="reference internal" href="#defaults-extra-file">–defaults-extra-file</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
