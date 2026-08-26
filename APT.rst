@@ -12,6 +12,13 @@ Ubuntu
 
 Depending on the operating system, the source file (/etc/apt/sources.list.d/mydumper.list) should include:
 
+.. tab:: resolute
+
+    .. code-block::  bash
+
+        deb [signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu resolute main
+        #deb [signed-by=/etc/apt/keyrings/mydumper.asc] https://mydumper.github.io/mydumper/repo/apt/ubuntu resolute testing
+
 .. tab:: noble
 
     .. code-block::  bash
