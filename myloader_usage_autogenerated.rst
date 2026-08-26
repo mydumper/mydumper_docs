@@ -85,6 +85,14 @@ Filter Options
 
   Database to restore
 
+.. option:: --skip-create-table
+
+  Do not execute the CREATE TABLE statement. By default, it executes the CREATE TABLE statement
+
+.. option:: --skip-create-database
+
+  Do not execute any CREATE DATABASE statement, when -schema-create.sql file is found or even when -B is used. By default, it executes the CREATE DATABASE statement
+
 .. option:: --skip-triggers
 
   Do not import triggers. By default, it imports triggers
@@ -109,6 +117,10 @@ Filter Options
 
   File containing a list of database.table entries to skip, one per line (skips before applying regex option)
 
+.. option:: --include-from-file
+
+  File containing a list of database.table entries to include, one per line.
+
 .. option:: -T, --tables-list
 
   Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
@@ -131,10 +143,6 @@ Execution Options
 
   This option is discouraged. Use [myloader_session_variables] in the --defaults-file or --defaults-extra-file instead
 
-.. option:: --innodb-optimize-keys
-
-  Option --innodb-optimize-keys is deprecated use --optimize-keys instead
-
 .. option:: --optimize-keys
 
   Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
@@ -143,13 +151,9 @@ Execution Options
 
   Limits the amount of indexes per ALTER TABLE statement that adds the indexes, defaults: 0 (unlimited)
 
-.. option:: --no-schema
+.. option:: --no-schemas
 
   Do not import table schemas and triggers
-
-.. option:: --purge-mode
-
-  Option --purge-mode is deprecated use -o/--drop-table instead
 
 .. option:: --disable-redo-log
 
@@ -167,10 +171,6 @@ Execution Options
 
   Executes or simulates a DROP TABLE if the table already exists. The drop modes can be: FAIL, NONE, DROP, TRUNCATE and DELETE. If the option is not set, the default is set to: FAIL. If the option is used without a parameter, the default is: DROP.
 
-.. option:: --overwrite-tables
-
-  Option --overwrite-tables has been deprecated. Use -o/--drop-table instead.
-
 .. option:: --overwrite-unsafe
 
   Same as --overwrite-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
@@ -178,10 +178,6 @@ Execution Options
 .. option:: --retry-count
 
   Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)
-
-.. option:: --serialized-table-creation
-
-  Table recreation will be executed in series, one thread at a time. This means --max-threads-for-schema-creation=1. This option will be removed in future releases
 
 .. option:: --stream
 
@@ -220,7 +216,7 @@ Threads Options
 
 .. option:: --max-threads-for-schema-creation
 
-  Maximum number of threads for schema creation. When this is set to 1, is the same than --serialized-table-creation, default 4
+  Maximum number of threads for schema creation, default 4
 
 .. option:: --exec-per-thread
 
@@ -432,4 +428,4 @@ Application Options:
 
 .. option:: --throttle
 
-  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+  Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads

@@ -134,6 +134,16 @@ Database to restore
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-skip\-create\-table
+Do not execute the CREATE TABLE statement. By default, it executes the CREATE TABLE statement
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-skip\-create\-database
+Do not execute any CREATE DATABASE statement, when \-schema\-create.sql file is found or even when \-B is used. By default, it executes the CREATE DATABASE statement
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-\-skip\-triggers
 Do not import triggers. By default, it imports triggers
 .UNINDENT
@@ -164,6 +174,11 @@ File containing a list of database.table entries to skip, one per line (skips be
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-include\-from\-file
+File containing a list of database.table entries to include, one per line.
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-T, \-\-tables\-list
 Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
 .UNINDENT
@@ -186,11 +201,6 @@ This option is discouraged. Use [myloader_session_variables] in the –defaults\
 .UNINDENT
 .INDENT 0.0
 .TP
-.B \-\-innodb\-optimize\-keys
-Option –innodb\-optimize\-keys is deprecated use –optimize\-keys instead
-.UNINDENT
-.INDENT 0.0
-.TP
 .B \-\-optimize\-keys
 Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
 .UNINDENT
@@ -201,13 +211,8 @@ Limits the amount of indexes per ALTER TABLE statement that adds the indexes, de
 .UNINDENT
 .INDENT 0.0
 .TP
-.B \-\-no\-schema
+.B \-\-no\-schemas
 Do not import table schemas and triggers
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-purge\-mode
-Option –purge\-mode is deprecated use \-o/–drop\-table instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -231,11 +236,6 @@ Executes or simulates a DROP TABLE if the table already exists. The drop modes c
 .UNINDENT
 .INDENT 0.0
 .TP
-.B \-\-overwrite\-tables
-Option –overwrite\-tables has been deprecated. Use \-o/–drop\-table instead.
-.UNINDENT
-.INDENT 0.0
-.TP
 .B \-\-overwrite\-unsafe
 Same as –overwrite\-tables but starts data load as soon as possible. May cause InnoDB deadlocks for foreign keys.
 .UNINDENT
@@ -243,11 +243,6 @@ Same as –overwrite\-tables but starts data load as soon as possible. May cause
 .TP
 .B \-\-retry\-count
 Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-serialized\-table\-creation
-Table recreation will be executed in series, one thread at a time. This means –max\-threads\-for\-schema\-creation=1. This option will be removed in future releases
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -293,7 +288,7 @@ Maximum number of threads for post action like: constraints, procedure, views an
 .INDENT 0.0
 .TP
 .B \-\-max\-threads\-for\-schema\-creation
-Maximum number of threads for schema creation. When this is set to 1, is the same than –serialized\-table\-creation, default 4
+Maximum number of threads for schema creation, default 4
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -547,7 +542,7 @@ In dry\-run mode, it skips the connection to the database and the execution of a
 .INDENT 0.0
 .TP
 .B \-\-throttle
-Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 .UNINDENT
 .SH AUTHOR
 David Ducos

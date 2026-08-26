@@ -159,6 +159,11 @@ File containing a list of database.table entries to skip, one per line (skips be
 .UNINDENT
 .INDENT 0.0
 .TP
+.B \-\-include\-from\-file
+File containing a list of database.table entries to include, one per line.
+.UNINDENT
+.INDENT 0.0
+.TP
 .B \-T, \-\-tables\-list
 Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
 .UNINDENT
@@ -167,16 +172,6 @@ Comma delimited table list to dump (does not exclude regex option). Table name m
 .TP
 .B \-z, \-\-tidb\-snapshot
 Snapshot to use for TiDB
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-k, \-\-no\-locks
-This option is deprecated use –sync\-thread\-lock\-mode instead
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-lock\-all\-tables
-This option is deprecated use –sync\-thread\-lock\-mode instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -192,16 +187,6 @@ Use savepoints to reduce metadata locking issues, needs SUPER privilege
 .TP
 .B \-\-no\-backup\-locks
 Do not use Percona backup locks
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-less\-locking
-This option is deprecated and its behaviour is the default which is useful if you don’t have transaction tables. Use –trx\-tables otherwise
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-trx\-consistency\-only
-This option is deprecated use –trx\-tables instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -300,6 +285,11 @@ Splitting tables into chunks of this many rows. It can be MIN:START_AT:MAX. MAX 
 .TP
 .B \-\-rows\-hard
 This set the MIN and MAX limit when even if –rows is 0
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-max\-split\-of\-step\-in\-integer\-chunk
+Limits the amount of times a step in the integer chunk will be split. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -441,23 +431,13 @@ Do not dump VIEWs
 .SH STATEMENT OPTIONS
 .INDENT 0.0
 .TP
-.B \-\-load\-data
-Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use –format
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-csv
-Automatically enables –load\-data and set variables to export in CSV format. This option will be deprecated on future releases use –format
-.UNINDENT
-.INDENT 0.0
-.TP
 .B \-\-format
 Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-include\-header
-When –load\-data or –csv is used, it will include the header with the column name
+When –format is CSV or LOAD_DATA, it will include the header with the column name
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -477,12 +457,12 @@ Single character that is going to be used to escape characters in theLOAD DATA s
 .INDENT 0.0
 .TP
 .B \-\-lines\-starting\-by
-Adds the string at the beginning of each row. When –load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+Adds the string at the beginning of each row. When –format is LOAD_DATA or CSV, it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
 .B \-\-lines\-terminated\-by
-Adds the string at the end of each row. When –load\-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+Adds the string at the end of each row. When –format is LOAD_DATA or CSV, added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -564,11 +544,6 @@ Split data files into pieces of this size in MB. Useful for myloader multi\-thre
 .TP
 .B \-\-exit\-if\-broken\-table\-found
 Exits if a broken table has been found
-.UNINDENT
-.INDENT 0.0
-.TP
-.B \-\-success\-on\-1146
-This option is deprecated use –ignore\-errors instead
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -755,7 +730,7 @@ In dry\-run mode, it skips the connection to the database and the execution of a
 .INDENT 0.0
 .TP
 .B \-\-throttle
-Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 .UNINDENT
 .SH AUTHOR
 David Ducos

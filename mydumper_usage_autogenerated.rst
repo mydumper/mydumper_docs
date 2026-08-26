@@ -102,6 +102,10 @@ Filter Options
 
   File containing a list of database.table entries to skip, one per line (skips before applying regex option)
 
+.. option:: --include-from-file
+
+  File containing a list of database.table entries to include, one per line.
+
 .. option:: -T, --tables-list
 
   Comma delimited table list to dump (does not exclude regex option). Table name must include database name. For instance: test.t1,test.t2
@@ -111,14 +115,6 @@ Lock Options
 .. option:: -z, --tidb-snapshot
 
   Snapshot to use for TiDB
-
-.. option:: -k, --no-locks
-
-  This option is deprecated use --sync-thread-lock-mode instead
-
-.. option:: --lock-all-tables
-
-  This option is deprecated use --sync-thread-lock-mode instead
 
 .. option:: --sync-thread-lock-mode
 
@@ -131,14 +127,6 @@ Lock Options
 .. option:: --no-backup-locks
 
   Do not use Percona backup locks
-
-.. option:: --less-locking
-
-  This option is deprecated and its behaviour is the default which is useful if you don't have transaction tables. Use --trx-tables otherwise
-
-.. option:: --trx-consistency-only
-
-  This option is deprecated use --trx-tables instead
 
 .. option:: --trx-tables
 
@@ -221,6 +209,10 @@ Job Options
 .. option:: --rows-hard
 
   This set the MIN and MAX limit when even if --rows is 0
+
+.. option:: --max-split-of-step-in-integer-chunk
+
+  Limits the amount of times a step in the integer chunk will be split. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN
 
 .. option:: --max-char-size
 
@@ -336,21 +328,13 @@ Objects Options
 
 Statement Options
 -----------------
-.. option:: --load-data
-
-  Instead of creating INSERT INTO statements, it creates LOAD DATA statements and .dat files. This option will be deprecated on future releases use --format
-
-.. option:: --csv
-
-  Automatically enables --load-data and set variables to export in CSV format. This option will be deprecated on future releases use --format
-
 .. option:: --format
 
   Set the output format which can be INSERT, LOAD_DATA, CSV or CLICKHOUSE. Default: INSERT
 
 .. option:: --include-header
 
-  When --load-data or --csv is used, it will include the header with the column name
+  When --format is CSV or LOAD_DATA, it will include the header with the column name
 
 .. option:: --fields-terminated-by
 
@@ -366,11 +350,11 @@ Statement Options
 
 .. option:: --lines-starting-by
 
-  Adds the string at the beginning of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+  Adds the string at the beginning of each row. When --format is LOAD_DATA or CSV, it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 
 .. option:: --lines-terminated-by
 
-  Adds the string at the end of each row. When --load-data is used it is added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
+  Adds the string at the end of each row. When --format is LOAD_DATA or CSV, added to the LOAD DATA statement. It affects INSERT INTO statements also when it is used.
 
 .. option:: --statement-terminated-by
 
@@ -437,10 +421,6 @@ Extra Options
 .. option:: --exit-if-broken-table-found
 
   Exits if a broken table has been found
-
-.. option:: --success-on-1146
-
-  This option is deprecated use --ignore-errors instead
 
 .. option:: -e, --build-empty-files
 
@@ -592,5 +572,5 @@ Application Options:
 
 .. option:: --throttle
 
-  Expects a string like Threads_running=10. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
+  Expects a string like 20:Threads_running=10, where 20 indicates the microseconds waiting, then the variable and max allowed value to start throttling. It will check the SHOW GLOBAL STATUS and if it is higher, it will increase the sleep time between SELECT. If option is used without parameters it will use Threads_running and the amount of threads
 

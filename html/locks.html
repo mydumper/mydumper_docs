@@ -246,7 +246,7 @@
 </section>
 <section id="no-locks">
 <h3>No Locks<a class="headerlink" href="#no-locks" title="Link to this heading">#</a></h3>
-<p>If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-k"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code></a> which might cause a inconsistent backup.
+<p>If you don’t want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using <code class="xref std std-option docutils literal notranslate"><span class="pre">--no-locks</span></code> which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>NO_LOCK
 </pre></div>
