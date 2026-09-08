@@ -436,6 +436,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-aws-session-command">
+<span class="sig-name descname"><span class="pre">--aws-session-command</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-aws-session-command" title="Link to this definition">#</a></dt>
+<dd><p>Raw SQL executed on every myloader connection after the normal session setup. Useful for Aurora-specific calls such as CALL mysql.rds_disable_session_binlog().</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-optimize-keys">
 <span class="sig-name descname"><span class="pre">--optimize-keys</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-optimize-keys" title="Link to this definition">#</a></dt>
 <dd><p>Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE</p>
@@ -517,6 +523,12 @@
 <dt class="sig sig-object std" id="cmdoption-num-sequences">
 <span class="sig-name descname"><span class="pre">--num-sequences</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-num-sequences" title="Link to this definition">#</a></dt>
 <dd><p>Amount of sequences in the backup. It is read from [config] in the metadata file. Default: 0</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-statement-buffer-shrink-threshold-mb">
+<span class="sig-name descname"><span class="pre">--statement-buffer-shrink-threshold-mb</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-statement-buffer-shrink-threshold-mb" title="Link to this definition">#</a></dt>
+<dd><p>Buffer size threshold in megabytes that, when reached, triggers a shrink back to its original size. Default: 2</p>
 </dd></dl>
 
 </section>

@@ -143,6 +143,10 @@ Execution Options
 
   This option is discouraged. Use [myloader_session_variables] in the --defaults-file or --defaults-extra-file instead
 
+.. option:: --aws-session-command
+
+  Raw SQL executed on every myloader connection after the normal session setup. Useful for Aurora-specific calls such as CALL mysql.rds_disable_session_binlog().
+
 .. option:: --optimize-keys
 
   Creates the table without the indexes unless SKIP is selected. It will add the indexes right after completing the table restoration by default or after importing all the tables. Options: AFTER_IMPORT_PER_TABLE, AFTER_IMPORT_ALL_TABLES and SKIP. Default: AFTER_IMPORT_PER_TABLE
@@ -198,6 +202,10 @@ Execution Options
 .. option:: --num-sequences
 
   Amount of sequences in the backup. It is read from [config] in the metadata file. Default: 0
+
+.. option:: --statement-buffer-shrink-threshold-mb
+
+  Buffer size threshold in megabytes that, when reached, triggers a shrink back to its original size. Default: 2
 
 Threads Options
 ---------------
