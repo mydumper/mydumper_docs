@@ -9,4 +9,5 @@ Dive under the hood to explore the architecture and operational mechanics that p
    :titlesonly:
 
    files
-   stages
+   backup_stages
+   restore_stages

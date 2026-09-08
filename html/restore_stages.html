@@ -2,9 +2,12 @@
 <html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Sponsor" href="sponsor.html" /><link rel="prev" title="Backup Stages" href="backup_stages.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 --><title>Search - MyDumper</title><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>Restore Stages - MyDumper</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=9701f087" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=8f9e6779" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
@@ -133,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -150,13 +153,13 @@
   </div>
   
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="installing.html">Installing</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="APT.html">APT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="YUM.html">YUM</a></li>
@@ -181,10 +184,10 @@
 <li class="toctree-l2"><a class="reference internal" href="daemon.html">Daemon</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="internals.html">Internals</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Internals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="internals.html">Internals</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Internals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="files.html">Output Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup_stages.html">Backup Stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="restore_stages.html">Restore Stages</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Restore Stages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sponsor.html">Sponsor</a></li>
@@ -208,7 +211,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -216,31 +220,69 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
-</div>
-</noscript>
-
-<div id="search-results"></div>
+          <section id="restore-stages">
+<h1>Restore Stages<a class="headerlink" href="#restore-stages" title="Link to this heading">#</a></h1>
+<p>When <strong class="program">myloader</strong> start to restore, it needs to execute multiple task and reach milestone.</p>
+<section id="schema-database-level-objects">
+<h2>Schema / Database Level Objects<a class="headerlink" href="#schema-database-level-objects" title="Link to this heading">#</a></h2>
+<p>Schema Dropping: Runs DROP DATABASE IF EXISTS for each database (if overwrite options like –overwrite-tables are enabled).</p>
+<p>Schema Creation: Reads &lt;db&gt;-schema-create.sql files and executes CREATE DATABASE / CREATE SCHEMA.</p>
+</section>
+<section id="base-table-structure-pre-data">
+<h2>Base Table Structure (Pre-Data)<a class="headerlink" href="#base-table-structure-pre-data" title="Link to this heading">#</a></h2>
+<p>Table Dropping: Executes DROP TABLE IF EXISTS in the target database if overwrite flags are active.</p>
+<p>Main Table Creation: Reads &lt;db&gt;.&lt;table_name&gt;-schema.sql files and takes all the standard KEY, INDEX and CONSTRAINTS lines it stripped from the original CREATE TABLE and rewrites them into an ALTER TABLE &lt;table&gt; ADD (KEY/CONSTRAINT)… statements and saves them in different variable and only runs the new CREATE TABLE statements. This builds base table definitions and primary/unique key structures required for data ingestion.</p>
+</section>
+<section id="bulk-data-loading-data-load">
+<h2>Bulk Data Loading (Data Load)<a class="headerlink" href="#bulk-data-loading-data-load" title="Link to this heading">#</a></h2>
+<p>Data Insertion: Reads chunked data files (&lt;db&gt;.&lt;table_name&gt;.&lt;chunk&gt;.sql) and inserts rows concurrently using multiple worker threads.</p>
+</section>
+<section id="the-secondary-indexes-post-table-data-load">
+<h2>The Secondary Indexes (Post-Table Data Load)<a class="headerlink" href="#the-secondary-indexes-post-table-data-load" title="Link to this heading">#</a></h2>
+<p>Execution: By default, this reconstructed ALTER TABLE statement is kept in memory and executed immediately after all parallel data chunks for that specific table have finished loading.</p>
+<p>Why it’s split: Rebuilding secondary indexes at the end via MySQL’s “Fast Index Creation” (which sorts the data and builds the index in bulk) is significantly faster than updating the index tree row-by-row during millions of INSERT operations.</p>
+</section>
+<section id="post-data-objects-and-constraints">
+<h2>Post-Data Objects and Constraints<a class="headerlink" href="#post-data-objects-and-constraints" title="Link to this heading">#</a></h2>
+<p>Foreign Keys: Executes &lt;db&gt;.&lt;table_name&gt;-schema-post.sql files using ALTER TABLE … ADD CONSTRAINT to prevent lockups and severe performance degradation during INSERT operations.</p>
+<p>View Creation: Reads and executes view definitions (&lt;db&gt;-schema-view.sql or &lt;db&gt;.&lt;view_name&gt;-schema.sql). Deferred until after tables are populated to prevent missing dependency errors.</p>
+<p>Trigger Creation: Runs &lt;db&gt;.&lt;table_name&gt;-schema-triggers.sql to build triggers. Postponed to avoid firing triggers unnecessarily during bulk data loading.</p>
+<p>Stored Procedures &amp; Functions: Executes CREATE PROCEDURE and CREATE FUNCTION statements from schema metadata.</p>
+<p>Event Creation: Executes CREATE EVENT statements defined in metadata files.</p>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="sponsor.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sponsor</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="backup_stages.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Backup Stages</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -259,8 +301,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Restore Stages</a><ul>
+<li><a class="reference internal" href="#schema-database-level-objects">Schema / Database Level Objects</a></li>
+<li><a class="reference internal" href="#base-table-structure-pre-data">Base Table Structure (Pre-Data)</a></li>
+<li><a class="reference internal" href="#bulk-data-loading-data-load">Bulk Data Loading (Data Load)</a></li>
+<li><a class="reference internal" href="#the-secondary-indexes-post-table-data-load">The Secondary Indexes (Post-Table Data Load)</a></li>
+<li><a class="reference internal" href="#post-data-objects-and-constraints">Post-Data Objects and Constraints</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -272,8 +337,5 @@
     <script src="_static/clipboard.min.js?v=66b4909c"></script>
     <script src="_static/copybutton.js?v=71494f10"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>

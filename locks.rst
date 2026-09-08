@@ -30,7 +30,7 @@ In cases where FLUSH TABLE WITH READ LOCK is not available, we can use `LOCK_ALL
 No Locks
 --------
 
-If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using :option:`--no-locks <mydumper --no-locks>` which might cause a inconsistent backup.
+If you don't want to use FLUSH TABLE WITH READ LOCK and LOCK TABLE, you can simple disable it using :option:`--sync-thread-lock-mode=NO_LOCK <mydumper --sync-thread-lock-mode>` which might cause a inconsistent backup.
 This option has been modified for Percona Server, as after sending START TRANSACTION WITH CONSISTENT SNAPSHOT, we are able to check if all the threads are in the same point in time and if it is not it will retry 3 more times. If it is not able to sync all the threads, it will continue informing that it will be an inconsistent backup.
 
 .. code-block::  bash
