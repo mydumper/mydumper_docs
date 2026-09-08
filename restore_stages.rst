@@ -6,9 +6,9 @@ When :program:`myloader` start to restore, it needs to execute multiple task and
 Schema / Database Level Objects
 -------------------------------
 
-Schema Dropping: Runs DROP DATABASE IF EXISTS for each database (if overwrite options like --overwrite-tables are enabled).
+Schema Dropping: Runs DROP DATABASE IF EXISTS for each database (if overwrite options :option:`--drop-database <myloader --drop-database>` are enabled).
 
-Schema Creation: Reads <db>-schema-create.sql files and executes CREATE DATABASE / CREATE SCHEMA.
+Schema Creation: Reads <db>-schema-create.sql files and executes CREATE DATABASE.
 
 Base Table Structure (Pre-Data)
 -------------------------------
