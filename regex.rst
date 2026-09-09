@@ -15,11 +15,17 @@ Once can use --regex functionality, for example not to dump mysql, sys and test 
   # mydumper --regex '^(?!(mysql\.|sys\.|test\.))'
 
 
-To dump only mysql and test databases:
+To dump only mysql and test databases without the -schema-create.sql:
 
 .. code-block::  bash
 
   # mydumper --regex '^(mysql\.|test\.)'
+
+To dump only mysql and test databases with the -schema-create.sql:
+
+.. code-block::  bash
+
+  # mydumper --regex '^(mysql|test)(\.|$)'
 
 To not dump all databases starting with test:
 
