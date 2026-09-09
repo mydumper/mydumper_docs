@@ -238,8 +238,12 @@ will ignore the <code class="docutils literal notranslate"><span class="pre">tes
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(?!(mysql\.|sys\.|test\.))&#39;</span>
 </pre></div>
 </div>
-<p>To dump only mysql and test databases:</p>
+<p>To dump only mysql and test databases without the -schema-create.sql:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(mysql\.|test\.)&#39;</span>
+</pre></div>
+</div>
+<p>To dump only mysql and test databases with the -schema-create.sql:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mydumper --regex &#39;^(mysql|test)(\.|$)&#39;</span>
 </pre></div>
 </div>
 <p>To not dump all databases starting with test:</p>
