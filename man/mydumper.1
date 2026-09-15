@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Sep 09, 2026" "" "MyDumper"
+.TH "MYDUMPER" "1" "Sep 15, 2026" "" "MyDumper"
 .SH NAME
 mydumper \- multi-threaded MySQL dumping
 .SH CONNECTION OPTIONS
@@ -264,7 +264,7 @@ Maximum amount of seconds that a select should take. Default: 2
 .INDENT 0.0
 .TP
 .B \-\-max\-threads\-per\-table
-Maximum number of threads per table to use
+Maximum number of threads per table to use, defaults to –threads
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -345,7 +345,7 @@ Enables checksums for all elements
 .INDENT 0.0
 .TP
 .B \-\-data\-checksums
-Disables table checksums with the data
+Enables table checksums with the data
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -636,6 +636,16 @@ number of snapshots, default 2
 .TP
 .B \-?, \-\-help
 Show help options
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-print\-defaults
+Reads configuration file and print the program argument list and exit
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-show\-config
+Reads config files, connects to the database, loads proper section from config and print the program argument list and exit
 .UNINDENT
 .INDENT 0.0
 .TP

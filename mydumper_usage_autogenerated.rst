@@ -192,7 +192,7 @@ Job Options
 
 .. option:: --max-threads-per-table
 
-  Maximum number of threads per table to use
+  Maximum number of threads per table to use, defaults to --threads
 
 .. option:: --use-single-column
 
@@ -258,7 +258,7 @@ Checksum Options
 
 .. option:: --data-checksums
 
-  Disables table checksums with the data
+  Enables table checksums with the data
 
 .. option:: --schema-checksums
 
@@ -497,6 +497,14 @@ Application Options:
 .. option:: -?, --help
 
   Show help options
+
+.. option:: --print-defaults
+
+  Reads configuration file and print the program argument list and exit
+
+.. option:: --show-config
+
+  Reads config files, connects to the database, loads proper section from config and print the program argument list and exit
 
 .. option:: -o, --outputdir
 

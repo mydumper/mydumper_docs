@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYLOADER" "1" "Sep 09, 2026" "" "MyDumper"
+.TH "MYLOADER" "1" "Sep 15, 2026" "" "MyDumper"
 .SH NAME
 myloader \- multi-threaded MySQL loader
 .SH CONNECTION OPTIONS
@@ -365,7 +365,7 @@ Enables checksums for all elements
 .INDENT 0.0
 .TP
 .B \-\-data\-checksums
-Disables table checksums with the data
+Enables table checksums with the data
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -438,6 +438,16 @@ Enables the ability to use the ‘LOAD DATA LOCAL INFILE’ statementDefault: de
 .TP
 .B \-?, \-\-help
 Show help options
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-print\-defaults
+Reads configuration file and print the program argument list and exit
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-show\-config
+Reads config files, connects to the database, loads proper section from config and print the program argument list and exit
 .UNINDENT
 .INDENT 0.0
 .TP
