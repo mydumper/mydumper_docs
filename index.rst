@@ -30,5 +30,6 @@ The tools developed in this Project are based on C, GLib and support the client 
    features
    internals
    sponsor
+   mydumper_lint
    authors
 
