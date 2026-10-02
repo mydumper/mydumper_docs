@@ -10,7 +10,7 @@ MyDumper Lint
 .. raw:: html
 
    </div>
-   <iframe src="https://tomsihap.github.io/mydumper-lint/" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
+   <iframe src="https://tomsihap.github.io/mydumper-lint/" width="150%" height="800" >
      Loading...
    </iframe>
 
