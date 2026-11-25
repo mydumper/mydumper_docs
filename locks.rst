@@ -55,10 +55,42 @@ On Percona Server, we can check the status variable binlog_snapshot_gtid_execute
 
   --sync-thread-lock-mode=GTID
 
+Snapshot cloning
+----------------
+
+On Percona Server 5.7 and newer, :program:`mydumper` can open one transaction with `START TRANSACTION WITH CONSISTENT SNAPSHOT` and clone it into every thread with `START TRANSACTION WITH CONSISTENT SNAPSHOT FROM SESSION`. All the threads see exactly the same snapshot and no global read lock is needed. The binlog position and GTID written in the metadata file are taken from the `Binlog_snapshot_file`, `Binlog_snapshot_position` and `Binlog_snapshot_gtid_executed` status variables. On Percona Server 5.7, `LOCK BINLOG FOR BACKUP` is held while the snapshot is opened, so the position matches the snapshot.
+
+This is the mode that `AUTO` uses on Percona Server.
+
+.. code-block::  bash
+
+  --sync-thread-lock-mode=SNAP_CLONE
+
+Non-transactional tables are not covered by the snapshot. On Percona Server 5.7 they are protected by `LOCK TABLES FOR BACKUP`, which also blocks writes to them. On Percona Server 8.0 and newer, `LOCK INSTANCE FOR BACKUP` does not block those writes, so :program:`mydumper` warns for each non-transactional table that it might not be consistent with the snapshot.
+
 Transactional tables
 ^^^^^^^^^^^^^^^^^^^^
 
 When you have transactional table only, you can use :option:`--trx-tables <mydumper --trx-tables>` which reduces the amount of time we held the global lockings.
+
+Non-transactional tables
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+When :option:`--trx-tables <mydumper --trx-tables>` is not used, :program:`mydumper` locks the non-transactional tables with `LOCK TABLES` while the global lock is held. As `LOCK TABLES` commits the current transaction, these tables are locked and dumped by a dedicated set of threads, and the threads that dump transactional tables keep their consistent snapshot. Once the non-transactional threads have taken their locks, the global lock is released.
+
+The non-transactional threads are only created when there are non-transactional tables to dump. The transactional tables are dumped after the non-transactional tables.
+
+The amount of threads of each set can be set with :option:`--threads <mydumper --threads>` using `<non-transactional>:<transactional>`. A single number is used for both sets, and `0` means the number of CPUs:
+
+.. code-block::  bash
+
+  # 2 threads for non-transactional tables and 8 for transactional tables
+  --threads=2:8
+
+  # 4 threads for each set
+  --threads=4
+
+When the backup is paused, with Ctrl+C or because of the disk space check, both sets of threads are paused.
 
 DDL Locks
 ^^^^^^^^^
@@ -74,6 +106,8 @@ Disable Percona Backup Locks
 ----------------------------
 
 On Percona Server 5.7, we have the option `LOCK TABLES FOR BACKUP` which has been replace by `LOCK INSTANCE FOR BACKUP` on Percona Server 8.0. We can disable this DDL locking mechanisim with :option:`--no-backup-locks <mydumper --no-backup-locks>`
+
+On Percona Server 5.7 with `FTWRL`, `LOCK TABLES FOR BACKUP` is taken after FLUSH TABLE WITH READ LOCK, as it blocks writes to non-transactional tables, and the FLUSH TABLES would wait for them.
 
 Savepoints
 ----------
