@@ -268,10 +268,33 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 </pre></div>
 </div>
 </section>
+<section id="snapshot-cloning">
+<h3>Snapshot cloning<a class="headerlink" href="#snapshot-cloning" title="Link to this heading">#</a></h3>
+<p>On Percona Server 5.7 and newer, <strong class="program">mydumper</strong> can open one transaction with <cite>START TRANSACTION WITH CONSISTENT SNAPSHOT</cite> and clone it into every thread with <cite>START TRANSACTION WITH CONSISTENT SNAPSHOT FROM SESSION</cite>. All the threads see exactly the same snapshot and no global read lock is needed. The binlog position and GTID written in the metadata file are taken from the <cite>Binlog_snapshot_file</cite>, <cite>Binlog_snapshot_position</cite> and <cite>Binlog_snapshot_gtid_executed</cite> status variables. On Percona Server 5.7, <cite>LOCK BINLOG FOR BACKUP</cite> is held while the snapshot is opened, so the position matches the snapshot.</p>
+<p>This is the mode that <cite>AUTO</cite> uses on Percona Server.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--sync-thread-lock-mode<span class="o">=</span>SNAP_CLONE
+</pre></div>
+</div>
+<p>Non-transactional tables, which are only exported with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables=0</span></code></a>, are not covered by the snapshot. On Percona Server 5.7 they are protected by <cite>LOCK TABLES FOR BACKUP</cite>, which also blocks writes to them. On Percona Server 8.0 and newer, <cite>LOCK INSTANCE FOR BACKUP</cite> does not block those writes, so <strong class="program">mydumper</strong> warns for each non-transactional table that it might not be consistent with the snapshot.</p>
+</section>
 </section>
 <section id="transactional-tables">
 <h2>Transactional tables<a class="headerlink" href="#transactional-tables" title="Link to this heading">#</a></h2>
-<p>When you have transactional table only, you can use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables</span></code></a> which reduces the amount of time we held the global lockings.</p>
+<p>By default, <strong class="program">mydumper</strong> assumes that all the tables are transactional (<a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables</span></code></a>), which reduces the amount of time the global lock is held. If a non-transactional table is found, the backup stops. If you need to export non-transactional tables, use <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables=0</span></code></a> or <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-trx-tables</span></code></a>.</p>
+</section>
+<section id="non-transactional-tables">
+<h2>Non-transactional tables<a class="headerlink" href="#non-transactional-tables" title="Link to this heading">#</a></h2>
+<p>When <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trx-tables=0</span></code></a> or <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-trx-tables"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-trx-tables</span></code></a> is used, <strong class="program">mydumper</strong> locks the non-transactional tables with <cite>LOCK TABLES</cite> while the global lock is held. As <cite>LOCK TABLES</cite> commits the current transaction, these tables are locked and dumped by a dedicated set of threads, and the threads that dump transactional tables keep their consistent snapshot. Once the non-transactional threads have taken their locks, the global lock is released.</p>
+<p>The non-transactional threads are only created when there are non-transactional tables to dump. The transactional tables are dumped after the non-transactional tables.</p>
+<p>The amount of threads of each set can be set with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-t"><code class="xref std std-option docutils literal notranslate"><span class="pre">--threads</span></code></a> using <cite>&lt;non-transactional&gt;:&lt;transactional&gt;</cite>. A single number is used for both sets, and <cite>0</cite> means the number of CPUs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2 threads for non-transactional tables and 8 for transactional tables</span>
+--threads<span class="o">=</span><span class="m">2</span>:8
+
+<span class="c1"># 4 threads for each set</span>
+--threads<span class="o">=</span><span class="m">4</span>
+</pre></div>
+</div>
+<p>When the backup is paused, with Ctrl+C or because of the disk space check, both sets of threads are paused.</p>
 </section>
 <section id="ddl-locks">
 <h2>DDL Locks<a class="headerlink" href="#ddl-locks" title="Link to this heading">#</a></h2>
@@ -283,6 +306,7 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 <section id="disable-percona-backup-locks">
 <h3>Disable Percona Backup Locks<a class="headerlink" href="#disable-percona-backup-locks" title="Link to this heading">#</a></h3>
 <p>On Percona Server 5.7, we have the option <cite>LOCK TABLES FOR BACKUP</cite> which has been replace by <cite>LOCK INSTANCE FOR BACKUP</cite> on Percona Server 8.0. We can disable this DDL locking mechanisim with <a class="reference internal" href="mydumper_usage.html#cmdoption-mydumper-no-backup-locks"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-backup-locks</span></code></a></p>
+<p>On Percona Server 5.7 with <cite>FTWRL</cite>, <cite>LOCK TABLES FOR BACKUP</cite> is taken after FLUSH TABLE WITH READ LOCK, as it blocks writes to non-transactional tables, and the FLUSH TABLES would wait for them.</p>
 </section>
 <section id="savepoints">
 <h3>Savepoints<a class="headerlink" href="#savepoints" title="Link to this heading">#</a></h3>
@@ -353,9 +377,11 @@ This option has been modified for Percona Server, as after sending START TRANSAC
 <li><a class="reference internal" href="#no-locks">No Locks</a></li>
 <li><a class="reference internal" href="#safe-no-locks">Safe No Locks</a></li>
 <li><a class="reference internal" href="#using-gtid">Using GTID</a></li>
+<li><a class="reference internal" href="#snapshot-cloning">Snapshot cloning</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#transactional-tables">Transactional tables</a></li>
+<li><a class="reference internal" href="#non-transactional-tables">Non-transactional tables</a></li>
 <li><a class="reference internal" href="#ddl-locks">DDL Locks</a><ul>
 <li><a class="reference internal" href="#disable-ddl-locks">Disable DDL locks</a></li>
 <li><a class="reference internal" href="#disable-percona-backup-locks">Disable Percona Backup Locks</a></li>
