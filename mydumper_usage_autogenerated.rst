@@ -538,6 +538,10 @@ Application Options:
 
   Masquerades the filenames
 
+.. option:: -k, --kill-at-once
+
+  When Ctrl+c is pressed it immediately terminates the process
+
 .. option:: --ftwrl-max-wait-time
 
   Sets the max time that we are going to wait before kill the FLUSH TABLES related commands. Default: 60

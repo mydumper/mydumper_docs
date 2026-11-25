@@ -375,7 +375,19 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-skip-post">
 <span class="sig-name descname"><span class="pre">--skip-post</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-post" title="Link to this definition">#</a></dt>
-<dd><p>Do not import events, stored procedures and functions. By default, it imports events, stored procedures or functions</p>
+<dd><p>Do not import events, stored procedures and functions. Same as –skip-routines –skip-events. By default, it imports events, stored procedures or functions</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-routines">
+<span class="sig-name descname"><span class="pre">--skip-routines</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-routines" title="Link to this definition">#</a></dt>
+<dd><p>Do not import stored procedures and functions. By default, it imports stored procedures and functions</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-skip-events">
+<span class="sig-name descname"><span class="pre">--skip-events</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-skip-events" title="Link to this definition">#</a></dt>
+<dd><p>Do not import events. By default, it imports events</p>
 </dd></dl>
 
 <dl class="std option">
@@ -475,6 +487,12 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-encryption-option">
+<span class="sig-name descname"><span class="pre">--encryption-option</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-encryption-option" title="Link to this definition">#</a></dt>
+<dd><p>How to restore the encryption options, that are not portable between MySQL/Percona (ENCRYPTION=’Y’|’N’, DEFAULT ENCRYPTION) and MariaDB (ENCRYPTED=YES|NO, ENCRYPTION_KEY_ID): CONVERT (default) rewrites them with the syntax of the target server, REMOVE removes them so the target server defaults are used, KEEP keeps them untouched</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-drop-database">
 <span class="sig-name descname"><span class="pre">--drop-database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-drop-database" title="Link to this definition">#</a></dt>
 <dd><p>Executes a DROP DATABASE if the schema database file is found.</p>
@@ -495,7 +513,13 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-retry-count">
 <span class="sig-name descname"><span class="pre">--retry-count</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-retry-count" title="Link to this definition">#</a></dt>
-<dd><p>Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)</p>
+<dd><p>Times to retry a DROP TABLE that hit a lock wait timeout, and to replay a transaction rolled back by the server (deadlock or failed COMMIT). 0 disables the replay. Default 10</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-myloader-retry-wait">
+<span class="sig-name descname"><span class="pre">--retry-wait</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-retry-wait" title="Link to this definition">#</a></dt>
+<dd><p>Milliseconds to wait before replaying a rolled back transaction, multiplied by the attempt number. Default 100</p>
 </dd></dl>
 
 <dl class="std option">
@@ -585,7 +609,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-q">
 <span id="cmdoption-myloader-queries-per-transaction"></span><span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--queries-per-transaction</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-q" title="Link to this definition">#</a></dt>
-<dd><p>Number of queries per transaction, default 1000</p>
+<dd><p>Number of queries per transaction, default 1000. 0 or 1 restores in autocommit mode, so –max-transaction-size and the transaction replay of –retry-count do not apply</p>
 </dd></dl>
 
 <dl class="std option">
@@ -597,7 +621,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-max-transaction-size">
 <span class="sig-name descname"><span class="pre">--max-transaction-size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-max-transaction-size" title="Link to this definition">#</a></dt>
-<dd><p>Set the max size of the transaction in megabytes, default 1000</p>
+<dd><p>Max size of a transaction in megabytes: it is committed before a statement that would exceed it, or after –queries-per-transaction statements. It is also the memory kept per connection to replay a transaction rolled back by the server. Lowered to group_replication_transaction_size_limit or wsrep_max_ws_size when smaller. Default 64</p>
 </dd></dl>
 
 <dl class="std option">
@@ -774,7 +798,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-myloader-B">
 <span id="cmdoption-myloader-database"></span><span class="sig-name descname"><span class="pre">-B</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--database</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-myloader-B" title="Link to this definition">#</a></dt>
-<dd><p>An alternative database to restore into</p>
+<dd><p>An alternative database to restore into, or a comma-separated list of source:target pairs to rename only those databases. Eg: db1:restore1,db2:restore2</p>
 </dd></dl>
 
 <dl class="std option">

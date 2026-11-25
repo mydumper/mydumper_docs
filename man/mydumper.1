@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "MYDUMPER" "1" "Oct 02, 2026" "" "MyDumper"
+.TH "MYDUMPER" "1" "Nov 25, 2026" "" "MyDumper"
 .SH NAME
 mydumper \- multi-threaded MySQL dumping
 .SH CONNECTION OPTIONS
@@ -686,6 +686,11 @@ Set the limit to pause and resume if determines there is no enough disk space.Ac
 .TP
 .B \-\-masquerade\-filename
 Masquerades the filenames
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-k, \-\-kill\-at\-once
+When Ctrl+c is pressed it immediately terminates the process
 .UNINDENT
 .INDENT 0.0
 .TP

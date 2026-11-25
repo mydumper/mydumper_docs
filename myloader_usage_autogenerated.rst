@@ -99,7 +99,15 @@ Filter Options
 
 .. option:: --skip-post
 
-  Do not import events, stored procedures and functions. By default, it imports events, stored procedures or functions
+  Do not import events, stored procedures and functions. Same as --skip-routines --skip-events. By default, it imports events, stored procedures or functions
+
+.. option:: --skip-routines
+
+  Do not import stored procedures and functions. By default, it imports stored procedures and functions
+
+.. option:: --skip-events
+
+  Do not import events. By default, it imports events
 
 .. option:: --skip-constraints
 
@@ -167,6 +175,10 @@ Execution Options
 
   Treat checksums: skip, fail, warn(default).
 
+.. option:: --encryption-option
+
+  How to restore the encryption options, that are not portable between MySQL/Percona (ENCRYPTION='Y'|'N', DEFAULT ENCRYPTION) and MariaDB (ENCRYPTED=YES|NO, ENCRYPTION_KEY_ID): CONVERT (default) rewrites them with the syntax of the target server, REMOVE removes them so the target server defaults are used, KEEP keeps them untouched
+
 .. option:: --drop-database
 
   Executes a DROP DATABASE if the schema database file is found.
@@ -181,7 +193,11 @@ Execution Options
 
 .. option:: --retry-count
 
-  Lock wait timeout exceeded retry count, default 10 (currently only for DROP TABLE)
+  Times to retry a DROP TABLE that hit a lock wait timeout, and to replay a transaction rolled back by the server (deadlock or failed COMMIT). 0 disables the replay. Default 10
+
+.. option:: --retry-wait
+
+  Milliseconds to wait before replaying a rolled back transaction, multiplied by the attempt number. Default 100
 
 .. option:: --stream
 
@@ -243,7 +259,7 @@ Statement Options
 
 .. option:: -q, --queries-per-transaction
 
-  Number of queries per transaction, default 1000
+  Number of queries per transaction, default 1000. 0 or 1 restores in autocommit mode, so --max-transaction-size and the transaction replay of --retry-count do not apply
 
 .. option:: --max-statement-size
 
@@ -251,7 +267,7 @@ Statement Options
 
 .. option:: --max-transaction-size
 
-  Set the max size of the transaction in megabytes, default 1000
+  Max size of a transaction in megabytes: it is committed before a statement that would exceed it, or after --queries-per-transaction statements. It is also the memory kept per connection to replay a transaction rolled back by the server. Lowered to group_replication_transaction_size_limit or wsrep_max_ws_size when smaller. Default 64
 
 .. option:: --append-if-not-exist
 
@@ -372,7 +388,7 @@ Application Options:
 
 .. option:: -B, --database
 
-  An alternative database to restore into
+  An alternative database to restore into, or a comma-separated list of source:target pairs to rename only those databases. Eg: db1:restore1,db2:restore2
 
 .. option:: --show-warnings
 
