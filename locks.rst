@@ -66,17 +66,17 @@ This is the mode that `AUTO` uses on Percona Server.
 
   --sync-thread-lock-mode=SNAP_CLONE
 
-Non-transactional tables are not covered by the snapshot. On Percona Server 5.7 they are protected by `LOCK TABLES FOR BACKUP`, which also blocks writes to them. On Percona Server 8.0 and newer, `LOCK INSTANCE FOR BACKUP` does not block those writes, so :program:`mydumper` warns for each non-transactional table that it might not be consistent with the snapshot.
+Non-transactional tables, which are only exported with :option:`--trx-tables=0 <mydumper --trx-tables>`, are not covered by the snapshot. On Percona Server 5.7 they are protected by `LOCK TABLES FOR BACKUP`, which also blocks writes to them. On Percona Server 8.0 and newer, `LOCK INSTANCE FOR BACKUP` does not block those writes, so :program:`mydumper` warns for each non-transactional table that it might not be consistent with the snapshot.
 
 Transactional tables
 ^^^^^^^^^^^^^^^^^^^^
 
-When you have transactional table only, you can use :option:`--trx-tables <mydumper --trx-tables>` which reduces the amount of time we held the global lockings.
+By default, :program:`mydumper` assumes that all the tables are transactional (:option:`--trx-tables <mydumper --trx-tables>`), which reduces the amount of time the global lock is held. If a non-transactional table is found, the backup stops. If you need to export non-transactional tables, use :option:`--trx-tables=0 <mydumper --trx-tables>` or :option:`--no-trx-tables <mydumper --no-trx-tables>`.
 
 Non-transactional tables
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When :option:`--trx-tables <mydumper --trx-tables>` is not used, :program:`mydumper` locks the non-transactional tables with `LOCK TABLES` while the global lock is held. As `LOCK TABLES` commits the current transaction, these tables are locked and dumped by a dedicated set of threads, and the threads that dump transactional tables keep their consistent snapshot. Once the non-transactional threads have taken their locks, the global lock is released.
+When :option:`--trx-tables=0 <mydumper --trx-tables>` or :option:`--no-trx-tables <mydumper --no-trx-tables>` is used, :program:`mydumper` locks the non-transactional tables with `LOCK TABLES` while the global lock is held. As `LOCK TABLES` commits the current transaction, these tables are locked and dumped by a dedicated set of threads, and the threads that dump transactional tables keep their consistent snapshot. Once the non-transactional threads have taken their locks, the global lock is released.
 
 The non-transactional threads are only created when there are non-transactional tables to dump. The transactional tables are dumped after the non-transactional tables.
 
