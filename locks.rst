@@ -60,7 +60,7 @@ Snapshot cloning
 
 On Percona Server 5.7 and newer, :program:`mydumper` can open one transaction with `START TRANSACTION WITH CONSISTENT SNAPSHOT` and clone it into every thread with `START TRANSACTION WITH CONSISTENT SNAPSHOT FROM SESSION`. All the threads see exactly the same snapshot and no global read lock is needed. The binlog position and GTID written in the metadata file are taken from the `Binlog_snapshot_file`, `Binlog_snapshot_position` and `Binlog_snapshot_gtid_executed` status variables. On Percona Server 5.7, `LOCK BINLOG FOR BACKUP` is held while the snapshot is opened, so the position matches the snapshot.
 
-This is the mode that `AUTO` uses on Percona Server.
+The snapshot is always consistent, but the binlog position is only guaranteed to match it with `gtid_mode=ON`. `AUTO` uses this mode on Percona Server when `log_bin=OFF` or `gtid_mode=ON`. Otherwise, it uses `LOCK BINLOG FOR BACKUP` on Percona Server 5.7 and FLUSH TABLE WITH READ LOCK on newer versions. If you select `SNAP_CLONE` with `log_bin=ON` and `gtid_mode=OFF`, :program:`mydumper` warns that the binlog position might not match the snapshot.
 
 .. code-block::  bash
 
