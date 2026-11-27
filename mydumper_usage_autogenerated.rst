@@ -212,7 +212,7 @@ Job Options
 
 .. option:: --max-split-of-step-in-integer-chunk
 
-  Limits the amount of times a step in the integer chunk will be split. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN
+  Limits the number of times a step in the integer chunk will be split. Default: 0 which means no limit, it will cut based on the information of the rows in the EXPLAIN
 
 .. option:: --max-char-size
 
@@ -298,7 +298,7 @@ Checksum Options
 
 .. option:: --skip-routine-checksums
 
-  Disables checksums over the funtions and store procedures.
+  Disables checksums over the functions and store procedures.
 
 .. option:: --skip-event-checksums
 

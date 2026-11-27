@@ -380,11 +380,11 @@ Application Options:
 
 .. option:: --fifodir
 
-  Directory where the FIFO files will be created when needed. Default: temporary directoy will be created
+  Directory where the FIFO files will be created when needed. Default: temporary directory will be created
 
 .. option:: --load-data-tmp-dir
 
-  Directory where the FIFO temporary files will be created when needed for LOAD DATA statements. Default: temporary directoy will be created
+  Directory where the FIFO temporary files will be created when needed for LOAD DATA statements. Default: temporary directory will be created
 
 .. option:: -B, --database
 
